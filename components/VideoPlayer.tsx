@@ -7,6 +7,7 @@ interface VideoPlayerProps {
   streamUrl?: string; // Authenticated stream URL from Ragie
   youtubeId?: string;
   startTime: number;
+  endTime?: number;
   autoPlay?: boolean;
   transcripts?: TranscriptLine[];
   onTimeUpdate?: (time: number) => void;
@@ -18,12 +19,13 @@ declare global {
   }
 }
 
-const VideoPlayer: React.FC<VideoPlayerProps> = ({ 
-  videoUrl, 
+const VideoPlayer: React.FC<VideoPlayerProps> = ({
+  videoUrl,
   streamUrl,
   youtubeId,
-  startTime, 
-  autoPlay = true, 
+  startTime,
+  endTime = 0,
+  autoPlay = true,
   transcripts = [],
   onTimeUpdate
 }) => {
@@ -34,6 +36,7 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
   const [playerId] = useState(() => `youtube-player-${Math.random().toString(36).substr(2, 9)}`);
   const [isYoutubeError, setIsYoutubeError] = useState(false);
   const [authenticatedSrc, setAuthenticatedSrc] = useState<string | null>(null);
+  const [streamError, setStreamError] = useState<string | null>(null);
 
   // Keep latest onTimeUpdate in a ref
   const onTimeUpdateRef = useRef(onTimeUpdate);
@@ -41,29 +44,60 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
     onTimeUpdateRef.current = onTimeUpdate;
   }, [onTimeUpdate]);
 
-  // Handle Authenticated Stream (Ragie Proxy Logic on Client)
+  // Handle Authenticated Stream (via proxy)
   useEffect(() => {
     let objectUrl: string | null = null;
     let mounted = true;
 
     const fetchStream = async () => {
-      if (!streamUrl || !process.env.RAGIE_API_KEY) return;
-      
+      if (!streamUrl) return;
+
+      setStreamError(null);
+
       try {
-        // Fetch the video data with the API key header
+        console.log('[VideoPlayer] Fetching stream:', streamUrl);
+
+        // Fetch video through proxy with auth headers
         const response = await fetch(streamUrl, {
           headers: {
-            'Authorization': `Bearer ${process.env.RAGIE_API_KEY}`
+            'Authorization': `Bearer ${process.env.RAGIE_API_KEY}`,
+            'partition': 'default'  // Required for chunk content access
           }
         });
-        
-        if (response.ok && mounted) {
-          const blob = await response.blob();
+
+        console.log('[VideoPlayer] Response:', response.status, response.statusText, 'Content-Type:', response.headers.get('content-type'));
+
+        if (!response.ok) {
+          console.error("Stream fetch failed:", response.status, response.statusText);
+          if (mounted) {
+            setStreamError(`Stream failed: ${response.status} ${response.statusText}`);
+          }
+          return;
+        }
+
+        if (!mounted) {
+          console.log('[VideoPlayer] Component unmounted, skipping blob');
+          return;
+        }
+
+        const blob = await response.blob();
+        console.log('[VideoPlayer] Blob size:', blob.size, 'type:', blob.type);
+
+        if (blob.size > 0 && mounted) {
           objectUrl = URL.createObjectURL(blob);
           setAuthenticatedSrc(objectUrl);
+          console.log('[VideoPlayer] Created blob URL:', objectUrl);
+        } else if (blob.size === 0) {
+          console.error('[VideoPlayer] Empty blob received');
+          if (mounted) {
+            setStreamError('Stream returned empty content');
+          }
         }
       } catch (e) {
-        console.error("Error fetching authenticated stream", e);
+        console.error("Error fetching stream", e);
+        if (mounted) {
+          setStreamError('Failed to load video stream');
+        }
       }
     };
 
@@ -107,11 +141,16 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
           height: '100%',
           playerVars: {
             start: Math.floor(startTime),
+            end: endTime > 0 ? Math.ceil(endTime) : undefined,
             autoplay: autoPlay ? 1 : 0,
             controls: 1,
             modestbranding: 1,
             rel: 0,
+            iv_load_policy: 3,
+            disablekb: 0,
+            fs: 1,
             playsinline: 1,
+            cc_load_policy: 0,
             origin: window.location.origin || 'http://localhost'
           },
           events: {
@@ -243,6 +282,37 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
     }
   }, [startTime, youtubeId, isYoutubeError, autoPlay, streamUrl]);
 
+  // Seek to startTime and stop at endTime for Ragie streams
+  useEffect(() => {
+    if (authenticatedSrc && videoRef.current) {
+      const video = videoRef.current;
+
+      const handleLoadedMetadata = () => {
+        if (startTime > 0) {
+          video.currentTime = startTime;
+        }
+        if (autoPlay) {
+          video.play().catch(() => {});
+        }
+      };
+
+      const handleTimeUpdate = () => {
+        if (endTime > 0 && video.currentTime >= endTime) {
+          video.pause();
+          video.currentTime = startTime; // Reset to start for replay
+        }
+      };
+
+      video.addEventListener('loadedmetadata', handleLoadedMetadata);
+      video.addEventListener('timeupdate', handleTimeUpdate);
+
+      return () => {
+        video.removeEventListener('loadedmetadata', handleLoadedMetadata);
+        video.removeEventListener('timeupdate', handleTimeUpdate);
+      };
+    }
+  }, [authenticatedSrc, startTime, endTime, autoPlay]);
+
   // Priority 1: Authenticated Stream from Ragie
   if (authenticatedSrc) {
     return (
@@ -274,7 +344,53 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
     );
   }
 
-  // Priority 3: Standard Video URL
+  // Error State
+  if (streamError) {
+    return (
+      <div className="relative w-full aspect-video bg-charcoal rounded-xl overflow-hidden border-2 border-charcoal shadow-none flex items-center justify-center">
+        <div className="text-center p-6">
+          <div className="w-12 h-12 mx-auto mb-4 bg-terracotta/20 border-2 border-terracotta flex items-center justify-center">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-6 h-6 text-terracotta">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z" />
+            </svg>
+          </div>
+          <p className="text-warmWhite font-mono text-sm font-bold uppercase tracking-wide mb-2">Stream Error</p>
+          <p className="text-warmWhite/60 font-mono text-xs">{streamError}</p>
+        </div>
+      </div>
+    );
+  }
+
+  // No Stream URL - user needs to search
+  if (!streamUrl && !videoUrl && !youtubeId) {
+    return (
+      <div className="relative w-full aspect-video bg-charcoal rounded-xl overflow-hidden border-2 border-charcoal shadow-none flex items-center justify-center">
+        <div className="text-center p-6">
+          <div className="w-12 h-12 mx-auto mb-4 bg-sand/20 border-2 border-sand flex items-center justify-center">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-6 h-6 text-sand">
+              <path strokeLinecap="round" strokeLinejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
+            </svg>
+          </div>
+          <p className="text-warmWhite font-mono text-sm font-bold uppercase tracking-wide mb-2">No Video Stream</p>
+          <p className="text-warmWhite/60 font-mono text-xs">Search for a property to view video clips</p>
+        </div>
+      </div>
+    );
+  }
+
+  // Loading State
+  if (streamUrl && !authenticatedSrc) {
+    return (
+      <div className="relative w-full aspect-video bg-charcoal rounded-xl overflow-hidden border-2 border-charcoal shadow-none flex items-center justify-center">
+        <div className="text-center">
+          <div className="w-6 h-6 border-2 border-warmWhite border-t-transparent rounded-full animate-spin mx-auto mb-3"></div>
+          <span className="text-warmWhite font-mono text-sm">Loading Stream...</span>
+        </div>
+      </div>
+    );
+  }
+
+  // Priority 3: Standard Video URL (YouTube fallback)
   return (
     <div className="relative w-full aspect-video bg-black rounded-xl overflow-hidden border-2 border-charcoal shadow-none">
       {videoUrl ? (
@@ -291,22 +407,9 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
           Your browser does not support the video tag.
         </video>
       ) : (
-        <div className="w-full h-full flex items-center justify-center text-white font-mono text-sm flex-col gap-2">
-           {streamUrl ? (
-             <>
-               <div className="w-6 h-6 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
-               <span>Loading Stream...</span>
-             </>
-           ) : (
-             <span>Video source unavailable</span>
-           )}
+        <div className="w-full h-full flex items-center justify-center text-white font-mono text-sm">
+          <span>Video source unavailable</span>
         </div>
-      )}
-      
-      {isYoutubeError && videoUrl && (
-         <div className="absolute top-3 right-3 bg-black/60 backdrop-blur-sm text-white/80 text-[10px] font-mono px-2 py-1 rounded border border-white/10 pointer-events-none">
-           Fallback Source
-         </div>
       )}
     </div>
   );

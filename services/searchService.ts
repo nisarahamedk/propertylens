@@ -5,8 +5,8 @@ import { RealRagieClient } from './RealRagieClient';
 import { Property, SearchResult, VideoData } from '../types';
 
 // CONFIGURATION
-const USE_MOCK_DATA = true;
-const RAGIE_API_KEY = "tnt_8ovpu86d0gW_hLIrFAnPsLeMGIWB2YfaLNzlOagPZdg65zb5atpeJJU";
+const USE_MOCK_DATA = false;
+const RAGIE_API_KEY = process.env.RAGIE_API_KEY || "";
 
 class SearchService {
   private client: IRagieClient;
@@ -31,10 +31,10 @@ class SearchService {
       return {
         id: doc.id,
         ragieId: doc.id,
-        name: (meta.title || doc.name || "Untitled").replace(/_/g, ' '),
+        name: (meta.location || meta.title || doc.name || "Untitled").replace(/_/g, ' '),
         address: meta.address || "Unknown Location",
-        beds: meta.beds || 0,
-        baths: meta.baths || 0,
+        beds: meta.bed || meta.beds || 0,
+        baths: meta.bath || meta.baths || 0,
         sqft: meta.sqft || 0,
         thumbnailUrl: meta.thumbnailUrl || "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=800&q=80",
         description: meta.description || "Indexed content.",
@@ -47,7 +47,8 @@ class SearchService {
   async searchProperties(query: string): Promise<SearchResult[]> {
     const retrieval = await this.client.retrievals.retrieve({
       query: query,
-      top_k: 6
+      top_k: 3,
+      max_chunks_per_document: 1
     });
 
     return retrieval.scored_chunks.map(chunk => {
@@ -57,10 +58,10 @@ class SearchService {
       // Reconstruct Property object from chunk metadata
       const property: Property = {
         id: chunk.document_id,
-        name: (chunk.document_name || "Unknown").replace(/_/g, ' '),
+        name: (meta.location || chunk.document_name || "Unknown").replace(/_/g, ' '),
         address: meta.address || "Unknown Location",
-        beds: meta.beds || 0,
-        baths: meta.baths || 0,
+        beds: meta.bed || meta.beds || 0,
+        baths: meta.bath || meta.baths || 0,
         sqft: meta.sqft || 0,
         thumbnailUrl: meta.thumbnailUrl || "https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=800&q=80",
         description: "Search result",
@@ -69,16 +70,38 @@ class SearchService {
       };
 
       const seconds = chunkMeta.start || chunkMeta.start_time || 0;
-      
+      const endSeconds = chunkMeta.end || chunkMeta.end_time || seconds;
+      const durationSeconds = Math.max(0, endSeconds - seconds);
+
+      // Use chunk-specific video URL for efficient streaming (requires partition header)
+      const links = (chunk as any).links || {};
+      const videoLink = links.self_video_stream || links.self_audio_stream;
+      let streamUrl = videoLink?.href;
+
+      // Convert absolute Ragie URLs to proxy path
+      if (streamUrl && typeof streamUrl === 'string' && streamUrl.includes('api.ragie.ai')) {
+        streamUrl = streamUrl.replace('https://api.ragie.ai', '/api/ragie');
+      }
+
+      // No fallback - chunk streams are required
+      if (!streamUrl) {
+        console.error('[Search] No chunk stream URL for:', chunk.id);
+      }
+
+      console.log('[Search] Chunk:', chunk.id, 'Timestamp:', seconds, 'StreamUrl:', streamUrl);
+
       return {
         id: chunk.id,
         property,
         timestamp: this.formatTime(seconds),
         timestampSeconds: seconds,
+        duration: this.formatDuration(durationSeconds),
+        durationSeconds,
+        score: chunk.score,
         transcriptSnippet: this.parseSnippet(chunk.text),
         visualMatchReason: chunkMeta.visual_reasoning || `Semantic Match (${Math.round(chunk.score * 100)}%)`,
         thumbnailUrl: property.thumbnailUrl,
-        streamUrl: chunk.metadata?.stream_url // Hypothetical field if Ragie provided stream links
+        streamUrl
       };
     });
   }
@@ -118,6 +141,11 @@ class SearchService {
     const m = Math.floor(seconds / 60);
     const s = Math.floor(seconds % 60);
     return `${m}:${s.toString().padStart(2, '0')}`;
+  }
+
+  private formatDuration(seconds: number): string {
+    const s = Math.round(seconds);
+    return `${s}s`;
   }
 
   private parseSnippet(text: string): string {

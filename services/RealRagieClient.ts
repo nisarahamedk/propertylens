@@ -2,17 +2,8 @@
 import { IRagieClient } from './interfaces';
 import { RagieDocument, RagieRetrievalRequest, RagieRetrievalResponse, RagieGenerateRequest, RagieGenerateResponse } from './ragieTypes';
 
-const RAGIE_API_BASE = "https://api.ragie.ai";
-
-const fetchWithCors = async (url: string, options: RequestInit) => {
-  try {
-    const response = await fetch(url, options);
-    return response;
-  } catch (error) {
-    console.warn("Direct fetch failed, attempting proxy.", error);
-    return fetch(`https://corsproxy.io/?${encodeURIComponent(url)}`, options);
-  }
-};
+// Use Vite proxy in development, direct URL in production
+const RAGIE_API_BASE = "/api/ragie";
 
 export class RealRagieClient implements IRagieClient {
   private apiKey: string;
@@ -24,7 +15,8 @@ export class RealRagieClient implements IRagieClient {
   private get headers() {
     return {
       'accept': 'application/json',
-      'authorization': `Bearer ${this.apiKey}`
+      'authorization': `Bearer ${this.apiKey}`,
+      'partition': 'default'  // Required for chunk content access
     };
   }
 
@@ -37,22 +29,28 @@ export class RealRagieClient implements IRagieClient {
 
   documents = {
     list: async (options?: { page_size?: number; filter?: string }) => {
-      const url = new URL(`${RAGIE_API_BASE}/documents`);
-      if (options?.page_size) url.searchParams.append('page_size', options.page_size.toString());
-      if (options?.filter) url.searchParams.append('filter', options.filter);
+      let url = `${RAGIE_API_BASE}/documents`;
+      const params = new URLSearchParams();
+      if (options?.page_size) params.append('page_size', options.page_size.toString());
+      if (options?.filter) params.append('filter', options.filter);
+      if (params.toString()) url += `?${params.toString()}`;
 
-      const response = await fetchWithCors(url.toString(), {
+      const response = await fetch(url, {
         method: 'GET',
         headers: this.jsonHeaders
       });
 
-      if (!response.ok) throw new Error(`Ragie API Error: ${response.statusText}`);
+      if (!response.ok) {
+        if (response.status === 401) throw new Error('Invalid API key. Please check your RAGIE_API_KEY.');
+        if (response.status === 429) throw new Error('Rate limit exceeded. Please try again later.');
+        throw new Error(`Ragie API Error: ${response.status} - ${response.statusText}`);
+      }
       const data = await response.json();
-      return data.results || []; 
+      return data.results || data.documents || []; 
     },
 
     get: async (id: string) => {
-        const response = await fetchWithCors(`${RAGIE_API_BASE}/documents/${id}`, {
+        const response = await fetch(`${RAGIE_API_BASE}/documents/${id}`, {
             method: 'GET',
             headers: this.jsonHeaders
         });
@@ -68,7 +66,7 @@ export class RealRagieClient implements IRagieClient {
       }
 
       // Note: multipart/form-data boundary is handled automatically by fetch if Content-Type is NOT set manually
-      const response = await fetchWithCors(`${RAGIE_API_BASE}/documents`, {
+      const response = await fetch(`${RAGIE_API_BASE}/documents`, {
         method: 'POST',
         headers: this.headers, // Do not set Content-Type to json here
         body: formData
@@ -82,7 +80,7 @@ export class RealRagieClient implements IRagieClient {
     },
 
     delete: async (id: string) => {
-      const response = await fetchWithCors(`${RAGIE_API_BASE}/documents/${id}`, {
+      const response = await fetch(`${RAGIE_API_BASE}/documents/${id}`, {
         method: 'DELETE',
         headers: this.headers
       });
@@ -92,33 +90,50 @@ export class RealRagieClient implements IRagieClient {
 
   retrievals = {
     retrieve: async (request: RagieRetrievalRequest): Promise<RagieRetrievalResponse> => {
-      const response = await fetchWithCors(`${RAGIE_API_BASE}/retrievals`, {
+      const response = await fetch(`${RAGIE_API_BASE}/retrievals`, {
         method: 'POST',
         headers: this.jsonHeaders,
         body: JSON.stringify(request)
       });
 
-      if (!response.ok) throw new Error(`Ragie Search Error: ${response.statusText}`);
+      if (!response.ok) {
+        if (response.status === 401) throw new Error('Invalid API key. Please check your RAGIE_API_KEY.');
+        if (response.status === 429) throw new Error('Rate limit exceeded. Please try again later.');
+        const errorText = await response.text();
+        throw new Error(`Ragie Search Error: ${response.status} - ${errorText}`);
+      }
       return await response.json();
     }
   };
 
   generations = {
     generate: async (request: RagieGenerateRequest): Promise<RagieGenerateResponse> => {
-      const response = await fetchWithCors(`${RAGIE_API_BASE}/generations`, {
+      // Use the /responses endpoint with deep-search model
+      const requestBody = {
+        query: request.query,
+        model: "deep-search",
+        stream: false
+      };
+
+      const response = await fetch(`${RAGIE_API_BASE}/responses`, {
          method: 'POST',
          headers: this.jsonHeaders,
-         body: JSON.stringify(request)
+         body: JSON.stringify(requestBody)
       });
 
       if (!response.ok) {
-          // Fallback for now if endpoint doesn't exist in all environments
           if (response.status === 404) {
-              return { text: "Generation endpoint not available in this environment." };
+              return { text: "Response generation endpoint not available." };
           }
-          throw new Error(`Generation Error: ${response.statusText}`);
+          if (response.status === 429) {
+              return { text: "Rate limit exceeded. Please try again later." };
+          }
+          const errorText = await response.text();
+          throw new Error(`Generation Error: ${response.status} - ${errorText}`);
       }
-      return await response.json();
+
+      const data = await response.json();
+      return { text: data.output || data.text || "No response generated." };
     }
   }
 }

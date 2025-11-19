@@ -1,0 +1,8 @@
+{
+  "rewrites": [
+    {
+      "source": "/api/ragie/:path*",
+      "destination": "https://api.ragie.ai/:path*"
+    }
+  ]
+}

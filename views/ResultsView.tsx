@@ -1,5 +1,6 @@
 
 import React, { useEffect, useState } from 'react';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import SearchBar from '../components/SearchBar';
 import ResultCard from '../components/ResultCard';
 import { IconArrowLeft } from '../components/ui/Icons';
@@ -7,14 +8,26 @@ import { SearchResult } from '../types';
 import { searchProperties } from '../services/searchService';
 import { ResultCardSkeleton, SearchHeaderSkeleton } from '../components/ui/Skeletons';
 
-interface ResultsViewProps {
-  initialQuery: string;
-  onBack: () => void;
-  onResultClick: (result: SearchResult) => void;
-}
+const ResultsView: React.FC = () => {
+  const navigate = useNavigate();
+  const [searchParams, setSearchParams] = useSearchParams();
+  const initialQuery = searchParams.get('q') || '';
 
-const ResultsView: React.FC<ResultsViewProps> = ({ initialQuery, onBack, onResultClick }) => {
   const [query, setQuery] = useState(initialQuery);
+
+  const onBack = () => navigate('/');
+
+  const onResultClick = (result: SearchResult) => {
+    navigate(`/property/${result.property.ragieId || result.property.id}/${result.id}`, {
+      state: {
+        property: result.property,
+        // Use YouTube when available, skip Ragie stream
+        streamUrl: result.property.youtubeId ? undefined : result.streamUrl,
+        startTime: result.timestampSeconds,
+        endTime: result.timestampSeconds + result.durationSeconds
+      }
+    });
+  };
   const [isLoading, setIsLoading] = useState(true);
   const [results, setResults] = useState<SearchResult[]>([]);
   const [error, setError] = useState<string | null>(null);
@@ -41,6 +54,7 @@ const ResultsView: React.FC<ResultsViewProps> = ({ initialQuery, onBack, onResul
 
   const handleSearch = (newQuery: string) => {
     setQuery(newQuery);
+    setSearchParams({ q: newQuery });
   };
 
   return (

@@ -1,15 +1,11 @@
 
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import SearchBar from '../components/SearchBar';
 import PropertyThumbnail from '../components/PropertyThumbnail';
 import { getRecentProperties } from '../services/searchService';
 import { Property } from '../types';
 import { PropertyThumbnailSkeleton } from '../components/ui/Skeletons';
-
-interface LandingViewProps {
-  onSearch: (query: string) => void;
-  onPropertyClick: (property: Property) => void;
-}
 
 const SUGGESTIONS = [
   "Modern kitchen with island",
@@ -18,7 +14,17 @@ const SUGGESTIONS = [
   "Exposed brick walls"
 ];
 
-const LandingView: React.FC<LandingViewProps> = ({ onSearch, onPropertyClick }) => {
+const LandingView: React.FC = () => {
+  const navigate = useNavigate();
+
+  const onSearch = (query: string) => {
+    navigate(`/search?q=${encodeURIComponent(query)}`);
+  };
+
+  const onPropertyClick = (property: Property) => {
+    // Navigate to property detail with document ID and a placeholder chunk
+    navigate(`/property/${property.ragieId || property.id}/overview`);
+  };
   const [isLoadingProperties, setIsLoadingProperties] = useState(true);
   const [properties, setProperties] = useState<Property[]>([]);
   const [error, setError] = useState<string | null>(null);
@@ -57,20 +63,20 @@ const LandingView: React.FC<LandingViewProps> = ({ onSearch, onPropertyClick }) 
 
       <main className="flex-1 max-w-7xl mx-auto px-4 md:px-6 w-full">
         {/* Hero Section */}
-        <div className="py-20 md:py-32 text-center max-w-5xl mx-auto animate-fade-in">
-          <h1 className="font-display text-5xl md:text-7xl lg:text-8xl text-charcoal mb-8 leading-[0.9] tracking-tight font-bold">
-            FIND YOUR SPACE <br/>
-            <span className="text-terracotta font-medium block mt-2 decoration-clone italic">by describing what you see.</span>
+        <div className="py-10 md:py-16 text-center max-w-4xl mx-auto animate-fade-in">
+          <h1 className="font-display text-4xl md:text-5xl lg:text-6xl text-charcoal mb-4 leading-[0.9] tracking-tight font-bold">
+            FIND YOUR SPACE
+            <span className="text-terracotta font-medium ml-2 decoration-clone italic">by describing what you see.</span>
           </h1>
-          
-          <p className="text-olive text-lg md:text-xl mb-14 max-w-2xl mx-auto font-sans leading-relaxed font-medium border-l-4 border-terracotta pl-6 text-left bg-sand/20 py-4">
-            Search across our index of property videos using natural language that understands both visual features and spoken descriptions.
+
+          <p className="text-olive text-sm md:text-base mb-8 max-w-xl mx-auto font-sans leading-relaxed font-medium">
+            Search property videos using natural language.
           </p>
 
-          <div className="max-w-2xl mx-auto mb-12 relative z-10">
-            <SearchBar 
-              onSearch={onSearch} 
-              placeholder="Search across 127 properties..." 
+          <div className="max-w-2xl mx-auto mb-8 relative z-10">
+            <SearchBar
+              onSearch={onSearch}
+              placeholder={isLoadingProperties ? "Loading properties..." : `Search across ${properties.length} properties...`}
               className="transform transition-transform duration-300"
               autoFocus
             />
@@ -96,7 +102,12 @@ const LandingView: React.FC<LandingViewProps> = ({ onSearch, onPropertyClick }) 
               <span className="w-4 h-4 bg-terracotta rounded-none border-2 border-charcoal"></span>
               Recently Indexed
             </h2>
-            <button className="hidden md:block text-charcoal hover:text-terracotta text-xs font-mono font-bold tracking-widest uppercase transition-colors border-b-2 border-charcoal hover:border-terracotta pb-1">View All Index</button>
+            <button
+              onClick={() => navigate('/index')}
+              className="hidden md:block text-charcoal hover:text-terracotta text-xs font-mono font-bold tracking-widest uppercase transition-colors border-b-2 border-charcoal hover:border-terracotta pb-1"
+            >
+              View All Index
+            </button>
           </div>
           
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-12">

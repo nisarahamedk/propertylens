@@ -24,6 +24,9 @@ export interface SearchResult {
   property: Property;
   timestamp: string;
   timestampSeconds: number;
+  duration: string;
+  durationSeconds: number;
+  score: number;
   transcriptSnippet: string;
   visualMatchReason: string;
   thumbnailUrl: string;
