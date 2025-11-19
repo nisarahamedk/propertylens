@@ -51,7 +51,7 @@ const PlayerView: React.FC = () => {
           setStreamUrl('');
         }
       } catch (e) {
-        console.error("Failed to load property", e);
+        // Failed to load property
       } finally {
         setIsLoadingProperty(false);
       }
@@ -149,7 +149,7 @@ const PlayerView: React.FC = () => {
               <div className="w-1.5 h-6 bg-terracotta"></div>
               <h3 className="font-display text-2xl font-bold text-warmWhite uppercase tracking-tight">Scene</h3>
             </div>
-            <p className="text-xs font-mono text-warmWhite/60 ml-5">AI-generated description</p>
+            <p className="text-xs font-mono text-warmWhite/60 ml-5">Scene details</p>
           </div>
 
           <div className="flex-1 overflow-y-auto p-5 custom-scrollbar">

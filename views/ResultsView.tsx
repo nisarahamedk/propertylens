@@ -65,7 +65,6 @@ const ResultsView: React.FC = () => {
       const data = await searchProperties(q);
       setResults(data);
     } catch (err: any) {
-      console.error("Search failed", err);
       setError(err.message || "Unable to perform search.");
     } finally {
       setIsLoading(false);

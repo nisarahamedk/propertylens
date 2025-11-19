@@ -42,9 +42,9 @@ export class RealRagieClient implements IRagieClient {
       });
 
       if (!response.ok) {
-        if (response.status === 401) throw new Error('Invalid API key. Please check your RAGIE_API_KEY.');
+        if (response.status === 401) throw new Error('Invalid API key. Please check your configuration.');
         if (response.status === 429) throw new Error('Rate limit exceeded. Please try again later.');
-        throw new Error(`Ragie API Error: ${response.status} - ${response.statusText}`);
+        throw new Error(`Service error: ${response.status} - ${response.statusText}`);
       }
       const data = await response.json();
       return {
@@ -61,7 +61,7 @@ export class RealRagieClient implements IRagieClient {
             method: 'GET',
             headers: this.jsonHeaders
         });
-        if (!response.ok) throw new Error(`Ragie API Error: ${response.statusText}`);
+        if (!response.ok) throw new Error(`Service error: ${response.statusText}`);
         return await response.json();
     },
 
@@ -104,10 +104,10 @@ export class RealRagieClient implements IRagieClient {
       });
 
       if (!response.ok) {
-        if (response.status === 401) throw new Error('Invalid API key. Please check your RAGIE_API_KEY.');
+        if (response.status === 401) throw new Error('Invalid API key. Please check your configuration.');
         if (response.status === 429) throw new Error('Rate limit exceeded. Please try again later.');
         const errorText = await response.text();
-        throw new Error(`Ragie Search Error: ${response.status} - ${errorText}`);
+        throw new Error(`Search error: ${response.status} - ${errorText}`);
       }
       return await response.json();
     }

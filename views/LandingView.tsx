@@ -38,7 +38,6 @@ const LandingView: React.FC = () => {
       setProperties(data.properties);
       setTotalDocs(data.total);
     } catch (err: any) {
-      console.error("Failed to load properties", err);
       setError(err.message || "Failed to connect to the property index.");
     } finally {
       setIsLoadingProperties(false);
@@ -152,7 +151,7 @@ const LandingView: React.FC = () => {
                   </svg>
                 </div>
                 <p className="font-mono text-charcoal font-bold uppercase tracking-wide mb-1">Index Empty</p>
-                <p className="text-sm text-olive font-sans">No properties found in Ragie index.</p>
+                <p className="text-sm text-olive font-sans">No properties found in the index.</p>
               </div>
             )}
           </div>

@@ -22,4 +22,14 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
-\n# Ingestion\ningestion/videos/\ningestion/manifest.json
+
+# Ingestion
+ingestion/videos/
+ingestion/manifest.json
+ingestion/fill-metadata.cjs
+
+# Test artifacts
+test-results/
+test-retrieval.mjs
+test-video.mjs
+screenshot.js

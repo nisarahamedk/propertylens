@@ -17,10 +17,8 @@ class SearchService {
     // Dependency Injection Point
     if (USE_MOCK_DATA) {
       this.client = new MockRagieClient();
-      console.log("[System] Initialized with MOCK Ragie Client");
     } else {
       this.client = new RealRagieClient(RAGIE_API_KEY);
-      console.log("[System] Initialized with REAL Ragie Client");
     }
   }
 
@@ -56,7 +54,6 @@ class SearchService {
     // Check cache first
     const cached = this.searchCache.get(query);
     if (cached && Date.now() - cached.timestamp < this.CACHE_TTL) {
-      console.log('[Search] Using cached results for:', query);
       return cached.results;
     }
 
@@ -106,11 +103,6 @@ class SearchService {
       }
 
       // No fallback - chunk streams are required
-      if (!streamUrl) {
-        console.error('[Search] No chunk stream URL for:', chunk.id);
-      }
-
-      console.log('[Search] Chunk:', chunk.id, 'Timestamp:', seconds, 'StreamUrl:', streamUrl);
 
       return {
         id: chunk.id,
@@ -145,7 +137,6 @@ class SearchService {
         moments: meta.moments || []
       };
     } catch (e) {
-      console.warn("Could not fetch detailed video data", e);
       return null;
     }
   }
@@ -159,7 +150,6 @@ class SearchService {
       });
       return response.text;
     } catch (e) {
-      console.error("Generation failed", e);
       return "I'm sorry, I couldn't generate a response at this time.";
     }
   }

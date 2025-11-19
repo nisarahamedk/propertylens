@@ -55,8 +55,6 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
       setStreamError(null);
 
       try {
-        console.log('[VideoPlayer] Fetching stream:', streamUrl);
-
         // Fetch video through proxy with auth headers
         const response = await fetch(streamUrl, {
           headers: {
@@ -65,36 +63,28 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
           }
         });
 
-        console.log('[VideoPlayer] Response:', response.status, response.statusText, 'Content-Type:', response.headers.get('content-type'));
-
         if (!response.ok) {
-          console.error("Stream fetch failed:", response.status, response.statusText);
           if (mounted) {
-            setStreamError(`Stream failed: ${response.status} ${response.statusText}`);
+            setStreamError('Unable to load video stream');
           }
           return;
         }
 
         if (!mounted) {
-          console.log('[VideoPlayer] Component unmounted, skipping blob');
           return;
         }
 
         const blob = await response.blob();
-        console.log('[VideoPlayer] Blob size:', blob.size, 'type:', blob.type);
 
         if (blob.size > 0 && mounted) {
           objectUrl = URL.createObjectURL(blob);
           setAuthenticatedSrc(objectUrl);
-          console.log('[VideoPlayer] Created blob URL:', objectUrl);
         } else if (blob.size === 0) {
-          console.error('[VideoPlayer] Empty blob received');
           if (mounted) {
             setStreamError('Stream returned empty content');
           }
         }
       } catch (e) {
-        console.error("Error fetching stream", e);
         if (mounted) {
           setStreamError('Failed to load video stream');
         }
@@ -162,7 +152,6 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
               }
             },
             onError: (e: any) => {
-              console.warn("YouTube Player Error:", e.data);
               if (isMounted) setIsYoutubeError(true);
             },
             onStateChange: (event: any) => {
@@ -190,7 +179,6 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
           }
         });
       } catch (err) {
-        console.error("Error initializing YouTube player", err);
         if (isMounted) setIsYoutubeError(true);
       }
     };
@@ -229,7 +217,7 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
             playerInstance.destroy();
           }
         } catch(e) {
-           console.debug("Player destroy warning", e);
+           // Player destroy warning ignored
         }
       }
       playerRef.current = null;
@@ -254,7 +242,7 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
           }
         }
       } catch (e) {
-        console.warn("Error seeking YouTube video", e);
+        // Seeking error ignored
       }
     }
   }, [startTime, youtubeId, isYoutubeError, autoPlay, streamUrl]);
@@ -327,7 +315,7 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
           onTimeUpdate={handleHTML5TimeUpdate}
         />
         <div className="absolute top-3 left-3 bg-terracotta text-white text-[10px] font-mono px-2 py-1 rounded-none border-2 border-charcoal pointer-events-none uppercase font-bold">
-           Ragie Stream
+           Video Stream
          </div>
       </div>
     )

@@ -26,7 +26,6 @@ const IndexView: React.FC = () => {
       setNextCursor(data.nextCursor);
       if (data.total !== undefined) setTotalDocs(data.total);
     } catch (err: any) {
-      console.error("Failed to load properties", err);
       setError(err.message || "Failed to load properties.");
     } finally {
       setIsLoading(false);

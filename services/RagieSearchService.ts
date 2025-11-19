@@ -2,7 +2,7 @@
 import { ISearchService } from './interfaces';
 import { Property, SearchResult, VideoData } from '../types';
 
-const RAGIE_API_KEY = "tnt_8ovpu86d0gW_hLIrFAnPsLeMGIWB2YfaLNzlOagPZdg65zb5atpeJJU";
+const RAGIE_API_KEY = process.env.RAGIE_API_KEY || "";
 const RAGIE_API_BASE = "https://api.ragie.ai";
 
 // Helper to handle CORS via proxy if direct access fails
@@ -12,7 +12,7 @@ const fetchWithCors = async (url: string, options: RequestInit) => {
     const response = await fetch(url, options);
     return response;
   } catch (error) {
-    console.warn("Direct fetch failed (likely CORS), attempting proxy fallback.", error);
+    // Direct fetch failed, attempting proxy fallback
     // Fallback to CORS proxy for browser compatibility
     return fetch(`https://corsproxy.io/?${encodeURIComponent(url)}`, options);
   }
