@@ -10,10 +10,21 @@ export const CONFIG = {
   MANIFEST_PATH: path.join(__dirname, 'manifest.json'),
 
   // Search parameters
-  SEARCH_QUERY: 'real estate agent house tour walkthrough Vancouver BC',
+  SEARCH_QUERIES: [
+    'house tour Vancouver BC real estate',
+    'home tour Surrey BC realtor',
+    'property walkthrough Burnaby BC',
+    'condo tour Vancouver downtown',
+    'townhouse tour BC real estate',
+    'luxury home tour Vancouver',
+    'house tour Richmond BC',
+    'real estate walkthrough Coquitlam',
+    'home tour New Westminster BC',
+    'property tour North Vancouver',
+  ],
   MIN_DURATION_SECONDS: 60, // 1 minute minimum
   MAX_DURATION_SECONDS: 300, // 5 minutes
-  TARGET_VIDEO_COUNT: 10,
+  TARGET_VIDEO_COUNT: 50,
 
   // Ragie
   RAGIE_API_KEY: process.env.RAGIE_API_KEY || '',

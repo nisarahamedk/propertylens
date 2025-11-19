@@ -51,5 +51,6 @@ export interface RagieListResponse {
   results: RagieDocument[];
   pagination?: {
     next_cursor?: string;
+    total?: number;
   };
 }

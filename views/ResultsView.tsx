@@ -1,5 +1,5 @@
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import SearchBar from '../components/SearchBar';
 import ResultCard from '../components/ResultCard';
@@ -7,6 +7,19 @@ import { IconArrowLeft } from '../components/ui/Icons';
 import { SearchResult } from '../types';
 import { searchProperties } from '../services/searchService';
 import { ResultCardSkeleton, SearchHeaderSkeleton } from '../components/ui/Skeletons';
+
+const LOADING_MESSAGES = [
+  "Scanning through property videos...",
+  "Analyzing visual details...",
+  "Finding the perfect matches...",
+  "Inspecting kitchen countertops...",
+  "Checking out the backyards...",
+  "Peeking through windows for natural light...",
+  "Measuring ceiling heights...",
+  "Admiring the floor plans...",
+  "Evaluating curb appeal...",
+  "Touring virtual open houses..."
+];
 
 const ResultsView: React.FC = () => {
   const navigate = useNavigate();
@@ -32,6 +45,18 @@ const ResultsView: React.FC = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [results, setResults] = useState<SearchResult[]>([]);
   const [error, setError] = useState<string | null>(null);
+  const [loadingMessageIndex, setLoadingMessageIndex] = useState(0);
+
+  // Rotate loading messages
+  useEffect(() => {
+    if (!isLoading) return;
+
+    const interval = setInterval(() => {
+      setLoadingMessageIndex(prev => (prev + 1) % LOADING_MESSAGES.length);
+    }, 2000);
+
+    return () => clearInterval(interval);
+  }, [isLoading]);
 
   const fetchResults = async (q: string) => {
     setIsLoading(true);
@@ -92,6 +117,16 @@ const ResultsView: React.FC = () => {
         {/* Loading State */}
         {isLoading && (
           <div className="py-8">
+             <div className="text-center mb-8">
+               <div className="inline-block bg-terracotta text-warmWhite px-6 py-3 border-2 border-charcoal shadow-neobrutal-sm">
+                 <p
+                   key={loadingMessageIndex}
+                   className="font-mono text-sm font-bold uppercase tracking-wider animate-slide-up"
+                 >
+                   {LOADING_MESSAGES[loadingMessageIndex]}
+                 </p>
+               </div>
+             </div>
              <SearchHeaderSkeleton />
              <div className="mt-8 space-y-6">
                <ResultCardSkeleton />

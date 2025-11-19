@@ -12,13 +12,19 @@ const IndexView: React.FC = () => {
   const [properties, setProperties] = useState<Property[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [cursorHistory, setCursorHistory] = useState<string[]>([]);
+  const [nextCursor, setNextCursor] = useState<string | undefined>();
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalDocs, setTotalDocs] = useState<number | undefined>();
 
-  const fetchProperties = async () => {
+  const fetchProperties = async (cursor?: string) => {
     setIsLoading(true);
     setError(null);
     try {
-      const data = await getRecentProperties();
-      setProperties(data);
+      const data = await getRecentProperties(cursor);
+      setProperties(data.properties);
+      setNextCursor(data.nextCursor);
+      if (data.total !== undefined) setTotalDocs(data.total);
     } catch (err: any) {
       console.error("Failed to load properties", err);
       setError(err.message || "Failed to load properties.");
@@ -30,6 +36,28 @@ const IndexView: React.FC = () => {
   useEffect(() => {
     fetchProperties();
   }, []);
+
+  const goToNextPage = () => {
+    if (nextCursor) {
+      // Store the cursor that will get us to the next page
+      setCursorHistory(prev => [...prev, nextCursor]);
+      setCurrentPage(prev => prev + 1);
+      fetchProperties(nextCursor);
+    }
+  };
+
+  const goToPreviousPage = () => {
+    if (currentPage <= 1) return;
+
+    const newHistory = [...cursorHistory];
+    newHistory.pop(); // Remove the cursor for current page
+    setCursorHistory(newHistory);
+    setCurrentPage(prev => prev - 1);
+
+    // Use the last cursor in history, or undefined for page 1
+    const previousCursor = newHistory.length > 0 ? newHistory[newHistory.length - 1] : undefined;
+    fetchProperties(previousCursor);
+  };
 
   const onPropertyClick = (property: Property) => {
     navigate(`/property/${property.ragieId || property.id}/overview`);
@@ -62,7 +90,7 @@ const IndexView: React.FC = () => {
             All Properties
           </h1>
           <span className="text-charcoal font-mono font-bold uppercase tracking-wider text-xs bg-white px-3 py-1.5 border-2 border-charcoal shadow-neobrutal-sm">
-            {properties.length} indexed
+            {totalDocs ?? properties.length} indexed
           </span>
         </div>
 
@@ -82,7 +110,7 @@ const IndexView: React.FC = () => {
               <h2 className="font-display text-2xl font-bold text-charcoal mb-2">Failed to Load</h2>
               <p className="font-mono text-sm text-olive mb-6">{error}</p>
               <button
-                onClick={fetchProperties}
+                onClick={() => fetchProperties()}
                 className="px-6 py-2 bg-charcoal text-warmWhite font-mono text-xs font-bold uppercase tracking-widest hover:bg-terracotta transition-colors border-2 border-charcoal"
               >
                 Try Again
@@ -93,22 +121,55 @@ const IndexView: React.FC = () => {
 
         {/* Properties Grid */}
         {!isLoading && !error && (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-12 animate-fade-in">
-            {properties.length > 0 ? (
-              properties.map((property, idx) => (
-                <div key={property.id} className="animate-slide-up" style={{ animationDelay: `${idx * 50}ms` }}>
-                  <PropertyThumbnail
-                    property={property}
-                    onClick={() => onPropertyClick(property)}
-                  />
+          <>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-12 animate-fade-in">
+              {properties.length > 0 ? (
+                properties.map((property, idx) => (
+                  <div key={property.id} className="animate-slide-up" style={{ animationDelay: `${idx * 50}ms` }}>
+                    <PropertyThumbnail
+                      property={property}
+                      onClick={() => onPropertyClick(property)}
+                    />
+                  </div>
+                ))
+              ) : (
+                <div className="col-span-full text-center py-16 border-2 border-dashed border-charcoal/20">
+                  <p className="font-mono text-charcoal font-bold uppercase">No properties indexed</p>
                 </div>
-              ))
-            ) : (
-              <div className="col-span-full text-center py-16 border-2 border-dashed border-charcoal/20">
-                <p className="font-mono text-charcoal font-bold uppercase">No properties indexed</p>
+              )}
+            </div>
+
+            {/* Pagination Controls */}
+            {(currentPage > 1 || nextCursor) && (
+              <div className="mt-8 flex items-center justify-center gap-4">
+                <button
+                  onClick={goToPreviousPage}
+                  disabled={currentPage === 1}
+                  className={`px-4 py-2 font-mono text-xs font-bold uppercase tracking-widest border-2 border-charcoal transition-all ${
+                    currentPage === 1
+                      ? 'bg-gray-100 text-gray-400 cursor-not-allowed'
+                      : 'bg-white text-charcoal hover:bg-charcoal hover:text-warmWhite'
+                  }`}
+                >
+                  Previous
+                </button>
+                <span className="font-mono text-sm text-charcoal font-bold">
+                  Page {currentPage}
+                </span>
+                <button
+                  onClick={goToNextPage}
+                  disabled={!nextCursor}
+                  className={`px-4 py-2 font-mono text-xs font-bold uppercase tracking-widest border-2 border-charcoal transition-all ${
+                    !nextCursor
+                      ? 'bg-gray-100 text-gray-400 cursor-not-allowed'
+                      : 'bg-white text-charcoal hover:bg-charcoal hover:text-warmWhite'
+                  }`}
+                >
+                  Next
+                </button>
               </div>
             )}
-          </div>
+          </>
         )}
       </div>
     </div>

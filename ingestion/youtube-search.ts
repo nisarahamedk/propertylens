@@ -142,43 +142,85 @@ function parseMetadataFromTitle(title: string, description: string): VideoManife
 
 async function main() {
   try {
-    const videos = await searchYouTube(CONFIG.SEARCH_QUERY);
+    // Search with multiple queries to get more variety
+    const allVideos: YouTubeVideoData[] = [];
+    const seenIds = new Set<string>();
 
-    console.log(`Found ${videos.length} videos under ${CONFIG.MAX_DURATION_SECONDS / 60} minutes\n`);
+    for (const query of CONFIG.SEARCH_QUERIES) {
+      const videos = await searchYouTube(query);
 
-    // Take only the target count
-    const selectedVideos = videos.slice(0, CONFIG.TARGET_VIDEO_COUNT);
+      // Add only unique videos
+      for (const video of videos) {
+        if (!seenIds.has(video.videoId)) {
+          seenIds.add(video.videoId);
+          allVideos.push(video);
+        }
+      }
 
-    // Build manifest
+      // Small delay between searches
+      await new Promise(resolve => setTimeout(resolve, 1000));
+    }
+
+    const videos = allVideos;
+    console.log(`\nTotal found: ${videos.length} unique videos under ${CONFIG.MAX_DURATION_SECONDS / 60} minutes\n`);
+
+    // Load existing manifest if it exists
+    let existingManifest: VideoManifest = { videos: [], lastUpdated: '' };
+    if (fs.existsSync(CONFIG.MANIFEST_PATH)) {
+      existingManifest = JSON.parse(fs.readFileSync(CONFIG.MANIFEST_PATH, 'utf-8'));
+      console.log(`Existing manifest has ${existingManifest.videos.length} videos\n`);
+    }
+
+    // Get existing video IDs to avoid duplicates
+    const existingIds = new Set(existingManifest.videos.map(v => v.youtubeId));
+
+    // Filter out duplicates and take target count of NEW videos
+    const newVideos = videos
+      .filter(v => !existingIds.has(v.videoId))
+      .slice(0, CONFIG.TARGET_VIDEO_COUNT);
+
+    console.log(`Found ${newVideos.length} new videos to add\n`);
+
+    // Convert to manifest entries
+    const newEntries = newVideos.map(video => ({
+      youtubeId: video.videoId,
+      title: video.title,
+      description: video.description,
+      channelName: video.channelName,
+      duration: video.lengthSeconds,
+      thumbnailUrl: video.thumbnailUrl,
+      metadata: parseMetadataFromTitle(video.title, video.description),
+    }));
+
+    // Append to existing manifest
     const manifest: VideoManifest = {
-      videos: selectedVideos.map(video => ({
-        youtubeId: video.videoId,
-        title: video.title,
-        description: video.description,
-        channelName: video.channelName,
-        duration: video.lengthSeconds,
-        thumbnailUrl: video.thumbnailUrl,
-        metadata: parseMetadataFromTitle(video.title, video.description),
-      })),
+      videos: [...existingManifest.videos, ...newEntries],
       lastUpdated: new Date().toISOString(),
     };
 
-    // Log results
-    console.log('Selected videos:');
-    console.log('================\n');
+    // For logging, only show new videos
+    const selectedVideos = newEntries;
 
-    manifest.videos.forEach((video, idx) => {
-      console.log(`${idx + 1}. ${video.title}`);
-      console.log(`   ID: ${video.youtubeId}`);
-      console.log(`   Duration: ${Math.floor(video.duration / 60)}:${(video.duration % 60).toString().padStart(2, '0')}`);
-      console.log(`   Channel: ${video.channelName}`);
-      console.log(`   Metadata: ${JSON.stringify(video.metadata)}`);
-      console.log();
-    });
+    // Log results
+    if (selectedVideos.length === 0) {
+      console.log('No new videos to add.\n');
+    } else {
+      console.log('New videos to add:');
+      console.log('==================\n');
+
+      selectedVideos.forEach((video, idx) => {
+        console.log(`${idx + 1}. ${video.title}`);
+        console.log(`   ID: ${video.youtubeId}`);
+        console.log(`   Duration: ${Math.floor(video.duration / 60)}:${(video.duration % 60).toString().padStart(2, '0')}`);
+        console.log(`   Channel: ${video.channelName}`);
+        console.log(`   Metadata: ${JSON.stringify(video.metadata)}`);
+        console.log();
+      });
+    }
 
     // Save manifest
     fs.writeFileSync(CONFIG.MANIFEST_PATH, JSON.stringify(manifest, null, 2));
-    console.log(`\nManifest saved to: ${CONFIG.MANIFEST_PATH}`);
+    console.log(`Manifest saved: ${manifest.videos.length} total videos (${selectedVideos.length} new)`);
 
   } catch (error) {
     console.error('Error:', error);

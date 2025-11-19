@@ -8,9 +8,9 @@ import { Property } from '../types';
 import { PropertyThumbnailSkeleton } from '../components/ui/Skeletons';
 
 const SUGGESTIONS = [
-  "Modern kitchen with island",
-  "Backyard with mature trees",
-  "Natural light in living room",
+  "Houses with dark granite countertops",
+  "Warm earthy interior tones",
+  "Chef's kitchen with professional appliances",
   "Exposed brick walls"
 ];
 
@@ -27,6 +27,7 @@ const LandingView: React.FC = () => {
   };
   const [isLoadingProperties, setIsLoadingProperties] = useState(true);
   const [properties, setProperties] = useState<Property[]>([]);
+  const [totalDocs, setTotalDocs] = useState<number | undefined>();
   const [error, setError] = useState<string | null>(null);
 
   const fetchProperties = async () => {
@@ -34,7 +35,8 @@ const LandingView: React.FC = () => {
     setError(null);
     try {
       const data = await getRecentProperties();
-      setProperties(data);
+      setProperties(data.properties);
+      setTotalDocs(data.total);
     } catch (err: any) {
       console.error("Failed to load properties", err);
       setError(err.message || "Failed to connect to the property index.");
@@ -76,7 +78,7 @@ const LandingView: React.FC = () => {
           <div className="max-w-2xl mx-auto mb-8 relative z-10">
             <SearchBar
               onSearch={onSearch}
-              placeholder={isLoadingProperties ? "Loading properties..." : `Search across ${properties.length} properties...`}
+              placeholder={isLoadingProperties ? "Loading properties..." : `Search across ${totalDocs ?? properties.length} properties...`}
               className="transform transition-transform duration-300"
               autoFocus
             />

@@ -25,10 +25,10 @@ class SearchService {
   }
 
   // Application Logic: Map API -> App Domain
-  async getRecentProperties(): Promise<Property[]> {
-    const docs = await this.client.documents.list({ page_size: 8 });
-    
-    return docs.map(doc => {
+  async getRecentProperties(cursor?: string): Promise<{ properties: Property[]; nextCursor?: string; total?: number }> {
+    const response = await this.client.documents.list({ page_size: 8, cursor });
+
+    const properties = response.results.map(doc => {
       const meta = doc.metadata || {};
       return {
         id: doc.id,
@@ -44,6 +44,12 @@ class SearchService {
         youtubeId: meta.youtubeId
       };
     });
+
+    return {
+      properties,
+      nextCursor: response.pagination?.next_cursor,
+      total: response.pagination?.total
+    };
   }
 
   async searchProperties(query: string): Promise<SearchResult[]> {
@@ -184,7 +190,7 @@ class SearchService {
 // Singleton export
 const searchService = new SearchService();
 
-export const getRecentProperties = () => searchService.getRecentProperties();
+export const getRecentProperties = (cursor?: string) => searchService.getRecentProperties(cursor);
 export const searchProperties = (query: string) => searchService.searchProperties(query);
 export const getPropertyDetails = (id: string) => searchService.getPropertyDetails(id);
 export const generateGroundedResponse = (query: string, context: string) => searchService.generateGroundedResponse(query, context);

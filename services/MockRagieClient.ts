@@ -1,6 +1,6 @@
 
 import { IRagieClient } from './interfaces';
-import { RagieDocument, RagieRetrievalRequest, RagieRetrievalResponse, RagieGenerateRequest, RagieGenerateResponse } from './ragieTypes';
+import { RagieDocument, RagieRetrievalRequest, RagieRetrievalResponse, RagieGenerateRequest, RagieGenerateResponse, RagieListResponse } from './ragieTypes';
 import { MOCK_PROPERTIES, MOCK_VIDEO_DATA, generateMockResults } from './mockData';
 import { Property } from '../types';
 
@@ -9,9 +9,9 @@ export class MockRagieClient implements IRagieClient {
   private _properties: Property[] = [...MOCK_PROPERTIES];
 
   documents = {
-    list: async (options?: { page_size?: number; filter?: string }) => {
+    list: async (options?: { page_size?: number; filter?: string; cursor?: string }): Promise<RagieListResponse> => {
       await new Promise(resolve => setTimeout(resolve, 600));
-      
+
       // In a real mock, we might implement filtering, but for now we just return the list
       // mimicking the page_size limit if provided
       let results = this._properties.map(p => ({
@@ -39,7 +39,10 @@ export class MockRagieClient implements IRagieClient {
         results = results.slice(0, options.page_size);
       }
 
-      return results;
+      return {
+        results,
+        pagination: undefined // Mock doesn't implement pagination
+      };
     },
 
     get: async (id: string) => {

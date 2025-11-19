@@ -1,10 +1,10 @@
 
-import { RagieDocument, RagieRetrievalRequest, RagieRetrievalResponse, RagieGenerateRequest, RagieGenerateResponse } from './ragieTypes';
+import { RagieDocument, RagieRetrievalRequest, RagieRetrievalResponse, RagieGenerateRequest, RagieGenerateResponse, RagieListResponse } from './ragieTypes';
 import { Property, SearchResult, VideoData } from '../types';
 
 export interface IRagieClient {
   documents: {
-    list: (options?: { page_size?: number; filter?: string }) => Promise<RagieDocument[]>;
+    list: (options?: { page_size?: number; filter?: string; cursor?: string }) => Promise<RagieListResponse>;
     get: (id: string) => Promise<RagieDocument>;
     create: (file: File, metadata?: Record<string, any>) => Promise<RagieDocument>;
     delete: (id: string) => Promise<void>;

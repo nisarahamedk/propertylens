@@ -29,7 +29,8 @@
         "location": "Bear Creek, Surrey",
         "beds": 3,
         "baths": 2.5,
-        "price": "$799,000"
+        "price": "$799,000",
+        "sqft": 1500
       },
       "localPath": "/Users/nisar/Workspace/propertylens/ingestion/videos/DGOF6dJ0t9E.mp4",
       "ragieDocumentId": "23bb3be4-ee9f-49be-bae0-bd855ad287ce"
@@ -44,7 +45,8 @@
       "metadata": {
         "location": "Vancouver",
         "beds": 3,
-        "baths": 3.5
+        "baths": 3.5,
+        "sqft": 900
       },
       "localPath": "/Users/nisar/Workspace/propertylens/ingestion/videos/aLhcDVGvd_8.mp4",
       "ragieDocumentId": "9682355a-a96c-4153-b410-a4a074dab07b"
@@ -60,7 +62,8 @@
         "location": "Vancouver",
         "beds": 6,
         "baths": 4,
-        "price": "$1,998,000"
+        "price": "$1,998,000",
+        "sqft": 900
       },
       "localPath": "/Users/nisar/Workspace/propertylens/ingestion/videos/6joXmtuyJmg.mp4",
       "ragieDocumentId": "674a9d9c-b125-4d59-96ad-954bdafb9a9d"
@@ -76,7 +79,8 @@
         "location": "New Westminster",
         "address": "468 Garrett Street",
         "beds": 4,
-        "baths": 2
+        "baths": 2,
+        "sqft": 900
       },
       "localPath": "/Users/nisar/Workspace/propertylens/ingestion/videos/pw3OPrdgeRw.mp4",
       "ragieDocumentId": "80f6954a-c267-4c7a-83ef-a7762a3aa03b"
@@ -123,7 +127,10 @@
       "duration": 127,
       "thumbnailUrl": "https://i.ytimg.com/vi/-Cc_DeNyVGM/hq720.jpg",
       "metadata": {
-        "location": "Vancouver"
+        "location": "Vancouver",
+        "beds": 3,
+        "baths": 2,
+        "sqft": 2000
       },
       "localPath": "/Users/nisar/Workspace/propertylens/ingestion/videos/-Cc_DeNyVGM.mp4",
       "ragieDocumentId": "cd825321-bb9c-4398-851f-27781513a9ac"
@@ -139,7 +146,8 @@
         "location": "Kitsilano, Vancouver",
         "address": "107 - 2330 Maple Street",
         "beds": 1,
-        "baths": 1
+        "baths": 1,
+        "sqft": 900
       },
       "localPath": "/Users/nisar/Workspace/propertylens/ingestion/videos/t0CuUyaJSWA.mp4",
       "ragieDocumentId": "4481ef80-835e-400b-9acb-8fc9a38946e4"
@@ -155,11 +163,937 @@
         "location": "Downtown Vancouver",
         "beds": 2,
         "baths": 2,
-        "address": "2801 - 1308 Hornby Street"
+        "address": "2801 - 1308 Hornby Street",
+        "sqft": 2000
       },
       "localPath": "/Users/nisar/Workspace/propertylens/ingestion/videos/xcvcEd23pes.mp4",
       "ragieDocumentId": "3f557508-7bab-423e-850f-2c12adf870c1"
+    },
+    {
+      "youtubeId": "y5e0sukb39Y",
+      "title": "Tour This EXCLUSIVE West Vancouver Home | Vancouver Property Listing",
+      "description": "Schedule a call with Kyle Mark → https://bit.ly/3vtAyvs INSTANT Home Evaluation → https://bit.ly/492Hxtb Start your Home ...",
+      "channelName": "Kyle Mark - Vancouver Luxury Real Estate",
+      "duration": 134,
+      "thumbnailUrl": "https://i.ytimg.com/vi/y5e0sukb39Y/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLDSQcmpCGf2eTRcXJrioesRzuWKHA",
+      "metadata": {
+        "location": "Vancouver",
+        "beds": 3,
+        "baths": 2,
+        "sqft": 2000
+      },
+      "localPath": "/Users/nisar/Workspace/propertylens/ingestion/videos/y5e0sukb39Y.mp4",
+      "ragieDocumentId": "a54fa908-24a7-42b9-b0b7-ddfc1b8aae2f"
+    },
+    {
+      "youtubeId": "Ivv1UQoG-Ik",
+      "title": "New real estate Vancouver BC",
+      "description": "This new luxury real estate is offered in the Arbutus Ridge neighborhood in Vancouver British Columbia. This real estate video ...",
+      "channelName": "Viewpoint Visuals",
+      "duration": 195,
+      "thumbnailUrl": "https://i.ytimg.com/vi/Ivv1UQoG-Ik/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLDIUl5ucbwl63scknSKC_WBqsyy2A",
+      "metadata": {
+        "location": "Vancouver",
+        "beds": 5,
+        "baths": 4,
+        "sqft": 4000
+      },
+      "localPath": "/Users/nisar/Workspace/propertylens/ingestion/videos/Ivv1UQoG-Ik.mp4",
+      "ragieDocumentId": "2ba98373-ffa0-4ea4-b93c-0a5f39a31c4d"
+    },
+    {
+      "youtubeId": "LHUZG8hrQs0",
+      "title": "Vancouver's Best VALUED 2 Bedroom Condo | Kyle Mark Realtor Property Listing",
+      "description": "... Mark Vancouver Realtor | Vancouver Listing Agent 00:15 - Tour This Vancouver Condo 01:35 - Vancouver Real Estate Agent ...",
+      "channelName": "Kyle Mark - Vancouver Luxury Real Estate",
+      "duration": 104,
+      "thumbnailUrl": "https://i.ytimg.com/vi/LHUZG8hrQs0/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLCFIszhA1jEgihsLVHBWhysZopEkg",
+      "metadata": {
+        "location": "Vancouver",
+        "beds": 2,
+        "address": "2 Bedr",
+        "baths": 1,
+        "sqft": 900
+      },
+      "localPath": "/Users/nisar/Workspace/propertylens/ingestion/videos/LHUZG8hrQs0.mp4",
+      "ragieDocumentId": "132a93ac-f426-4d08-b0da-fb7b54da759d"
+    },
+    {
+      "youtubeId": "fon-H-R4lbI",
+      "title": "This Is It! Vancouver Home Walkthrough",
+      "description": "Welcome to 3559 W 18th Ave – a stunning $2990000 home in the heart of Vancouver! This south-facing gem features 3 beds, ...",
+      "channelName": "Jason Jeon",
+      "duration": 92,
+      "thumbnailUrl": "https://i.ytimg.com/vi/fon-H-R4lbI/hq720_2.jpg?sqp=-oaymwE2CNAFEJQDSFXyq4qpAygIARUAAIhCGABwAcABBvABAfgBtgiAAoAPigIMCAAQARhlIF0oUTAP&rs=AOn4CLAI-5UaenHi7WQs37V8qUeVxvVY8A",
+      "metadata": {
+        "location": "Vancouver",
+        "beds": 3,
+        "price": "$299",
+        "baths": 2,
+        "sqft": 2000
+      },
+      "localPath": "/Users/nisar/Workspace/propertylens/ingestion/videos/fon-H-R4lbI.mp4",
+      "ragieDocumentId": "3c995a94-708c-45df-8119-ba23a40e85ae"
+    },
+    {
+      "youtubeId": "S3u8hvVV9ao",
+      "title": "Exclusive Condo Tour in Mt. Pleasant | Vancouver Apartment",
+      "description": "Schedule a call with Kyle Mark → https://bit.ly/3vtAyvs INSTANT Home Evaluation → https://bit.ly/492Hxtb Start your Home ...",
+      "channelName": "Kyle Mark - Vancouver Luxury Real Estate",
+      "duration": 116,
+      "thumbnailUrl": "https://i.ytimg.com/vi/S3u8hvVV9ao/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLCwCHlr5fcV8jgEmzFuumkC4VJlaA",
+      "metadata": {
+        "location": "Vancouver",
+        "beds": 2,
+        "baths": 1,
+        "sqft": 900
+      },
+      "localPath": "/Users/nisar/Workspace/propertylens/ingestion/videos/S3u8hvVV9ao.mp4",
+      "ragieDocumentId": "faeb38d5-790e-49c7-b7a7-e6515b7e905a"
+    },
+    {
+      "youtubeId": "642yZATcCiA",
+      "title": "What $1.65 Million Gets You in Vancouver | Brand New House Tour 🏡",
+      "description": "Today we have a house tour of this brand new half duplex in Vancouver Canada with top of the line finishes and it is just waiting ...",
+      "channelName": "Adam J Bell Real Estate",
+      "duration": 140,
+      "thumbnailUrl": "https://i.ytimg.com/vi/642yZATcCiA/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLA-SbJBqlw4ksKaYQA3mzIri-2uiQ",
+      "metadata": {
+        "location": "Vancouver",
+        "price": "$1.65 m",
+        "beds": 5,
+        "baths": 4,
+        "sqft": 4000
+      },
+      "localPath": "/Users/nisar/Workspace/propertylens/ingestion/videos/642yZATcCiA.mp4",
+      "ragieDocumentId": "72874726-4c51-49df-b39f-cf22dc65f466"
+    },
+    {
+      "youtubeId": "rEy3q-DO2Yw",
+      "title": "Inside a $12.8M Luxury Modern Mansion in West Vancouver",
+      "description": "EXPERIENCE UNPARALELLED LUXURY WITH UNOBSTRUCTED 180 DEGREE VIEWS IN THIS EXCEPTIONAL WEST ...",
+      "channelName": "Vancouver Real Estate Films",
+      "duration": 145,
+      "thumbnailUrl": "https://i.ytimg.com/vi/rEy3q-DO2Yw/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLAurub6UmM8-_IJ9cpwKQp5BajKVw",
+      "metadata": {
+        "location": "Vancouver",
+        "price": "$12",
+        "beds": 5,
+        "baths": 4,
+        "sqft": 4000
+      },
+      "localPath": "/Users/nisar/Workspace/propertylens/ingestion/videos/rEy3q-DO2Yw.mp4",
+      "ragieDocumentId": "6c3a8410-af45-4437-aa00-b65d7f5ff144"
+    },
+    {
+      "youtubeId": "l9ELn60OQKk",
+      "title": "More than 2,000 condos sitting empty in Metro Vancouver amid housing crisis",
+      "description": "More than 2000 new condos in Metro Vancouver are sitting unsold and empty despite an ongoing housing crisis and steep rental ...",
+      "channelName": "Global News",
+      "duration": 127,
+      "thumbnailUrl": "https://i.ytimg.com/vi/l9ELn60OQKk/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLAm2e8JEO5GHGp5nqO3vDsAtojkkg",
+      "metadata": {
+        "location": "Vancouver",
+        "beds": 2,
+        "baths": 1,
+        "sqft": 900
+      },
+      "localPath": "/Users/nisar/Workspace/propertylens/ingestion/videos/l9ELn60OQKk.mp4",
+      "ragieDocumentId": "87d04271-b223-4801-9ec7-f1f33ffe9c5d"
+    },
+    {
+      "youtubeId": "fW6IVybWUI0",
+      "title": "20-180 Sheerwater Court l Kelowna, BC",
+      "description": "Unrivalled design and unparalleled craftsmanship. Perched on the hillside and expertly positioned to provide privacy and ...",
+      "channelName": "Unison Jane Hoffman Realty",
+      "duration": 231,
+      "thumbnailUrl": "https://i.ytimg.com/vi/fW6IVybWUI0/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLAimq4FlH1jLuzfOcqy5OHtDoYeHA",
+      "metadata": {
+        "location": "Kelowna",
+        "address": "180 Sheerwater Court",
+        "beds": 3,
+        "baths": 2,
+        "sqft": 2000
+      },
+      "localPath": "/Users/nisar/Workspace/propertylens/ingestion/videos/fW6IVybWUI0.mp4",
+      "ragieDocumentId": "05ef5ac5-ab47-4606-89a1-1aa585865110"
+    },
+    {
+      "youtubeId": "UV5cshFl8yw",
+      "title": "$949,000 Condo in Downtown Vancouver, BC | Vancouver House | Vancouver Real Estate",
+      "description": "Discover Condo Living at 1201-1480 Howe Street at Vancouver House, Yaletown, Vancouver When it comes to finding the perfect ...",
+      "channelName": "Erin Price Emery",
+      "duration": 93,
+      "thumbnailUrl": "https://i.ytimg.com/vi/UV5cshFl8yw/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLBbGjEU-Sj3qxYfMElObTzZHkvfog",
+      "metadata": {
+        "location": "Vancouver",
+        "price": "$949,000 ",
+        "beds": 2,
+        "baths": 1,
+        "sqft": 900
+      },
+      "localPath": "/Users/nisar/Workspace/propertylens/ingestion/videos/UV5cshFl8yw.mp4",
+      "ragieDocumentId": "858add68-c5db-483b-88b0-3c8934e839c5"
+    },
+    {
+      "youtubeId": "NMB7EBYl0kQ",
+      "title": "19-180 Sheerwater Court, Kelowna, BC - Sotheby's International Realty Canada",
+      "description": "MLS ID: 10350273 Listing Agents: Scott Ross, Natalie Benedet Link: ...",
+      "channelName": "Sotheby's International Realty Canada",
+      "duration": 111,
+      "thumbnailUrl": "https://i.ytimg.com/vi/NMB7EBYl0kQ/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLBz2EPxZXrtdkpMuQA-3nmImiUoBw",
+      "metadata": {
+        "location": "Kelowna",
+        "address": "180 Sheerwater Court",
+        "beds": 3,
+        "baths": 2,
+        "sqft": 2000
+      },
+      "localPath": "/Users/nisar/Workspace/propertylens/ingestion/videos/NMB7EBYl0kQ.mp4",
+      "ragieDocumentId": "d0c22e44-efab-462c-9a74-3017aa1a7393"
+    },
+    {
+      "youtubeId": "C7PV8urmaXs",
+      "title": "Hundreds line up for flash condo sale in BC as units are discounted 25 per cent",
+      "description": "For residents of B.C.'s Lower Mainland, lining up for condo pre-sales isn't new. But the chance to save money brings them out in ...",
+      "channelName": "Global News",
+      "duration": 134,
+      "thumbnailUrl": "https://i.ytimg.com/vi/C7PV8urmaXs/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLDli6oN47ZpUZaMJH0Ib48w9yNYjw",
+      "metadata": {
+        "beds": 2,
+        "baths": 1,
+        "sqft": 900
+      },
+      "localPath": "/Users/nisar/Workspace/propertylens/ingestion/videos/C7PV8urmaXs.mp4",
+      "ragieDocumentId": "fdcdc026-7264-48b4-aa9a-4843eea22f66"
+    },
+    {
+      "youtubeId": "d7JDvQRFR7U",
+      "title": "Take a look at this waterfront $3,500,000 designer home on Bowen Island",
+      "description": "Spectacular Hood Point West waterfront lifestyle on Bowen Island. This gorgeous architecturally designed home has been ...",
+      "channelName": "Vancouver Real Estate Films",
+      "duration": 164,
+      "thumbnailUrl": "https://i.ytimg.com/vi/d7JDvQRFR7U/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLCnSD5mlNZ9RhAAnFUz39j56Wpxfg",
+      "metadata": {
+        "price": "$3,500,000 ",
+        "beds": 3,
+        "baths": 2,
+        "sqft": 2000
+      },
+      "localPath": "/Users/nisar/Workspace/propertylens/ingestion/videos/d7JDvQRFR7U.mp4",
+      "ragieDocumentId": "dd9bbdb5-ada5-499e-87ee-768b70e75ae8"
+    },
+    {
+      "youtubeId": "zpsVeRUlcxw",
+      "title": "TOUR A MASSIVE $25 MILLION West Vancouver Luxury Home with the most incredible views",
+      "description": "THIS WORLD CLASS ART PIECE is injected with innovation and sustainable design, combining drama, functionality and ...",
+      "channelName": "Vancouver Real Estate Films",
+      "duration": 215,
+      "thumbnailUrl": "https://i.ytimg.com/vi/zpsVeRUlcxw/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLCYb12WvLUlLOiprBgwHRXjt7G-xA",
+      "metadata": {
+        "location": "Vancouver",
+        "price": "$25 m",
+        "address": "25 MILLION West Vancouver Luxury Home with the most",
+        "beds": 5,
+        "baths": 4,
+        "sqft": 4000
+      },
+      "localPath": "/Users/nisar/Workspace/propertylens/ingestion/videos/zpsVeRUlcxw.mp4",
+      "ragieDocumentId": "e86a39b8-a88f-41b7-a7b4-f16b238db3da"
+    },
+    {
+      "youtubeId": "-Sha8jEG9hI",
+      "title": "Inside a $599,900 DOWNTOWN VANCOUVER CONDO with EMERY BARNES PARK VIEWS!",
+      "description": "Elevated above the heart of Yaletown with views that stretch across the skyline and over Emery Barnes Park, this one-bedroom + ...",
+      "channelName": "Vancouver Real Estate Today with Josh Kepkay",
+      "duration": 222,
+      "thumbnailUrl": "https://i.ytimg.com/vi/-Sha8jEG9hI/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLB41OFTutLitOjJQsTKK3hC7g-hcA",
+      "metadata": {
+        "location": "Vancouver",
+        "price": "$599,900 ",
+        "beds": 2,
+        "baths": 1,
+        "sqft": 900
+      },
+      "localPath": "/Users/nisar/Workspace/propertylens/ingestion/videos/-Sha8jEG9hI.mp4",
+      "ragieDocumentId": "398023c6-5285-4477-907d-76f50ebbc347"
+    },
+    {
+      "youtubeId": "rayEIwFozcY",
+      "title": "Inside Ultra-Luxury Waterfront Mansions in West Vancouver | Cinematic Real Estate Tour | Shot On FX3",
+      "description": "Step inside two ultra-luxury waterfront homes in West Vancouver—filmed and produced by Perseus Creative Studio, a leading ...",
+      "channelName": "Perseus Creative Studio",
+      "duration": 68,
+      "thumbnailUrl": "https://i.ytimg.com/vi/rayEIwFozcY/hqdefault.jpg?sqp=-oaymwEcCOADEI4CSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLA0Kbb7tk6oIzT5r2SiqIn-OU-9wQ",
+      "metadata": {
+        "location": "Vancouver",
+        "beds": 5,
+        "baths": 4,
+        "sqft": 4000
+      },
+      "localPath": "/Users/nisar/Workspace/propertylens/ingestion/videos/rayEIwFozcY.mp4",
+      "ragieDocumentId": "f7516038-da65-41d8-818f-6f8b53cbde47"
+    },
+    {
+      "youtubeId": "TlMUknHQYLU",
+      "title": "Winner of Best Single Family Home in Canada 2016/2017 | Marble Construction - 360hometours.ca Inc",
+      "description": "4438 CANTERBURY CRESCENT, 9 (Nine) time Finalist and Winner in Georgie Awards, Ovation Awards, and National housing ...",
+      "channelName": "360hometours.ca",
+      "duration": 215,
+      "thumbnailUrl": "https://i.ytimg.com/vi/TlMUknHQYLU/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLAWjgwMEajRScDPfwZGtgALdVE4ug",
+      "metadata": {
+        "beds": 3,
+        "baths": 2,
+        "sqft": 2000
+      },
+      "localPath": "/Users/nisar/Workspace/propertylens/ingestion/videos/TlMUknHQYLU.mp4",
+      "ragieDocumentId": "951abb9c-4ea0-40e1-aa89-3a6a37f1fb04"
+    },
+    {
+      "youtubeId": "f7Ji5F_Qxl4",
+      "title": "\"Yesterday is never coming back\" - condo market grapples with few buyers, soaring inventory",
+      "description": "As Shivani Joshi reports, realtors say the Vancouver real estate market has stalled, and that inventory is skyrocketing. Connect ...",
+      "channelName": "CBC British Columbia",
+      "duration": 152,
+      "thumbnailUrl": "https://i.ytimg.com/vi/f7Ji5F_Qxl4/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLCIdFV-uk-4Lst8mWyF8GU6lblllA",
+      "metadata": {
+        "location": "Vancouver",
+        "beds": 2,
+        "baths": 1,
+        "sqft": 900
+      },
+      "localPath": "/Users/nisar/Workspace/propertylens/ingestion/videos/f7Ji5F_Qxl4.mp4",
+      "ragieDocumentId": "08f97d25-23b1-468f-8da4-2c0ab7ae724c"
+    },
+    {
+      "youtubeId": "nml0jgA_QZ0",
+      "title": "Vancouver Real Estate | Richmond, BC | ALP Studio",
+      "description": "",
+      "channelName": "ALP Studio",
+      "duration": 188,
+      "thumbnailUrl": "https://i.ytimg.com/vi/nml0jgA_QZ0/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLC61mZTxB9yMGn4hI7bl3iw8o7HOw",
+      "metadata": {
+        "location": "Vancouver",
+        "beds": 3,
+        "baths": 2,
+        "sqft": 2000
+      },
+      "localPath": "/Users/nisar/Workspace/propertylens/ingestion/videos/nml0jgA_QZ0.mp4",
+      "ragieDocumentId": "a0d3055d-3c64-4771-aad5-ce64b0ecbdfa"
+    },
+    {
+      "youtubeId": "8iugptfOqDk",
+      "title": "Luxury Home Tour | Fraser Heights  | Surrey B.C.",
+      "description": "Welcome to 10615 158a Street, Surrey BC For Sale $1625500 This luxury one owner home as it all including an open floor plan ...",
+      "channelName": "Dan Reiter Real Estate",
+      "duration": 171,
+      "thumbnailUrl": "https://i.ytimg.com/vi/8iugptfOqDk/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLBO5Y95TWd86xBJayIMD6ufpjsZcQ",
+      "metadata": {
+        "location": "Surrey",
+        "price": "$162",
+        "beds": 5,
+        "baths": 4,
+        "sqft": 4000
+      },
+      "localPath": "/Users/nisar/Workspace/propertylens/ingestion/videos/8iugptfOqDk.mp4",
+      "ragieDocumentId": "be4bf4ae-9d37-4c3c-ab09-292d3051e85b"
+    },
+    {
+      "youtubeId": "u8dIDj_aQU4",
+      "title": "Luxury House Tour in Fraser Heights | Surrey BC",
+      "description": "Tour this fabulous view home for sale that is perched on the bluff in the fabulous Fraser Heights neighbourhood in Surrey BC.",
+      "channelName": "Dan Reiter Real Estate",
+      "duration": 238,
+      "thumbnailUrl": "https://i.ytimg.com/vi/u8dIDj_aQU4/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLBgnGfQpNLfeawc7sMUrO01ophc4A",
+      "metadata": {
+        "location": "Surrey",
+        "beds": 5,
+        "baths": 4,
+        "sqft": 4000
+      },
+      "localPath": "/Users/nisar/Workspace/propertylens/ingestion/videos/u8dIDj_aQU4.mp4",
+      "ragieDocumentId": "f0e33567-4d42-4c61-94c4-4d91af74e6a5"
+    },
+    {
+      "youtubeId": "DqXM07TYfdM",
+      "title": "Tour a Gorgeous Surrey BC Corner Lot Home w/ a Private Landscaped Yard",
+      "description": "Step inside a $1789000 corner lot home in Surrey BC. 2848 161st St, Surrey, BC V3Z 3Y6 Welcome to Morgan Heights!",
+      "channelName": "MOE Real Estate Team",
+      "duration": 121,
+      "thumbnailUrl": "https://i.ytimg.com/vi/DqXM07TYfdM/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLDU1u7yh2JQlojiELcXU08pdDq_ag",
+      "metadata": {
+        "location": "Surrey",
+        "price": "$178",
+        "beds": 3,
+        "baths": 2,
+        "sqft": 2000
+      },
+      "localPath": "/Users/nisar/Workspace/propertylens/ingestion/videos/DqXM07TYfdM.mp4",
+      "ragieDocumentId": "239d2390-c797-489a-8950-95718d5b78e5"
+    },
+    {
+      "youtubeId": "P7Fj7Qs6ro8",
+      "title": "$1,499,000 HOME TOUR || 19339 72A Ave. Surrey, BC",
+      "description": "Come join us on the tour of our new listing 19339 72A Ave. Make sure you contact us to get your spot at our open house.",
+      "channelName": "Jas Oberoi",
+      "duration": 114,
+      "thumbnailUrl": "https://i.ytimg.com/vi/P7Fj7Qs6ro8/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLBLQBTQaQC9YIDNhQYOtBJuEa7fPw",
+      "metadata": {
+        "location": "Surrey",
+        "price": "$1,499,000 ",
+        "address": "19339 72A Ave",
+        "beds": 3,
+        "baths": 2,
+        "sqft": 2000
+      },
+      "localPath": "/Users/nisar/Workspace/propertylens/ingestion/videos/P7Fj7Qs6ro8.mp4",
+      "ragieDocumentId": "7b429467-a520-4c99-bf4a-c35203c73e5a"
+    },
+    {
+      "youtubeId": "tV6iDi7mumI",
+      "title": "Fully Renovated 36 Year Old Home for $6,980,000 in Surrey, BC 🇨🇦 #realtor #realestate #shorts #fyp",
+      "description": "",
+      "channelName": "Soliman Rahimi | British Columbia Real Estate",
+      "duration": 61,
+      "thumbnailUrl": "https://i.ytimg.com/vi/tV6iDi7mumI/hq720.jpg?sqp=-oaymwE2CNAFEJQDSFXyq4qpAygIARUAAIhCGABwAcABBvABAfgBtgiAAoAPigIMCAAQARhlIFwoUDAP&rs=AOn4CLAtn7dk9VIqBPMxLEQG3jMykZfTdw",
+      "metadata": {
+        "location": "Surrey",
+        "price": "$6,980,000 ",
+        "beds": 3,
+        "baths": 2,
+        "sqft": 2000
+      },
+      "localPath": "/Users/nisar/Workspace/propertylens/ingestion/videos/tV6iDi7mumI.mp4",
+      "ragieDocumentId": "11189320-6de5-49e9-9c2a-b6b434377709"
+    },
+    {
+      "youtubeId": "LG7VIk8kSWU",
+      "title": "Tour a $1,349,900 Surrey BC Ranch Style Home w/ Open Layout",
+      "description": "Step inside this $1349900 home with an open layout in Surrey BC! This spacious 3 bedroom/2 bathroom ranch-style home ...",
+      "channelName": "MOE Real Estate Team",
+      "duration": 65,
+      "thumbnailUrl": "https://i.ytimg.com/vi/LG7VIk8kSWU/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLDHEnQmcXnkYHNr8LASnK-vWUYqug",
+      "metadata": {
+        "location": "Surrey",
+        "beds": 3,
+        "baths": 2,
+        "price": "$1,349,900 ",
+        "address": "900 Surrey BC Ranch St",
+        "sqft": 2000
+      },
+      "localPath": "/Users/nisar/Workspace/propertylens/ingestion/videos/LG7VIk8kSWU.mp4",
+      "ragieDocumentId": "60ff93bd-46fa-4de9-9487-7a27b62e6754"
+    },
+    {
+      "youtubeId": "OKWSDc86FHk",
+      "title": "What Does $825k Get You In Clayton Heights Surrey BC Real Estate?",
+      "description": "What Does $825k Get You In Clayton Heights Surrey, BC Real Estate? Find out in this video! Listing Details: ...",
+      "channelName": "Alex Dunbar | Living in the Lower Mainland BC",
+      "duration": 71,
+      "thumbnailUrl": "https://i.ytimg.com/vi/OKWSDc86FHk/hq720_2.jpg?sqp=-oaymwE2CNAFEJQDSFXyq4qpAygIARUAAIhCGABwAcABBvABAfgBtgiAAoAPigIMCAAQARhlIFkoTTAP&rs=AOn4CLBVb5PI7HSBMRj90S3AyFKmrbSTtA",
+      "metadata": {
+        "location": "Surrey",
+        "price": "$825k",
+        "beds": 3,
+        "baths": 2,
+        "sqft": 2000
+      },
+      "localPath": "/Users/nisar/Workspace/propertylens/ingestion/videos/OKWSDc86FHk.mp4",
+      "ragieDocumentId": "d2ac2988-6db2-4c31-90d0-c4c00d33203f"
+    },
+    {
+      "youtubeId": "D_7Td8HdCCc",
+      "title": "Hosted 4k Property Tour ~ 11388 Surrey Road, Surrey BC - by Realtor Jessi Johnson",
+      "description": "Greater Vancouver realtor Jessi Johnson carefully takes you though his newest listing at 11388 Surrey Road, Surrey BC.",
+      "channelName": "Jessi Johnson 1.0 ~ Realtor & Mortgage Broker ",
+      "duration": 227,
+      "thumbnailUrl": "https://i.ytimg.com/vi/D_7Td8HdCCc/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLCPx9415IFuNjul28Tj3Ry5MXDCDw",
+      "metadata": {
+        "location": "Vancouver",
+        "address": "11388 Surrey Road",
+        "beds": 3,
+        "baths": 2,
+        "sqft": 2000
+      },
+      "localPath": "/Users/nisar/Workspace/propertylens/ingestion/videos/D_7Td8HdCCc.mp4",
+      "ragieDocumentId": "7a6ac077-c008-481d-8934-8ce344e73c62"
+    },
+    {
+      "youtubeId": "OUcE_MRkn7M",
+      "title": "$2,480,000 Home Tour || 10909 164A Street, Surrey, BC",
+      "description": "Take a tour with Inder around 10909 164A Street, in Surrey, BC. This gorgeous Foxridge Home in North Surrey features a bright ...",
+      "channelName": "Jas Oberoi",
+      "duration": 104,
+      "thumbnailUrl": "https://i.ytimg.com/vi/OUcE_MRkn7M/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLBNpgztD9F1cclnWnmP99Lfn-U0Gg",
+      "metadata": {
+        "location": "Surrey",
+        "price": "$2,480,000 ",
+        "address": "10909 164A Street",
+        "beds": 3,
+        "baths": 2,
+        "sqft": 2000
+      },
+      "localPath": "/Users/nisar/Workspace/propertylens/ingestion/videos/OUcE_MRkn7M.mp4",
+      "ragieDocumentId": "5e17d0b8-11d8-4710-bc82-6f7e03e5cba0"
+    },
+    {
+      "youtubeId": "I2qrsxKbzeA",
+      "title": "$1,299,900 Home Tour || 12460 102 Avenue, Surrey, BC",
+      "description": "Jas Oberoi Group is pleased to announce that 12460 102 Avenue in Surrey BC is on the market! Take a tour with Inder and Maria ...",
+      "channelName": "Jas Oberoi",
+      "duration": 74,
+      "thumbnailUrl": "https://i.ytimg.com/vi/I2qrsxKbzeA/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLDaisOVmoc165fu2JijgcufjJDa4w",
+      "metadata": {
+        "location": "Surrey",
+        "price": "$1,299,900 ",
+        "address": "12460 102 Avenue",
+        "beds": 3,
+        "baths": 2,
+        "sqft": 2000
+      },
+      "localPath": "/Users/nisar/Workspace/propertylens/ingestion/videos/I2qrsxKbzeA.mp4",
+      "ragieDocumentId": "8110b814-b872-43ee-91c5-f7c4f0bf5fef"
+    },
+    {
+      "youtubeId": "3bbHcGjiCD8",
+      "title": "Inside a $1.25M Surrey BC Bungalow Home w/Hot Tub & Covered Deck",
+      "description": "Step inside a $1249000 single-family home in Surrey, BC. 19224 59th Ave, Surrey, BC V3S 7S9 Welcome to this charming ...",
+      "channelName": "MOE Real Estate Team",
+      "duration": 103,
+      "thumbnailUrl": "https://i.ytimg.com/vi/3bbHcGjiCD8/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLBAjD4FGpHeltl8zbh44E2jiUJ7fw",
+      "metadata": {
+        "location": "Surrey",
+        "price": "$1.25m",
+        "beds": 3,
+        "baths": 2,
+        "sqft": 2000
+      },
+      "localPath": "/Users/nisar/Workspace/propertylens/ingestion/videos/3bbHcGjiCD8.mp4",
+      "ragieDocumentId": "fee43162-4965-40ca-b80f-919274329bb8"
+    },
+    {
+      "youtubeId": "2LAyRWvU2OY",
+      "title": "GUILDFORD Townhome: 4K Video Tour  |  14 9771 152B Street, Surrey, B.C.  |  Lapp Real Estate Group",
+      "description": "FOR MORE INFORMATION, 3D TOUR, all MEDIA and PHOTOS including FLOOR PLANS VISIT: ...",
+      "channelName": "Krista Lapp Personal Real Estate Corporation",
+      "duration": 147,
+      "thumbnailUrl": "https://i.ytimg.com/vi/2LAyRWvU2OY/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLB2iQXSFSkqguARfAT-zVfgvHElfQ",
+      "metadata": {
+        "location": "Surrey",
+        "address": "14 9771 152B Street",
+        "beds": 3,
+        "baths": 2.5,
+        "sqft": 1500
+      },
+      "localPath": "/Users/nisar/Workspace/propertylens/ingestion/videos/2LAyRWvU2OY.mp4",
+      "ragieDocumentId": "f9d5919b-995e-416c-91d4-b2e8bce619f1"
+    },
+    {
+      "youtubeId": "Y-orbsMwDsQ",
+      "title": "Live in One, Rent the Rest! Surrey BC Home for Sale #vancouverrealestate #surreyrealtors #surreybc",
+      "description": "Whether you're an investor or a homeowner searching for extra income, this Surrey property is a rare opportunity you don't want to ...",
+      "channelName": "Vancouver Living with Nancy Che",
+      "duration": 60,
+      "thumbnailUrl": "https://i.ytimg.com/vi/Y-orbsMwDsQ/hq720.jpg?sqp=-oaymwE2CNAFEJQDSFXyq4qpAygIARUAAIhCGABwAcABBvABAfgBtgiAAoAPigIMCAAQARhgIGUoMjAP&rs=AOn4CLAqxh2rE1QMTQsbZhb3BUVStklq7g",
+      "metadata": {
+        "location": "Vancouver",
+        "beds": 3,
+        "baths": 2,
+        "sqft": 2000
+      },
+      "localPath": "/Users/nisar/Workspace/propertylens/ingestion/videos/Y-orbsMwDsQ.mp4",
+      "ragieDocumentId": "25dd6012-a8ab-4a14-bdd2-35a6fd50826f"
+    },
+    {
+      "youtubeId": "cOin8XMcmcU",
+      "title": "VIDEO TOUR - #102-13958 108 Avenue | North Surrey | Surrey BC | Townhouse",
+      "description": "Property Address: #102-13958 108 Avenue Place Abbotsford List Price: $449900 Bedrooms:2 Bathrooms: 2 Are you a first-time ...",
+      "channelName": "Living in Abbotsford ",
+      "duration": 120,
+      "thumbnailUrl": "https://i.ytimg.com/vi/cOin8XMcmcU/hq720.jpg?sqp=-oaymwE2CNAFEJQDSFXyq4qpAygIARUAAIhCGAFwAcABBvABAfgB1AaAAuADigIMCAAQARhLIFcoZTAP&rs=AOn4CLAIEXzwUDoN9rgdcfZm-B8x-4gywA",
+      "metadata": {
+        "location": "Surrey",
+        "beds": 449900,
+        "baths": 2,
+        "price": "$449",
+        "address": "13958 108 Avenue",
+        "sqft": 1500
+      },
+      "localPath": "/Users/nisar/Workspace/propertylens/ingestion/videos/cOin8XMcmcU.mp4",
+      "ragieDocumentId": "d97f954b-5abb-422a-854d-8ef8a66640dd"
+    },
+    {
+      "youtubeId": "9LNkVG1YMk8",
+      "title": "$1,698,000 home with rental suite and AMAZING VIEWS! | Listing with Denise Mai PREC*",
+      "description": "350 N Hythe Ave, Burnaby. AMAZING VIEWS of Burrard Inlet, North Shore Mountains & Vancouver City from one of the nicest ...",
+      "channelName": "Denise Mai | Vancouver Realtor",
+      "duration": 111,
+      "thumbnailUrl": "https://i.ytimg.com/vi/9LNkVG1YMk8/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLCf7UVm7ItNAthQKxfyMDX8Y4IrWw",
+      "metadata": {
+        "location": "Vancouver",
+        "price": "$1,698,000 ",
+        "beds": 2,
+        "baths": 1,
+        "sqft": 900
+      },
+      "localPath": "/Users/nisar/Workspace/propertylens/ingestion/videos/9LNkVG1YMk8.mp4",
+      "ragieDocumentId": "cdc29f44-8048-412f-a68a-cd9b6ffe7934"
+    },
+    {
+      "youtubeId": "73qj_6Qhae0",
+      "title": "WALKTHROUGH of 1 - 7039 Macpherson Avenue, Burnaby (VILLO METROTOWN)",
+      "description": "VILLO METROTOWN by Bucci - 3 bedroom & flex/storage + 2.5 bathroom, CORNER townhome just steps away from Royal Oak ...",
+      "channelName": "West One Real Estate Team",
+      "duration": 118,
+      "thumbnailUrl": "https://i.ytimg.com/vi/73qj_6Qhae0/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLDvyiygDwjlElCtnSGwKkvn5KClNw",
+      "metadata": {
+        "location": "Burnaby",
+        "beds": 3,
+        "baths": 2.5,
+        "address": "7039 Macpherson Avenue",
+        "sqft": 1500
+      },
+      "localPath": "/Users/nisar/Workspace/propertylens/ingestion/videos/73qj_6Qhae0.mp4",
+      "ragieDocumentId": "573e8fbf-ea37-4d7f-9648-b6440a6db9cc"
+    },
+    {
+      "youtubeId": "z4P-cOSaFBc",
+      "title": "Walkthrough of #907- 4657 Hazel Street, Burnaby, B.C., Canada",
+      "description": "EXCEPTIONAL VALUE in this 955 square foot, 2 bdrm, 2 full bthrm suite w/ 180 degree sweeping and UNOBSTRUCTED view of ...",
+      "channelName": "Barry Fence",
+      "duration": 97,
+      "thumbnailUrl": "https://i.ytimg.com/vi/z4P-cOSaFBc/hqdefault.jpg?sqp=-oaymwEcCOADEI4CSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLCzxe2RjczXn1Fya3BlSk2mu57qYA",
+      "metadata": {
+        "location": "Burnaby",
+        "beds": 2,
+        "address": "4657 Hazel Street",
+        "baths": 1,
+        "sqft": 900
+      },
+      "localPath": "/Users/nisar/Workspace/propertylens/ingestion/videos/z4P-cOSaFBc.mp4",
+      "ragieDocumentId": "7bfe4fd3-c890-4096-8f0c-0dd845b880c2"
+    },
+    {
+      "youtubeId": "fo7NwLhtTOc",
+      "title": "WALKTHROUGH: 4305 Albert Street, Burnaby",
+      "description": "FORSALE 4305 Albert St, Burnaby, BC 🛏️ 3 beds, 3 baths 1277 sqft Offered at: $1349000 ✨ Where modern comfort meets ...",
+      "channelName": "West One Real Estate Team",
+      "duration": 100,
+      "thumbnailUrl": "https://i.ytimg.com/vi/fo7NwLhtTOc/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLCGYS2CzFNmgZS2yzbEmDYjJNEuPQ",
+      "metadata": {
+        "location": "Burnaby",
+        "beds": 3,
+        "baths": 3,
+        "sqft": 1277,
+        "price": "$134",
+        "address": "4305 Albert Street"
+      },
+      "localPath": "/Users/nisar/Workspace/propertylens/ingestion/videos/fo7NwLhtTOc.mp4",
+      "ragieDocumentId": "2865e759-1167-47d2-af0b-a4708a216b42"
+    },
+    {
+      "youtubeId": "e6qCpshmtmQ",
+      "title": "WALKTHROUGH: 901-7388 Kingsway - Burnaby, BC",
+      "description": "FORSALE 901 - 7388 Kingsway, Burnaby, BC 🛏️ 1 bed, 1 bath 609 sqft Offered at: $575000 ✨ Welcome to Kings ...",
+      "channelName": "West One Real Estate Team",
+      "duration": 74,
+      "thumbnailUrl": "https://i.ytimg.com/vi/e6qCpshmtmQ/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLCdGK5ysEinYmoH9QilmX2m6Tm4UQ",
+      "metadata": {
+        "location": "Burnaby",
+        "beds": 1,
+        "baths": 1,
+        "sqft": 609,
+        "price": "$575",
+        "address": "7388 Kingsway"
+      },
+      "localPath": "/Users/nisar/Workspace/propertylens/ingestion/videos/e6qCpshmtmQ.mp4",
+      "ragieDocumentId": "90ae3933-9de1-4e21-bdba-14ac14b1e096"
+    },
+    {
+      "youtubeId": "EkU5olml9M8",
+      "title": "WALKTHROUGH: 504 - 4788 Hastings - Burnaby, BC",
+      "description": "FORSALE 504 - 4788 Hastings Street, Burnaby 🛏️ 3 beds, 2 baths 1146 sqft Offered at: $1499000 ✨ Discover VALEO ...",
+      "channelName": "West One Real Estate Team",
+      "duration": 82,
+      "thumbnailUrl": "https://i.ytimg.com/vi/EkU5olml9M8/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLAnh0Q7oxten2Ahl5BkhxEKFhmnaA",
+      "metadata": {
+        "location": "Burnaby",
+        "beds": 3,
+        "baths": 2,
+        "sqft": 1146,
+        "price": "$149",
+        "address": "4788 Hast"
+      },
+      "localPath": "/Users/nisar/Workspace/propertylens/ingestion/videos/EkU5olml9M8.mp4",
+      "ragieDocumentId": "5fde1b32-959d-4b33-9a3d-582791a2ff9b"
+    },
+    {
+      "youtubeId": "_zHBPkJ3tno",
+      "title": "Central Park House By Bosa - Full WalkThrough Presentation Centre (BURNABY BC - PRESALE)",
+      "description": "PRESALE TIME CENTRAL PARK HOUSE BY BOSA PROPERTIES Central Park House by Bosa is coming to Burnaby.",
+      "channelName": "Milton Chan",
+      "duration": 238,
+      "thumbnailUrl": "https://i.ytimg.com/vi/_zHBPkJ3tno/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLBVGyPid2knPbVBXocrjKQ_zmgPJw",
+      "metadata": {
+        "location": "Burnaby",
+        "beds": 3,
+        "baths": 2,
+        "sqft": 2000
+      },
+      "localPath": "/Users/nisar/Workspace/propertylens/ingestion/videos/_zHBPkJ3tno.mp4",
+      "ragieDocumentId": "02c36954-8953-4c86-9aa0-26fe18e82ea4"
+    },
+    {
+      "youtubeId": "1HgU7YOVlyw",
+      "title": "WALKTHROUGH of 6274 Sumas Street, Burnaby",
+      "description": "This move in ready 2103 sq ft home is meticulously cared for and sits on a symmetrical 60 x 120 lot with an incredibly manicured ...",
+      "channelName": "West One Real Estate Team",
+      "duration": 113,
+      "thumbnailUrl": "https://i.ytimg.com/vi/1HgU7YOVlyw/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLC0PJ_wlJCtjv9QRWJcOH7y34v9og",
+      "metadata": {
+        "location": "Burnaby",
+        "sqft": 2103,
+        "address": "6274 Sumas Street",
+        "beds": 3,
+        "baths": 2
+      },
+      "localPath": "/Users/nisar/Workspace/propertylens/ingestion/videos/1HgU7YOVlyw.mp4",
+      "ragieDocumentId": "53fbd147-3d15-49de-95e0-cc3049f91909"
+    },
+    {
+      "youtubeId": "s3dixKo9vRc",
+      "title": "#2802 4688 Kingsway Burnaby, BC",
+      "description": "Live at Station Square - the heart of Burnaby! An unbeatable location right next to Metrotown with shopping literally at your ...",
+      "channelName": "Denise Mai | Vancouver Realtor",
+      "duration": 76,
+      "thumbnailUrl": "https://i.ytimg.com/vi/s3dixKo9vRc/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLBauk1TPdCtFborhPJagedt6pNhfQ",
+      "metadata": {
+        "location": "Burnaby",
+        "address": "2802 4688 Kingsway",
+        "beds": 3,
+        "baths": 2,
+        "sqft": 2000
+      },
+      "localPath": "/Users/nisar/Workspace/propertylens/ingestion/videos/s3dixKo9vRc.mp4",
+      "ragieDocumentId": "416510bc-b9e5-44cb-83ae-ddd2133c463c"
+    },
+    {
+      "youtubeId": "ndfIB2HMREE",
+      "title": "WALKTHROUGH: 7403 Magnolia Terrace, Burnaby, BC",
+      "description": "FORSALE 7403 Magnolia Terrace, Burnaby, BC 🛏️ 3 beds, 2 baths 1266 sqft Offered at: $970000 Welcome to Rockhill ...",
+      "channelName": "JennyWun",
+      "duration": 72,
+      "thumbnailUrl": "https://i.ytimg.com/vi/ndfIB2HMREE/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLCk1MRiKUD0NBGrPxrJjnY9XjffXw",
+      "metadata": {
+        "location": "Burnaby",
+        "beds": 3,
+        "baths": 2,
+        "sqft": 1266,
+        "price": "$970"
+      },
+      "localPath": "/Users/nisar/Workspace/propertylens/ingestion/videos/ndfIB2HMREE.mp4",
+      "ragieDocumentId": "8cf98fdc-159c-4045-a1d7-e66d595bbb96"
+    },
+    {
+      "youtubeId": "cc1PFZuphn0",
+      "title": "WALKTHROUGH of 5602 - 1955 Alpha Way, Burnaby at BRENTWOOD TOWER 2!",
+      "description": "AMAZING BRENTWOOD, a prestigious master community by Shape Properties. This rare 3 bed 3 bath 1449 sqft 56th floor corner ...",
+      "channelName": "West One Real Estate Team",
+      "duration": 92,
+      "thumbnailUrl": "https://i.ytimg.com/vi/cc1PFZuphn0/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLA2bxNltEnY3xtQMm5ZCbb0cyIOjg",
+      "metadata": {
+        "location": "Burnaby",
+        "beds": 3,
+        "baths": 3,
+        "sqft": 1449,
+        "address": "1955 Alpha Way"
+      },
+      "localPath": "/Users/nisar/Workspace/propertylens/ingestion/videos/cc1PFZuphn0.mp4",
+      "ragieDocumentId": "79a3aa30-7f33-420a-ab36-db554553c959"
+    },
+    {
+      "youtubeId": "3YsFoLaS3ys",
+      "title": "WALKTHROUGH of 6230 Field Place, Burnaby!",
+      "description": "A custom built 1970's split level home. Simple, comfortable, and open. Design to blend form, function and nature together. 2999 sq ...",
+      "channelName": "West One Real Estate Team",
+      "duration": 180,
+      "thumbnailUrl": "https://i.ytimg.com/vi/3YsFoLaS3ys/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLCvUU4nGXm6TAQjwrGESs_wfmtVVQ",
+      "metadata": {
+        "location": "Burnaby",
+        "address": "6230 Field Place",
+        "beds": 3,
+        "baths": 2,
+        "sqft": 2000
+      },
+      "localPath": "/Users/nisar/Workspace/propertylens/ingestion/videos/3YsFoLaS3ys.mp4",
+      "ragieDocumentId": "8ce9c83e-1b0d-46b2-be82-f08cf6a4b94d"
+    },
+    {
+      "youtubeId": "htkHR2rdoc4",
+      "title": "Experience the Height of Luxury Living in Downtown Vancouver: Apartment Tour",
+      "description": "Welcome to your exclusive tour of a stunning luxury apartment in the heart of Vancouver. Located in the newest building at One ...",
+      "channelName": "Your Realtor Justin",
+      "duration": 183,
+      "thumbnailUrl": "https://i.ytimg.com/vi/htkHR2rdoc4/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLAOYzIDcOS3g2s_oCzJFGArnZrhqQ",
+      "metadata": {
+        "location": "Vancouver",
+        "beds": 2,
+        "baths": 1,
+        "sqft": 900
+      },
+      "localPath": "/Users/nisar/Workspace/propertylens/ingestion/videos/htkHR2rdoc4.mp4",
+      "ragieDocumentId": "7f0d2d5b-cd5b-45a7-b4f8-d378bf21bd16"
+    },
+    {
+      "youtubeId": "NyFR97bnCtA",
+      "title": "DOWNTOWN VANCOUVER'S MOST SPECTACULAR PENTHOUSE",
+      "description": "Welcome to Vancouver's Most Desired Penthouse, majestically perched atop the Private Residences of the Hotel Georgia.",
+      "channelName": "YVR Global Real Estate Team",
+      "duration": 223,
+      "thumbnailUrl": "https://i.ytimg.com/vi/NyFR97bnCtA/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLBtvznafzaPJLtJvOBWwXBEilIBZA",
+      "metadata": {
+        "location": "Vancouver",
+        "beds": 3,
+        "baths": 2,
+        "sqft": 2000
+      },
+      "localPath": "/Users/nisar/Workspace/propertylens/ingestion/videos/NyFR97bnCtA.mp4",
+      "ragieDocumentId": "e5425cd7-80d9-404c-bd27-32c8b18455ab"
+    },
+    {
+      "youtubeId": "QjLv1-38NdE",
+      "title": "Take a Peek Inside a Sleek  Downtown Condo with Killer Views",
+      "description": "Just Listed- 1604-125 MILROSS Ave | Vancouver, BC 1103 Sq ft Offers at $1199000 Come have a look at this VIEW condo with ...",
+      "channelName": "Nina Margiottiello",
+      "duration": 78,
+      "thumbnailUrl": "https://i.ytimg.com/vi/QjLv1-38NdE/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLBbVeQ_uezVwc9shqqThDfc3YMREA",
+      "metadata": {
+        "location": "Vancouver",
+        "sqft": 1103,
+        "price": "$119",
+        "beds": 2,
+        "baths": 1
+      },
+      "localPath": "/Users/nisar/Workspace/propertylens/ingestion/videos/QjLv1-38NdE.mp4",
+      "ragieDocumentId": "8d75c175-0802-4fb5-bf2c-974d6cbfc135"
+    },
+    {
+      "youtubeId": "vndhQP-5-H0",
+      "title": "Vancouver downtown condo 3505-1372 Seymour St, Vancouver, BC Canada",
+      "description": "Live with style. Distinguished urban living in \"The Mark\". Panoramic 270 degree view (Northshore mountains to False Creek) from ...",
+      "channelName": "バンクーバーの不動産 フレッド吉村 - リマックス不動産",
+      "duration": 201,
+      "thumbnailUrl": "https://i.ytimg.com/vi/vndhQP-5-H0/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLDhm5-4ytLocQeeIAS9R_7zgImdiw",
+      "metadata": {
+        "location": "Vancouver",
+        "address": "1372 Seymour St",
+        "beds": 2,
+        "baths": 1,
+        "sqft": 900
+      },
+      "localPath": "/Users/nisar/Workspace/propertylens/ingestion/videos/vndhQP-5-H0.mp4",
+      "ragieDocumentId": "77aa835d-cc52-42f3-8d04-8c5bf6bbcbcf"
+    },
+    {
+      "youtubeId": "bb_k5aj-Z_w",
+      "title": "Tour of this $825,000 condo in Downtown Vancouver!",
+      "description": "Welcome to the Mark at 1372 Seymour Street. This development was built by award winning developer Onni Group. It allows ...",
+      "channelName": "Denise Mai | Vancouver Realtor",
+      "duration": 206,
+      "thumbnailUrl": "https://i.ytimg.com/vi/bb_k5aj-Z_w/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLBg7WP8q0R8MY_nAPgdr_xghBF_Pw",
+      "metadata": {
+        "location": "Vancouver",
+        "price": "$825,000 ",
+        "beds": 2,
+        "baths": 1,
+        "sqft": 900
+      },
+      "localPath": "/Users/nisar/Workspace/propertylens/ingestion/videos/bb_k5aj-Z_w.mp4",
+      "ragieDocumentId": "687b1b0d-d502-4406-a215-139646c070d4"
+    },
+    {
+      "youtubeId": "eoHm7-tVWGQ",
+      "title": "Inside this $1,198,000 downtown Vancouver Condo ! | Listing with Denise Mai PREC*",
+      "description": "606, 1351 Continental Street, Vancouver. You DO NOT want to miss this corner loft at MADDOX! This spacious corner unit/loft ...",
+      "channelName": "Denise Mai | Vancouver Realtor",
+      "duration": 61,
+      "thumbnailUrl": "https://i.ytimg.com/vi/eoHm7-tVWGQ/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLCrXIV5sdGIv3waeL3hMsS12CbzcQ",
+      "metadata": {
+        "location": "Vancouver",
+        "price": "$1,198,000 ",
+        "beds": 2,
+        "baths": 1,
+        "sqft": 900
+      },
+      "localPath": "/Users/nisar/Workspace/propertylens/ingestion/videos/eoHm7-tVWGQ.mp4",
+      "ragieDocumentId": "c9b3578d-c49f-4156-8075-e1729006a08f"
+    },
+    {
+      "youtubeId": "1mS1CDw51Xg",
+      "title": "Downtown Vancouver Living | Tour This 2-Bed, 2-Level Yaletown Condo",
+      "description": "If you've had your eye on a two storey condo in Yaletown, then this is it! Welcome to 990 Beach Ave and this 2 bed, 3 bath, 7th ...",
+      "channelName": "Matthew Rufh Personal Real Estate Corporation",
+      "duration": 120,
+      "thumbnailUrl": "https://i.ytimg.com/vi/1mS1CDw51Xg/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLCeYF5qmp6HQdc1HrrreQ5XYdjWlA",
+      "metadata": {
+        "location": "Vancouver",
+        "beds": 2,
+        "baths": 3,
+        "sqft": 900
+      },
+      "localPath": "/Users/nisar/Workspace/propertylens/ingestion/videos/1mS1CDw51Xg.mp4",
+      "ragieDocumentId": "2235ec51-22aa-4fd2-a686-90496ede08e4"
+    },
+    {
+      "youtubeId": "P8ZO-XzBjDk",
+      "title": "Furnished Apartments Vancouver, BC | For Rent | 2 Bedrooms, 2 Bathrooms",
+      "description": "HighStreet Accommodations is a hospitality management company operating throughout the Greater Vancouver area of British ...",
+      "channelName": "HighStreet Accommodations",
+      "duration": 118,
+      "thumbnailUrl": "https://i.ytimg.com/vi/P8ZO-XzBjDk/hq720.jpg?sqp=-oaymwE2CNAFEJQDSFXyq4qpAygIARUAAIhCGAFwAcABBvABAfgB_gmAAtAFigIMCAAQARhlIF0oSzAP&rs=AOn4CLCzzQOnq0NQDaWIUrzawA3OGykx_Q",
+      "metadata": {
+        "location": "Vancouver",
+        "beds": 2,
+        "baths": 2,
+        "address": "2 Bedr",
+        "sqft": 900
+      },
+      "localPath": "/Users/nisar/Workspace/propertylens/ingestion/videos/P8ZO-XzBjDk.mp4",
+      "ragieDocumentId": "327d37aa-99d6-4805-aa25-5588c4a95c1a"
+    },
+    {
+      "youtubeId": "PExhZ7iwiHQ",
+      "title": "Luxury Condo Downtown Vancouver",
+      "description": "4105 1105 West Georgia St Vancouver.",
+      "channelName": "Maximus Media",
+      "duration": 114,
+      "thumbnailUrl": "https://i.ytimg.com/vi/PExhZ7iwiHQ/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLAvdfwSJZGvgFIUg5oWcPc1uZa01g",
+      "metadata": {
+        "location": "Vancouver",
+        "beds": 2,
+        "baths": 1,
+        "sqft": 900
+      },
+      "localPath": "/Users/nisar/Workspace/propertylens/ingestion/videos/PExhZ7iwiHQ.mp4",
+      "ragieDocumentId": "6bd79e4e-426a-4492-b0ff-bae420d31155"
+    },
+    {
+      "youtubeId": "Gueg_zB5kAk",
+      "title": "Luxury Abbotsford Real Estate | Massive 4 bedroom townhome at Golf Pointe Estates East Abbotsford BC",
+      "description": "Are you in the market for a townhome? Perhaps looking for Luxury Abbotsford Real Estate. We just listed #9 35819 Mckee Rd ...",
+      "channelName": "Joe Pratap Realtor | Fraser Valley Living ",
+      "duration": 214,
+      "thumbnailUrl": "https://i.ytimg.com/vi/Gueg_zB5kAk/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLAOceU17iFpK5pBWp11hC9b7ouOLA",
+      "metadata": {
+        "location": "Abbotsford",
+        "beds": 4,
+        "address": "4 bedroom townhome at Golf Pointe Estates East Abbotsford",
+        "baths": 2.5,
+        "sqft": 1500
+      },
+      "localPath": "/Users/nisar/Workspace/propertylens/ingestion/videos/Gueg_zB5kAk.mp4",
+      "ragieDocumentId": "817dfe49-5d41-4b42-9b8d-6aff3e67a022"
     }
   ],
-  "lastUpdated": "2025-11-19T06:36:38.688Z"
+  "lastUpdated": "2025-11-19T08:08:47.273Z"
 }

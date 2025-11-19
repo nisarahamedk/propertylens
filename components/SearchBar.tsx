@@ -10,12 +10,12 @@ interface SearchBarProps {
 }
 
 const SAMPLE_QUERIES = [
-  "modern kitchen with island",
-  "backyard with pool and outdoor dining",
-  "master bedroom with walk-in closet",
-  "open floor plan living room",
-  "home office with natural light",
-  "renovated bathroom with double vanity"
+  "houses with black kitchen countertops",
+  "properties with muted interior colors",
+  "spacious backyard suitable for entertaining",
+  "bright open living spaces with high ceilings",
+  "cozy reading nook or home library",
+  "modern minimalist design aesthetic"
 ];
 
 const SearchBar: React.FC<SearchBarProps> = ({

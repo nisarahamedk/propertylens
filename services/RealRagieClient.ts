@@ -1,6 +1,6 @@
 
 import { IRagieClient } from './interfaces';
-import { RagieDocument, RagieRetrievalRequest, RagieRetrievalResponse, RagieGenerateRequest, RagieGenerateResponse } from './ragieTypes';
+import { RagieDocument, RagieRetrievalRequest, RagieRetrievalResponse, RagieGenerateRequest, RagieGenerateResponse, RagieListResponse } from './ragieTypes';
 
 // Use Vite proxy in development, direct URL in production
 const RAGIE_API_BASE = "/api/ragie";
@@ -28,11 +28,12 @@ export class RealRagieClient implements IRagieClient {
   }
 
   documents = {
-    list: async (options?: { page_size?: number; filter?: string }) => {
+    list: async (options?: { page_size?: number; filter?: string; cursor?: string }): Promise<RagieListResponse> => {
       let url = `${RAGIE_API_BASE}/documents`;
       const params = new URLSearchParams();
       if (options?.page_size) params.append('page_size', options.page_size.toString());
       if (options?.filter) params.append('filter', options.filter);
+      if (options?.cursor) params.append('cursor', options.cursor);
       if (params.toString()) url += `?${params.toString()}`;
 
       const response = await fetch(url, {
@@ -46,7 +47,13 @@ export class RealRagieClient implements IRagieClient {
         throw new Error(`Ragie API Error: ${response.status} - ${response.statusText}`);
       }
       const data = await response.json();
-      return data.results || data.documents || []; 
+      return {
+        results: data.documents || data.results || [],
+        pagination: {
+          next_cursor: data.pagination?.next_cursor,
+          total: data.pagination?.total_count
+        }
+      };
     },
 
     get: async (id: string) => {

@@ -36,8 +36,8 @@ const PlayerView: React.FC = () => {
           setProperty(passedProperty);
         } else {
           // Fallback to recent properties list
-          const properties = await getRecentProperties();
-          const found = properties.find(p => p.ragieId === documentId || p.id === documentId);
+          const data = await getRecentProperties();
+          const found = data.properties.find(p => p.ragieId === documentId || p.id === documentId);
           if (found) {
             setProperty(found);
           }
