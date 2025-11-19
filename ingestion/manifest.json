@@ -1,0 +1,165 @@
+{
+  "videos": [
+    {
+      "youtubeId": "D81OJRTOkLA",
+      "title": "Tour This Half Acre LUXURY Retreat | Burnaby Real Estate",
+      "description": "Half acre parcel in Deer Lake, Burnaby. Perfect mix of nature and city living.",
+      "channelName": "Kyle Mark - Vancouver Luxury Real Estate",
+      "duration": 204,
+      "thumbnailUrl": "https://i.ytimg.com/vi/D81OJRTOkLA/hq720.jpg",
+      "metadata": {
+        "location": "Deer Lake, Burnaby",
+        "address": "5850 Sperling Avenue",
+        "beds": 6,
+        "baths": 4,
+        "sqft": 6000,
+        "price": "$4,250,000"
+      },
+      "localPath": "/Users/nisar/Workspace/propertylens/ingestion/videos/D81OJRTOkLA.mp4",
+      "ragieDocumentId": "32ab2762-d5a4-4759-99af-35bbb8a63038"
+    },
+    {
+      "youtubeId": "DGOF6dJ0t9E",
+      "title": "What $799,000 Can Buy You in Surrey BC Real Estate Today!",
+      "description": "Explore what $799,000 can buy you in Surrey BC real estate today! Townhouse tour.",
+      "channelName": "Living In Vancouver BC",
+      "duration": 144,
+      "thumbnailUrl": "https://i.ytimg.com/vi/DGOF6dJ0t9E/hq720.jpg",
+      "metadata": {
+        "location": "Bear Creek, Surrey",
+        "beds": 3,
+        "baths": 2.5,
+        "price": "$799,000"
+      },
+      "localPath": "/Users/nisar/Workspace/propertylens/ingestion/videos/DGOF6dJ0t9E.mp4",
+      "ragieDocumentId": "23bb3be4-ee9f-49be-bae0-bd855ad287ce"
+    },
+    {
+      "youtubeId": "aLhcDVGvd_8",
+      "title": "Luxury house in Vancouver BC | Listing with Denise Mai PREC*",
+      "description": "Investment property with 3-bed, 3.5-bath main house and 2-bed, 1-bath suite.",
+      "channelName": "Denise Mai | Vancouver Realtor",
+      "duration": 216,
+      "thumbnailUrl": "https://i.ytimg.com/vi/aLhcDVGvd_8/hq720.jpg",
+      "metadata": {
+        "location": "Vancouver",
+        "beds": 3,
+        "baths": 3.5
+      },
+      "localPath": "/Users/nisar/Workspace/propertylens/ingestion/videos/aLhcDVGvd_8.mp4",
+      "ragieDocumentId": "9682355a-a96c-4153-b410-a4a074dab07b"
+    },
+    {
+      "youtubeId": "6joXmtuyJmg",
+      "title": "See what $1,998,000 will get you in Vancouver | Mai Real Estate Group",
+      "description": "Corner Lot 6 Bedroom 4 Bathroom House with 2 suites in the lower level.",
+      "channelName": "Denise Mai | Vancouver Realtor",
+      "duration": 141,
+      "thumbnailUrl": "https://i.ytimg.com/vi/6joXmtuyJmg/hq720.jpg",
+      "metadata": {
+        "location": "Vancouver",
+        "beds": 6,
+        "baths": 4,
+        "price": "$1,998,000"
+      },
+      "localPath": "/Users/nisar/Workspace/propertylens/ingestion/videos/6joXmtuyJmg.mp4",
+      "ragieDocumentId": "674a9d9c-b125-4d59-96ad-954bdafb9a9d"
+    },
+    {
+      "youtubeId": "pw3OPrdgeRw",
+      "title": "Walkthrough of 468 Garrett Street, New Westminster, BC | Andrew Hasman REMAX",
+      "description": "Charming 1921 home with 4 bedrooms (2 up, 2 main), upgraded kitchen and bathrooms, plus 2-bed suite.",
+      "channelName": "REMAX Andrew Hasman Realty",
+      "duration": 83,
+      "thumbnailUrl": "https://i.ytimg.com/vi/pw3OPrdgeRw/hq720.jpg",
+      "metadata": {
+        "location": "New Westminster",
+        "address": "468 Garrett Street",
+        "beds": 4,
+        "baths": 2
+      },
+      "localPath": "/Users/nisar/Workspace/propertylens/ingestion/videos/pw3OPrdgeRw.mp4",
+      "ragieDocumentId": "80f6954a-c267-4c7a-83ef-a7762a3aa03b"
+    },
+    {
+      "youtubeId": "26Ia4ow-fq0",
+      "title": "Is This The Best Waterfront Living In 2025?",
+      "description": "Sweeping Fraser River views, sunlight pouring through every window. Waterfront living tour.",
+      "channelName": "Living In Vancouver BC",
+      "duration": 166,
+      "thumbnailUrl": "https://i.ytimg.com/vi/26Ia4ow-fq0/hq720.jpg",
+      "metadata": {
+        "location": "New Westminster",
+        "beds": 2,
+        "baths": 2,
+        "sqft": 1300
+      },
+      "localPath": "/Users/nisar/Workspace/propertylens/ingestion/videos/26Ia4ow-fq0.mp4",
+      "ragieDocumentId": "7d3c213d-84cb-4ad0-ae9a-1631a28cc89d"
+    },
+    {
+      "youtubeId": "EGkcUdFDLfk",
+      "title": "View this $2.298M 5-bed home in Knight, Vancouver! | Listing with Denise Mai PREC*",
+      "description": "2826 sqft house with 5 bedrooms, 2-bed legal suite, and 537 sqft laneway house.",
+      "channelName": "Denise Mai | Vancouver Realtor",
+      "duration": 215,
+      "thumbnailUrl": "https://i.ytimg.com/vi/EGkcUdFDLfk/hq720.jpg",
+      "metadata": {
+        "location": "Knight, Vancouver",
+        "beds": 5,
+        "baths": 3,
+        "sqft": 2826,
+        "price": "$2,298,000",
+        "address": "5516 Lanark Street"
+      },
+      "localPath": "/Users/nisar/Workspace/propertylens/ingestion/videos/EGkcUdFDLfk.mp4",
+      "ragieDocumentId": "dbabc7b2-2b1c-4bea-aaf2-8ef7f56b0342"
+    },
+    {
+      "youtubeId": "-Cc_DeNyVGM",
+      "title": "Introduction to Walk Through 360 Virtual Tour",
+      "description": "360 Virtual Tour service showcase for Real Estate industry in Vancouver.",
+      "channelName": "Ivan Chan Photography - Vancouver BC, Canada",
+      "duration": 127,
+      "thumbnailUrl": "https://i.ytimg.com/vi/-Cc_DeNyVGM/hq720.jpg",
+      "metadata": {
+        "location": "Vancouver"
+      },
+      "localPath": "/Users/nisar/Workspace/propertylens/ingestion/videos/-Cc_DeNyVGM.mp4",
+      "ragieDocumentId": "cd825321-bb9c-4398-851f-27781513a9ac"
+    },
+    {
+      "youtubeId": "t0CuUyaJSWA",
+      "title": "107 - 2330 Maple Street Vancouver BC | Real Estate Home Tour",
+      "description": "Stylish one bedroom suite in Kits. Half block to Greenway, 7 blocks to beach. Wrap around patio.",
+      "channelName": "The O'Brien Group",
+      "duration": 83,
+      "thumbnailUrl": "https://i.ytimg.com/vi/t0CuUyaJSWA/hq720.jpg",
+      "metadata": {
+        "location": "Kitsilano, Vancouver",
+        "address": "107 - 2330 Maple Street",
+        "beds": 1,
+        "baths": 1
+      },
+      "localPath": "/Users/nisar/Workspace/propertylens/ingestion/videos/t0CuUyaJSWA.mp4",
+      "ragieDocumentId": "4481ef80-835e-400b-9acb-8fc9a38946e4"
+    },
+    {
+      "youtubeId": "xcvcEd23pes",
+      "title": "Vancouver Home Tour with Ocean VIEWS! | 2801-1308 Hornby St, Vancouver",
+      "description": "Ocean views of English Bay, mountains and city. 2 bedrooms, 2 bathrooms and a den.",
+      "channelName": "Erin Price Emery",
+      "duration": 82,
+      "thumbnailUrl": "https://i.ytimg.com/vi/xcvcEd23pes/hq720.jpg",
+      "metadata": {
+        "location": "Downtown Vancouver",
+        "beds": 2,
+        "baths": 2,
+        "address": "2801 - 1308 Hornby Street"
+      },
+      "localPath": "/Users/nisar/Workspace/propertylens/ingestion/videos/xcvcEd23pes.mp4",
+      "ragieDocumentId": "3f557508-7bab-423e-850f-2c12adf870c1"
+    }
+  ],
+  "lastUpdated": "2025-11-19T06:36:38.688Z"
+}

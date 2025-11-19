@@ -10,6 +10,8 @@ const RAGIE_API_KEY = process.env.RAGIE_API_KEY || "";
 
 class SearchService {
   private client: IRagieClient;
+  private searchCache: Map<string, { results: SearchResult[], timestamp: number }> = new Map();
+  private readonly CACHE_TTL = 5 * 60 * 1000; // 5 minutes
 
   constructor() {
     // Dependency Injection Point
@@ -45,13 +47,20 @@ class SearchService {
   }
 
   async searchProperties(query: string): Promise<SearchResult[]> {
+    // Check cache first
+    const cached = this.searchCache.get(query);
+    if (cached && Date.now() - cached.timestamp < this.CACHE_TTL) {
+      console.log('[Search] Using cached results for:', query);
+      return cached.results;
+    }
+
     const retrieval = await this.client.retrievals.retrieve({
       query: query,
       top_k: 3,
       max_chunks_per_document: 1
     });
 
-    return retrieval.scored_chunks.map(chunk => {
+    const results = retrieval.scored_chunks.map(chunk => {
       const meta = chunk.document_metadata || chunk.metadata || {};
       const chunkMeta = chunk.metadata || {};
       
@@ -105,6 +114,10 @@ class SearchService {
         selfText: chunk.text
       };
     });
+
+    // Cache the results
+    this.searchCache.set(query, { results, timestamp: Date.now() });
+    return results;
   }
 
   async getPropertyDetails(id: string): Promise<VideoData | null> {
