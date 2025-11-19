@@ -56,11 +56,18 @@ class SearchService {
 
     const retrieval = await this.client.retrievals.retrieve({
       query: query,
-      top_k: 3,
-      max_chunks_per_document: 1
+      top_k: 6,
+      max_chunks_per_document: 1,
+      rerank: true  // LLM-based reranking for better precision
     });
 
-    const results = retrieval.scored_chunks.map(chunk => {
+    // Filter out low-relevance results
+    const MIN_SCORE_THRESHOLD = 0.08;
+    const relevantChunks = retrieval.scored_chunks.filter(
+      chunk => chunk.score >= MIN_SCORE_THRESHOLD
+    );
+
+    const results = relevantChunks.map(chunk => {
       const meta = chunk.document_metadata || chunk.metadata || {};
       const chunkMeta = chunk.metadata || {};
       
