@@ -31,6 +31,7 @@ export interface SearchResult {
   visualMatchReason: string;
   thumbnailUrl: string;
   streamUrl?: string;
+  selfText?: string;
 }
 
 export interface VideoData {

@@ -24,7 +24,8 @@ const ResultsView: React.FC = () => {
         // Use YouTube when available, skip Ragie stream
         streamUrl: result.property.youtubeId ? undefined : result.streamUrl,
         startTime: result.timestampSeconds,
-        endTime: result.timestampSeconds + result.durationSeconds
+        endTime: result.timestampSeconds + result.durationSeconds,
+        selfText: result.selfText
       }
     });
   };

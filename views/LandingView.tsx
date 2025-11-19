@@ -65,8 +65,8 @@ const LandingView: React.FC = () => {
         {/* Hero Section */}
         <div className="py-10 md:py-16 text-center max-w-4xl mx-auto animate-fade-in">
           <h1 className="font-display text-4xl md:text-5xl lg:text-6xl text-charcoal mb-4 leading-[0.9] tracking-tight font-bold">
-            FIND YOUR SPACE
-            <span className="text-terracotta font-medium ml-2 decoration-clone italic">by describing what you see.</span>
+            FIND YOUR DREAM HOME
+            <span className="text-terracotta font-medium ml-2 decoration-clone italic">by describing what you want to see.</span>
           </h1>
 
           <p className="text-olive text-sm md:text-base mb-8 max-w-xl mx-auto font-sans leading-relaxed font-medium">

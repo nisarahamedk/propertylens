@@ -34,9 +34,14 @@ const ResultCard: React.FC<ResultCardProps> = ({ result, onWatch }) => {
           <span className="text-olive text-xs font-mono tracking-wide uppercase">{result.property.address}</span>
         </div>
 
-        {/* Score */}
-        <div className="shrink-0 text-olive text-xs font-mono font-bold">
-          {Math.round(result.score * 100)}%
+        {/* Relevance Score */}
+        <div className="shrink-0 text-right">
+          <div className="text-terracotta text-sm font-mono font-bold">
+            {Math.round(result.score * 100)}%
+          </div>
+          <div className="text-olive/60 text-[10px] font-mono uppercase tracking-wider">
+            Match
+          </div>
         </div>
 
         {/* Duration */}

@@ -1,15 +1,11 @@
 
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate, useLocation } from 'react-router-dom';
+import ReactMarkdown from 'react-markdown';
 import VideoPlayer from '../components/VideoPlayer';
-import { Property, VideoData } from '../types';
-import { getPropertyDetails, generateGroundedResponse, getRecentProperties } from '../services/searchService';
-import { IconArrowLeft, IconSearch } from '../components/ui/Icons';
-
-interface Message {
-  role: 'user' | 'assistant';
-  text: string;
-}
+import { Property } from '../types';
+import { getRecentProperties } from '../services/searchService';
+import { IconArrowLeft } from '../components/ui/Icons';
 
 const PlayerView: React.FC = () => {
   const { documentId, chunkId } = useParams<{ documentId: string; chunkId: string }>();
@@ -20,6 +16,7 @@ const PlayerView: React.FC = () => {
   const passedStreamUrl = locationState?.streamUrl;
   const passedStartTime = locationState?.startTime || 0;
   const passedEndTime = locationState?.endTime || 0;
+  const passedSelfText = locationState?.selfText || '';
 
   const [property, setProperty] = useState<Property | null>(null);
   const [streamUrl, setStreamUrl] = useState<string>('');
@@ -27,12 +24,6 @@ const PlayerView: React.FC = () => {
   const [endTime, setEndTime] = useState(passedEndTime);
   const [isLoadingProperty, setIsLoadingProperty] = useState(true);
   const [currentTime, setCurrentTime] = useState(0);
-  const [followUpQuery, setFollowUpQuery] = useState("");
-  const [chatMessages, setChatMessages] = useState<Message[]>([]);
-  const [isTyping, setIsTyping] = useState(false);
-  const [videoData, setVideoData] = useState<VideoData | null>(null);
-  const [isLoadingDetails, setIsLoadingDetails] = useState(true);
-  const chatEndRef = useRef<HTMLDivElement>(null);
 
   // Load property data from documentId
   useEffect(() => {
@@ -68,60 +59,10 @@ const PlayerView: React.FC = () => {
     loadProperty();
   }, [documentId, passedProperty, passedStreamUrl]);
 
-  // Load video details (transcripts, moments)
-  useEffect(() => {
-    const loadDetails = async () => {
-      if (!documentId) return;
-      setIsLoadingDetails(true);
-      try {
-        const data = await getPropertyDetails(documentId);
-        setVideoData(data);
-      } catch (e) {
-        console.error("Failed to load property details", e);
-      } finally {
-        setIsLoadingDetails(false);
-      }
-    };
-    loadDetails();
-  }, [documentId]);
-
   const onBack = () => navigate(-1);
-
-  const otherMoments = videoData ? videoData.moments : [];
 
   const handleTimeUpdate = (time: number) => {
     setCurrentTime(time);
-  };
-
-  
-  // Scroll to bottom of chat when new messages arrive
-  useEffect(() => {
-    if (chatEndRef.current) {
-      chatEndRef.current.scrollIntoView({ behavior: 'smooth' });
-    }
-  }, [chatMessages, isTyping]);
-
-  const handleFollowUpSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!followUpQuery.trim()) return;
-
-    const userMsg = followUpQuery;
-    setFollowUpQuery("");
-    setChatMessages(prev => [...prev, { role: 'user', text: userMsg }]);
-    setIsTyping(true);
-
-    // Prepare Context
-    const description = property?.description || '';
-    const fullContext = `PROPERTY DESCRIPTION: ${description}`;
-
-    try {
-      const responseText = await generateGroundedResponse(userMsg, fullContext);
-      setChatMessages(prev => [...prev, { role: 'assistant', text: responseText }]);
-    } catch (error) {
-      setChatMessages(prev => [...prev, { role: 'assistant', text: "I'm having trouble connecting to the service right now." }]);
-    } finally {
-      setIsTyping(false);
-    }
   };
 
   // Loading state
@@ -193,109 +134,44 @@ const PlayerView: React.FC = () => {
                </div>
              </div>
 
-             <p className="text-charcoal text-lg leading-relaxed max-w-3xl font-sans font-medium text-opacity-80">
-               {property.description}
-             </p>
-
-             {/* Key Moments */}
-             <div className="mt-12">
-                <div className="flex items-center gap-3 mb-5">
-                  <div className="w-1.5 h-6 bg-terracotta"></div>
-                  <h3 className="text-xs font-bold text-charcoal font-mono uppercase tracking-widest">Key Moments</h3>
-                </div>
-                
-                {isLoadingDetails ? (
-                  <div className="flex gap-4 overflow-x-auto hide-scrollbar pb-4">
-                    {[1,2,3].map(i => (
-                       <div key={i} className="w-48 h-24 bg-clay/20 border-2 border-charcoal/10 animate-pulse shrink-0"></div>
-                    ))}
-                  </div>
-                ) : otherMoments.length > 0 ? (
-                  <div className="flex gap-4 overflow-x-auto hide-scrollbar pb-4">
-                    {otherMoments.map((moment) => (
-                      <button
-                        key={moment.id}
-                        onClick={() => handleTranscriptClick(moment.timestampSeconds)}
-                        className={`group flex-shrink-0 px-5 py-4 border-2 transition-all w-48 text-left relative
-                          ${currentTime >= moment.timestampSeconds && currentTime < moment.timestampSeconds + 20 
-                            ? 'bg-warmWhite text-charcoal border-charcoal shadow-neobrutal translate-x-[-2px] translate-y-[-2px]' 
-                            : 'bg-warmWhite border-charcoal/20 text-olive hover:border-charcoal hover:shadow-neobrutal-sm'}`}
-                      >
-                        <span className={`block text-[10px] font-mono font-bold uppercase mb-2 ${currentTime >= moment.timestampSeconds && currentTime < moment.timestampSeconds + 20 ? 'text-terracotta' : 'text-olive/60'}`}>
-                          {moment.timestamp}
-                        </span>
-                        <span className="block font-display text-xl font-bold leading-none">{moment.label}</span>
-                      </button>
-                    ))}
-                  </div>
-                ) : (
-                  <p className="text-sm font-mono text-olive/60 italic">No key moments indexed for this property.</p>
-                )}
-             </div>
+             {property.description && (
+               <p className="text-charcoal text-lg leading-relaxed max-w-3xl font-sans font-medium text-opacity-80">
+                 {property.description}
+               </p>
+             )}
           </div>
         </div>
 
-        {/* Right Column: Chat */}
+        {/* Right Column: Scene Description */}
         <div className="w-full lg:w-[400px] shrink-0 flex flex-col h-[600px] lg:h-[calc(100vh-140px)] lg:sticky lg:top-24 border-2 border-charcoal shadow-neobrutal bg-charcoal">
-
-          {/* Chat / Follow-up Section */}
-          <div className="flex-1 flex flex-col">
-            
-            {/* Chat History - Only visible if there are messages */}
-            {chatMessages.length > 0 && (
-              <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-charcoal border-b border-white/10 custom-scrollbar">
-                {chatMessages.map((msg, idx) => (
-                  <div key={idx} className={`flex flex-col ${msg.role === 'user' ? 'items-end' : 'items-start'} animate-fade-in`}>
-                    <div className={`max-w-[90%] p-3 border-2 ${
-                      msg.role === 'user' 
-                        ? 'bg-terracotta border-terracotta text-white rounded-tr-none rounded-lg' 
-                        : 'bg-warmWhite border-warmWhite text-charcoal rounded-tl-none rounded-lg'
-                    }`}>
-                      <p className="text-sm font-sans font-medium leading-snug">{msg.text}</p>
-                    </div>
-                    <span className="text-[10px] font-mono text-white/40 mt-1 uppercase tracking-wider">
-                      {msg.role === 'user' ? 'You' : 'Assistant'}
-                    </span>
-                  </div>
-                ))}
-                {isTyping && (
-                  <div className="flex items-start animate-fade-in">
-                    <div className="bg-warmWhite/10 border border-warmWhite/20 p-3 rounded-lg rounded-tl-none">
-                      <div className="flex gap-1">
-                        <div className="w-1.5 h-1.5 bg-white/60 rounded-full animate-bounce"></div>
-                        <div className="w-1.5 h-1.5 bg-white/60 rounded-full animate-bounce delay-100"></div>
-                        <div className="w-1.5 h-1.5 bg-white/60 rounded-full animate-bounce delay-200"></div>
-                      </div>
-                    </div>
-                  </div>
-                )}
-                <div ref={chatEndRef} />
-              </div>
-            )}
-
-            {/* Input Area */}
-            <div className="p-5 shrink-0">
-              <h3 className="font-display text-2xl font-bold mb-1 text-warmWhite uppercase tracking-tight">Ask follow-up</h3>
-              <p className="text-xs font-mono text-warmWhite/60 mb-4">Ask about specific details in this video.</p>
-              <form onSubmit={handleFollowUpSubmit} className="relative z-10 group">
-                <input 
-                  type="text"
-                  value={followUpQuery}
-                  onChange={(e) => setFollowUpQuery(e.target.value)}
-                  placeholder="Does this house have a pool?"
-                  className="w-full h-12 pl-4 pr-12 rounded-none bg-warmWhite/10 border-2 border-warmWhite/20 text-warmWhite placeholder-warmWhite/30 focus:outline-none focus:border-terracotta focus:bg-warmWhite/20 transition-all text-sm font-mono"
-                />
-                <button 
-                  type="submit" 
-                  disabled={!followUpQuery.trim()}
-                  className="absolute right-2 top-1/2 -translate-y-1/2 p-2 text-warmWhite/40 hover:text-terracotta transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
-                >
-                  <IconSearch className="w-5 h-5" />
-                </button>
-              </form>
+          <div className="p-5 border-b border-white/10">
+            <div className="flex items-center gap-3 mb-1">
+              <div className="w-1.5 h-6 bg-terracotta"></div>
+              <h3 className="font-display text-2xl font-bold text-warmWhite uppercase tracking-tight">Scene</h3>
             </div>
+            <p className="text-xs font-mono text-warmWhite/60 ml-5">AI-generated description</p>
           </div>
 
+          <div className="flex-1 overflow-y-auto p-5 custom-scrollbar">
+            {passedSelfText ? (
+              <div className="text-warmWhite/90 text-sm font-sans leading-relaxed prose prose-invert prose-sm max-w-none prose-p:my-2 prose-headings:text-warmWhite prose-strong:text-warmWhite prose-li:my-0.5">
+                <ReactMarkdown>
+                  {(() => {
+                    try {
+                      const parsed = JSON.parse(passedSelfText);
+                      return parsed.video_description || passedSelfText;
+                    } catch {
+                      return passedSelfText;
+                    }
+                  })()}
+                </ReactMarkdown>
+              </div>
+            ) : (
+              <p className="text-warmWhite/40 text-sm font-mono italic">
+                No description available for this segment.
+              </p>
+            )}
+          </div>
         </div>
       </main>
     </div>

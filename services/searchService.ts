@@ -32,7 +32,7 @@ class SearchService {
         id: doc.id,
         ragieId: doc.id,
         name: (meta.location || meta.title || doc.name || "Untitled").replace(/_/g, ' '),
-        address: meta.address || "Unknown Location",
+        address: meta.address || meta.location || doc.name?.replace(/_/g, ' ') || "",
         beds: meta.bed || meta.beds || 0,
         baths: meta.bath || meta.baths || 0,
         sqft: meta.sqft || 0,
@@ -59,12 +59,12 @@ class SearchService {
       const property: Property = {
         id: chunk.document_id,
         name: (meta.location || chunk.document_name || "Unknown").replace(/_/g, ' '),
-        address: meta.address || "Unknown Location",
+        address: meta.address || meta.location || chunk.document_name?.replace(/_/g, ' ') || "",
         beds: meta.bed || meta.beds || 0,
         baths: meta.bath || meta.baths || 0,
         sqft: meta.sqft || 0,
         thumbnailUrl: meta.thumbnailUrl || "https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=800&q=80",
-        description: "Search result",
+        description: meta.description || "",
         videoUrl: meta.videoUrl,
         youtubeId: meta.youtubeId
       };
@@ -101,7 +101,8 @@ class SearchService {
         transcriptSnippet: this.parseSnippet(chunk.text),
         visualMatchReason: chunkMeta.visual_reasoning || `Semantic Match (${Math.round(chunk.score * 100)}%)`,
         thumbnailUrl: property.thumbnailUrl,
-        streamUrl
+        streamUrl,
+        selfText: chunk.text
       };
     });
   }
