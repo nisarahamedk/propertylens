@@ -1,0 +1,5 @@
+{
+  "name": "PropertyLens",
+  "description": "A multi-modal property video search demo allowing users to search through property walkthroughs using natural language.",
+  "requestFramePermissions": []
+}

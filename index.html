@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PropertyLens</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              cream: '#F5F1EB',
+              olive: '#3D4A3C',
+              terracotta: '#C67B5C',
+              sage: '#8B9A82',
+              clay: '#D4C4B5',
+              sand: '#E8E0D5',
+              charcoal: '#1A261B', // Darkened slightly for better contrast
+              warmWhite: '#FDFCFA',
+            },
+            fontFamily: {
+              display: ['"Space Grotesk"', 'sans-serif'],
+              sans: ['"Work Sans"', 'sans-serif'],
+              mono: ['"Space Mono"', 'monospace'],
+            },
+            animation: {
+              'fade-in': 'fadeIn 0.4s ease-out forwards',
+              'slide-up': 'slideUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+              'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+              'shimmer': 'shimmer 2s infinite linear',
+            },
+            keyframes: {
+              fadeIn: {
+                '0%': { opacity: '0' },
+                '100%': { opacity: '1' },
+              },
+              slideUp: {
+                '0%': { opacity: '0', transform: 'translateY(20px)' },
+                '100%': { opacity: '1', transform: 'translateY(0)' },
+              },
+              shimmer: {
+                '0%': { transform: 'translateX(-100%)' },
+                '100%': { transform: 'translateX(100%)' }
+              }
+            },
+            boxShadow: {
+              'soft': '0 4px 20px -2px rgba(61, 74, 60, 0.08)',
+              'neobrutal': '4px 4px 0 0 #1A261B',
+              'neobrutal-sm': '2px 2px 0 0 #1A261B',
+              'neobrutal-lg': '8px 8px 0 0 #1A261B',
+              'neobrutal-hover': '6px 6px 0 0 #C67B5C',
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      body {
+        background-color: #F5F1EB;
+        color: #1A261B;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+      /* Custom scrollbar for horizontal lists */
+      .hide-scrollbar::-webkit-scrollbar {
+        display: none;
+      }
+      .hide-scrollbar {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+      
+      /* Smooth selection color */
+      ::selection {
+        background-color: #C67B5C; 
+        color: #FDFCFA;
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "ragie": "https://aistudiocdn.com/ragie@^1.14.0"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+  <body>
+    <div id="root"></div>
+  <script type="module" src="/index.tsx"></script>
+</body>
+</html>
