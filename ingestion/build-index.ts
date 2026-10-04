@@ -308,6 +308,7 @@ async function main() {
   const tmp = fs.mkdtempSync(path.join(os.tmpdir(), 'propertylens-'));
   const properties: Property[] = [];
   const vectors: Record<string, { v: string; t: string }> = {};
+  const failed: string[] = [];
 
   for (const [i, video] of videos.entries()) {
     console.log(`[${i + 1}/${videos.length}] ${video.title}`);
@@ -321,6 +322,7 @@ async function main() {
         vectors[s.id] = { v: c.v, t: c.t };
       }
     } catch (e) {
+      failed.push(video.youtubeId);
       console.error(`  failed: ${(e as Error).message}`);
     }
   }
@@ -356,6 +358,11 @@ async function main() {
 
   const segCount = allProperties.reduce((n, p) => n + p.segments.length, 0);
   console.log(`\nWrote ${allProperties.length} properties and ${segCount} scenes to ${CONFIG.DATA_DIR}`);
+  if (failed.length) {
+    // Finished windows are cached, so re-running the same command resumes these.
+    console.error(`${failed.length} video(s) failed: ${failed.join(', ')}. Re-run to resume them.`);
+    process.exitCode = 1;
+  }
 }
 
 if (process.argv[1] && path.resolve(process.argv[1]) === path.resolve(new URL(import.meta.url).pathname)) {
