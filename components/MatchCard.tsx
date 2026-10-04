@@ -50,7 +50,7 @@ const MomentTile: React.FC<{
     <div className="relative aspect-video bg-sand overflow-hidden border-b-2 border-charcoal">
       <img src={moment.frame || fallbackImage} alt="" loading="lazy" className="w-full h-full object-cover" />
       <span className="absolute left-1.5 top-1.5 bg-charcoal text-warmWhite text-[10px] font-mono font-bold px-1.5 py-0.5 uppercase">
-        {ROOM_LABELS[moment.room]}
+        {moment.label ?? ROOM_LABELS[moment.room]}
       </span>
       <span className="absolute right-1.5 bottom-1.5 bg-terracotta text-white text-[11px] font-mono font-bold px-1.5 py-0.5 border border-charcoal">
         {formatTime(moment.start)}
