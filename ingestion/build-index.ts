@@ -208,7 +208,8 @@ function baseProperty(video: VideoManifestEntry, duration: number): Property {
   return {
     id: video.youtubeId,
     youtubeId: video.youtubeId,
-    name: (m.location || video.title).replace(/_/g, ' '),
+    // The title is a last resort: it is usually a sales headline, not a place.
+    name: (m.location || m.address || video.title).replace(/_/g, ' '),
     address: m.address || location,
     location,
     beds: m.beds || 0,
