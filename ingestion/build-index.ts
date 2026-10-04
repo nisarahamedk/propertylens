@@ -24,7 +24,7 @@ import { execFileSync } from 'child_process';
 import { CONFIG, type VideoManifest, type VideoManifestEntry } from './config';
 import { EMBEDDING_DIMS, MODELS, SEGMENT } from '../server/config';
 import { documentText, embed, generateJson } from '../server/gemini';
-import type { Catalog, Property, Room, Segment } from '../types';
+import type { Catalog, Chapter, Property, Room, Segment } from '../types';
 
 const ROOMS: Room[] = [
   'exterior', 'entry', 'living', 'dining', 'kitchen', 'bedroom', 'bathroom', 'office',
@@ -38,6 +38,7 @@ interface CachedSegment {
   transcript: string;
   v: string; // base64 float32 clip embedding
   t: string; // base64 float32 text embedding
+  frameAt?: number; // second the saved still was taken at
 }
 
 interface VideoCache {
@@ -45,6 +46,7 @@ interface VideoCache {
   available?: boolean;
   segments: Record<string, CachedSegment>; // keyed by start second
   summary?: { summary: string; highlights: string[] };
+  chapters?: Chapter[];
 }
 
 // ---------- args ----------
@@ -140,8 +142,18 @@ export function cutClip(file: string, start: number, end: number, outDir: string
   return out;
 }
 
-export function extractFrame(file: string, at: number, out: string) {
-  if (fs.existsSync(out)) return;
+/** The whole tour at 240p and 2 fps: small enough to send in one request. */
+function cutWhole(file: string, outDir: string): string {
+  const out = path.join(outDir, `${path.basename(file, '.mp4')}_whole.mp4`);
+  execFileSync('ffmpeg', [
+    '-y', '-loglevel', 'error', '-i', file, '-vf', 'scale=-2:240,fps=2', '-c:v', 'libx264', '-preset', 'veryfast',
+    '-crf', '34', '-c:a', 'aac', '-ac', '1', '-b:a', '32k', '-movflags', '+faststart', out,
+  ]);
+  return out;
+}
+
+export function extractFrame(file: string, at: number, out: string, overwrite = false) {
+  if (fs.existsSync(out) && !overwrite) return;
   fs.mkdirSync(path.dirname(out), { recursive: true });
   execFileSync('ffmpeg', [
     '-y', '-loglevel', 'error', '-ss', String(at), '-i', file, '-frames:v', '1',
@@ -181,6 +193,90 @@ async function describeClip(clipB64: string, video: VideoManifestEntry) {
     apiKey,
     { schema: DESCRIBE_SCHEMA, temperature: 0.1 },
   );
+}
+
+const CHAPTERS_SCHEMA = {
+  type: 'object',
+  properties: {
+    chapters: {
+      type: 'array',
+      items: {
+        type: 'object',
+        properties: {
+          start: { type: 'string', description: 'M:SS when this space first appears on screen' },
+          room: { type: 'string', enum: ROOMS },
+          label: { type: 'string', description: '1 to 3 words, e.g. "Kitchen", "Primary bedroom", "Ensuite", "Balcony"' },
+        },
+        required: ['start', 'room', 'label'],
+      },
+    },
+  },
+  required: ['chapters'],
+};
+
+const parseStamp = (s: string) => {
+  const parts = String(s).trim().split(':').map(Number);
+  return parts.some(Number.isNaN) ? NaN : parts.reduce((acc, n) => acc * 60 + n, 0);
+};
+
+/** Turns the model's chapter starts into a gap-free timeline from 0 to the end of the video. */
+export function normalizeChapters(raw: { start: string; room: string; label: string }[], duration: number): Chapter[] {
+  const items = raw
+    .map(c => ({ start: parseStamp(c.start), room: (ROOMS.includes(c.room as Room) ? c.room : 'other') as Room, label: c.label.trim() || c.room }))
+    .filter(c => c.start >= 0 && c.start < duration)
+    .sort((a, b) => a.start - b.start);
+  const out: Chapter[] = [];
+  for (const c of items) {
+    const last = out[out.length - 1];
+    // Same space twice in a row, or a blip under 2s: extend the previous chapter instead.
+    if (last && ((last.room === c.room && last.label.toLowerCase() === c.label.toLowerCase()) || c.start - last.start < 2)) continue;
+    out.push({ ...c, end: duration });
+  }
+  if (!out.length) return [];
+  out[0].start = 0;
+  for (let i = 0; i < out.length - 1; i++) out[i].end = out[i + 1].start;
+  out[out.length - 1].end = Math.round(duration * 10) / 10;
+  return out;
+}
+
+async function describeChapters(file: string, duration: number, tmp: string): Promise<Chapter[]> {
+  const whole = cutWhole(file, tmp);
+  try {
+    const out = await generateJson<{ chapters: { start: string; room: string; label: string }[] }>(
+      [{
+        role: 'user',
+        parts: [
+          { inlineData: { mimeType: 'video/mp4', data: fs.readFileSync(whole).toString('base64') } },
+          { text: `This is a ${Math.round(duration)}-second real estate tour video. List every change of space in order: each time the camera moves into a different room or area, start a new chapter at the moment it first appears. Use "backyard" for balconies, decks, patios and yards, "amenity" only for shared building facilities, and "other" for title cards, logos, agent talking heads and maps. Be precise with timestamps; chapters are often only 5 to 15 seconds long. Do not merge different rooms.` },
+        ],
+      }],
+      apiKey,
+      { schema: CHAPTERS_SCHEMA, temperature: 0 },
+    );
+    return normalizeChapters(out.chapters ?? [], duration);
+  } finally {
+    fs.rmSync(whole, { force: true });
+  }
+}
+
+/** The chapter covering most of [start, end] (rooms before "other"), and the middle of that overlap, where its still is taken. */
+export function mainChapter(chapters: Chapter[], start: number, end: number): { chapter: Chapter; at: number } | null {
+  let best: { chapter: Chapter; at: number; overlap: number } | null = null;
+  for (const c of chapters) {
+    const from = Math.max(start, c.start), to = Math.min(end, c.end);
+    // Title cards, logos and talking heads make poor thumbnails; any real room wins.
+    const overlap = (to - from) * (c.room === 'other' ? 0.25 : 1);
+    if (overlap > (best?.overlap ?? 0)) best = { chapter: c, at: Math.round((from + to) / 2 * 10) / 10, overlap };
+  }
+  return best && { chapter: best.chapter, at: best.at };
+}
+
+/** Labels of the chapters a window passes through (at least 3s on screen), in order. */
+export function chaptersIn(chapters: Chapter[], start: number, end: number): string[] | undefined {
+  const labels = chapters
+    .filter(c => c.room !== 'other' && Math.min(end, c.end) - Math.max(start, c.start) >= 3)
+    .map(c => c.label);
+  return labels.length ? labels : undefined;
 }
 
 async function summarize(property: Property) {
@@ -260,11 +356,22 @@ async function indexVideo(video: VideoManifestEntry, tmp: string): Promise<Prope
       process.stdout.write('.');
     });
     if (todo.length) process.stdout.write('\n');
+
+    // Rooms change every 5-15s in most tours, far more often than the 30s search
+    // windows, so the room timeline comes from one pass over the whole video.
+    if (!cache.chapters) {
+      cache.chapters = await describeChapters(file, cache.duration, tmp);
+      writeCache(id, cache);
+      console.log(`  ${cache.chapters.length} chapters`);
+    }
   } else if (cache.available === false) {
     return null;
   }
 
   const property = baseProperty(video, cache.duration ?? video.duration);
+  const chapters = cache.chapters ?? [];
+  const videoFile = path.join(CONFIG.VIDEOS_DIR, `${id}.mp4`);
+  let framesMoved = false;
   property.segments = Object.keys(cache.segments)
     .map(Number)
     .sort((a, b) => a - b)
@@ -272,17 +379,29 @@ async function indexVideo(video: VideoManifestEntry, tmp: string): Promise<Prope
       const c = cache.segments[start];
       const end = Math.min(property.duration, start + SEGMENT.length);
       const frame = `${id}_${pad(start)}.jpg`;
+      // Label a window by the room it mostly shows, and take its still inside that
+      // room, so the thumbnail, the label and the timeline agree.
+      const main = mainChapter(chapters, start, end);
+      if (main && c.frameAt !== main.at && fs.existsSync(videoFile)) {
+        extractFrame(videoFile, main.at, path.join(CONFIG.FRAMES_DIR, frame), true);
+        c.frameAt = main.at;
+        framesMoved = true;
+      }
       return {
         id: `${id}:${pad(start)}`,
         start,
         end,
-        room: c.room,
+        room: main?.chapter.room ?? c.room,
+        rooms: chaptersIn(chapters, start, end),
         caption: c.caption,
         features: c.features,
         transcript: c.transcript,
         frame: fs.existsSync(path.join(CONFIG.FRAMES_DIR, frame)) ? `/frames/${frame}` : undefined,
       };
     });
+
+  if (framesMoved) writeCache(id, cache);
+  if (chapters.length) property.chapters = chapters;
 
   if (property.segments.length && !cache.summary && !CATALOG_ONLY) {
     cache.summary = await summarize(property);

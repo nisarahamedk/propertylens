@@ -81,6 +81,7 @@ const PlayerView: React.FC = () => {
             <VideoPlayer ref={playerRef} youtubeId={property.youtubeId} startTime={startAt} onTimeUpdate={setCurrentTime} />
           </div>
           <ChapterTimeline
+            chapters={property.chapters}
             segments={property.segments}
             duration={property.duration}
             currentTime={currentTime}

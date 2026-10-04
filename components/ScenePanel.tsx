@@ -58,8 +58,8 @@ const ScenePanel: React.FC<Props> = ({ segments, currentTime, matchedIds, terms,
                 className="w-24 self-start aspect-video object-cover border border-charcoal shrink-0"
               />
               <span className="min-w-0 flex-1">
-                <span className={`flex items-center gap-2 text-[10px] font-mono font-bold uppercase tracking-wider ${active ? 'text-olive' : 'text-warmWhite/60'}`}>
-                  {formatTime(s.start)} · {ROOM_LABELS[s.room]}
+                <span className={`flex flex-wrap items-center gap-x-2 text-[10px] leading-relaxed font-mono font-bold uppercase tracking-wider ${active ? 'text-olive' : 'text-warmWhite/60'}`}>
+                  <span>{formatTime(s.start)} · {s.rooms?.join(' → ') ?? ROOM_LABELS[s.room]}</span>
                   {matched && <span className="bg-terracotta text-white px-1">Match</span>}
                 </span>
                 <span className={`text-sm leading-snug mt-0.5 line-clamp-3 ${active ? 'text-charcoal' : 'text-warmWhite/85'}`}>

@@ -1,14 +1,8 @@
 import React, { useMemo } from 'react';
-import type { Moment, Segment } from '../types';
+import type { Chapter, Moment, Segment } from '../types';
 import { formatTime, ROOM_LABELS, ROOM_ZONE, ZONE_STYLE, type Zone } from '../lib/format';
 
-interface Chapter {
-  room: Segment['room'];
-  start: number;
-  end: number;
-}
-
-/** Merges consecutive windows of the same room into chapters, cutting overlaps at the midpoint. */
+/** Fallback for tours indexed before chapters existed: merges 30s windows of the same room. */
 export function toChapters(segments: Segment[], duration: number): Chapter[] {
   const chapters: Chapter[] = [];
   segments.forEach((s, i) => {
@@ -17,12 +11,13 @@ export function toChapters(segments: Segment[], duration: number): Chapter[] {
     const start = chapters.length ? chapters[chapters.length - 1].end : 0;
     const last = chapters[chapters.length - 1];
     if (last && last.room === s.room) last.end = end;
-    else chapters.push({ room: s.room, start, end });
+    else chapters.push({ room: s.room, start, end, label: ROOM_LABELS[s.room] });
   });
   return chapters;
 }
 
 interface Props {
+  chapters?: Chapter[];
   segments: Segment[];
   duration: number;
   currentTime: number;
@@ -30,8 +25,9 @@ interface Props {
   onSeek: (t: number) => void;
 }
 
-const ChapterTimeline: React.FC<Props> = ({ segments, duration, currentTime, matches = [], onSeek }) => {
-  const chapters = useMemo(() => toChapters(segments, duration), [segments, duration]);
+const ChapterTimeline: React.FC<Props> = ({ chapters: timed, segments, duration, currentTime, matches = [], onSeek }) => {
+  const chapters = useMemo(() => (timed?.length ? timed : toChapters(segments, duration)), [timed, segments, duration]);
+  const current = chapters.find(c => currentTime >= c.start && currentTime < c.end) ?? chapters[chapters.length - 1];
   const zones = useMemo(() => [...new Set(chapters.map(c => ROOM_ZONE[c.room]))] as Zone[], [chapters]);
   if (!chapters.length || !duration) return null;
   const pct = (t: number) => `${Math.min(100, (t / duration) * 100)}%`;
@@ -61,9 +57,10 @@ const ChapterTimeline: React.FC<Props> = ({ segments, duration, currentTime, mat
                 onClick={() => onSeek(c.start)}
                 className={`${z.bg} ${z.text} h-full border-r border-charcoal/40 last:border-r-0 text-[10px] font-mono font-bold uppercase overflow-hidden whitespace-nowrap px-1 hover:brightness-110`}
                 style={{ width: pct(c.end - c.start) }}
-                title={`${ROOM_LABELS[c.room]} · ${formatTime(c.start)}`}
+                title={`${c.label} · ${formatTime(c.start)}`}
+                aria-label={`Jump to ${c.label} at ${formatTime(c.start)}`}
               >
-                {ROOM_LABELS[c.room]}
+                {c.label}
               </button>
             );
           })}
@@ -87,7 +84,10 @@ const ChapterTimeline: React.FC<Props> = ({ segments, duration, currentTime, mat
             Matches your search
           </span>
         )}
-        <span className="ml-auto tabular-nums">{formatTime(currentTime)} / {formatTime(duration)}</span>
+        <span className="ml-auto tabular-nums">
+          {current && <span className="text-charcoal font-bold mr-2">{current.label}</span>}
+          {formatTime(currentTime)} / {formatTime(duration)}
+        </span>
       </div>
     </div>
   );

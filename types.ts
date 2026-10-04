@@ -22,11 +22,20 @@ export interface Segment {
   id: string;            // `${youtubeId}:${start padded to 4}`
   start: number;         // seconds
   end: number;           // seconds
-  room: Room;
+  room: Room;            // the room the window mostly shows
+  rooms?: string[];      // chapter labels the window passes through, in order
   caption: string;       // what is visible
   features: string[];    // short noun phrases, e.g. "quartz island"
   transcript: string;    // what is said
-  frame?: string;        // public path of a still from the middle of the window
+  frame?: string;        // public path of a still from the window's main room
+}
+
+/** One continuous room or area in the tour, as Gemini timed it from the whole video. */
+export interface Chapter {
+  start: number;         // seconds
+  end: number;           // seconds
+  room: Room;
+  label: string;         // e.g. "Ensuite", "Walk-in closet"
 }
 
 export interface Property {
@@ -46,6 +55,7 @@ export interface Property {
   duration: number;      // seconds
   summary?: string;      // generated from the segment captions
   highlights?: string[];
+  chapters?: Chapter[];  // room-by-room timeline; segments are fixed 30s search windows
   segments: Segment[];
 }
 

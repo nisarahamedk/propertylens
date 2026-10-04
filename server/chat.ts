@@ -8,6 +8,7 @@ const SYSTEM =
   'You are a real estate assistant answering questions about one property from its video tour. ' +
   'Use only the listing facts and the scene notes provided. If the answer is not there, say you cannot tell from the tour and suggest what to ask the agent. ' +
   'Cite the moment for every claim drawn from a scene with its start time in square brackets, like [1:25]. ' +
+  'When a claim is about one room, cite the start of that room from ROOMS, which is more precise than the scene. ' +
   'Keep answers short: two to five sentences or a brief list.';
 
 /** Builds the full grounding context. A tour is at most a few minutes, so every scene fits. */
@@ -24,9 +25,10 @@ export function buildContext(youtubeId: string, currentTime?: number): string | 
 
   const scenes = property.segments.map(s => {
     const here = currentTime !== undefined && currentTime >= s.start && currentTime < s.end ? ' (viewer is watching this now)' : '';
-    return `[${fmt(s.start)}–${fmt(s.end)}] ${s.room}${here}\nSeen: ${s.caption}\nFeatures: ${s.features.join(', ')}\nSaid: ${s.transcript || '(no speech)'}`;
+    return `[${fmt(s.start)}–${fmt(s.end)}] ${s.rooms?.join(', ') ?? s.room}${here}\nSeen: ${s.caption}\nFeatures: ${s.features.join(', ')}\nSaid: ${s.transcript || '(no speech)'}`;
   });
-  return `LISTING\n${facts.join('\n')}\n\nSCENES\n${scenes.join('\n\n')}`;
+  const rooms = (property.chapters ?? []).map(c => `[${fmt(c.start)}–${fmt(c.end)}] ${c.label}`);
+  return `LISTING\n${facts.join('\n')}\n\n${rooms.length ? `ROOMS (when each space is on screen)\n${rooms.join('\n')}\n\n` : ''}SCENES\n${scenes.join('\n\n')}`;
 }
 
 export async function* chat(req: ChatRequest): AsyncGenerator<string> {
