@@ -12,6 +12,7 @@
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import { RANKING } from '../server/config';
 import { search } from '../server/search';
 
 interface EvalQuery {
@@ -25,13 +26,14 @@ const queries: EvalQuery[] = JSON.parse(fs.readFileSync(path.join(dir, 'eval-que
 let checked = 0;
 let hits = 0;
 const topScores: number[] = [];
+let empty = 0;
 
 for (const { q, expect } of queries) {
   const r = await search(q);
   const ids = r.matches.map(m => m.property.id);
   const best = r.matches[0]?.moments[0];
-  const blended = best ? 0.6 * best.signals.visual + 0.4 * best.signals.speech : 0;
-  topScores.push(blended);
+  if (best) topScores.push(RANKING.visualWeight * best.signals.visual + RANKING.speechWeight * best.signals.speech);
+  else empty++;
 
   let verdict = '';
   if (expect?.length) {
@@ -49,4 +51,5 @@ for (const { q, expect } of queries) {
 
 topScores.sort((a, b) => a - b);
 console.log(`\nTop-result blended score: min ${topScores[0]?.toFixed(3)}, median ${topScores[Math.floor(topScores.length / 2)]?.toFixed(3)}, max ${topScores.at(-1)?.toFixed(3)}`);
+console.log(`Queries with no results: ${empty}/${queries.length} (floor ${RANKING.minBlended})`);
 if (checked) console.log(`hit@3: ${hits}/${checked}`);
