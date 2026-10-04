@@ -18,18 +18,28 @@ const STARTERS = [
   'Summarize this home in three bullets',
 ];
 
-// Turns [1:25] citations into links the renderer can intercept.
-const linkTimestamps = (text: string) => text.replace(/\[(\d{1,2}:\d{2})(?:[–-]\d{1,2}:\d{2})?\]/g, '[$1](#t-$1)');
+// Turns [1:25], [1:25–1:55] and [0:25, 0:50] citations into links the renderer can intercept.
+const STAMP = String.raw`\d{1,2}:\d{2}(?:\s*[–-]\s*\d{1,2}:\d{2})?`;
+const CITATION = new RegExp(String.raw`\[(${STAMP}(?:\s*[,;]\s*${STAMP})*)\]`, 'g');
+const linkTimestamps = (text: string) =>
+  text.replace(CITATION, (_, inner: string) =>
+    inner.split(/\s*[,;]\s*/).map(stamp => {
+      const start = stamp.split(/\s*[–-]\s*/)[0];
+      return `[${start}](#t-${start})`;
+    }).join(' '),
+  );
 
 const ChatPanel: React.FC<Props> = ({ youtubeId, currentTime, onSeek, disabled }) => {
   const [turns, setTurns] = useState<ChatTurn[]>([]);
   const [input, setInput] = useState('');
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const endRef = useRef<HTMLDivElement>(null);
+  const scrollRef = useRef<HTMLDivElement>(null);
 
+  // Follow the answer as it streams, scrolling the message list rather than the page.
   useEffect(() => {
-    endRef.current?.scrollIntoView({ block: 'end' });
+    const box = scrollRef.current;
+    if (box && turns.length) box.scrollTop = box.scrollHeight;
   }, [turns]);
 
   const ask = async (question: string) => {
@@ -58,7 +68,7 @@ const ChatPanel: React.FC<Props> = ({ youtubeId, currentTime, onSeek, disabled }
 
   return (
     <div className="flex flex-col h-full min-h-0">
-      <div className="flex-1 overflow-y-auto p-4 space-y-4">
+      <div ref={scrollRef} className="flex-1 overflow-y-auto p-4 space-y-4">
         {turns.length === 0 && (
           <div>
             <p className="text-warmWhite/70 text-sm mb-3">
@@ -110,7 +120,6 @@ const ChatPanel: React.FC<Props> = ({ youtubeId, currentTime, onSeek, disabled }
           ),
         )}
         {error && <p className="text-sm text-terracotta font-mono">{error}</p>}
-        <div ref={endRef} />
       </div>
       <form
         onSubmit={e => {
