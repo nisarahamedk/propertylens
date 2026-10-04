@@ -28,8 +28,10 @@ export const RANKING = {
   speechWeight: 0.4,
   // Reciprocal rank fusion weights for ordering (visual, speech, keyword).
   rrf: { k: 60, visual: 1.0, speech: 0.8, keyword: 0.5 },
-  // Absolute floor on the blended cosine. Tune with ingestion/eval.ts.
-  minBlended: Number(env.SEARCH_MIN_SCORE ?? 0.25),
+  // Absolute floor on the blended cosine. Tune with ingestion/eval.ts. On the
+  // 65-tour index, the best tour for queries naming something no tour has
+  // scored 0.585-0.638, and for common features 0.646-0.713.
+  minBlended: Number(env.SEARCH_MIN_SCORE ?? 0.64),
   // Drop properties whose best moment is far below the top result.
   relativeCutoff: 0.6,
   maxProperties: 8,

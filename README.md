@@ -75,7 +75,7 @@ types.ts          Types shared by the app, the API and ingestion
 | `GEMINI_API_KEY` | none | Required for hybrid search, chat and indexing |
 | `GEMINI_EMBEDDING_MODEL` | `gemini-embedding-2` | Must match the model the index was built with |
 | `GEMINI_FLASH_MODEL` | `gemini-3.5-flash-lite` | Scene notes, query parsing, chat |
-| `SEARCH_MIN_SCORE` | `0.25` | Floor on the blended cosine; tune with `npm run eval` |
+| `SEARCH_MIN_SCORE` | `0.64` | Floor on the blended cosine; tune with `npm run eval` |
 
 Ranking weights live in `server/config.ts`.
 
