@@ -276,6 +276,31 @@ export function mainChapter(chapters: Chapter[], start: number, end: number): { 
   return best && { chapter: best.chapter, at: best.at };
 }
 
+/**
+ * One still per room chapter, so a search result can show the room that matched
+ * rather than whatever the 30s window mostly shows. Named by the chapter's start,
+ * so re-timed chapters get new files; stale ones for this tour are removed.
+ */
+function chapterStills(id: string, chapters: Chapter[], videoFile: string): Chapter[] {
+  const hasVideo = fs.existsSync(videoFile);
+  const keep = new Set<string>();
+  const out = chapters.map(c => {
+    if (c.room === 'other') return { ...c };
+    const name = `${id}_c${pad(Math.round(c.start * 10))}.jpg`;
+    const file = path.join(CONFIG.FRAMES_DIR, name);
+    if (hasVideo && !fs.existsSync(file)) extractFrame(videoFile, Math.round((c.start + c.end) / 2 * 10) / 10, file);
+    if (!fs.existsSync(file)) return { ...c };
+    keep.add(name);
+    return { ...c, frame: `/frames/${name}` };
+  });
+  if (hasVideo && fs.existsSync(CONFIG.FRAMES_DIR)) {
+    for (const f of fs.readdirSync(CONFIG.FRAMES_DIR)) {
+      if (f.startsWith(`${id}_c`) && !keep.has(f)) fs.rmSync(path.join(CONFIG.FRAMES_DIR, f));
+    }
+  }
+  return out;
+}
+
 /** Labels of the chapters a window passes through (at least 3s on screen), in order. */
 export function chaptersIn(chapters: Chapter[], start: number, end: number): string[] | undefined {
   const labels = chapters
@@ -407,7 +432,7 @@ async function indexVideo(video: VideoManifestEntry, tmp: string, offline = CATA
     });
 
   if (framesMoved) writeCache(id, cache);
-  if (chapters.length) property.chapters = chapters;
+  if (chapters.length) property.chapters = chapterStills(id, chapters, videoFile);
 
   if (property.segments.length && !cache.summary && !offline) {
     cache.summary = await summarize(property);
