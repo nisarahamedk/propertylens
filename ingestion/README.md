@@ -41,7 +41,9 @@ Outputs:
 
 Every finished window is cached in `ingestion/.cache/<youtubeId>.json`. Re-running only processes what is missing. Delete a video's cache file to re-index it.
 
-Options: `--only <youtubeId>` and `--limit N` merge into the existing outputs; `--catalog-only` rebuilds outputs from the cache with no downloads or API calls.
+Options: `--only <youtubeId>` and `--limit N` merge into the existing outputs; `--catalog-only` rebuilds outputs from the cache with no downloads or API calls; `--concurrency N` sets parallel requests (default 2).
+
+On the Gemini free tier, use `--concurrency 1`. Flash allows about 10 requests a minute there, so the full set takes roughly an hour. Rate-limit errors are retried after the delay Gemini asks for, so the run slows down instead of failing.
 
 ### 3. Check the ranking
 

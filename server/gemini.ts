@@ -19,6 +19,17 @@ export type Part =
   | { text: string }
   | { inlineData: { mimeType: string; data: string } };
 
+// Request handlers keep retries short so a search never outlives the function
+// timeout. The indexer raises both limits (see ingestion/build-index.ts).
+const maxAttempts = () => Number(process.env.GEMINI_MAX_ATTEMPTS ?? 3);
+const maxWaitMs = () => Number(process.env.GEMINI_MAX_WAIT_MS ?? 4000);
+
+/** How long Gemini asks us to wait, from the RetryInfo detail of a 429 body (e.g. "retryDelay": "31s"). */
+export function retryDelayMs(body: string): number | undefined {
+  const m = body.match(/"retryDelay"\s*:\s*"(\d+(?:\.\d+)?)s"/);
+  return m ? Math.ceil(parseFloat(m[1]) * 1000) : undefined;
+}
+
 async function call(path: string, body: unknown, apiKey: string, attempt = 0): Promise<any> {
   const res = await fetch(`${BASE}/${path}`, {
     method: 'POST',
@@ -26,12 +37,15 @@ async function call(path: string, body: unknown, apiKey: string, attempt = 0): P
     body: JSON.stringify(body),
   });
   if (res.ok) return res.json();
-  // Back off on rate limits and transient server errors.
-  if ((res.status === 429 || res.status >= 500) && attempt < 4) {
-    await new Promise(r => setTimeout(r, 1000 * 2 ** attempt + Math.random() * 500));
+  const text = await res.text();
+  // Back off on rate limits and transient server errors. Free-tier limits are
+  // per minute, so honour the delay Gemini asks for rather than guessing.
+  const asked = res.status === 429 ? retryDelayMs(text) : undefined;
+  const wait = asked ?? 1000 * 2 ** attempt;
+  if ((res.status === 429 || res.status >= 500) && attempt < maxAttempts() - 1 && wait <= maxWaitMs()) {
+    await new Promise(r => setTimeout(r, wait + Math.random() * 500));
     return call(path, body, apiKey, attempt + 1);
   }
-  const text = await res.text();
   throw new GeminiError(`Gemini ${path} failed: ${res.status} ${text.slice(0, 300)}`, res.status);
 }
 

@@ -13,7 +13,7 @@
  * resumes where it stopped and re-runs only pay for new videos.
  *
  * Usage:
- *   GEMINI_API_KEY=... npx tsx ingestion/build-index.ts [--only <youtubeId>] [--limit N] [--skip-check]
+ *   GEMINI_API_KEY=... npx tsx ingestion/build-index.ts [--only <youtubeId>] [--limit N] [--skip-check] [--concurrency N]
  *   npx tsx ingestion/build-index.ts --catalog-only   # no downloads or API calls; rebuild outputs from cache
  */
 
@@ -59,7 +59,8 @@ const CATALOG_ONLY = flag('--catalog-only');
 const SKIP_CHECK = flag('--skip-check');
 const ONLY = option('--only');
 const LIMIT = option('--limit') ? Number(option('--limit')) : undefined;
-const CONCURRENCY = 3;
+// Lower to 1 on the Gemini free tier (about 10 Flash requests per minute).
+const CONCURRENCY = Number(option('--concurrency') ?? 2);
 
 // ---------- helpers ----------
 
@@ -292,6 +293,9 @@ async function indexVideo(video: VideoManifestEntry, tmp: string): Promise<Prope
 }
 
 async function main() {
+  // Indexing is offline, so ride out per-minute rate limits instead of failing.
+  process.env.GEMINI_MAX_ATTEMPTS ??= '10';
+  process.env.GEMINI_MAX_WAIT_MS ??= '90000';
   if (!CATALOG_ONLY && !apiKey) {
     console.error('Set GEMINI_API_KEY, or pass --catalog-only to rebuild outputs from cache.');
     process.exit(1);
