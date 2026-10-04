@@ -326,11 +326,12 @@ function baseProperty(video: VideoManifestEntry, duration: number): Property {
   };
 }
 
-async function indexVideo(video: VideoManifestEntry, tmp: string): Promise<Property | null> {
+/** Indexes one tour, or with `offline` only rebuilds its outputs from the cache. */
+async function indexVideo(video: VideoManifestEntry, tmp: string, offline = CATALOG_ONLY): Promise<Property | null> {
   const id = video.youtubeId;
   const cache = readCache(id);
 
-  if (!CATALOG_ONLY) {
+  if (!offline) {
     if (!SKIP_CHECK) {
       cache.available = await isAvailable(id);
       writeCache(id, cache);
@@ -408,7 +409,7 @@ async function indexVideo(video: VideoManifestEntry, tmp: string): Promise<Prope
   if (framesMoved) writeCache(id, cache);
   if (chapters.length) property.chapters = chapters;
 
-  if (property.segments.length && !cache.summary && !CATALOG_ONLY) {
+  if (property.segments.length && !cache.summary && !offline) {
     cache.summary = await summarize(property);
     writeCache(id, cache);
   }
@@ -435,20 +436,25 @@ async function main() {
   const vectors: Record<string, { v: string; t: string }> = {};
   const failed: string[] = [];
 
+  const collect = (video: VideoManifestEntry, property: Property) => {
+    properties.push(property);
+    const cache = readCache(video.youtubeId);
+    for (const s of property.segments) {
+      const c = cache.segments[s.start];
+      vectors[s.id] = { v: c.v, t: c.t };
+    }
+  };
   for (const [i, video] of videos.entries()) {
     console.log(`[${i + 1}/${videos.length}] ${video.title}`);
     try {
       const property = await indexVideo(video, tmp);
-      if (!property) continue;
-      properties.push(property);
-      const cache = readCache(video.youtubeId);
-      for (const s of property.segments) {
-        const c = cache.segments[s.start];
-        vectors[s.id] = { v: c.v, t: c.t };
-      }
+      if (property) collect(video, property);
     } catch (e) {
       failed.push(video.youtubeId);
       console.error(`  failed: ${(e as Error).message}`);
+      // Keep what is already indexed rather than dropping the tour from the outputs.
+      const cached = await indexVideo(video, tmp, true).catch(() => null);
+      if (cached?.segments.length) collect(video, cached);
     }
   }
   fs.rmSync(tmp, { recursive: true, force: true });
