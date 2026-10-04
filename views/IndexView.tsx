@@ -1,176 +1,75 @@
-
-import React, { useEffect, useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { IconArrowLeft } from '../components/ui/Icons';
+import AppHeader from '../components/AppHeader';
 import PropertyThumbnail from '../components/PropertyThumbnail';
-import { Property } from '../types';
-import { getRecentProperties } from '../services/searchService';
-import { PropertyThumbnailSkeleton } from '../components/ui/Skeletons';
+import { properties } from '../services/api';
+
+const city = (location: string) => location.split(',').pop()!.trim();
 
 const IndexView: React.FC = () => {
   const navigate = useNavigate();
-  const [properties, setProperties] = useState<Property[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
-  const [cursorHistory, setCursorHistory] = useState<string[]>([]);
-  const [nextCursor, setNextCursor] = useState<string | undefined>();
-  const [currentPage, setCurrentPage] = useState(1);
-  const [totalDocs, setTotalDocs] = useState<number | undefined>();
+  const [area, setArea] = useState('All');
+  const [minBeds, setMinBeds] = useState(0);
 
-  const fetchProperties = async (cursor?: string) => {
-    setIsLoading(true);
-    setError(null);
-    try {
-      const data = await getRecentProperties(cursor);
-      setProperties(data.properties);
-      setNextCursor(data.nextCursor);
-      if (data.total !== undefined) setTotalDocs(data.total);
-    } catch (err: any) {
-      setError(err.message || "Failed to load properties.");
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
-  useEffect(() => {
-    fetchProperties();
+  const areas = useMemo(() => {
+    const counts = new Map<string, number>();
+    for (const p of properties) counts.set(city(p.location), (counts.get(city(p.location)) ?? 0) + 1);
+    return ['All', ...[...counts.entries()].sort((a, b) => b[1] - a[1]).map(([c]) => c)];
   }, []);
 
-  const goToNextPage = () => {
-    if (nextCursor) {
-      // Store the cursor that will get us to the next page
-      setCursorHistory(prev => [...prev, nextCursor]);
-      setCurrentPage(prev => prev + 1);
-      fetchProperties(nextCursor);
-    }
-  };
-
-  const goToPreviousPage = () => {
-    if (currentPage <= 1) return;
-
-    const newHistory = [...cursorHistory];
-    newHistory.pop(); // Remove the cursor for current page
-    setCursorHistory(newHistory);
-    setCurrentPage(prev => prev - 1);
-
-    // Use the last cursor in history, or undefined for page 1
-    const previousCursor = newHistory.length > 0 ? newHistory[newHistory.length - 1] : undefined;
-    fetchProperties(previousCursor);
-  };
-
-  const onPropertyClick = (property: Property) => {
-    navigate(`/property/${property.ragieId || property.id}/overview`);
-  };
+  const shown = properties.filter(
+    p => (area === 'All' || city(p.location) === area) && (!minBeds || p.beds >= minBeds),
+  );
 
   return (
     <div className="min-h-screen bg-cream">
-      {/* Header */}
-      <header className="bg-cream border-b-2 border-charcoal sticky top-0 z-50">
-        <div className="max-w-7xl mx-auto px-4 md:px-6 py-4 flex items-center gap-4">
-          <button
-            onClick={() => navigate('/')}
-            className="p-2 rounded-none border-2 border-transparent hover:border-charcoal hover:bg-sand/50 text-charcoal transition-all"
-            aria-label="Back to home"
-          >
-            <IconArrowLeft className="w-5 h-5" />
-          </button>
-          <div className="flex items-center gap-2">
-            <div className="w-8 h-8 bg-terracotta border-2 border-charcoal flex items-center justify-center">
-              <div className="w-3 h-3 bg-warmWhite rounded-full border-2 border-charcoal"></div>
-            </div>
-            <span className="font-display text-lg text-charcoal font-bold tracking-tight">PropertyLens</span>
-          </div>
-        </div>
-      </header>
-
-      <div className="max-w-7xl mx-auto px-4 md:px-6 py-8">
-        <div className="mb-8 flex items-baseline justify-between border-b-2 border-charcoal pb-4">
-          <h1 className="font-display text-3xl md:text-4xl text-charcoal font-bold">
-            All Properties
-          </h1>
+      <AppHeader back="/" />
+      <main className="max-w-7xl mx-auto px-4 md:px-6 py-8">
+        <div className="mb-6 flex items-baseline justify-between border-b-2 border-charcoal pb-4">
+          <h1 className="font-display text-3xl md:text-4xl text-charcoal font-bold">All tours</h1>
           <span className="text-charcoal font-mono font-bold uppercase tracking-wider text-xs bg-white px-3 py-1.5 border-2 border-charcoal shadow-neobrutal-sm">
-            {totalDocs ?? properties.length} indexed
+            {shown.length} of {properties.length}
           </span>
         </div>
 
-        {/* Loading State */}
-        {isLoading && (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-12">
-            {Array.from({ length: 8 }).map((_, i) => (
-              <PropertyThumbnailSkeleton key={i} />
-            ))}
-          </div>
-        )}
+        <div className="mb-10 flex flex-wrap items-center gap-2">
+          {areas.map(a => (
+            <button
+              key={a}
+              onClick={() => setArea(a)}
+              className={`px-3 py-1.5 border-2 border-charcoal font-mono text-xs font-bold uppercase ${
+                area === a ? 'bg-charcoal text-warmWhite' : 'bg-warmWhite text-charcoal hover:bg-sand'
+              }`}
+            >
+              {a}
+            </button>
+          ))}
+          <label className="ml-auto flex items-center gap-2 font-mono text-xs font-bold uppercase text-charcoal">
+            Beds
+            <select
+              id="min-beds"
+              value={minBeds}
+              onChange={e => setMinBeds(Number(e.target.value))}
+              className="bg-warmWhite border-2 border-charcoal px-2 py-1"
+            >
+              {[0, 2, 3, 4, 5].map(n => (
+                <option key={n} value={n}>{n ? `${n}+` : 'Any'}</option>
+              ))}
+            </select>
+          </label>
+        </div>
 
-        {/* Error State */}
-        {error && !isLoading && (
-          <div className="py-8 animate-fade-in">
-            <div className="bg-terracotta/5 border-2 border-charcoal p-8 text-center">
-              <h2 className="font-display text-2xl font-bold text-charcoal mb-2">Failed to Load</h2>
-              <p className="font-mono text-sm text-olive mb-6">{error}</p>
-              <button
-                onClick={() => fetchProperties()}
-                className="px-6 py-2 bg-charcoal text-warmWhite font-mono text-xs font-bold uppercase tracking-widest hover:bg-terracotta transition-colors border-2 border-charcoal"
-              >
-                Try Again
-              </button>
-            </div>
-          </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-12">
+          {shown.map(p => (
+            <PropertyThumbnail key={p.id} property={p} onClick={() => navigate(`/property/${p.id}`)} />
+          ))}
+        </div>
+        {shown.length === 0 && (
+          <p className="text-center py-16 font-mono text-sm text-olive border-2 border-dashed border-charcoal/30">
+            No tours match these filters.
+          </p>
         )}
-
-        {/* Properties Grid */}
-        {!isLoading && !error && (
-          <>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-12 animate-fade-in">
-              {properties.length > 0 ? (
-                properties.map((property, idx) => (
-                  <div key={property.id} className="animate-slide-up" style={{ animationDelay: `${idx * 50}ms` }}>
-                    <PropertyThumbnail
-                      property={property}
-                      onClick={() => onPropertyClick(property)}
-                    />
-                  </div>
-                ))
-              ) : (
-                <div className="col-span-full text-center py-16 border-2 border-dashed border-charcoal/20">
-                  <p className="font-mono text-charcoal font-bold uppercase">No properties indexed</p>
-                </div>
-              )}
-            </div>
-
-            {/* Pagination Controls */}
-            {(currentPage > 1 || nextCursor) && (
-              <div className="mt-8 flex items-center justify-center gap-4">
-                <button
-                  onClick={goToPreviousPage}
-                  disabled={currentPage === 1}
-                  className={`px-4 py-2 font-mono text-xs font-bold uppercase tracking-widest border-2 border-charcoal transition-all ${
-                    currentPage === 1
-                      ? 'bg-gray-100 text-gray-400 cursor-not-allowed'
-                      : 'bg-white text-charcoal hover:bg-charcoal hover:text-warmWhite'
-                  }`}
-                >
-                  Previous
-                </button>
-                <span className="font-mono text-sm text-charcoal font-bold">
-                  Page {currentPage}
-                </span>
-                <button
-                  onClick={goToNextPage}
-                  disabled={!nextCursor}
-                  className={`px-4 py-2 font-mono text-xs font-bold uppercase tracking-widest border-2 border-charcoal transition-all ${
-                    !nextCursor
-                      ? 'bg-gray-100 text-gray-400 cursor-not-allowed'
-                      : 'bg-white text-charcoal hover:bg-charcoal hover:text-warmWhite'
-                  }`}
-                >
-                  Next
-                </button>
-              </div>
-            )}
-          </>
-        )}
-      </div>
+      </main>
     </div>
   );
 };

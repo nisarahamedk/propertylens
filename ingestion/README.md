@@ -1,54 +1,56 @@
-# Ingestion Pipeline
+# Ingestion
 
-Scripts for building the PropertyLens video index from YouTube house tours.
+Builds the search index from YouTube house tours.
 
 ## Prerequisites
 
-- Node.js with ts-node
-- yt-dlp: `brew install yt-dlp`
-- Ragie API key
+- Node.js 18+
+- `yt-dlp` (`brew install yt-dlp`) and `ffmpeg` (`brew install ffmpeg`)
+- A Gemini API key
 
 ## Workflow
 
-### 1. Search YouTube for videos
+### 1. Find videos (optional)
 
 ```bash
-npx ts-node ingestion/youtube-search.ts
+npx tsx ingestion/youtube-search.ts
 ```
 
-Searches for house tours in BC under 5 minutes, saves results to `manifest.json`.
+Scrapes YouTube for BC house tours between 1 and 5 minutes and writes `manifest.json`. The committed manifest already lists 65 tours, so skip this unless you want different videos.
 
-### 2. Download videos
+### 2. Build the index
 
 ```bash
-npx ts-node ingestion/download.ts
+GEMINI_API_KEY=... npm run index
 ```
 
-Downloads videos to `ingestion/videos/` directory using yt-dlp.
+For each video in the manifest:
 
-### 3. Upload to Ragie
+1. Checks the video is still public (YouTube oEmbed) and skips it if not. Pass `--skip-check` to skip this check.
+2. Downloads it to `ingestion/videos/` with yt-dlp.
+3. Cuts 30-second windows every 25 seconds into small 360p clips and saves a still from the middle of each to `public/frames/`.
+4. Sends each clip to Gemini Flash for the room, a caption, searchable features and a transcript.
+5. Embeds the clip and the written notes with Gemini Embedding 2.
+6. Writes a short summary and highlights per property from the captions.
+
+Outputs:
+
+- `data/properties.json`: catalog and scene notes. Imported by the frontend.
+- `data/vectors.json`: base64 float32 vectors keyed by scene id. Read by the API only.
+- `public/frames/*.jpg`: one still per scene.
+
+Every finished window is cached in `ingestion/.cache/<youtubeId>.json`. Re-running only processes what is missing. Delete a video's cache file to re-index it.
+
+Options: `--only <youtubeId>` and `--limit N` merge into the existing outputs; `--catalog-only` rebuilds outputs from the cache with no downloads or API calls.
+
+### 3. Check the ranking
 
 ```bash
-export RAGIE_API_KEY=your_key_here
-npx ts-node ingestion/upload.ts
+GEMINI_API_KEY=... npm run eval
 ```
 
-Uploads videos to Ragie with metadata extracted from title/description.
+Runs the queries in `eval-queries.json` and prints the top three tours for each, with their scores. Add `"expect": ["<youtubeId>"]` to a query to get a hit@3 check. Use the printed score spread to set `SEARCH_MIN_SCORE`.
 
-## Files
+## Cost
 
-- `config.ts` - Configuration and types
-- `youtube-search.ts` - YouTube scraper
-- `download.ts` - Video downloader
-- `upload.ts` - Ragie uploader
-- `manifest.json` - Video metadata and status
-- `videos/` - Downloaded .mp4 files (gitignored)
-
-## Metadata Extraction
-
-The scraper attempts to extract from video titles/descriptions:
-- Location (BC cities)
-- Beds/baths
-- Square footage
-- Price
-- Street address
+About 150 minutes of video gives roughly 400 windows. Expect a one-time Gemini bill of around $10–15 for the clip embeddings and captions; text embeddings and summaries add very little.

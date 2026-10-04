@@ -14,9 +14,7 @@
         "baths": 4,
         "sqft": 6000,
         "price": "$4,250,000"
-      },
-      "localPath": "/Users/nisar/Workspace/propertylens/ingestion/videos/D81OJRTOkLA.mp4",
-      "ragieDocumentId": "32ab2762-d5a4-4759-99af-35bbb8a63038"
+      }
     },
     {
       "youtubeId": "DGOF6dJ0t9E",
@@ -31,9 +29,7 @@
         "baths": 2.5,
         "price": "$799,000",
         "sqft": 1500
-      },
-      "localPath": "/Users/nisar/Workspace/propertylens/ingestion/videos/DGOF6dJ0t9E.mp4",
-      "ragieDocumentId": "23bb3be4-ee9f-49be-bae0-bd855ad287ce"
+      }
     },
     {
       "youtubeId": "aLhcDVGvd_8",
@@ -47,9 +43,7 @@
         "beds": 3,
         "baths": 3.5,
         "sqft": 900
-      },
-      "localPath": "/Users/nisar/Workspace/propertylens/ingestion/videos/aLhcDVGvd_8.mp4",
-      "ragieDocumentId": "9682355a-a96c-4153-b410-a4a074dab07b"
+      }
     },
     {
       "youtubeId": "6joXmtuyJmg",
@@ -64,9 +58,7 @@
         "baths": 4,
         "price": "$1,998,000",
         "sqft": 900
-      },
-      "localPath": "/Users/nisar/Workspace/propertylens/ingestion/videos/6joXmtuyJmg.mp4",
-      "ragieDocumentId": "674a9d9c-b125-4d59-96ad-954bdafb9a9d"
+      }
     },
     {
       "youtubeId": "pw3OPrdgeRw",
@@ -81,9 +73,7 @@
         "beds": 4,
         "baths": 2,
         "sqft": 900
-      },
-      "localPath": "/Users/nisar/Workspace/propertylens/ingestion/videos/pw3OPrdgeRw.mp4",
-      "ragieDocumentId": "80f6954a-c267-4c7a-83ef-a7762a3aa03b"
+      }
     },
     {
       "youtubeId": "26Ia4ow-fq0",
@@ -97,9 +87,7 @@
         "beds": 2,
         "baths": 2,
         "sqft": 1300
-      },
-      "localPath": "/Users/nisar/Workspace/propertylens/ingestion/videos/26Ia4ow-fq0.mp4",
-      "ragieDocumentId": "7d3c213d-84cb-4ad0-ae9a-1631a28cc89d"
+      }
     },
     {
       "youtubeId": "EGkcUdFDLfk",
@@ -115,9 +103,7 @@
         "sqft": 2826,
         "price": "$2,298,000",
         "address": "5516 Lanark Street"
-      },
-      "localPath": "/Users/nisar/Workspace/propertylens/ingestion/videos/EGkcUdFDLfk.mp4",
-      "ragieDocumentId": "dbabc7b2-2b1c-4bea-aaf2-8ef7f56b0342"
+      }
     },
     {
       "youtubeId": "-Cc_DeNyVGM",
@@ -131,9 +117,7 @@
         "beds": 3,
         "baths": 2,
         "sqft": 2000
-      },
-      "localPath": "/Users/nisar/Workspace/propertylens/ingestion/videos/-Cc_DeNyVGM.mp4",
-      "ragieDocumentId": "cd825321-bb9c-4398-851f-27781513a9ac"
+      }
     },
     {
       "youtubeId": "t0CuUyaJSWA",
@@ -148,9 +132,7 @@
         "beds": 1,
         "baths": 1,
         "sqft": 900
-      },
-      "localPath": "/Users/nisar/Workspace/propertylens/ingestion/videos/t0CuUyaJSWA.mp4",
-      "ragieDocumentId": "4481ef80-835e-400b-9acb-8fc9a38946e4"
+      }
     },
     {
       "youtubeId": "xcvcEd23pes",
@@ -165,9 +147,7 @@
         "baths": 2,
         "address": "2801 - 1308 Hornby Street",
         "sqft": 2000
-      },
-      "localPath": "/Users/nisar/Workspace/propertylens/ingestion/videos/xcvcEd23pes.mp4",
-      "ragieDocumentId": "3f557508-7bab-423e-850f-2c12adf870c1"
+      }
     },
     {
       "youtubeId": "y5e0sukb39Y",
@@ -181,9 +161,7 @@
         "beds": 3,
         "baths": 2,
         "sqft": 2000
-      },
-      "localPath": "/Users/nisar/Workspace/propertylens/ingestion/videos/y5e0sukb39Y.mp4",
-      "ragieDocumentId": "a54fa908-24a7-42b9-b0b7-ddfc1b8aae2f"
+      }
     },
     {
       "youtubeId": "Ivv1UQoG-Ik",
@@ -197,9 +175,7 @@
         "beds": 5,
         "baths": 4,
         "sqft": 4000
-      },
-      "localPath": "/Users/nisar/Workspace/propertylens/ingestion/videos/Ivv1UQoG-Ik.mp4",
-      "ragieDocumentId": "2ba98373-ffa0-4ea4-b93c-0a5f39a31c4d"
+      }
     },
     {
       "youtubeId": "LHUZG8hrQs0",
@@ -214,9 +190,7 @@
         "address": "2 Bedr",
         "baths": 1,
         "sqft": 900
-      },
-      "localPath": "/Users/nisar/Workspace/propertylens/ingestion/videos/LHUZG8hrQs0.mp4",
-      "ragieDocumentId": "132a93ac-f426-4d08-b0da-fb7b54da759d"
+      }
     },
     {
       "youtubeId": "fon-H-R4lbI",
@@ -231,9 +205,7 @@
         "price": "$299",
         "baths": 2,
         "sqft": 2000
-      },
-      "localPath": "/Users/nisar/Workspace/propertylens/ingestion/videos/fon-H-R4lbI.mp4",
-      "ragieDocumentId": "3c995a94-708c-45df-8119-ba23a40e85ae"
+      }
     },
     {
       "youtubeId": "S3u8hvVV9ao",
@@ -247,9 +219,7 @@
         "beds": 2,
         "baths": 1,
         "sqft": 900
-      },
-      "localPath": "/Users/nisar/Workspace/propertylens/ingestion/videos/S3u8hvVV9ao.mp4",
-      "ragieDocumentId": "faeb38d5-790e-49c7-b7a7-e6515b7e905a"
+      }
     },
     {
       "youtubeId": "642yZATcCiA",
@@ -264,9 +234,7 @@
         "beds": 5,
         "baths": 4,
         "sqft": 4000
-      },
-      "localPath": "/Users/nisar/Workspace/propertylens/ingestion/videos/642yZATcCiA.mp4",
-      "ragieDocumentId": "72874726-4c51-49df-b39f-cf22dc65f466"
+      }
     },
     {
       "youtubeId": "rEy3q-DO2Yw",
@@ -281,9 +249,7 @@
         "beds": 5,
         "baths": 4,
         "sqft": 4000
-      },
-      "localPath": "/Users/nisar/Workspace/propertylens/ingestion/videos/rEy3q-DO2Yw.mp4",
-      "ragieDocumentId": "6c3a8410-af45-4437-aa00-b65d7f5ff144"
+      }
     },
     {
       "youtubeId": "l9ELn60OQKk",
@@ -297,9 +263,7 @@
         "beds": 2,
         "baths": 1,
         "sqft": 900
-      },
-      "localPath": "/Users/nisar/Workspace/propertylens/ingestion/videos/l9ELn60OQKk.mp4",
-      "ragieDocumentId": "87d04271-b223-4801-9ec7-f1f33ffe9c5d"
+      }
     },
     {
       "youtubeId": "fW6IVybWUI0",
@@ -314,9 +278,7 @@
         "beds": 3,
         "baths": 2,
         "sqft": 2000
-      },
-      "localPath": "/Users/nisar/Workspace/propertylens/ingestion/videos/fW6IVybWUI0.mp4",
-      "ragieDocumentId": "05ef5ac5-ab47-4606-89a1-1aa585865110"
+      }
     },
     {
       "youtubeId": "UV5cshFl8yw",
@@ -331,9 +293,7 @@
         "beds": 2,
         "baths": 1,
         "sqft": 900
-      },
-      "localPath": "/Users/nisar/Workspace/propertylens/ingestion/videos/UV5cshFl8yw.mp4",
-      "ragieDocumentId": "858add68-c5db-483b-88b0-3c8934e839c5"
+      }
     },
     {
       "youtubeId": "NMB7EBYl0kQ",
@@ -348,9 +308,7 @@
         "beds": 3,
         "baths": 2,
         "sqft": 2000
-      },
-      "localPath": "/Users/nisar/Workspace/propertylens/ingestion/videos/NMB7EBYl0kQ.mp4",
-      "ragieDocumentId": "d0c22e44-efab-462c-9a74-3017aa1a7393"
+      }
     },
     {
       "youtubeId": "C7PV8urmaXs",
@@ -363,9 +321,7 @@
         "beds": 2,
         "baths": 1,
         "sqft": 900
-      },
-      "localPath": "/Users/nisar/Workspace/propertylens/ingestion/videos/C7PV8urmaXs.mp4",
-      "ragieDocumentId": "fdcdc026-7264-48b4-aa9a-4843eea22f66"
+      }
     },
     {
       "youtubeId": "d7JDvQRFR7U",
@@ -379,9 +335,7 @@
         "beds": 3,
         "baths": 2,
         "sqft": 2000
-      },
-      "localPath": "/Users/nisar/Workspace/propertylens/ingestion/videos/d7JDvQRFR7U.mp4",
-      "ragieDocumentId": "dd9bbdb5-ada5-499e-87ee-768b70e75ae8"
+      }
     },
     {
       "youtubeId": "zpsVeRUlcxw",
@@ -397,9 +351,7 @@
         "beds": 5,
         "baths": 4,
         "sqft": 4000
-      },
-      "localPath": "/Users/nisar/Workspace/propertylens/ingestion/videos/zpsVeRUlcxw.mp4",
-      "ragieDocumentId": "e86a39b8-a88f-41b7-a7b4-f16b238db3da"
+      }
     },
     {
       "youtubeId": "-Sha8jEG9hI",
@@ -414,9 +366,7 @@
         "beds": 2,
         "baths": 1,
         "sqft": 900
-      },
-      "localPath": "/Users/nisar/Workspace/propertylens/ingestion/videos/-Sha8jEG9hI.mp4",
-      "ragieDocumentId": "398023c6-5285-4477-907d-76f50ebbc347"
+      }
     },
     {
       "youtubeId": "rayEIwFozcY",
@@ -430,9 +380,7 @@
         "beds": 5,
         "baths": 4,
         "sqft": 4000
-      },
-      "localPath": "/Users/nisar/Workspace/propertylens/ingestion/videos/rayEIwFozcY.mp4",
-      "ragieDocumentId": "f7516038-da65-41d8-818f-6f8b53cbde47"
+      }
     },
     {
       "youtubeId": "TlMUknHQYLU",
@@ -445,9 +393,7 @@
         "beds": 3,
         "baths": 2,
         "sqft": 2000
-      },
-      "localPath": "/Users/nisar/Workspace/propertylens/ingestion/videos/TlMUknHQYLU.mp4",
-      "ragieDocumentId": "951abb9c-4ea0-40e1-aa89-3a6a37f1fb04"
+      }
     },
     {
       "youtubeId": "f7Ji5F_Qxl4",
@@ -461,9 +407,7 @@
         "beds": 2,
         "baths": 1,
         "sqft": 900
-      },
-      "localPath": "/Users/nisar/Workspace/propertylens/ingestion/videos/f7Ji5F_Qxl4.mp4",
-      "ragieDocumentId": "08f97d25-23b1-468f-8da4-2c0ab7ae724c"
+      }
     },
     {
       "youtubeId": "nml0jgA_QZ0",
@@ -477,9 +421,7 @@
         "beds": 3,
         "baths": 2,
         "sqft": 2000
-      },
-      "localPath": "/Users/nisar/Workspace/propertylens/ingestion/videos/nml0jgA_QZ0.mp4",
-      "ragieDocumentId": "a0d3055d-3c64-4771-aad5-ce64b0ecbdfa"
+      }
     },
     {
       "youtubeId": "8iugptfOqDk",
@@ -494,9 +436,7 @@
         "beds": 5,
         "baths": 4,
         "sqft": 4000
-      },
-      "localPath": "/Users/nisar/Workspace/propertylens/ingestion/videos/8iugptfOqDk.mp4",
-      "ragieDocumentId": "be4bf4ae-9d37-4c3c-ab09-292d3051e85b"
+      }
     },
     {
       "youtubeId": "u8dIDj_aQU4",
@@ -510,9 +450,7 @@
         "beds": 5,
         "baths": 4,
         "sqft": 4000
-      },
-      "localPath": "/Users/nisar/Workspace/propertylens/ingestion/videos/u8dIDj_aQU4.mp4",
-      "ragieDocumentId": "f0e33567-4d42-4c61-94c4-4d91af74e6a5"
+      }
     },
     {
       "youtubeId": "DqXM07TYfdM",
@@ -527,9 +465,7 @@
         "beds": 3,
         "baths": 2,
         "sqft": 2000
-      },
-      "localPath": "/Users/nisar/Workspace/propertylens/ingestion/videos/DqXM07TYfdM.mp4",
-      "ragieDocumentId": "239d2390-c797-489a-8950-95718d5b78e5"
+      }
     },
     {
       "youtubeId": "P7Fj7Qs6ro8",
@@ -545,9 +481,7 @@
         "beds": 3,
         "baths": 2,
         "sqft": 2000
-      },
-      "localPath": "/Users/nisar/Workspace/propertylens/ingestion/videos/P7Fj7Qs6ro8.mp4",
-      "ragieDocumentId": "7b429467-a520-4c99-bf4a-c35203c73e5a"
+      }
     },
     {
       "youtubeId": "tV6iDi7mumI",
@@ -562,9 +496,7 @@
         "beds": 3,
         "baths": 2,
         "sqft": 2000
-      },
-      "localPath": "/Users/nisar/Workspace/propertylens/ingestion/videos/tV6iDi7mumI.mp4",
-      "ragieDocumentId": "11189320-6de5-49e9-9c2a-b6b434377709"
+      }
     },
     {
       "youtubeId": "LG7VIk8kSWU",
@@ -580,9 +512,7 @@
         "price": "$1,349,900 ",
         "address": "900 Surrey BC Ranch St",
         "sqft": 2000
-      },
-      "localPath": "/Users/nisar/Workspace/propertylens/ingestion/videos/LG7VIk8kSWU.mp4",
-      "ragieDocumentId": "60ff93bd-46fa-4de9-9487-7a27b62e6754"
+      }
     },
     {
       "youtubeId": "OKWSDc86FHk",
@@ -597,9 +527,7 @@
         "beds": 3,
         "baths": 2,
         "sqft": 2000
-      },
-      "localPath": "/Users/nisar/Workspace/propertylens/ingestion/videos/OKWSDc86FHk.mp4",
-      "ragieDocumentId": "d2ac2988-6db2-4c31-90d0-c4c00d33203f"
+      }
     },
     {
       "youtubeId": "D_7Td8HdCCc",
@@ -614,9 +542,7 @@
         "beds": 3,
         "baths": 2,
         "sqft": 2000
-      },
-      "localPath": "/Users/nisar/Workspace/propertylens/ingestion/videos/D_7Td8HdCCc.mp4",
-      "ragieDocumentId": "7a6ac077-c008-481d-8934-8ce344e73c62"
+      }
     },
     {
       "youtubeId": "OUcE_MRkn7M",
@@ -632,9 +558,7 @@
         "beds": 3,
         "baths": 2,
         "sqft": 2000
-      },
-      "localPath": "/Users/nisar/Workspace/propertylens/ingestion/videos/OUcE_MRkn7M.mp4",
-      "ragieDocumentId": "5e17d0b8-11d8-4710-bc82-6f7e03e5cba0"
+      }
     },
     {
       "youtubeId": "I2qrsxKbzeA",
@@ -650,9 +574,7 @@
         "beds": 3,
         "baths": 2,
         "sqft": 2000
-      },
-      "localPath": "/Users/nisar/Workspace/propertylens/ingestion/videos/I2qrsxKbzeA.mp4",
-      "ragieDocumentId": "8110b814-b872-43ee-91c5-f7c4f0bf5fef"
+      }
     },
     {
       "youtubeId": "3bbHcGjiCD8",
@@ -667,9 +589,7 @@
         "beds": 3,
         "baths": 2,
         "sqft": 2000
-      },
-      "localPath": "/Users/nisar/Workspace/propertylens/ingestion/videos/3bbHcGjiCD8.mp4",
-      "ragieDocumentId": "fee43162-4965-40ca-b80f-919274329bb8"
+      }
     },
     {
       "youtubeId": "2LAyRWvU2OY",
@@ -684,9 +604,7 @@
         "beds": 3,
         "baths": 2.5,
         "sqft": 1500
-      },
-      "localPath": "/Users/nisar/Workspace/propertylens/ingestion/videos/2LAyRWvU2OY.mp4",
-      "ragieDocumentId": "f9d5919b-995e-416c-91d4-b2e8bce619f1"
+      }
     },
     {
       "youtubeId": "Y-orbsMwDsQ",
@@ -700,9 +618,7 @@
         "beds": 3,
         "baths": 2,
         "sqft": 2000
-      },
-      "localPath": "/Users/nisar/Workspace/propertylens/ingestion/videos/Y-orbsMwDsQ.mp4",
-      "ragieDocumentId": "25dd6012-a8ab-4a14-bdd2-35a6fd50826f"
+      }
     },
     {
       "youtubeId": "cOin8XMcmcU",
@@ -718,9 +634,7 @@
         "price": "$449",
         "address": "13958 108 Avenue",
         "sqft": 1500
-      },
-      "localPath": "/Users/nisar/Workspace/propertylens/ingestion/videos/cOin8XMcmcU.mp4",
-      "ragieDocumentId": "d97f954b-5abb-422a-854d-8ef8a66640dd"
+      }
     },
     {
       "youtubeId": "9LNkVG1YMk8",
@@ -735,9 +649,7 @@
         "beds": 2,
         "baths": 1,
         "sqft": 900
-      },
-      "localPath": "/Users/nisar/Workspace/propertylens/ingestion/videos/9LNkVG1YMk8.mp4",
-      "ragieDocumentId": "cdc29f44-8048-412f-a68a-cd9b6ffe7934"
+      }
     },
     {
       "youtubeId": "73qj_6Qhae0",
@@ -752,9 +664,7 @@
         "baths": 2.5,
         "address": "7039 Macpherson Avenue",
         "sqft": 1500
-      },
-      "localPath": "/Users/nisar/Workspace/propertylens/ingestion/videos/73qj_6Qhae0.mp4",
-      "ragieDocumentId": "573e8fbf-ea37-4d7f-9648-b6440a6db9cc"
+      }
     },
     {
       "youtubeId": "z4P-cOSaFBc",
@@ -769,9 +679,7 @@
         "address": "4657 Hazel Street",
         "baths": 1,
         "sqft": 900
-      },
-      "localPath": "/Users/nisar/Workspace/propertylens/ingestion/videos/z4P-cOSaFBc.mp4",
-      "ragieDocumentId": "7bfe4fd3-c890-4096-8f0c-0dd845b880c2"
+      }
     },
     {
       "youtubeId": "fo7NwLhtTOc",
@@ -787,9 +695,7 @@
         "sqft": 1277,
         "price": "$134",
         "address": "4305 Albert Street"
-      },
-      "localPath": "/Users/nisar/Workspace/propertylens/ingestion/videos/fo7NwLhtTOc.mp4",
-      "ragieDocumentId": "2865e759-1167-47d2-af0b-a4708a216b42"
+      }
     },
     {
       "youtubeId": "e6qCpshmtmQ",
@@ -805,9 +711,7 @@
         "sqft": 609,
         "price": "$575",
         "address": "7388 Kingsway"
-      },
-      "localPath": "/Users/nisar/Workspace/propertylens/ingestion/videos/e6qCpshmtmQ.mp4",
-      "ragieDocumentId": "90ae3933-9de1-4e21-bdba-14ac14b1e096"
+      }
     },
     {
       "youtubeId": "EkU5olml9M8",
@@ -823,9 +727,7 @@
         "sqft": 1146,
         "price": "$149",
         "address": "4788 Hast"
-      },
-      "localPath": "/Users/nisar/Workspace/propertylens/ingestion/videos/EkU5olml9M8.mp4",
-      "ragieDocumentId": "5fde1b32-959d-4b33-9a3d-582791a2ff9b"
+      }
     },
     {
       "youtubeId": "_zHBPkJ3tno",
@@ -839,9 +741,7 @@
         "beds": 3,
         "baths": 2,
         "sqft": 2000
-      },
-      "localPath": "/Users/nisar/Workspace/propertylens/ingestion/videos/_zHBPkJ3tno.mp4",
-      "ragieDocumentId": "02c36954-8953-4c86-9aa0-26fe18e82ea4"
+      }
     },
     {
       "youtubeId": "1HgU7YOVlyw",
@@ -856,9 +756,7 @@
         "address": "6274 Sumas Street",
         "beds": 3,
         "baths": 2
-      },
-      "localPath": "/Users/nisar/Workspace/propertylens/ingestion/videos/1HgU7YOVlyw.mp4",
-      "ragieDocumentId": "53fbd147-3d15-49de-95e0-cc3049f91909"
+      }
     },
     {
       "youtubeId": "s3dixKo9vRc",
@@ -873,9 +771,7 @@
         "beds": 3,
         "baths": 2,
         "sqft": 2000
-      },
-      "localPath": "/Users/nisar/Workspace/propertylens/ingestion/videos/s3dixKo9vRc.mp4",
-      "ragieDocumentId": "416510bc-b9e5-44cb-83ae-ddd2133c463c"
+      }
     },
     {
       "youtubeId": "ndfIB2HMREE",
@@ -890,9 +786,7 @@
         "baths": 2,
         "sqft": 1266,
         "price": "$970"
-      },
-      "localPath": "/Users/nisar/Workspace/propertylens/ingestion/videos/ndfIB2HMREE.mp4",
-      "ragieDocumentId": "8cf98fdc-159c-4045-a1d7-e66d595bbb96"
+      }
     },
     {
       "youtubeId": "cc1PFZuphn0",
@@ -907,9 +801,7 @@
         "baths": 3,
         "sqft": 1449,
         "address": "1955 Alpha Way"
-      },
-      "localPath": "/Users/nisar/Workspace/propertylens/ingestion/videos/cc1PFZuphn0.mp4",
-      "ragieDocumentId": "79a3aa30-7f33-420a-ab36-db554553c959"
+      }
     },
     {
       "youtubeId": "3YsFoLaS3ys",
@@ -924,9 +816,7 @@
         "beds": 3,
         "baths": 2,
         "sqft": 2000
-      },
-      "localPath": "/Users/nisar/Workspace/propertylens/ingestion/videos/3YsFoLaS3ys.mp4",
-      "ragieDocumentId": "8ce9c83e-1b0d-46b2-be82-f08cf6a4b94d"
+      }
     },
     {
       "youtubeId": "htkHR2rdoc4",
@@ -940,9 +830,7 @@
         "beds": 2,
         "baths": 1,
         "sqft": 900
-      },
-      "localPath": "/Users/nisar/Workspace/propertylens/ingestion/videos/htkHR2rdoc4.mp4",
-      "ragieDocumentId": "7f0d2d5b-cd5b-45a7-b4f8-d378bf21bd16"
+      }
     },
     {
       "youtubeId": "NyFR97bnCtA",
@@ -956,9 +844,7 @@
         "beds": 3,
         "baths": 2,
         "sqft": 2000
-      },
-      "localPath": "/Users/nisar/Workspace/propertylens/ingestion/videos/NyFR97bnCtA.mp4",
-      "ragieDocumentId": "e5425cd7-80d9-404c-bd27-32c8b18455ab"
+      }
     },
     {
       "youtubeId": "QjLv1-38NdE",
@@ -973,9 +859,7 @@
         "price": "$119",
         "beds": 2,
         "baths": 1
-      },
-      "localPath": "/Users/nisar/Workspace/propertylens/ingestion/videos/QjLv1-38NdE.mp4",
-      "ragieDocumentId": "8d75c175-0802-4fb5-bf2c-974d6cbfc135"
+      }
     },
     {
       "youtubeId": "vndhQP-5-H0",
@@ -990,9 +874,7 @@
         "beds": 2,
         "baths": 1,
         "sqft": 900
-      },
-      "localPath": "/Users/nisar/Workspace/propertylens/ingestion/videos/vndhQP-5-H0.mp4",
-      "ragieDocumentId": "77aa835d-cc52-42f3-8d04-8c5bf6bbcbcf"
+      }
     },
     {
       "youtubeId": "bb_k5aj-Z_w",
@@ -1007,9 +889,7 @@
         "beds": 2,
         "baths": 1,
         "sqft": 900
-      },
-      "localPath": "/Users/nisar/Workspace/propertylens/ingestion/videos/bb_k5aj-Z_w.mp4",
-      "ragieDocumentId": "687b1b0d-d502-4406-a215-139646c070d4"
+      }
     },
     {
       "youtubeId": "eoHm7-tVWGQ",
@@ -1024,9 +904,7 @@
         "beds": 2,
         "baths": 1,
         "sqft": 900
-      },
-      "localPath": "/Users/nisar/Workspace/propertylens/ingestion/videos/eoHm7-tVWGQ.mp4",
-      "ragieDocumentId": "c9b3578d-c49f-4156-8075-e1729006a08f"
+      }
     },
     {
       "youtubeId": "1mS1CDw51Xg",
@@ -1040,9 +918,7 @@
         "beds": 2,
         "baths": 3,
         "sqft": 900
-      },
-      "localPath": "/Users/nisar/Workspace/propertylens/ingestion/videos/1mS1CDw51Xg.mp4",
-      "ragieDocumentId": "2235ec51-22aa-4fd2-a686-90496ede08e4"
+      }
     },
     {
       "youtubeId": "P8ZO-XzBjDk",
@@ -1057,9 +933,7 @@
         "baths": 2,
         "address": "2 Bedr",
         "sqft": 900
-      },
-      "localPath": "/Users/nisar/Workspace/propertylens/ingestion/videos/P8ZO-XzBjDk.mp4",
-      "ragieDocumentId": "327d37aa-99d6-4805-aa25-5588c4a95c1a"
+      }
     },
     {
       "youtubeId": "PExhZ7iwiHQ",
@@ -1073,9 +947,7 @@
         "beds": 2,
         "baths": 1,
         "sqft": 900
-      },
-      "localPath": "/Users/nisar/Workspace/propertylens/ingestion/videos/PExhZ7iwiHQ.mp4",
-      "ragieDocumentId": "6bd79e4e-426a-4492-b0ff-bae420d31155"
+      }
     },
     {
       "youtubeId": "Gueg_zB5kAk",
@@ -1090,9 +962,7 @@
         "address": "4 bedroom townhome at Golf Pointe Estates East Abbotsford",
         "baths": 2.5,
         "sqft": 1500
-      },
-      "localPath": "/Users/nisar/Workspace/propertylens/ingestion/videos/Gueg_zB5kAk.mp4",
-      "ragieDocumentId": "817dfe49-5d41-4b42-9b8d-6aff3e67a022"
+      }
     }
   ],
   "lastUpdated": "2025-11-19T08:08:47.273Z"

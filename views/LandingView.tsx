@@ -1,52 +1,25 @@
 
-import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import SearchBar from '../components/SearchBar';
 import PropertyThumbnail from '../components/PropertyThumbnail';
-import { getRecentProperties } from '../services/searchService';
-import { Property } from '../types';
-import { PropertyThumbnailSkeleton } from '../components/ui/Skeletons';
+import { properties, totalScenes } from '../services/api';
+import type { Property } from '../types';
 
 const SUGGESTIONS = [
-  "Houses with dark granite countertops",
-  "Warm earthy interior tones",
-  "Chef's kitchen with professional appliances",
-  "Exposed brick walls"
+  '3 bed in Burnaby with a big kitchen island',
+  'Backyard with mature trees',
+  'Under $1.5M with mountain views',
+  'Agent mentions a new roof',
 ];
 
 const LandingView: React.FC = () => {
   const navigate = useNavigate();
+  const featured = properties.slice(0, 8);
+  const minutes = Math.round(properties.reduce((n, p) => n + p.duration, 0) / 60);
 
-  const onSearch = (query: string) => {
-    navigate(`/search?q=${encodeURIComponent(query)}`);
-  };
-
-  const onPropertyClick = (property: Property) => {
-    // Navigate to property detail with document ID and a placeholder chunk
-    navigate(`/property/${property.ragieId || property.id}/overview`);
-  };
-  const [isLoadingProperties, setIsLoadingProperties] = useState(true);
-  const [properties, setProperties] = useState<Property[]>([]);
-  const [totalDocs, setTotalDocs] = useState<number | undefined>();
-  const [error, setError] = useState<string | null>(null);
-
-  const fetchProperties = async () => {
-    setIsLoadingProperties(true);
-    setError(null);
-    try {
-      const data = await getRecentProperties();
-      setProperties(data.properties);
-      setTotalDocs(data.total);
-    } catch (err: any) {
-      setError(err.message || "Failed to connect to the property index.");
-    } finally {
-      setIsLoadingProperties(false);
-    }
-  };
-
-  useEffect(() => {
-    fetchProperties();
-  }, []);
+  const onSearch = (query: string) => navigate(`/search?q=${encodeURIComponent(query)}`);
+  const onPropertyClick = (property: Property) => navigate(`/property/${property.id}`);
 
   return (
     <div className="min-h-screen flex flex-col bg-cream selection:bg-terracotta selection:text-white">
@@ -59,7 +32,7 @@ const LandingView: React.FC = () => {
            </div>
            <span className="font-display text-2xl text-charcoal tracking-tight font-bold">PropertyLens</span>
         </div>
-        <button className="text-xs font-mono font-bold text-charcoal hover:text-terracotta transition-colors uppercase tracking-widest border-b-2 border-charcoal hover:border-terracotta pb-0.5">About Project</button>
+        <Link to="/about" className="text-xs font-mono font-bold text-charcoal hover:text-terracotta transition-colors uppercase tracking-widest border-b-2 border-charcoal hover:border-terracotta pb-0.5">How it works</Link>
       </header>
 
       <main className="flex-1 max-w-7xl mx-auto px-4 md:px-6 w-full">
@@ -71,19 +44,19 @@ const LandingView: React.FC = () => {
           </h1>
 
           <p className="text-olive text-sm md:text-base mb-8 max-w-xl mx-auto font-sans leading-relaxed font-medium">
-            Search property videos using natural language.
+            Search inside {properties.length} home tour videos by what you want to see or hear, then jump straight to that moment.
           </p>
 
           <div className="max-w-2xl mx-auto mb-8 relative z-10">
             <SearchBar
               onSearch={onSearch}
-              placeholder={isLoadingProperties ? "Loading properties..." : `Search across ${totalDocs ?? properties.length} properties...`}
+              placeholder={`Search ${properties.length} home tours…`}
               className="transform transition-transform duration-300"
               autoFocus
             />
           </div>
 
-          <div className="flex flex-wrap justify-center gap-3 opacity-0 animate-slide-up" style={{ animationDelay: '0.2s' }}>
+          <div className="flex flex-wrap justify-center gap-3">
             {SUGGESTIONS.map((suggestion, idx) => (
               <button
                 key={suggestion}
@@ -97,63 +70,27 @@ const LandingView: React.FC = () => {
         </div>
 
         {/* Recent Properties Grid */}
-        <div className="border-t-2 border-charcoal pt-16 pb-20 animate-fade-in" style={{ animationDelay: '0.4s' }}>
+        <div className="border-t-2 border-charcoal pt-16 pb-20">
           <div className="flex justify-between items-end mb-10">
             <h2 className="font-display text-4xl text-charcoal flex items-center gap-3 font-bold">
               <span className="w-4 h-4 bg-terracotta rounded-none border-2 border-charcoal"></span>
-              Recently Indexed
+              In the index
             </h2>
+            <p className="hidden lg:block font-mono text-xs uppercase tracking-widest text-olive">
+              {properties.length} tours · {minutes} min of video{totalScenes ? ` · ${totalScenes} scenes` : ''}
+            </p>
             <button
               onClick={() => navigate('/index')}
               className="hidden md:block text-charcoal hover:text-terracotta text-xs font-mono font-bold tracking-widest uppercase transition-colors border-b-2 border-charcoal hover:border-terracotta pb-1"
             >
-              View All Index
+              Browse all tours
             </button>
           </div>
           
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-12">
-            {error ? (
-              <div className="col-span-full flex flex-col items-center justify-center py-16 px-4 border-2 border-charcoal bg-terracotta/5 text-center animate-fade-in">
-                <div className="w-12 h-12 bg-terracotta text-white flex items-center justify-center rounded-full mb-4 shadow-neobrutal-sm border-2 border-charcoal">
-                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-6 h-6">
-                     <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z" />
-                   </svg>
-                </div>
-                <h3 className="font-display text-xl font-bold text-charcoal uppercase tracking-tight mb-2">Connection Failed</h3>
-                <p className="text-sm font-mono text-olive mb-6 max-w-md">{error}</p>
-                <button 
-                   onClick={fetchProperties}
-                   className="px-6 py-2 bg-charcoal text-warmWhite font-mono text-xs font-bold uppercase tracking-widest hover:bg-terracotta transition-colors border-2 border-charcoal"
-                >
-                  Retry Connection
-                </button>
-              </div>
-            ) : isLoadingProperties ? (
-               Array.from({ length: 4 }).map((_, i) => (
-                 <div key={i} className="animate-slide-up" style={{ animationDelay: `${0.5 + (i * 0.1)}s` }}>
-                    <PropertyThumbnailSkeleton />
-                 </div>
-               ))
-            ) : properties.length > 0 ? (
-              properties.map((property, idx) => (
-                <div key={property.id} className="animate-slide-up" style={{ animationDelay: `${0.5 + (idx * 0.1)}s` }}>
-                  <PropertyThumbnail 
-                    property={property} 
-                    onClick={() => onPropertyClick(property)}
-                  />
-                </div>
-              ))
-            ) : (
-              <div className="col-span-full flex flex-col items-center justify-center py-16 border-2 border-dashed border-charcoal/20 bg-sand/10 rounded-none">
-                <div className="w-12 h-12 mb-4 text-charcoal/20">
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 001.5-1.5V6a1.5 1.5 0 00-1.5-1.5H3.75A1.5 1.5 0 002.25 6v12a1.5 1.5 0 001.5 1.5zm10.5-11.25h.008v.008h-.008V8.25zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
-                  </svg>
-                </div>
-                <p className="font-mono text-charcoal font-bold uppercase tracking-wide mb-1">Index Empty</p>
-                <p className="text-sm text-olive font-sans">No properties found in the index.</p>
-              </div>
-            )}
+            {featured.map(property => (
+              <PropertyThumbnail key={property.id} property={property} onClick={() => onPropertyClick(property)} />
+            ))}
           </div>
         </div>
       </main>

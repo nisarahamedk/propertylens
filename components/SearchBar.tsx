@@ -7,15 +7,16 @@ interface SearchBarProps {
   onSearch: (query: string) => void;
   className?: string;
   autoFocus?: boolean;
+  compact?: boolean;
 }
 
 const SAMPLE_QUERIES = [
-  "houses with black kitchen countertops",
-  "properties with muted interior colors",
-  "spacious backyard suitable for entertaining",
-  "bright open living spaces with high ceilings",
-  "cozy reading nook or home library",
-  "modern minimalist design aesthetic"
+  "3 bed in Burnaby with a big kitchen island",
+  "backyard with mature trees",
+  "under $1.5M with mountain views",
+  "agent mentions a new roof",
+  "bright open living room with high ceilings",
+  "walk-in closet in the primary bedroom"
 ];
 
 const SearchBar: React.FC<SearchBarProps> = ({
@@ -23,7 +24,8 @@ const SearchBar: React.FC<SearchBarProps> = ({
   initialValue = "",
   onSearch,
   className = "",
-  autoFocus = false
+  autoFocus = false,
+  compact = false
 }) => {
   const [query, setQuery] = useState(initialValue);
   const [isFocused, setIsFocused] = useState(false);
@@ -44,10 +46,10 @@ const SearchBar: React.FC<SearchBarProps> = ({
 
   // Animated placeholder typing effect
   useEffect(() => {
-    if (query || isFocused) return;
+    if (query || isFocused || compact) return;
 
     const currentQuery = SAMPLE_QUERIES[currentSuggestionIndex];
-    let timeout: NodeJS.Timeout;
+    let timeout: ReturnType<typeof setTimeout>;
 
     if (isTyping) {
       if (displayText.length < currentQuery.length) {
@@ -85,15 +87,15 @@ const SearchBar: React.FC<SearchBarProps> = ({
     inputRef.current?.focus();
   };
 
-  const showAnimatedPlaceholder = !query && !isFocused;
+  const showAnimatedPlaceholder = !query && !isFocused && !compact;
 
   return (
     <form
       onSubmit={handleSubmit}
       className={`relative group ${className}`}
     >
-      <div className="absolute left-5 top-1/2 -translate-y-1/2 text-charcoal pointer-events-none z-10">
-        <IconSearch className="w-6 h-6" />
+      <div className={`absolute top-1/2 -translate-y-1/2 text-charcoal pointer-events-none z-10 ${compact ? 'left-3' : 'left-5'}`}>
+        <IconSearch className={compact ? 'w-5 h-5' : 'w-6 h-6'} />
       </div>
 
       {/* Animated placeholder */}
@@ -111,18 +113,20 @@ const SearchBar: React.FC<SearchBarProps> = ({
         onChange={(e) => setQuery(e.target.value)}
         onFocus={() => setIsFocused(true)}
         onBlur={() => setIsFocused(false)}
-        placeholder={isFocused ? placeholder : ''}
-        className="w-full h-16 pl-14 pr-12 rounded-none bg-warmWhite border-2 border-charcoal
-                   text-charcoal placeholder-olive/60 font-sans font-medium text-xl
-                   shadow-neobrutal focus:shadow-neobrutal-hover focus:translate-x-[-2px] focus:translate-y-[-2px]
-                   focus:outline-none transition-all duration-200"
+        placeholder={isFocused || compact ? placeholder : ''}
+        aria-label="Search home tours"
+        className={`w-full rounded-none bg-warmWhite border-2 border-charcoal text-charcoal placeholder-olive/60 font-sans font-medium focus:outline-none transition-all duration-200 ${
+          compact
+            ? 'h-11 pl-10 pr-10 text-base shadow-neobrutal-sm focus:shadow-neobrutal'
+            : 'h-16 pl-14 pr-12 text-xl shadow-neobrutal focus:shadow-neobrutal-hover focus:translate-x-[-2px] focus:translate-y-[-2px]'
+        }`}
       />
       
       {query && (
         <button
           type="button"
           onClick={handleClear}
-          className="absolute right-5 top-1/2 -translate-y-1/2 text-charcoal/50 hover:text-terracotta transition-colors p-1"
+          className="absolute right-3 top-1/2 -translate-y-1/2 text-charcoal/50 hover:text-terracotta transition-colors p-1"
           aria-label="Clear search"
         >
           <IconClose className="w-5 h-5" />

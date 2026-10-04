@@ -1,117 +1,87 @@
 # PropertyLens
 
-A multi-modal property video search application that enables natural language search across property video walkthroughs. Instead of keyword-based searches, describe what you're looking for (e.g., "modern kitchen with island", "backyard with mature trees") and PropertyLens finds relevant moments in property videos.
+Search inside home tour videos by what you want to see or hear, then jump straight to that moment.
 
-## Features
+Type "3 bed in Burnaby with a big kitchen island" and PropertyLens pulls out the filters (3+ beds, Burnaby), searches every scene of every tour for a kitchen island, and shows the matching moments with a frame, a caption and how strongly each matched on what is **seen** versus what is **heard**. On a tour you get a room-by-room timeline, a scene list that follows playback, and a chat that answers from the video with clickable timestamps.
 
-- **Semantic Search** - Natural language queries across video transcripts and visual content
-- **Multi-Source Video Player** - Intelligent fallback between Ragie streams, YouTube, and HTML5 video
-- **Transcript Sync** - Auto-scrolling transcript with clickable timestamps for navigation
-- **AI-Powered Chat** - Follow-up questions with grounded responses from video context
-- **Property Index** - Browse recently indexed properties with detailed metadata
-- **Neo-Brutalist Design** - Bold, high-contrast UI with custom animations
-
-## Tech Stack
-
-- **Frontend**: React 19, TypeScript
-- **Build Tool**: Vite 6
-- **Styling**: Tailwind CSS
-- **AI/Search**: Ragie SDK (multi-modal search and retrieval)
-- **Video**: YouTube IFrame API, HTML5 Video
-
-## Project Structure
+## How it works
 
 ```
-propertylens/
-├── App.tsx                 # Root component with view state management
-├── index.tsx               # React entry point
-├── types.ts                # TypeScript interfaces
-├── views/                  # Page-level components
-│   ├── LandingView.tsx     # Home page with search and property grid
-│   ├── ResultsView.tsx     # Search results listing
-│   └── PlayerView.tsx      # Video player with transcript and chat
-├── components/             # Reusable UI components
-│   ├── SearchBar.tsx
-│   ├── ResultCard.tsx
-│   ├── PropertyThumbnail.tsx
-│   ├── VideoPlayer.tsx
-│   └── ui/                 # Icons and skeleton loaders
-└── services/               # Business logic and API integration
-    ├── searchService.ts    # Main search orchestrator
-    ├── RealRagieClient.ts  # Production Ragie API client
-    ├── MockRagieClient.ts  # Mock client for development
-    └── mockData.ts         # Sample property data
+                 offline, once                                     every request
+┌──────────────┐  yt-dlp   ┌─────────┐  ffmpeg   ┌──────────────┐     ┌───────────────┐
+│ manifest.json├──────────►│  mp4s   ├──────────►│ 30s windows  │     │ Browser       │
+└──────────────┘           └─────────┘ every 25s └──────┬───────┘     │ (no secrets)  │
+                                                        │             └──────┬────────┘
+                      Gemini Flash: room, caption,      │                    │ POST /api/search
+                      features, transcript  ◄───────────┤                    ▼
+                      Gemini Embedding 2: clip vector ◄─┤             ┌───────────────┐  embed query
+                      + text vector of the notes        │             │ Vercel fn     ├──────────► Gemini
+                                                        ▼             │ index in RAM  │
+                         data/properties.json  (scenes, shipped to UI)│ cosine + BM25 │
+                         data/vectors.json     (server only)  ───────►│ + RRF fusion  │
+                         public/frames/*.jpg                          └───────────────┘
 ```
 
-## Getting Started
+- **Index** (`ingestion/build-index.ts`): each tour is cut into 30-second windows with a 5-second overlap. Gemini Flash describes each window; Gemini Embedding 2 embeds both the clip itself and the written notes (768 dimensions).
+- **Search** (`server/search.ts`): filter phrases are parsed out first (by Gemini when the query looks like it has any, by rules otherwise). The descriptive remainder is embedded and scored against every scene three ways: visual similarity, speech/caption similarity and BM25 keywords. Reciprocal rank fusion merges them, and results are grouped by property.
+- **Ask** (`server/chat.ts`): a tour is a few minutes long, so all its scene notes fit in one prompt. No retrieval step; the answer streams back with `[m:ss]` citations.
+- **Storage**: a JSON index scored in memory. At ~500 scenes there is nothing for a vector database to do.
 
-### Prerequisites
+Without `GEMINI_API_KEY` the API falls back to keyword-only search, so the UI still works in development.
 
-- Node.js (v18+)
-- npm
-
-### Installation
+## Getting started
 
 ```bash
-# Clone the repository
-git clone https://github.com/nisarahamedk/propertylens.git
-cd propertylens
-
-# Install dependencies
 npm install
+echo "GEMINI_API_KEY=your_key" > .env.local   # server-side only; never bundled
+npm run dev                                   # http://localhost:3000, /api/* served by Vite
 ```
 
-### Configuration
+### Build the index
 
-Create a `.env.local` file with your API key:
-
-```env
-RAGIE_API_KEY=your_ragie_api_key_here
-```
-
-### Development
+Needs `yt-dlp` and `ffmpeg` on your PATH.
 
 ```bash
-# Start development server (http://localhost:3000)
-npm run dev
-
-# Build for production
-npm run build
-
-# Preview production build
-npm run preview
+GEMINI_API_KEY=your_key npm run index            # all tours in ingestion/manifest.json
+npm run index -- --only D81OJRTOkLA              # one tour, merged into the existing index
+npm run index -- --catalog-only                  # rebuild outputs from cache, no API calls
+GEMINI_API_KEY=your_key npm run eval             # sanity-check ranking after a rebuild
 ```
 
-## Architecture
+Commit `data/` and `public/frames/` afterwards; the deployment serves them as-is. Results are cached per window in `ingestion/.cache/`, so an interrupted run picks up where it stopped. See [ingestion/README.md](ingestion/README.md).
 
-The app uses a service layer pattern with dependency injection:
+### Deploy
 
-- **Views** handle page-level state and layout
-- **Components** are reusable UI elements
-- **Services** manage API calls and business logic
-- **Mock/Real clients** can be swapped via configuration flag
+Deploy to Vercel and set `GEMINI_API_KEY` in the project's environment variables. `api/search.ts` and `api/chat.ts` become serverless functions with `data/` bundled in. Set a spending cap on the key; the handlers also rate-limit per IP.
 
-### Data Flow
+## Project structure
 
 ```
-Landing → Search → Results → Player
-   ↑                           ↓
-   └──── Back Navigation ──────┘
+api/              Vercel function entry points (thin wrappers)
+server/           Search, chat, Gemini client, index loader, Vite dev middleware
+ingestion/        Manifest scraper, index builder, ranking eval
+data/             Generated index (properties.json, vectors.json)
+public/frames/    Generated scene stills
+views/            Landing, results, player, all tours, how it works
+components/       Match cards, chapter timeline, scene list, chat, YouTube player
+services/api.ts   Client for /api/* plus the static catalog
+types.ts          Types shared by the app, the API and ingestion
 ```
 
-## API Integration
+## Configuration
 
-PropertyLens integrates with the Ragie platform for:
+| Variable | Default | Purpose |
+|---|---|---|
+| `GEMINI_API_KEY` | none | Required for hybrid search, chat and indexing |
+| `GEMINI_EMBEDDING_MODEL` | `gemini-embedding-2` | Must match the model the index was built with |
+| `GEMINI_FLASH_MODEL` | `gemini-flash-latest` | Scene notes, query parsing, chat |
+| `SEARCH_MIN_SCORE` | `0.25` | Floor on the blended cosine; tune with `npm run eval` |
 
-- **Document indexing** - Store and retrieve property video data
-- **Semantic search** - Multi-modal search across transcripts and visuals
-- **Grounded generation** - AI responses based on video content
+Ranking weights live in `server/config.ts`.
 
-## Design System
+## Tech stack
 
-- **Colors**: Cream, Charcoal, Terracotta, Olive, Sage
-- **Typography**: Space Grotesk (display), Work Sans (body), Space Mono (mono)
-- **Style**: Neo-brutalist with hard shadows and bold borders
+React 19, TypeScript, Vite 6, Tailwind CSS 3, Vercel Functions, Gemini API. Tour videos stream from YouTube and belong to their creators.
 
 ## License
 

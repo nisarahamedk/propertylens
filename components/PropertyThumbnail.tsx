@@ -1,5 +1,6 @@
 import React from 'react';
-import { Property } from '../types';
+import type { Property } from '../types';
+import { formatPrice } from '../lib/format';
 
 interface PropertyThumbnailProps {
   property: Property;
@@ -16,7 +17,8 @@ const PropertyThumbnail: React.FC<PropertyThumbnailProps> = ({ property, onClick
       <div className="relative aspect-[4/3] overflow-hidden rounded-none border-2 border-charcoal bg-sand shadow-neobrutal transition-all duration-300 group-hover:-translate-y-1 group-hover:shadow-neobrutal-hover">
         <img 
           src={property.thumbnailUrl} 
-          alt={property.name} 
+          alt={property.name}
+          loading="lazy" 
           className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 filter grayscale-[20%] group-hover:grayscale-0"
         />
         
@@ -38,7 +40,9 @@ const PropertyThumbnail: React.FC<PropertyThumbnailProps> = ({ property, onClick
             {property.address}
           </p>
           <p className="text-[10px] text-charcoal font-mono font-bold bg-sand px-1.5 py-0.5 border border-charcoal shrink-0">
-            {property.beds}bd/{property.baths}ba
+            {[property.beds ? `${property.beds}bd` : null, property.baths ? `${property.baths}ba` : null, formatPrice(property.priceValue) || null]
+              .filter(Boolean)
+              .join(' · ') || 'Tour'}
           </p>
         </div>
       </div>

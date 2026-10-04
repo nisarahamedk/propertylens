@@ -25,7 +25,7 @@ dist-ssr
 
 # Ingestion
 ingestion/videos/
-ingestion/manifest.json
+ingestion/.cache/
 ingestion/fill-metadata.cjs
 
 # Test artifacts

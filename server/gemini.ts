@@ -1,0 +1,132 @@
+// Minimal Gemini REST client. Plain fetch keeps the serverless bundle small and
+// works the same in Node scripts, the Vite dev server and Vercel functions.
+
+import { EMBEDDING_DIMS, MODELS } from './config';
+
+const BASE = 'https://generativelanguage.googleapis.com/v1beta';
+
+export class GeminiError extends Error {
+  constructor(message: string, public status: number) {
+    super(message);
+  }
+}
+
+export function getApiKey(): string | undefined {
+  return process.env.GEMINI_API_KEY || undefined;
+}
+
+export type Part =
+  | { text: string }
+  | { inlineData: { mimeType: string; data: string } };
+
+async function call(path: string, body: unknown, apiKey: string, attempt = 0): Promise<any> {
+  const res = await fetch(`${BASE}/${path}`, {
+    method: 'POST',
+    headers: { 'content-type': 'application/json', 'x-goog-api-key': apiKey },
+    body: JSON.stringify(body),
+  });
+  if (res.ok) return res.json();
+  // Back off on rate limits and transient server errors.
+  if ((res.status === 429 || res.status >= 500) && attempt < 4) {
+    await new Promise(r => setTimeout(r, 1000 * 2 ** attempt + Math.random() * 500));
+    return call(path, body, apiKey, attempt + 1);
+  }
+  const text = await res.text();
+  throw new GeminiError(`Gemini ${path} failed: ${res.status} ${text.slice(0, 300)}`, res.status);
+}
+
+export function normalize(v: number[] | Float32Array): Float32Array {
+  const out = Float32Array.from(v);
+  let norm = 0;
+  for (let i = 0; i < out.length; i++) norm += out[i] * out[i];
+  norm = Math.sqrt(norm) || 1;
+  for (let i = 0; i < out.length; i++) out[i] /= norm;
+  return out;
+}
+
+export async function embed(parts: Part[], apiKey: string): Promise<Float32Array> {
+  const data = await call(`models/${MODELS.embedding}:embedContent`, {
+    content: { parts },
+    outputDimensionality: EMBEDDING_DIMS,
+  }, apiKey);
+  const values: number[] | undefined = data?.embedding?.values;
+  if (!values?.length) throw new GeminiError('Empty embedding in response', 502);
+  return normalize(values);
+}
+
+// gemini-embedding-2 takes task instructions as text prefixes instead of a taskType field.
+export const queryText = (q: string) => `task: search result | query: ${q}`;
+export const documentText = (title: string, text: string) => `title: ${title || 'none'} | text: ${text}`;
+
+interface GenerateOptions {
+  system?: string;
+  schema?: object;      // JSON schema for structured output
+  temperature?: number;
+}
+
+function generateBody(contents: { role: string; parts: Part[] }[], opts: GenerateOptions) {
+  return {
+    contents,
+    ...(opts.system ? { systemInstruction: { parts: [{ text: opts.system }] } } : {}),
+    generationConfig: {
+      temperature: opts.temperature ?? 0.2,
+      ...(opts.schema ? { responseMimeType: 'application/json', responseSchema: opts.schema } : {}),
+    },
+  };
+}
+
+export async function generate(
+  contents: { role: string; parts: Part[] }[],
+  apiKey: string,
+  opts: GenerateOptions = {},
+): Promise<string> {
+  const data = await call(`models/${MODELS.flash}:generateContent`, generateBody(contents, opts), apiKey);
+  const parts = data?.candidates?.[0]?.content?.parts ?? [];
+  return parts.map((p: any) => p.text ?? '').join('');
+}
+
+export async function generateJson<T>(
+  contents: { role: string; parts: Part[] }[],
+  apiKey: string,
+  opts: GenerateOptions & { schema: object },
+): Promise<T> {
+  const text = await generate(contents, apiKey, opts);
+  return JSON.parse(text) as T;
+}
+
+/** Streams text deltas from the model as they arrive. */
+export async function* generateStream(
+  contents: { role: string; parts: Part[] }[],
+  apiKey: string,
+  opts: GenerateOptions = {},
+): AsyncGenerator<string> {
+  const res = await fetch(`${BASE}/models/${MODELS.flash}:streamGenerateContent?alt=sse`, {
+    method: 'POST',
+    headers: { 'content-type': 'application/json', 'x-goog-api-key': apiKey },
+    body: JSON.stringify(generateBody(contents, opts)),
+  });
+  if (!res.ok || !res.body) {
+    throw new GeminiError(`Gemini stream failed: ${res.status} ${(await res.text()).slice(0, 300)}`, res.status);
+  }
+  const reader = res.body.getReader();
+  const decoder = new TextDecoder();
+  let buffer = '';
+  while (true) {
+    const { done, value } = await reader.read();
+    if (done) break;
+    buffer += decoder.decode(value, { stream: true });
+    let idx;
+    while ((idx = buffer.indexOf('\n')) >= 0) {
+      const line = buffer.slice(0, idx).trim();
+      buffer = buffer.slice(idx + 1);
+      if (!line.startsWith('data:')) continue;
+      try {
+        const chunk = JSON.parse(line.slice(5));
+        const text = (chunk?.candidates?.[0]?.content?.parts ?? []).map((p: any) => p.text ?? '').join('');
+        if (text) yield text;
+      } catch {
+        // Ignore keep-alive or partial lines.
+      }
+    }
+  }
+}
