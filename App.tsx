@@ -4,6 +4,7 @@ import LandingView from './views/LandingView';
 import ResultsView from './views/ResultsView';
 import PlayerView from './views/PlayerView';
 import IndexView from './views/IndexView';
+import AboutView from './views/AboutView';
 
 const App: React.FC = () => {
   return (
@@ -12,8 +13,9 @@ const App: React.FC = () => {
         <Routes>
           <Route path="/" element={<LandingView />} />
           <Route path="/index" element={<IndexView />} />
+          <Route path="/about" element={<AboutView />} />
           <Route path="/search" element={<ResultsView />} />
-          <Route path="/property/:documentId/:chunkId" element={<PlayerView />} />
+          <Route path="/property/:id" element={<PlayerView />} />
         </Routes>
       </div>
     </BrowserRouter>

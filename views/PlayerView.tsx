@@ -1,178 +1,163 @@
+import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { Link, useLocation, useParams, useSearchParams } from 'react-router-dom';
+import AppHeader from '../components/AppHeader';
+import ChapterTimeline from '../components/ChapterTimeline';
+import ChatPanel from '../components/ChatPanel';
+import ScenePanel from '../components/ScenePanel';
+import VideoPlayer, { type VideoPlayerHandle } from '../components/VideoPlayer';
+import { formatPrice, queryTerms } from '../lib/format';
+import { getProperty, searchTours } from '../services/api';
+import type { Moment } from '../types';
 
-import React, { useState, useEffect } from 'react';
-import { useParams, useNavigate, useLocation } from 'react-router-dom';
-import ReactMarkdown from 'react-markdown';
-import VideoPlayer from '../components/VideoPlayer';
-import { Property } from '../types';
-import { getRecentProperties } from '../services/searchService';
-import { IconArrowLeft } from '../components/ui/Icons';
+type Tab = 'scenes' | 'ask';
 
 const PlayerView: React.FC = () => {
-  const { documentId, chunkId } = useParams<{ documentId: string; chunkId: string }>();
-  const navigate = useNavigate();
+  const { id = '' } = useParams<{ id: string }>();
+  const [params] = useSearchParams();
   const location = useLocation();
-  const locationState = location.state as any;
-  const passedProperty = locationState?.property as Property | undefined;
-  const passedStreamUrl = locationState?.streamUrl;
-  const passedStartTime = locationState?.startTime || 0;
-  const passedEndTime = locationState?.endTime || 0;
-  const passedSelfText = locationState?.selfText || '';
+  const property = getProperty(id);
+  const query = params.get('q') || '';
+  const startAt = Number(params.get('t') || 0);
 
-  const [property, setProperty] = useState<Property | null>(null);
-  const [streamUrl, setStreamUrl] = useState<string>('');
-  const [startTime, setStartTime] = useState(passedStartTime);
-  const [endTime, setEndTime] = useState(passedEndTime);
-  const [isLoadingProperty, setIsLoadingProperty] = useState(true);
-  const [currentTime, setCurrentTime] = useState(0);
+  const playerRef = useRef<VideoPlayerHandle>(null);
+  const [currentTime, setCurrentTime] = useState(startAt);
+  const [tab, setTab] = useState<Tab>('scenes');
+  const [matches, setMatches] = useState<Moment[]>(
+    () => (location.state as { moments?: Moment[] } | null)?.moments ?? [],
+  );
 
-  // Load property data from documentId
+  // Opened from a shared link: recover this tour's matches by re-running the search.
   useEffect(() => {
-    const loadProperty = async () => {
-      if (!documentId) return;
-      setIsLoadingProperty(true);
-      try {
-        // Use passed property from navigation state
-        if (passedProperty) {
-          setProperty(passedProperty);
-        } else {
-          // Fallback to recent properties list
-          const data = await getRecentProperties();
-          const found = data.properties.find(p => p.ragieId === documentId || p.id === documentId);
-          if (found) {
-            setProperty(found);
-          }
-        }
+    if (!query || matches.length || !property) return;
+    searchTours(query)
+      .then(r => setMatches(r.matches.find(m => m.property.id === property.id)?.moments ?? []))
+      .catch(() => {});
+  }, [query, property, matches.length]);
 
-        // Use passed stream URL from search results, or show error
-        if (passedStreamUrl) {
-          setStreamUrl(passedStreamUrl);
-        } else {
-          // No stream URL passed - user must search to get chunk-level streams
-          setStreamUrl('');
-        }
-      } catch (e) {
-        // Failed to load property
-      } finally {
-        setIsLoadingProperty(false);
-      }
-    };
-    loadProperty();
-  }, [documentId, passedProperty, passedStreamUrl]);
+  const playerBoxRef = useRef<HTMLDivElement>(null);
+  const seek = useCallback((t: number) => {
+    playerRef.current?.seekTo(t);
+    setCurrentTime(t);
+    // On a phone the scene list and chat sit below the video; bring it back into view.
+    const box = playerBoxRef.current?.getBoundingClientRect();
+    if (box && (box.top < 0 || box.bottom > window.innerHeight)) {
+      playerBoxRef.current!.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }, []);
 
-  const onBack = () => navigate(-1);
+  const matchedIds = useMemo(() => new Set(matches.map(m => m.segmentId)), [matches]);
+  const terms = useMemo(() => queryTerms(query), [query]);
 
-  const handleTimeUpdate = (time: number) => {
-    setCurrentTime(time);
-  };
-
-  // Loading state
-  if (isLoadingProperty || !property) {
+  if (!property) {
     return (
-      <div className="min-h-screen bg-cream flex items-center justify-center">
-        <div className="text-center">
-          <div className="w-12 h-12 bg-terracotta animate-pulse mx-auto mb-4"></div>
-          <p className="font-mono text-sm text-olive">Loading property...</p>
+      <div className="min-h-screen bg-cream">
+        <AppHeader back="/" />
+        <div className="max-w-xl mx-auto px-4 py-24 text-center">
+          <h1 className="font-display text-3xl font-bold text-charcoal mb-3">Tour not found</h1>
+          <p className="text-olive mb-6">This tour is not in the index. It may have been removed.</p>
+          <Link to="/index" className="font-mono text-xs font-bold uppercase tracking-widest border-b-2 border-charcoal">
+            Browse all tours
+          </Link>
         </div>
       </div>
     );
   }
 
+  const facts = [
+    property.beds ? `${property.beds} bed` : null,
+    property.baths ? `${property.baths} bath` : null,
+    property.sqft ? `${property.sqft.toLocaleString()} sq ft` : null,
+  ].filter(Boolean);
+
   return (
-    <div className="min-h-screen bg-cream flex flex-col animate-fade-in">
-       {/* Header */}
-       <header className="bg-cream sticky top-0 z-40 border-b-2 border-charcoal">
-        <div className="max-w-7xl mx-auto px-4 py-4 flex items-center relative">
-          <button
-            onClick={onBack}
-            className="absolute left-4 flex items-center gap-2 text-charcoal hover:text-terracotta transition-colors"
-          >
-            <div className="p-2 border-2 border-charcoal bg-warmWhite hover:bg-charcoal hover:text-warmWhite transition-all shadow-neobrutal-sm">
-              <IconArrowLeft className="w-4 h-4" />
+    <div className="min-h-screen bg-cream flex flex-col">
+      <AppHeader back={-1}>
+        <p className="truncate font-display font-bold text-charcoal uppercase tracking-tight">{property.name}</p>
+      </AppHeader>
+
+      <main className="flex-1 max-w-7xl mx-auto px-4 md:px-6 py-6 lg:py-8 flex flex-col lg:flex-row gap-8 w-full">
+        <div className="flex-1 min-w-0">
+          <div ref={playerBoxRef} className="border-2 border-charcoal bg-charcoal scroll-mt-20">
+            <VideoPlayer ref={playerRef} youtubeId={property.youtubeId} startTime={startAt} onTimeUpdate={setCurrentTime} />
+          </div>
+          <ChapterTimeline
+            chapters={property.chapters}
+            segments={property.segments}
+            duration={property.duration}
+            currentTime={currentTime}
+            matches={matches}
+            onSeek={seek}
+          />
+
+          <section className="mt-8">
+            <div className="flex flex-wrap items-baseline justify-between gap-3 mb-3">
+              <h1 className="font-display text-3xl md:text-4xl text-charcoal font-bold uppercase tracking-tight leading-none">
+                {property.name}
+              </h1>
+              {property.priceValue && (
+                <span className="font-mono font-bold text-xl text-terracotta">{formatPrice(property.priceValue)}</span>
+              )}
             </div>
-            <span className="hidden sm:inline font-mono font-bold text-xs uppercase tracking-wider">Back</span>
-          </button>
-
-          <div className="w-full text-center">
-             <span className="font-mono text-olive/60 text-xs font-bold uppercase tracking-widest mr-2">Viewing</span>
-             <span className="font-display text-lg text-terracotta font-bold uppercase tracking-wide border-b-2 border-terracotta/30 pb-0.5">
-               {property.name}
-             </span>
-          </div>
-        </div>
-      </header>
-
-      <main className="flex-1 max-w-7xl mx-auto px-4 py-6 lg:py-10 flex flex-col lg:flex-row gap-8 w-full">
-        {/* Left Column: Player */}
-        <div className="flex-1 min-w-0 flex flex-col">
-          <div className="bg-black mb-8 relative group border-2 border-charcoal">
-            <VideoPlayer
-              videoUrl={property.videoUrl}
-              streamUrl={streamUrl}
-              youtubeId={property.youtubeId}
-              startTime={startTime}
-              endTime={endTime}
-              onTimeUpdate={handleTimeUpdate}
-            />
-          </div>
-
-          <div className="animate-slide-up" style={{ animationDelay: '0.2s' }}>
-             <h1 className="font-display text-4xl md:text-5xl text-charcoal mb-4 font-bold uppercase tracking-tight leading-none">
-               {property.name}
-             </h1>
-
-             {/* Metadata Tags */}
-             <div className="flex flex-wrap items-center gap-4 mb-8 border-b-2 border-charcoal pb-8">
-               <span className="inline-block bg-clay/30 text-charcoal border-2 border-charcoal px-3 py-1 font-mono text-xs font-bold uppercase tracking-wider">
-                 {property.address}
-               </span>
-               <div className="text-xs font-mono font-bold tracking-widest text-olive/80 uppercase flex items-center gap-3">
-                 <span>{property.beds} Bed</span>
-                 <span className="text-charcoal/30">/</span>
-                 <span>{property.baths} Bath</span>
-                 <span className="text-charcoal/30">/</span>
-                 <span>{property.sqft} SqFt</span>
-               </div>
-             </div>
-
-             {property.description && (
-               <p className="text-charcoal text-lg leading-relaxed max-w-3xl font-sans font-medium text-opacity-80">
-                 {property.description}
-               </p>
-             )}
-          </div>
+            <div className="flex flex-wrap items-center gap-3 mb-6 pb-6 border-b-2 border-charcoal">
+              <span className="bg-clay/40 border-2 border-charcoal px-3 py-1 font-mono text-xs font-bold uppercase">{property.address}</span>
+              {facts.length > 0 && (
+                <span className="font-mono text-xs font-bold uppercase tracking-widest text-olive">{facts.join(' / ')}</span>
+              )}
+            </div>
+            <p className="text-charcoal text-lg leading-relaxed max-w-3xl">{property.summary || property.description}</p>
+            {property.highlights && property.highlights.length > 0 && (
+              <ul className="mt-5 flex flex-wrap gap-2">
+                {property.highlights.map(h => (
+                  <li key={h} className="px-3 py-1 bg-warmWhite border-2 border-charcoal text-sm">{h}</li>
+                ))}
+              </ul>
+            )}
+            <p className="mt-6 text-xs font-mono text-olive">
+              Tour video by {property.channelName} on{' '}
+              <a href={`https://www.youtube.com/watch?v=${property.youtubeId}`} target="_blank" rel="noreferrer" className="underline">
+                YouTube
+              </a>
+              .
+            </p>
+          </section>
         </div>
 
-        {/* Right Column: Scene Description */}
-        <div className="w-full lg:w-[400px] shrink-0 flex flex-col h-[600px] lg:h-[calc(100vh-140px)] lg:sticky lg:top-24 border-2 border-charcoal shadow-neobrutal bg-charcoal">
-          <div className="p-5 border-b border-white/10">
-            <div className="flex items-center gap-3 mb-1">
-              <div className="w-1.5 h-6 bg-terracotta"></div>
-              <h3 className="font-display text-2xl font-bold text-warmWhite uppercase tracking-tight">Scene</h3>
-            </div>
-            <p className="text-xs font-mono text-warmWhite/60 ml-5">Scene details</p>
+        <aside className="w-full lg:w-[400px] shrink-0 flex flex-col h-[640px] lg:h-[calc(100vh-120px)] lg:sticky lg:top-20 border-2 border-charcoal shadow-neobrutal bg-charcoal">
+          <div role="tablist" className="flex border-b-2 border-charcoal">
+            {(['scenes', 'ask'] as Tab[]).map(t => (
+              <button
+                key={t}
+                role="tab"
+                aria-selected={tab === t}
+                onClick={() => setTab(t)}
+                className={`flex-1 py-3 font-display font-bold uppercase tracking-tight text-lg transition-colors ${
+                  tab === t ? 'bg-terracotta text-white' : 'text-warmWhite/70 hover:text-warmWhite'
+                }`}
+              >
+                {t === 'scenes' ? `Scenes${property.segments.length ? ` · ${property.segments.length}` : ''}` : 'Ask the tour'}
+              </button>
+            ))}
           </div>
-
-          <div className="flex-1 overflow-y-auto p-5 custom-scrollbar">
-            {passedSelfText ? (
-              <div className="text-warmWhite/90 text-sm font-sans leading-relaxed prose prose-invert prose-sm max-w-none prose-p:my-2 prose-headings:text-warmWhite prose-strong:text-warmWhite prose-li:my-0.5">
-                <ReactMarkdown>
-                  {(() => {
-                    try {
-                      const parsed = JSON.parse(passedSelfText);
-                      return parsed.video_description || passedSelfText;
-                    } catch {
-                      return passedSelfText;
-                    }
-                  })()}
-                </ReactMarkdown>
-              </div>
+          <div className={`flex-1 min-h-0 ${tab === 'scenes' ? 'overflow-y-auto' : 'flex flex-col'}`}>
+            {tab === 'scenes' ? (
+              <ScenePanel
+                segments={property.segments}
+                currentTime={currentTime}
+                matchedIds={matchedIds}
+                terms={terms}
+                fallbackImage={property.thumbnailUrl}
+                onSeek={seek}
+              />
             ) : (
-              <p className="text-warmWhite/40 text-sm font-mono italic">
-                No description available for this segment.
-              </p>
+              <ChatPanel
+                youtubeId={property.youtubeId}
+                currentTime={currentTime}
+                onSeek={seek}
+                disabled={!property.segments.length}
+              />
             )}
           </div>
-        </div>
+        </aside>
       </main>
     </div>
   );

@@ -26,9 +26,10 @@ export const CONFIG = {
   MAX_DURATION_SECONDS: 300, // 5 minutes
   TARGET_VIDEO_COUNT: 50,
 
-  // Ragie
-  RAGIE_API_KEY: process.env.RAGIE_API_KEY || '',
-  RAGIE_API_URL: 'https://api.ragie.ai',
+  // Index build
+  CACHE_DIR: path.join(__dirname, '.cache'),
+  DATA_DIR: path.join(__dirname, '..', 'data'),
+  FRAMES_DIR: path.join(__dirname, '..', 'public', 'frames'),
 };
 
 export interface VideoManifestEntry {
@@ -38,8 +39,6 @@ export interface VideoManifestEntry {
   channelName: string;
   duration: number; // seconds
   thumbnailUrl: string;
-  localPath?: string;
-  ragieDocumentId?: string;
   // Parsed metadata
   metadata: {
     location?: string;
