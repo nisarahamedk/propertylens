@@ -38,9 +38,9 @@ export function parseWithRules(q: string, locations: string[]): ParsedQuery {
     }
   };
 
-  take(/(\d+)\s*\+?\s*(?:bed(?:room)?s?|br|bd)\b/i, m => (filters.minBeds = Number(m[1])));
-  take(/(\d+(?:\.\d)?)\s*\+?\s*(?:bath(?:room)?s?|ba)\b/i, m => (filters.minBaths = Number(m[1])));
-  take(/(\d[\d,]*)\s*\+?\s*(?:sq\.?\s?ft|square\s+feet|sf)\b/i, m => (filters.minSqft = Number(m[1].replace(/,/g, ''))));
+  take(/(?:at least\s+|min(?:imum)?\s+)?(\d+)\s*\+?\s*(?:bed(?:room)?s?|br|bd)\b/i, m => (filters.minBeds = Number(m[1])));
+  take(/(?:at least\s+|min(?:imum)?\s+)?(\d+(?:\.\d)?)\s*\+?\s*(?:bath(?:room)?s?|ba)\b/i, m => (filters.minBaths = Number(m[1])));
+  take(/(?:at least\s+|min(?:imum)?\s+)?(\d[\d,]*)\s*\+?\s*(?:sq\.?\s?ft|square\s+feet|sf)\b/i, m => (filters.minSqft = Number(m[1].replace(/,/g, ''))));
   take(/(?:under|below|less than|max(?:imum)?|up to)\s*\$?\s*(\d[\d,.]*)\s*(m(?:illion)?|k)?\b/i, m => (filters.maxPrice = money(m[1], m[2])));
   take(/(?:over|above|more than|min(?:imum)?|at least)\s*\$?\s*(\d[\d,.]*)\s*(m(?:illion)?|k)\b/i, m => (filters.minPrice = money(m[1], m[2])));
 
@@ -56,7 +56,8 @@ export function parseWithRules(q: string, locations: string[]): ParsedQuery {
     .replace(/[,$]+/g, ' ')
     .replace(/\s+/g, ' ')
     .trim();
-  return { semantic: semantic || q, filters };
+  // Filters only ("3 bed in Burnaby"): match the same neutral phrase the model is told to use.
+  return { semantic: semantic || (Object.keys(filters).length ? 'house tour' : q), filters };
 }
 
 const SCHEMA = {
