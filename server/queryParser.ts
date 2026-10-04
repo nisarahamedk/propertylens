@@ -10,10 +10,12 @@ export interface ParsedQuery {
 }
 
 // Cheap check so plain descriptive queries skip the LLM round trip.
-const FILTER_HINT = /\d|\bbed|\bbath|\bbr\b|\$|\bunder\b|\bbelow\b|\bover\b|\bmillion\b|\bsq\s?ft|\bsquare\b|\bin\s+[A-Z]/i;
+const FILTER_HINT = /\d|\bbed|\bbath|\bbr\b|\$|\bunder\b|\bbelow\b|\bover\b|\bmillion\b|\bsq\s?ft|\bsquare\b/i;
+// Case-sensitive on purpose: a capitalised place ("in Kelowna"), not "in the ensuite" or "walk-in closet".
+const PLACE_HINT = /\bin\s+[A-Z]/;
 
 export function looksFiltered(q: string, locations: string[]): boolean {
-  if (FILTER_HINT.test(q)) return true;
+  if (FILTER_HINT.test(q) || PLACE_HINT.test(q)) return true;
   const lower = q.toLowerCase();
   return locations.some(l => lower.includes(l.toLowerCase()));
 }
