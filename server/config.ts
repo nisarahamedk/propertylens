@@ -35,5 +35,7 @@ export const RANKING = {
   // Drop properties whose best moment is far below the top result.
   relativeCutoff: 0.6,
   maxProperties: 8,
+  // Homes shown when the filters match but nothing clears the floor.
+  closestProperties: 3,
   maxMomentsPerProperty: 3,
 };

@@ -103,6 +103,7 @@ export interface SearchResponse {
   interpreted: { semantic: string; filters: SearchFilters };
   mode: 'hybrid' | 'keyword';
   matches: PropertyMatch[];
+  closest?: boolean;     // no home passing the filters clearly matched; these are the nearest moments
   stats: {
     segmentsSearched: number;
     propertiesConsidered: number;

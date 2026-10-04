@@ -104,39 +104,51 @@ export async function search(query: string): Promise<SearchResponse> {
   const relevant = scored.filter(s => s.blended >= floor);
 
   // 4. Group by property, keep the best few non-overlapping moments each.
-  const groups = new Map<string, Scored[]>();
-  for (const s of relevant) {
-    const list = groups.get(s.doc.property.id) ?? [];
-    list.push(s);
-    groups.set(s.doc.property.id, list);
-  }
-
-  const maxFused = Math.max(1e-9, ...relevant.map(s => s.fused));
-  let matches: PropertyMatch[] = [...groups.values()].map(list => {
-    list.sort((a, b) => b.fused - a.fused);
-    const moments: Moment[] = [];
-    for (const s of list) {
-      const seg = s.doc.segment;
-      const m: Moment = {
-        segmentId: seg.id,
-        start: seg.start,
-        end: seg.end,
-        room: seg.room,
-        caption: seg.caption,
-        transcript: seg.transcript,
-        frame: seg.frame,
-        score: +(s.fused / maxFused).toFixed(3),
-        signals: { visual: +s.visual.toFixed(3), speech: +s.speech.toFixed(3), keyword: +s.keyword.toFixed(3) },
-      };
-      if (moments.some(x => overlaps(x, m))) continue;
-      moments.push(m);
-      if (moments.length >= RANKING.maxMomentsPerProperty) break;
+  const toMatches = (pool: Scored[]): PropertyMatch[] => {
+    const groups = new Map<string, Scored[]>();
+    for (const s of pool) {
+      const list = groups.get(s.doc.property.id) ?? [];
+      list.push(s);
+      groups.set(s.doc.property.id, list);
     }
-    return { property: withoutSegments(list[0].doc.property), score: moments[0].score, moments };
-  });
+    const maxFused = Math.max(1e-9, ...pool.map(s => s.fused));
+    return [...groups.values()].map(list => {
+      list.sort((a, b) => b.fused - a.fused);
+      const moments: Moment[] = [];
+      for (const s of list) {
+        const seg = s.doc.segment;
+        const m: Moment = {
+          segmentId: seg.id,
+          start: seg.start,
+          end: seg.end,
+          room: seg.room,
+          caption: seg.caption,
+          transcript: seg.transcript,
+          frame: seg.frame,
+          score: +(s.fused / maxFused).toFixed(3),
+          signals: { visual: +s.visual.toFixed(3), speech: +s.speech.toFixed(3), keyword: +s.keyword.toFixed(3) },
+        };
+        if (moments.some(x => overlaps(x, m))) continue;
+        moments.push(m);
+        if (moments.length >= RANKING.maxMomentsPerProperty) break;
+      }
+      return { property: withoutSegments(list[0].doc.property), score: moments[0].score, moments };
+    });
+  };
 
-  // A filters-only query ("3 bed in Burnaby") has nothing descriptive to rank by.
-  if (!matches.length && Object.keys(parsed.filters).length) {
+  let matches = toMatches(relevant);
+  let closest = false;
+  const hasFilters = Object.keys(parsed.filters).length > 0;
+  // The parser returns this neutral phrase when nothing descriptive is left.
+  const descriptive = parsed.semantic.trim().toLowerCase() !== 'house tour';
+
+  if (!matches.length && hasFilters && descriptive && hybrid && scored.length) {
+    // Homes pass the filters but none clearly shows what was asked for. Show the
+    // nearest real moments, flagged, rather than nothing or unrelated scenes.
+    matches = toMatches(scored).sort((a, b) => b.score - a.score).slice(0, RANKING.closestProperties);
+    closest = true;
+  } else if (!matches.length && hasFilters) {
+    // A filters-only query ("3 bed in Burnaby") has nothing descriptive to rank by.
     const seen = new Set<string>();
     for (const c of candidates) {
       if (seen.has(c.property.id)) continue;
@@ -154,7 +166,7 @@ export async function search(query: string): Promise<SearchResponse> {
 
   matches.sort((a, b) => b.score - a.score);
   const top = matches[0]?.score ?? 0;
-  matches = matches.filter(m => m.score >= top * RANKING.relativeCutoff).slice(0, RANKING.maxProperties);
+  if (!closest) matches = matches.filter(m => m.score >= top * RANKING.relativeCutoff).slice(0, RANKING.maxProperties);
   timings.rank = Math.round(performance.now() - t2);
   timings.total = Math.round(performance.now() - t0);
 
@@ -163,6 +175,7 @@ export async function search(query: string): Promise<SearchResponse> {
     interpreted: parsed,
     mode: hybrid ? 'hybrid' : 'keyword',
     matches,
+    ...(closest ? { closest: true } : {}),
     stats: {
       segmentsSearched: candidates.length,
       propertiesConsidered: new Set(candidates.map(c => c.property.id)).size,

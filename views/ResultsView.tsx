@@ -98,7 +98,7 @@ const ResultsView: React.FC = () => {
           <div className="animate-fade-in">
             <div className="mb-8 border-b-2 border-charcoal pb-5 flex flex-col gap-3">
               <h1 className="font-display text-3xl md:text-4xl text-charcoal font-bold leading-tight">
-                {data.matches.length} {data.matches.length === 1 ? 'home' : 'homes'} for{' '}
+                {data.closest ? 'No exact match for' : `${data.matches.length} ${data.matches.length === 1 ? 'home' : 'homes'} for`}{' '}
                 <span className="text-terracotta">“{query}”</span>
               </h1>
 
@@ -120,6 +120,21 @@ const ResultsView: React.FC = () => {
                 {data.mode === 'hybrid' ? 'visual + speech + keyword' : 'keyword only'}
               </p>
             </div>
+
+            {data.closest && (
+              <div className="mb-6 bg-warmWhite border-2 border-charcoal p-4 md:p-5 flex flex-col md:flex-row md:items-center gap-3 md:gap-6">
+                <p className="text-charcoal leading-snug flex-1">
+                  No home that fits your filters ({chips.join(' · ')}) clearly shows{' '}
+                  <strong>{data.interpreted.semantic}</strong>. These are the closest moments.
+                </p>
+                <button
+                  onClick={() => setParams({ q: data.interpreted.semantic })}
+                  className="self-start md:self-auto shrink-0 px-4 py-2 bg-charcoal text-warmWhite font-mono text-xs font-bold uppercase tracking-widest hover:bg-terracotta border-2 border-charcoal"
+                >
+                  Search “{data.interpreted.semantic}” in every home
+                </button>
+              </div>
+            )}
 
             <div className="space-y-6">
               {data.matches.map((m, i) => (
@@ -144,7 +159,7 @@ const ResultsView: React.FC = () => {
                     ? 'The index has no scenes. Run ingestion/build-index.ts to build it.'
                     : chips.length
                       ? 'Try removing a filter, such as the price or the neighbourhood.'
-                      : 'Try describing a room, a finish or a view, like “wine cellar” or “mountain view from the deck”.'}
+                      : 'Try describing a room, a finish or a view, like “soaker tub in the ensuite” or “kitchen island with bar seating”.'}
                 </p>
               </div>
             )}
