@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 import type { Chapter, Moment, Segment } from '../types';
 import { formatTime, ROOM_LABELS, ROOM_ZONE, ZONE_STYLE, type Zone } from '../lib/format';
 
@@ -29,7 +29,33 @@ const ChapterTimeline: React.FC<Props> = ({ chapters: timed, segments, duration,
   const chapters = useMemo(() => (timed?.length ? timed : toChapters(segments, duration)), [timed, segments, duration]);
   const current = chapters.find(c => currentTime >= c.start && currentTime < c.end) ?? chapters[chapters.length - 1];
   const zones = useMemo(() => [...new Set(chapters.map(c => ROOM_ZONE[c.room]))] as Zone[], [chapters]);
+  const currentIndex = current ? chapters.indexOf(current) : -1;
+
+  // Bar width, so a chapter only prints its label when the label fits.
+  const barRef = useRef<HTMLDivElement>(null);
+  const [barWidth, setBarWidth] = useState(0);
+  useEffect(() => {
+    const el = barRef.current;
+    if (!el) return;
+    const ro = new ResizeObserver(([e]) => setBarWidth(e.contentRect.width));
+    ro.observe(el);
+    return () => ro.disconnect();
+  }, []);
+
+  // Keep the current chapter chip in view, scrolling only the chip row.
+  const chipsRef = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    const row = chipsRef.current;
+    const chip = row?.children[currentIndex] as HTMLElement | undefined;
+    if (!row || !chip) return;
+    const left = chip.offsetLeft - row.offsetLeft;
+    if (left < row.scrollLeft || left + chip.offsetWidth > row.scrollLeft + row.clientWidth) {
+      row.scrollTo({ left: left - 12, behavior: 'smooth' });
+    }
+  }, [currentIndex]);
+
   if (!chapters.length || !duration) return null;
+  const fits = (c: Chapter) => ((c.end - c.start) / duration) * barWidth >= c.label.length * 6.5 + 10;
   const pct = (t: number) => `${Math.min(100, (t / duration) * 100)}%`;
 
   return (
@@ -48,7 +74,7 @@ const ChapterTimeline: React.FC<Props> = ({ chapters: timed, segments, duration,
             <svg width="12" height="10" viewBox="0 0 12 10" aria-hidden="true"><path d="M0 0h12L6 10z" fill="currentColor" /></svg>
           </button>
         ))}
-        <div className="absolute inset-0 flex border-2 border-charcoal overflow-hidden">
+        <div ref={barRef} className="absolute inset-0 flex border-2 border-charcoal overflow-hidden">
           {chapters.map((c, i) => {
             const z = ZONE_STYLE[ROOM_ZONE[c.room]];
             return (
@@ -60,7 +86,7 @@ const ChapterTimeline: React.FC<Props> = ({ chapters: timed, segments, duration,
                 title={`${c.label} · ${formatTime(c.start)}`}
                 aria-label={`Jump to ${c.label} at ${formatTime(c.start)}`}
               >
-                {c.label}
+                {fits(c) ? c.label : null}
               </button>
             );
           })}
@@ -71,9 +97,35 @@ const ChapterTimeline: React.FC<Props> = ({ chapters: timed, segments, duration,
           aria-hidden="true"
         />
       </div>
+      {/* Every chapter by name: short chapters are only colour in the bar, and on a phone most are short. */}
+      <div
+        ref={chipsRef}
+        className="mt-3 -mx-3 px-3 flex gap-1.5 overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+        role="list"
+        aria-label="Rooms in this tour"
+      >
+        {chapters.map((c, i) => {
+          const active = i === currentIndex;
+          return (
+            <button
+              key={i}
+              role="listitem"
+              onClick={() => onSeek(c.start)}
+              aria-current={active ? 'true' : undefined}
+              className={`shrink-0 flex items-center gap-1.5 px-2 py-1 border-2 text-[11px] font-mono whitespace-nowrap transition-colors ${
+                active ? 'bg-charcoal border-charcoal text-warmWhite' : 'bg-warmWhite border-charcoal/20 text-charcoal hover:border-charcoal'
+              }`}
+            >
+              <span className={`w-2 h-2 border border-charcoal ${ZONE_STYLE[ROOM_ZONE[c.room]].bg}`} aria-hidden="true" />
+              <span className="font-bold">{c.label}</span>
+              <span className={active ? 'text-warmWhite/70' : 'text-olive'}>{formatTime(c.start)}</span>
+            </button>
+          );
+        })}
+      </div>
       <div className="mt-2 flex flex-wrap items-center gap-x-4 gap-y-1 text-[10px] font-mono uppercase tracking-wider text-olive">
         {zones.map(z => (
-          <span key={z} className="flex items-center gap-1.5">
+          <span key={z} className="hidden sm:flex items-center gap-1.5">
             <span className={`w-2.5 h-2.5 border border-charcoal ${ZONE_STYLE[z].bg}`} />
             {ZONE_STYLE[z].label}
           </span>
@@ -84,10 +136,7 @@ const ChapterTimeline: React.FC<Props> = ({ chapters: timed, segments, duration,
             Matches your search
           </span>
         )}
-        <span className="ml-auto tabular-nums">
-          {current && <span className="text-charcoal font-bold mr-2">{current.label}</span>}
-          {formatTime(currentTime)} / {formatTime(duration)}
-        </span>
+        <span className="ml-auto tabular-nums">{formatTime(currentTime)} / {formatTime(duration)}</span>
       </div>
     </div>
   );
