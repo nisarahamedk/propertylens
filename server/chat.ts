@@ -1,6 +1,6 @@
-import type { ChatRequest } from '../types';
-import { generateStream, getApiKey } from './gemini';
-import { loadStore } from './store';
+import type { ChatRequest } from '../types.js';
+import { generateStream, getApiKey } from './gemini.js';
+import { loadStore } from './store.js';
 
 const fmt = (s: number) => `${Math.floor(s / 60)}:${String(Math.floor(s % 60)).padStart(2, '0')}`;
 

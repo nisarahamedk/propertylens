@@ -1,10 +1,10 @@
 // Web-standard Request -> Response handlers shared by the Vercel functions in
 // api/ and the Vite dev middleware.
 
-import type { ChatRequest } from '../types';
-import { chat } from './chat';
-import { GeminiError } from './gemini';
-import { search } from './search';
+import type { ChatRequest } from '../types.js';
+import { chat } from './chat.js';
+import { GeminiError } from './gemini.js';
+import { search } from './search.js';
 
 const json = (body: unknown, status = 200) =>
   new Response(JSON.stringify(body), { status, headers: { 'content-type': 'application/json' } });

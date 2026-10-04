@@ -1,8 +1,8 @@
-import type { Moment, Property, PropertyMatch, SearchFilters, SearchResponse } from '../types';
-import { RANKING } from './config';
-import { embed, getApiKey, queryText } from './gemini';
-import { looksFiltered, parseWithModel, parseWithRules, type ParsedQuery } from './queryParser';
-import { bm25, dot, loadStore, tokenize, withoutSegments, type IndexedSegment, type Store } from './store';
+import type { Moment, Property, PropertyMatch, SearchFilters, SearchResponse } from '../types.js';
+import { RANKING } from './config.js';
+import { embed, getApiKey, queryText } from './gemini.js';
+import { looksFiltered, parseWithModel, parseWithRules, type ParsedQuery } from './queryParser.js';
+import { bm25, dot, loadStore, tokenize, withoutSegments, type IndexedSegment, type Store } from './store.js';
 
 /** Place names that the query parser can map to: every comma part of each property's location. */
 export function knownLocations(store: Store): string[] {

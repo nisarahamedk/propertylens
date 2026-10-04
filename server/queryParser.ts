@@ -1,8 +1,8 @@
 // Splits a natural-language query into hard filters (beds, price, location)
 // and the descriptive part that should be matched against the videos.
 
-import type { SearchFilters } from '../types';
-import { generateJson } from './gemini';
+import type { SearchFilters } from '../types.js';
+import { generateJson } from './gemini.js';
 
 export interface ParsedQuery {
   semantic: string;

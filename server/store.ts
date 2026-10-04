@@ -3,7 +3,7 @@
 
 import fs from 'fs';
 import path from 'path';
-import type { Catalog, Property, Segment } from '../types';
+import type { Catalog, Property, Segment } from '../types.js';
 
 export interface IndexedSegment {
   segment: Segment;

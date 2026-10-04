@@ -1,7 +1,7 @@
 // Minimal Gemini REST client. Plain fetch keeps the serverless bundle small and
 // works the same in Node scripts, the Vite dev server and Vercel functions.
 
-import { EMBEDDING_DIMS, MODELS } from './config';
+import { EMBEDDING_DIMS, MODELS } from './config.js';
 
 const BASE = 'https://generativelanguage.googleapis.com/v1beta';
 
