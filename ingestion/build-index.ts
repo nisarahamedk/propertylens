@@ -142,11 +142,16 @@ export function cutClip(file: string, start: number, end: number, outDir: string
   return out;
 }
 
-/** The whole tour at 240p and 2 fps: small enough to send in one request. */
+/**
+ * The whole tour at 240p and 2 fps, small enough to send in one request, with a
+ * running M:SS clock burned into the corner. Reading the clock keeps the model's
+ * timestamps from drifting on fast-cut cinematic tours.
+ */
 function cutWhole(file: string, outDir: string): string {
   const out = path.join(outDir, `${path.basename(file, '.mp4')}_whole.mp4`);
+  const clock = "drawtext=text='%{eif\\:floor(t/60)\\:d}\\:%{eif\\:mod(floor(t)\\,60)\\:d\\:2}':x=6:y=6:fontsize=22:fontcolor=yellow:box=1:boxcolor=black@0.7";
   execFileSync('ffmpeg', [
-    '-y', '-loglevel', 'error', '-i', file, '-vf', 'scale=-2:240,fps=2', '-c:v', 'libx264', '-preset', 'veryfast',
+    '-y', '-loglevel', 'error', '-i', file, '-vf', `scale=-2:240,fps=2,${clock}`, '-c:v', 'libx264', '-preset', 'veryfast',
     '-crf', '34', '-c:a', 'aac', '-ac', '1', '-b:a', '32k', '-movflags', '+faststart', out,
   ]);
   return out;
@@ -247,7 +252,7 @@ async function describeChapters(file: string, duration: number, tmp: string): Pr
         role: 'user',
         parts: [
           { inlineData: { mimeType: 'video/mp4', data: fs.readFileSync(whole).toString('base64') } },
-          { text: `This is a ${Math.round(duration)}-second real estate tour video. List every change of space in order: each time the camera moves into a different room or area, start a new chapter at the moment it first appears. Use "backyard" for balconies, decks, patios and yards, "amenity" only for shared building facilities, and "other" for title cards, logos, agent talking heads and maps. Be precise with timestamps; chapters are often only 5 to 15 seconds long. Do not merge different rooms.` },
+          { text: `This is a ${Math.round(duration)}-second real estate tour video. List every change of space in order: each time the camera moves into a different room or area, start a new chapter at the moment it first appears. Use "backyard" for balconies, decks, patios and yards, "amenity" only for shared building facilities, and "other" for title cards, logos, agent talking heads and maps. Be precise with timestamps; chapters are often only 5 to 15 seconds long. Do not merge different rooms. A clock in the top-left corner of every frame shows the exact time (M:SS); read your timestamps from it.` },
         ],
       }],
       apiKey,
