@@ -10,10 +10,7 @@
       "metadata": {
         "location": "Deer Lake, Burnaby",
         "address": "5850 Sperling Avenue",
-        "beds": 6,
-        "baths": 4,
-        "sqft": 6000,
-        "price": "$4,250,000"
+        "sqft": 6000
       }
     },
     {
@@ -26,9 +23,7 @@
       "metadata": {
         "location": "Bear Creek, Surrey",
         "beds": 3,
-        "baths": 2.5,
-        "price": "$799,000",
-        "sqft": 1500
+        "price": "$799,000"
       }
     },
     {
@@ -40,9 +35,9 @@
       "thumbnailUrl": "https://i.ytimg.com/vi/aLhcDVGvd_8/hq720.jpg",
       "metadata": {
         "location": "Vancouver",
+        "address": "974 West 22nd Avenue",
         "beds": 3,
-        "baths": 3.5,
-        "sqft": 900
+        "baths": 3.5
       }
     },
     {
@@ -56,8 +51,8 @@
         "location": "Vancouver",
         "beds": 6,
         "baths": 4,
-        "price": "$1,998,000",
-        "sqft": 900
+        "sqft": 2000,
+        "price": "$1,998,000"
       }
     },
     {
@@ -70,9 +65,7 @@
       "metadata": {
         "location": "New Westminster",
         "address": "468 Garrett Street",
-        "beds": 4,
-        "baths": 2,
-        "sqft": 900
+        "beds": 4
       }
     },
     {
@@ -85,7 +78,6 @@
       "metadata": {
         "location": "New Westminster",
         "beds": 2,
-        "baths": 2,
         "sqft": 1300
       }
     },
@@ -98,11 +90,10 @@
       "thumbnailUrl": "https://i.ytimg.com/vi/EGkcUdFDLfk/hq720.jpg",
       "metadata": {
         "location": "Knight, Vancouver",
+        "address": "5516 Lanark Street",
         "beds": 5,
-        "baths": 3,
         "sqft": 2826,
-        "price": "$2,298,000",
-        "address": "5516 Lanark Street"
+        "price": "$2,298,000"
       }
     },
     {
@@ -113,10 +104,7 @@
       "duration": 127,
       "thumbnailUrl": "https://i.ytimg.com/vi/-Cc_DeNyVGM/hq720.jpg",
       "metadata": {
-        "location": "Vancouver",
-        "beds": 3,
-        "baths": 2,
-        "sqft": 2000
+        "location": "Vancouver"
       }
     },
     {
@@ -129,9 +117,7 @@
       "metadata": {
         "location": "Kitsilano, Vancouver",
         "address": "107 - 2330 Maple Street",
-        "beds": 1,
-        "baths": 1,
-        "sqft": 900
+        "beds": 1
       }
     },
     {
@@ -143,10 +129,9 @@
       "thumbnailUrl": "https://i.ytimg.com/vi/xcvcEd23pes/hq720.jpg",
       "metadata": {
         "location": "Downtown Vancouver",
-        "beds": 2,
-        "baths": 2,
         "address": "2801 - 1308 Hornby Street",
-        "sqft": 2000
+        "beds": 2,
+        "baths": 2
       }
     },
     {
@@ -157,10 +142,8 @@
       "duration": 134,
       "thumbnailUrl": "https://i.ytimg.com/vi/y5e0sukb39Y/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLDSQcmpCGf2eTRcXJrioesRzuWKHA",
       "metadata": {
-        "location": "Vancouver",
-        "beds": 3,
-        "baths": 2,
-        "sqft": 2000
+        "location": "West Vancouver",
+        "address": "981 Kings Avenue"
       }
     },
     {
@@ -171,10 +154,7 @@
       "duration": 195,
       "thumbnailUrl": "https://i.ytimg.com/vi/Ivv1UQoG-Ik/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLDIUl5ucbwl63scknSKC_WBqsyy2A",
       "metadata": {
-        "location": "Vancouver",
-        "beds": 5,
-        "baths": 4,
-        "sqft": 4000
+        "location": "Arbutus Ridge, Vancouver"
       }
     },
     {
@@ -186,10 +166,9 @@
       "thumbnailUrl": "https://i.ytimg.com/vi/LHUZG8hrQs0/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLCFIszhA1jEgihsLVHBWhysZopEkg",
       "metadata": {
         "location": "Vancouver",
+        "address": "980 West 21st Avenue, unit 302",
         "beds": 2,
-        "address": "2 Bedr",
-        "baths": 1,
-        "sqft": 900
+        "baths": 2
       }
     },
     {
@@ -201,10 +180,9 @@
       "thumbnailUrl": "https://i.ytimg.com/vi/fon-H-R4lbI/hq720_2.jpg?sqp=-oaymwE2CNAFEJQDSFXyq4qpAygIARUAAIhCGABwAcABBvABAfgBtgiAAoAPigIMCAAQARhlIF0oUTAP&rs=AOn4CLAI-5UaenHi7WQs37V8qUeVxvVY8A",
       "metadata": {
         "location": "Vancouver",
+        "address": "3559 W 18th Ave",
         "beds": 3,
-        "price": "$299",
-        "baths": 2,
-        "sqft": 2000
+        "price": "$2,990,000"
       }
     },
     {
@@ -216,9 +194,9 @@
       "thumbnailUrl": "https://i.ytimg.com/vi/S3u8hvVV9ao/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLCwCHlr5fcV8jgEmzFuumkC4VJlaA",
       "metadata": {
         "location": "Vancouver",
-        "beds": 2,
-        "baths": 1,
-        "sqft": 900
+        "address": "311 East 6th Avenue",
+        "beds": 1,
+        "sqft": 600
       }
     },
     {
@@ -230,10 +208,9 @@
       "thumbnailUrl": "https://i.ytimg.com/vi/642yZATcCiA/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLA-SbJBqlw4ksKaYQA3mzIri-2uiQ",
       "metadata": {
         "location": "Vancouver",
-        "price": "$1.65 m",
-        "beds": 5,
-        "baths": 4,
-        "sqft": 4000
+        "address": "4248 Windsor Street",
+        "beds": 3,
+        "price": "$1,650,000"
       }
     },
     {
@@ -244,25 +221,8 @@
       "duration": 145,
       "thumbnailUrl": "https://i.ytimg.com/vi/rEy3q-DO2Yw/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLAurub6UmM8-_IJ9cpwKQp5BajKVw",
       "metadata": {
-        "location": "Vancouver",
-        "price": "$12",
-        "beds": 5,
-        "baths": 4,
-        "sqft": 4000
-      }
-    },
-    {
-      "youtubeId": "l9ELn60OQKk",
-      "title": "More than 2,000 condos sitting empty in Metro Vancouver amid housing crisis",
-      "description": "More than 2000 new condos in Metro Vancouver are sitting unsold and empty despite an ongoing housing crisis and steep rental ...",
-      "channelName": "Global News",
-      "duration": 127,
-      "thumbnailUrl": "https://i.ytimg.com/vi/l9ELn60OQKk/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLAm2e8JEO5GHGp5nqO3vDsAtojkkg",
-      "metadata": {
-        "location": "Vancouver",
-        "beds": 2,
-        "baths": 1,
-        "sqft": 900
+        "location": "West Vancouver",
+        "price": "$12,800,000"
       }
     },
     {
@@ -274,10 +234,7 @@
       "thumbnailUrl": "https://i.ytimg.com/vi/fW6IVybWUI0/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLAimq4FlH1jLuzfOcqy5OHtDoYeHA",
       "metadata": {
         "location": "Kelowna",
-        "address": "180 Sheerwater Court",
-        "beds": 3,
-        "baths": 2,
-        "sqft": 2000
+        "address": "180 Sheerwater Court"
       }
     },
     {
@@ -289,10 +246,8 @@
       "thumbnailUrl": "https://i.ytimg.com/vi/UV5cshFl8yw/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLBbGjEU-Sj3qxYfMElObTzZHkvfog",
       "metadata": {
         "location": "Vancouver",
-        "price": "$949,000 ",
-        "beds": 2,
-        "baths": 1,
-        "sqft": 900
+        "address": "1480 Howe Street",
+        "price": "$949,000"
       }
     },
     {
@@ -304,23 +259,7 @@
       "thumbnailUrl": "https://i.ytimg.com/vi/NMB7EBYl0kQ/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLBz2EPxZXrtdkpMuQA-3nmImiUoBw",
       "metadata": {
         "location": "Kelowna",
-        "address": "180 Sheerwater Court",
-        "beds": 3,
-        "baths": 2,
-        "sqft": 2000
-      }
-    },
-    {
-      "youtubeId": "C7PV8urmaXs",
-      "title": "Hundreds line up for flash condo sale in BC as units are discounted 25 per cent",
-      "description": "For residents of B.C.'s Lower Mainland, lining up for condo pre-sales isn't new. But the chance to save money brings them out in ...",
-      "channelName": "Global News",
-      "duration": 134,
-      "thumbnailUrl": "https://i.ytimg.com/vi/C7PV8urmaXs/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLDli6oN47ZpUZaMJH0Ib48w9yNYjw",
-      "metadata": {
-        "beds": 2,
-        "baths": 1,
-        "sqft": 900
+        "address": "180 Sheerwater Court"
       }
     },
     {
@@ -331,10 +270,8 @@
       "duration": 164,
       "thumbnailUrl": "https://i.ytimg.com/vi/d7JDvQRFR7U/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLCnSD5mlNZ9RhAAnFUz39j56Wpxfg",
       "metadata": {
-        "price": "$3,500,000 ",
-        "beds": 3,
-        "baths": 2,
-        "sqft": 2000
+        "location": "Bowen Island",
+        "price": "$3,500,000"
       }
     },
     {
@@ -345,12 +282,8 @@
       "duration": 215,
       "thumbnailUrl": "https://i.ytimg.com/vi/zpsVeRUlcxw/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLCYb12WvLUlLOiprBgwHRXjt7G-xA",
       "metadata": {
-        "location": "Vancouver",
-        "price": "$25 m",
-        "address": "25 MILLION West Vancouver Luxury Home with the most",
-        "beds": 5,
-        "baths": 4,
-        "sqft": 4000
+        "location": "West Vancouver",
+        "price": "$25,000,000"
       }
     },
     {
@@ -362,10 +295,8 @@
       "thumbnailUrl": "https://i.ytimg.com/vi/-Sha8jEG9hI/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLB41OFTutLitOjJQsTKK3hC7g-hcA",
       "metadata": {
         "location": "Vancouver",
-        "price": "$599,900 ",
-        "beds": 2,
-        "baths": 1,
-        "sqft": 900
+        "beds": 1,
+        "price": "$599,900"
       }
     },
     {
@@ -376,10 +307,7 @@
       "duration": 68,
       "thumbnailUrl": "https://i.ytimg.com/vi/rayEIwFozcY/hqdefault.jpg?sqp=-oaymwEcCOADEI4CSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLA0Kbb7tk6oIzT5r2SiqIn-OU-9wQ",
       "metadata": {
-        "location": "Vancouver",
-        "beds": 5,
-        "baths": 4,
-        "sqft": 4000
+        "location": "West Vancouver"
       }
     },
     {
@@ -390,9 +318,7 @@
       "duration": 215,
       "thumbnailUrl": "https://i.ytimg.com/vi/TlMUknHQYLU/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLAWjgwMEajRScDPfwZGtgALdVE4ug",
       "metadata": {
-        "beds": 3,
-        "baths": 2,
-        "sqft": 2000
+        "address": "4438 Canterbury Crescent"
       }
     },
     {
@@ -403,10 +329,9 @@
       "duration": 152,
       "thumbnailUrl": "https://i.ytimg.com/vi/f7Ji5F_Qxl4/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLCIdFV-uk-4Lst8mWyF8GU6lblllA",
       "metadata": {
-        "location": "Vancouver",
+        "location": "Surrey",
         "beds": 2,
-        "baths": 1,
-        "sqft": 900
+        "baths": 2
       }
     },
     {
@@ -417,10 +342,7 @@
       "duration": 188,
       "thumbnailUrl": "https://i.ytimg.com/vi/nml0jgA_QZ0/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLC61mZTxB9yMGn4hI7bl3iw8o7HOw",
       "metadata": {
-        "location": "Vancouver",
-        "beds": 3,
-        "baths": 2,
-        "sqft": 2000
+        "location": "Richmond"
       }
     },
     {
@@ -431,11 +353,10 @@
       "duration": 171,
       "thumbnailUrl": "https://i.ytimg.com/vi/8iugptfOqDk/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLBO5Y95TWd86xBJayIMD6ufpjsZcQ",
       "metadata": {
-        "location": "Surrey",
-        "price": "$162",
-        "beds": 5,
-        "baths": 4,
-        "sqft": 4000
+        "location": "Fraser Heights, Surrey",
+        "address": "10615 158a Street",
+        "beds": 4,
+        "price": "$1,625,500"
       }
     },
     {
@@ -446,10 +367,7 @@
       "duration": 238,
       "thumbnailUrl": "https://i.ytimg.com/vi/u8dIDj_aQU4/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLBgnGfQpNLfeawc7sMUrO01ophc4A",
       "metadata": {
-        "location": "Surrey",
-        "beds": 5,
-        "baths": 4,
-        "sqft": 4000
+        "location": "Surrey"
       }
     },
     {
@@ -461,10 +379,9 @@
       "thumbnailUrl": "https://i.ytimg.com/vi/DqXM07TYfdM/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLDU1u7yh2JQlojiELcXU08pdDq_ag",
       "metadata": {
         "location": "Surrey",
-        "price": "$178",
         "beds": 3,
-        "baths": 2,
-        "sqft": 2000
+        "sqft": 3300,
+        "price": "$1,789,000"
       }
     },
     {
@@ -476,11 +393,9 @@
       "thumbnailUrl": "https://i.ytimg.com/vi/P7Fj7Qs6ro8/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLBLQBTQaQC9YIDNhQYOtBJuEa7fPw",
       "metadata": {
         "location": "Surrey",
-        "price": "$1,499,000 ",
         "address": "19339 72A Ave",
-        "beds": 3,
-        "baths": 2,
-        "sqft": 2000
+        "beds": 7,
+        "price": "$1,499,000"
       }
     },
     {
@@ -492,10 +407,7 @@
       "thumbnailUrl": "https://i.ytimg.com/vi/tV6iDi7mumI/hq720.jpg?sqp=-oaymwE2CNAFEJQDSFXyq4qpAygIARUAAIhCGABwAcABBvABAfgBtgiAAoAPigIMCAAQARhlIFwoUDAP&rs=AOn4CLAtn7dk9VIqBPMxLEQG3jMykZfTdw",
       "metadata": {
         "location": "Surrey",
-        "price": "$6,980,000 ",
-        "beds": 3,
-        "baths": 2,
-        "sqft": 2000
+        "price": "$6,980,000"
       }
     },
     {
@@ -509,9 +421,7 @@
         "location": "Surrey",
         "beds": 3,
         "baths": 2,
-        "price": "$1,349,900 ",
-        "address": "900 Surrey BC Ranch St",
-        "sqft": 2000
+        "price": "$1,349,900"
       }
     },
     {
@@ -522,11 +432,10 @@
       "duration": 71,
       "thumbnailUrl": "https://i.ytimg.com/vi/OKWSDc86FHk/hq720_2.jpg?sqp=-oaymwE2CNAFEJQDSFXyq4qpAygIARUAAIhCGABwAcABBvABAfgBtgiAAoAPigIMCAAQARhlIFkoTTAP&rs=AOn4CLBVb5PI7HSBMRj90S3AyFKmrbSTtA",
       "metadata": {
-        "location": "Surrey",
-        "price": "$825k",
+        "location": "Clayton Heights, Surrey",
         "beds": 3,
-        "baths": 2,
-        "sqft": 2000
+        "baths": 3,
+        "price": "$825,000"
       }
     },
     {
@@ -537,11 +446,9 @@
       "duration": 227,
       "thumbnailUrl": "https://i.ytimg.com/vi/D_7Td8HdCCc/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLCPx9415IFuNjul28Tj3Ry5MXDCDw",
       "metadata": {
-        "location": "Vancouver",
+        "location": "Surrey",
         "address": "11388 Surrey Road",
-        "beds": 3,
-        "baths": 2,
-        "sqft": 2000
+        "beds": 5
       }
     },
     {
@@ -553,11 +460,8 @@
       "thumbnailUrl": "https://i.ytimg.com/vi/OUcE_MRkn7M/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLBNpgztD9F1cclnWnmP99Lfn-U0Gg",
       "metadata": {
         "location": "Surrey",
-        "price": "$2,480,000 ",
         "address": "10909 164A Street",
-        "beds": 3,
-        "baths": 2,
-        "sqft": 2000
+        "price": "$2,480,000"
       }
     },
     {
@@ -569,11 +473,10 @@
       "thumbnailUrl": "https://i.ytimg.com/vi/I2qrsxKbzeA/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLDaisOVmoc165fu2JijgcufjJDa4w",
       "metadata": {
         "location": "Surrey",
-        "price": "$1,299,900 ",
         "address": "12460 102 Avenue",
         "beds": 3,
-        "baths": 2,
-        "sqft": 2000
+        "baths": 1,
+        "price": "$1,299,900"
       }
     },
     {
@@ -585,10 +488,10 @@
       "thumbnailUrl": "https://i.ytimg.com/vi/3bbHcGjiCD8/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLBAjD4FGpHeltl8zbh44E2jiUJ7fw",
       "metadata": {
         "location": "Surrey",
-        "price": "$1.25m",
-        "beds": 3,
+        "address": "19224 59th Ave",
+        "beds": 2,
         "baths": 2,
-        "sqft": 2000
+        "price": "$1,249,000"
       }
     },
     {
@@ -600,10 +503,7 @@
       "thumbnailUrl": "https://i.ytimg.com/vi/2LAyRWvU2OY/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLB2iQXSFSkqguARfAT-zVfgvHElfQ",
       "metadata": {
         "location": "Surrey",
-        "address": "14 9771 152B Street",
-        "beds": 3,
-        "baths": 2.5,
-        "sqft": 1500
+        "address": "14 9771 152B Street"
       }
     },
     {
@@ -614,10 +514,7 @@
       "duration": 60,
       "thumbnailUrl": "https://i.ytimg.com/vi/Y-orbsMwDsQ/hq720.jpg?sqp=-oaymwE2CNAFEJQDSFXyq4qpAygIARUAAIhCGABwAcABBvABAfgBtgiAAoAPigIMCAAQARhgIGUoMjAP&rs=AOn4CLAqxh2rE1QMTQsbZhb3BUVStklq7g",
       "metadata": {
-        "location": "Vancouver",
-        "beds": 3,
-        "baths": 2,
-        "sqft": 2000
+        "location": "Surrey"
       }
     },
     {
@@ -628,12 +525,11 @@
       "duration": 120,
       "thumbnailUrl": "https://i.ytimg.com/vi/cOin8XMcmcU/hq720.jpg?sqp=-oaymwE2CNAFEJQDSFXyq4qpAygIARUAAIhCGAFwAcABBvABAfgB1AaAAuADigIMCAAQARhLIFcoZTAP&rs=AOn4CLAIEXzwUDoN9rgdcfZm-B8x-4gywA",
       "metadata": {
-        "location": "Surrey",
-        "beds": 449900,
-        "baths": 2,
-        "price": "$449",
+        "location": "North Surrey, Surrey",
         "address": "13958 108 Avenue",
-        "sqft": 1500
+        "beds": 2,
+        "baths": 2,
+        "price": "$449,900"
       }
     },
     {
@@ -644,11 +540,10 @@
       "duration": 111,
       "thumbnailUrl": "https://i.ytimg.com/vi/9LNkVG1YMk8/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLCf7UVm7ItNAthQKxfyMDX8Y4IrWw",
       "metadata": {
-        "location": "Vancouver",
-        "price": "$1,698,000 ",
-        "beds": 2,
-        "baths": 1,
-        "sqft": 900
+        "location": "Burnaby",
+        "address": "350 North Hythe",
+        "sqft": 7260,
+        "price": "$1,698,000"
       }
     },
     {
@@ -660,10 +555,9 @@
       "thumbnailUrl": "https://i.ytimg.com/vi/73qj_6Qhae0/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLDvyiygDwjlElCtnSGwKkvn5KClNw",
       "metadata": {
         "location": "Burnaby",
+        "address": "1 - 7039 Macpherson Avenue",
         "beds": 3,
-        "baths": 2.5,
-        "address": "7039 Macpherson Avenue",
-        "sqft": 1500
+        "baths": 2.5
       }
     },
     {
@@ -675,10 +569,10 @@
       "thumbnailUrl": "https://i.ytimg.com/vi/z4P-cOSaFBc/hqdefault.jpg?sqp=-oaymwEcCOADEI4CSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLCzxe2RjczXn1Fya3BlSk2mu57qYA",
       "metadata": {
         "location": "Burnaby",
-        "beds": 2,
         "address": "4657 Hazel Street",
-        "baths": 1,
-        "sqft": 900
+        "beds": 2,
+        "baths": 2,
+        "sqft": 955
       }
     },
     {
@@ -690,11 +584,11 @@
       "thumbnailUrl": "https://i.ytimg.com/vi/fo7NwLhtTOc/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLCGYS2CzFNmgZS2yzbEmDYjJNEuPQ",
       "metadata": {
         "location": "Burnaby",
+        "address": "4305 Albert Street",
         "beds": 3,
         "baths": 3,
         "sqft": 1277,
-        "price": "$134",
-        "address": "4305 Albert Street"
+        "price": "$1,349,000"
       }
     },
     {
@@ -706,11 +600,11 @@
       "thumbnailUrl": "https://i.ytimg.com/vi/e6qCpshmtmQ/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLCdGK5ysEinYmoH9QilmX2m6Tm4UQ",
       "metadata": {
         "location": "Burnaby",
+        "address": "7388 Kingsway",
         "beds": 1,
         "baths": 1,
         "sqft": 609,
-        "price": "$575",
-        "address": "7388 Kingsway"
+        "price": "$575,000"
       }
     },
     {
@@ -722,11 +616,11 @@
       "thumbnailUrl": "https://i.ytimg.com/vi/EkU5olml9M8/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLAnh0Q7oxten2Ahl5BkhxEKFhmnaA",
       "metadata": {
         "location": "Burnaby",
+        "address": "4788 Hastings Street",
         "beds": 3,
         "baths": 2,
         "sqft": 1146,
-        "price": "$149",
-        "address": "4788 Hast"
+        "price": "$1,499,000"
       }
     },
     {
@@ -738,9 +632,8 @@
       "thumbnailUrl": "https://i.ytimg.com/vi/_zHBPkJ3tno/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLBVGyPid2knPbVBXocrjKQ_zmgPJw",
       "metadata": {
         "location": "Burnaby",
-        "beds": 3,
-        "baths": 2,
-        "sqft": 2000
+        "beds": 2,
+        "sqft": 1027
       }
     },
     {
@@ -752,10 +645,8 @@
       "thumbnailUrl": "https://i.ytimg.com/vi/1HgU7YOVlyw/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLC0PJ_wlJCtjv9QRWJcOH7y34v9og",
       "metadata": {
         "location": "Burnaby",
-        "sqft": 2103,
         "address": "6274 Sumas Street",
-        "beds": 3,
-        "baths": 2
+        "sqft": 2103
       }
     },
     {
@@ -767,10 +658,7 @@
       "thumbnailUrl": "https://i.ytimg.com/vi/s3dixKo9vRc/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLBauk1TPdCtFborhPJagedt6pNhfQ",
       "metadata": {
         "location": "Burnaby",
-        "address": "2802 4688 Kingsway",
-        "beds": 3,
-        "baths": 2,
-        "sqft": 2000
+        "address": "2802 4688 Kingsway"
       }
     },
     {
@@ -782,10 +670,11 @@
       "thumbnailUrl": "https://i.ytimg.com/vi/ndfIB2HMREE/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLCk1MRiKUD0NBGrPxrJjnY9XjffXw",
       "metadata": {
         "location": "Burnaby",
+        "address": "7403 Magnolia Terrace",
         "beds": 3,
         "baths": 2,
         "sqft": 1266,
-        "price": "$970"
+        "price": "$970,000"
       }
     },
     {
@@ -797,10 +686,10 @@
       "thumbnailUrl": "https://i.ytimg.com/vi/cc1PFZuphn0/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLA2bxNltEnY3xtQMm5ZCbb0cyIOjg",
       "metadata": {
         "location": "Burnaby",
+        "address": "5602 - 1955 Alpha Way",
         "beds": 3,
         "baths": 3,
-        "sqft": 1449,
-        "address": "1955 Alpha Way"
+        "sqft": 1449
       }
     },
     {
@@ -813,9 +702,9 @@
       "metadata": {
         "location": "Burnaby",
         "address": "6230 Field Place",
-        "beds": 3,
-        "baths": 2,
-        "sqft": 2000
+        "beds": 4,
+        "baths": 3,
+        "sqft": 2999
       }
     },
     {
@@ -827,9 +716,9 @@
       "thumbnailUrl": "https://i.ytimg.com/vi/htkHR2rdoc4/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLAOYzIDcOS3g2s_oCzJFGArnZrhqQ",
       "metadata": {
         "location": "Vancouver",
-        "beds": 2,
-        "baths": 1,
-        "sqft": 900
+        "beds": 3,
+        "baths": 3,
+        "sqft": 1500
       }
     },
     {
@@ -841,9 +730,9 @@
       "thumbnailUrl": "https://i.ytimg.com/vi/NyFR97bnCtA/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLBtvznafzaPJLtJvOBWwXBEilIBZA",
       "metadata": {
         "location": "Vancouver",
-        "beds": 3,
-        "baths": 2,
-        "sqft": 2000
+        "beds": 4,
+        "baths": 7,
+        "sqft": 8000
       }
     },
     {
@@ -855,10 +744,9 @@
       "thumbnailUrl": "https://i.ytimg.com/vi/QjLv1-38NdE/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLBbVeQ_uezVwc9shqqThDfc3YMREA",
       "metadata": {
         "location": "Vancouver",
+        "address": "1604-125 Milross Ave",
         "sqft": 1103,
-        "price": "$119",
-        "beds": 2,
-        "baths": 1
+        "price": "$1,199,000"
       }
     },
     {
@@ -870,10 +758,7 @@
       "thumbnailUrl": "https://i.ytimg.com/vi/vndhQP-5-H0/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLDhm5-4ytLocQeeIAS9R_7zgImdiw",
       "metadata": {
         "location": "Vancouver",
-        "address": "1372 Seymour St",
-        "beds": 2,
-        "baths": 1,
-        "sqft": 900
+        "address": "1372 Seymour St"
       }
     },
     {
@@ -885,10 +770,10 @@
       "thumbnailUrl": "https://i.ytimg.com/vi/bb_k5aj-Z_w/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLBg7WP8q0R8MY_nAPgdr_xghBF_Pw",
       "metadata": {
         "location": "Vancouver",
-        "price": "$825,000 ",
-        "beds": 2,
-        "baths": 1,
-        "sqft": 900
+        "address": "1372 Seymour Street",
+        "beds": 1,
+        "sqft": 624,
+        "price": "$825,000"
       }
     },
     {
@@ -900,10 +785,10 @@
       "thumbnailUrl": "https://i.ytimg.com/vi/eoHm7-tVWGQ/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLCrXIV5sdGIv3waeL3hMsS12CbzcQ",
       "metadata": {
         "location": "Vancouver",
-        "price": "$1,198,000 ",
-        "beds": 2,
-        "baths": 1,
-        "sqft": 900
+        "address": "1351 Continental Street",
+        "beds": 1,
+        "sqft": 1000,
+        "price": "$1,198,000"
       }
     },
     {
@@ -914,10 +799,10 @@
       "duration": 120,
       "thumbnailUrl": "https://i.ytimg.com/vi/1mS1CDw51Xg/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLCeYF5qmp6HQdc1HrrreQ5XYdjWlA",
       "metadata": {
-        "location": "Vancouver",
+        "location": "Yaletown, Vancouver",
+        "address": "990 Beach Ave",
         "beds": 2,
-        "baths": 3,
-        "sqft": 900
+        "baths": 3
       }
     },
     {
@@ -930,9 +815,7 @@
       "metadata": {
         "location": "Vancouver",
         "beds": 2,
-        "baths": 2,
-        "address": "2 Bedr",
-        "sqft": 900
+        "baths": 2
       }
     },
     {
@@ -944,9 +827,7 @@
       "thumbnailUrl": "https://i.ytimg.com/vi/PExhZ7iwiHQ/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLAvdfwSJZGvgFIUg5oWcPc1uZa01g",
       "metadata": {
         "location": "Vancouver",
-        "beds": 2,
-        "baths": 1,
-        "sqft": 900
+        "address": "1105 West Georgia St"
       }
     },
     {
@@ -958,10 +839,8 @@
       "thumbnailUrl": "https://i.ytimg.com/vi/Gueg_zB5kAk/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLAOceU17iFpK5pBWp11hC9b7ouOLA",
       "metadata": {
         "location": "Abbotsford",
-        "beds": 4,
-        "address": "4 bedroom townhome at Golf Pointe Estates East Abbotsford",
-        "baths": 2.5,
-        "sqft": 1500
+        "address": "35819 Mckee Rd",
+        "beds": 4
       }
     }
   ],
