@@ -28,10 +28,11 @@ For each video in the manifest:
 
 1. Checks the video is still public (YouTube oEmbed) and skips it if not. Pass `--skip-check` to skip this check.
 2. Downloads it to `ingestion/videos/` with yt-dlp.
-3. Cuts 30-second windows every 25 seconds into small 360p clips and saves a still from the middle of each to `public/frames/`.
+3. Cuts 30-second windows every 25 seconds into small 360p clips.
 4. Sends each clip to Gemini Flash for the room, a caption, searchable features and a transcript.
 5. Embeds the clip and the written notes with Gemini Embedding 2.
-6. Writes a short summary and highlights per property from the captions.
+6. Sends the whole tour (240p, 2 fps, with a clock burned in) to Gemini Flash once for timed room chapters: when each room or area first appears. These drive the player's timeline; each window takes its room label and its still (saved to `public/frames/`) from the chapter it mostly shows.
+7. Writes a short summary and highlights per property from the captions.
 
 Outputs:
 
@@ -41,7 +42,7 @@ Outputs:
 
 Every finished window is cached in `ingestion/.cache/<youtubeId>.json`. Re-running only processes what is missing. Delete a video's cache file to re-index it.
 
-Options: `--only <youtubeId>` and `--limit N` merge into the existing outputs; `--catalog-only` rebuilds outputs from the cache with no downloads or API calls; `--concurrency N` sets parallel requests (default 2).
+Options: `--only <youtubeId>` and `--limit N` merge into the existing outputs; `--catalog-only` rebuilds outputs from the cache with no downloads or API calls (it re-takes stills with ffmpeg if a video is in `ingestion/videos/`); `--concurrency N` sets parallel requests (default 2).
 
 On the Gemini free tier, use `--concurrency 1`. Rate-limit errors are retried after the delay Gemini asks for, so the run slows down instead of failing. If a daily limit runs out, the run lists the unfinished tours and exits 1; run the same command the next day to resume.
 
@@ -55,7 +56,7 @@ Runs the queries in `eval-queries.json` and prints the top three tours for each,
 
 ## Cost and free-tier limits
 
-About 150 minutes of video gives roughly 400 windows. A full build makes about 465 Flash-Lite calls (one per window, one summary per tour) and about 800 embedding calls (clip and notes per window).
+About 150 minutes of video gives roughly 400 windows. A full build makes about 530 Flash-Lite calls (one per window, plus a chapters call and a summary per tour) and about 800 embedding calls (clip and notes per window).
 
 That fits the free tier in a day. Check your own limits at https://aistudio.google.com/rate-limit; the free tier for this project allowed:
 

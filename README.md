@@ -22,7 +22,7 @@ Type "3 bed in Burnaby with a big kitchen island" and PropertyLens pulls out the
                          public/frames/*.jpg                          └───────────────┘
 ```
 
-- **Index** (`ingestion/build-index.ts`): each tour is cut into 30-second windows with a 5-second overlap. Gemini Flash describes each window; Gemini Embedding 2 embeds both the clip itself and the written notes (768 dimensions).
+- **Index** (`ingestion/build-index.ts`): each tour is cut into 30-second windows with a 5-second overlap. Gemini Flash describes each window; Gemini Embedding 2 embeds both the clip itself and the written notes (768 dimensions). A second pass over the whole video times the room-by-room chapters for the player, since rooms change every few seconds, much faster than the search windows.
 - **Search** (`server/search.ts`): filter phrases are parsed out first (by Gemini when the query looks like it has any, by rules otherwise). The descriptive remainder is embedded and scored against every scene three ways: visual similarity, speech/caption similarity and BM25 keywords. Reciprocal rank fusion merges them, and results are grouped by property.
 - **Ask** (`server/chat.ts`): a tour is a few minutes long, so all its scene notes fit in one prompt. No retrieval step; the answer streams back with `[m:ss]` citations.
 - **Storage**: a JSON index scored in memory. At ~500 scenes there is nothing for a vector database to do.

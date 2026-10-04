@@ -9,7 +9,7 @@ const STEPS = [
   {
     title: 'Index',
     when: 'Once, offline',
-    body: 'Each tour is cut into 30-second scenes. Gemini Flash writes down the room, what is visible and what the agent says. Gemini Embedding 2 turns both the clip itself and those notes into vectors.',
+    body: 'Each tour is cut into 30-second scenes. Gemini Flash writes down the room, what is visible and what the agent says, and times when each room appears for the chapter timeline. Gemini Embedding 2 turns both the clip itself and those notes into vectors.',
   },
   {
     title: 'Search',
