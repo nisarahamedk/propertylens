@@ -6,8 +6,11 @@ const env = (typeof process !== 'undefined' ? process.env : {}) as Record<string
 export const MODELS = {
   // Multimodal: embeds text, images, audio and video into one space.
   embedding: env.GEMINI_EMBEDDING_MODEL || 'gemini-embedding-2',
-  // Used for captioning at index time, query parsing and chat.
-  flash: env.GEMINI_FLASH_MODEL || 'gemini-flash-latest',
+  // Used for captioning at index time, query parsing and chat. Pinned rather
+  // than an alias so the model cannot change between indexing and serving.
+  // Flash-Lite matched full Flash on scene notes in testing, and its free tier
+  // (500 requests/day) fits a full index; full Flash allows only 20/day.
+  flash: env.GEMINI_FLASH_MODEL || 'gemini-3.5-flash-lite',
 };
 
 /** Matryoshka-truncated output size. Vectors are re-normalised after truncation. */

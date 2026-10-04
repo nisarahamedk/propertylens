@@ -43,7 +43,7 @@ Every finished window is cached in `ingestion/.cache/<youtubeId>.json`. Re-runni
 
 Options: `--only <youtubeId>` and `--limit N` merge into the existing outputs; `--catalog-only` rebuilds outputs from the cache with no downloads or API calls; `--concurrency N` sets parallel requests (default 2).
 
-On the Gemini free tier, use `--concurrency 1`. Flash allows about 10 requests a minute there, so the full set takes roughly an hour. Rate-limit errors are retried after the delay Gemini asks for, so the run slows down instead of failing.
+On the Gemini free tier, use `--concurrency 1`. Rate-limit errors are retried after the delay Gemini asks for, so the run slows down instead of failing. If a daily limit runs out, the run lists the unfinished tours and exits 1; run the same command the next day to resume.
 
 ### 3. Check the ranking
 
@@ -53,6 +53,19 @@ GEMINI_API_KEY=... npm run eval
 
 Runs the queries in `eval-queries.json` and prints the top three tours for each, with their scores. Add `"expect": ["<youtubeId>"]` to a query to get a hit@3 check. Use the printed score spread to set `SEARCH_MIN_SCORE`.
 
-## Cost
+## Cost and free-tier limits
 
-About 150 minutes of video gives roughly 400 windows. Expect a one-time Gemini bill of around $10–15 for the clip embeddings and captions; text embeddings and summaries add very little.
+About 150 minutes of video gives roughly 400 windows. A full build makes about 465 Flash-Lite calls (one per window, one summary per tour) and about 800 embedding calls (clip and notes per window).
+
+That fits the free tier in a day. Check your own limits at https://aistudio.google.com/rate-limit; the free tier for this project allowed:
+
+| Model | Per minute | Per day |
+|---|---|---|
+| `gemini-3.5-flash-lite` | 15 requests | 500 requests |
+| `gemini-embedding-2` | 100 requests, 30K tokens | 1,000 requests |
+
+The embedding token limit is the slow part: a 30-second clip is several thousand tokens, so expect a few hours. Start on a day with little other usage so the daily embedding limit covers the whole run.
+
+Full Flash models (`gemini-flash-latest`, `gemini-3.5-flash`) allow only 20 requests a day on the free tier, so they need billing for a full build.
+
+At serve time, each search costs one embedding call and each chat question or filter search ("3 bed in Burnaby") one Flash-Lite call. When Flash-Lite is out of quota, filter parsing falls back to rules and chat reports that it is busy.

@@ -59,7 +59,7 @@ const CATALOG_ONLY = flag('--catalog-only');
 const SKIP_CHECK = flag('--skip-check');
 const ONLY = option('--only');
 const LIMIT = option('--limit') ? Number(option('--limit')) : undefined;
-// Lower to 1 on the Gemini free tier (about 10 Flash requests per minute).
+// Use 1 on the Gemini free tier (15 Flash-Lite and 100 embedding requests per minute).
 const CONCURRENCY = Number(option('--concurrency') ?? 2);
 
 // ---------- helpers ----------
