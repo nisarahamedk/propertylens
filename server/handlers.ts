@@ -45,10 +45,16 @@ export async function handleChat(req: Request): Promise<Response> {
   const encoder = new TextEncoder();
   const stream = new ReadableStream({
     async start(controller) {
+      let sent = false;
       try {
-        for await (const delta of chat(body)) controller.enqueue(encoder.encode(delta));
+        for await (const delta of chat(body)) {
+          controller.enqueue(encoder.encode(delta));
+          sent = true;
+        }
       } catch {
-        controller.enqueue(encoder.encode('\n\nSorry, the answer was cut off. Please try again.'));
+        controller.enqueue(encoder.encode(sent
+          ? '\n\nSorry, the answer was cut off. Please try again.'
+          : 'The assistant is busy right now. Please try again in a moment.'));
       }
       controller.close();
     },

@@ -30,13 +30,14 @@ export function retryDelayMs(body: string): number | undefined {
   return m ? Math.ceil(parseFloat(m[1]) * 1000) : undefined;
 }
 
-async function call(path: string, body: unknown, apiKey: string, attempt = 0): Promise<any> {
+/** POSTs to the API and returns the ok response, retrying rate limits and transient server errors. */
+async function post(path: string, body: unknown, apiKey: string, attempt = 0): Promise<Response> {
   const res = await fetch(`${BASE}/${path}`, {
     method: 'POST',
     headers: { 'content-type': 'application/json', 'x-goog-api-key': apiKey },
     body: JSON.stringify(body),
   });
-  if (res.ok) return res.json();
+  if (res.ok) return res;
   const text = await res.text();
   // Back off on rate limits and transient server errors. Free-tier limits are
   // per minute, so honour the delay Gemini asks for rather than guessing.
@@ -44,10 +45,12 @@ async function call(path: string, body: unknown, apiKey: string, attempt = 0): P
   const wait = asked ?? 1000 * 2 ** attempt;
   if ((res.status === 429 || res.status >= 500) && attempt < maxAttempts() - 1 && wait <= maxWaitMs()) {
     await new Promise(r => setTimeout(r, wait + Math.random() * 500));
-    return call(path, body, apiKey, attempt + 1);
+    return post(path, body, apiKey, attempt + 1);
   }
   throw new GeminiError(`Gemini ${path} failed: ${res.status} ${text.slice(0, 300)}`, res.status);
 }
+
+const call = async (path: string, body: unknown, apiKey: string): Promise<any> => (await post(path, body, apiKey)).json();
 
 export function normalize(v: number[] | Float32Array): Float32Array {
   const out = Float32Array.from(v);
@@ -114,14 +117,9 @@ export async function* generateStream(
   apiKey: string,
   opts: GenerateOptions = {},
 ): AsyncGenerator<string> {
-  const res = await fetch(`${BASE}/models/${MODELS.flash}:streamGenerateContent?alt=sse`, {
-    method: 'POST',
-    headers: { 'content-type': 'application/json', 'x-goog-api-key': apiKey },
-    body: JSON.stringify(generateBody(contents, opts)),
-  });
-  if (!res.ok || !res.body) {
-    throw new GeminiError(`Gemini stream failed: ${res.status} ${(await res.text()).slice(0, 300)}`, res.status);
-  }
+  // Retrying is safe here: nothing has been streamed to the caller yet.
+  const res = await post(`models/${MODELS.flash}:streamGenerateContent?alt=sse`, generateBody(contents, opts), apiKey);
+  if (!res.body) throw new GeminiError('Gemini stream returned no body', 502);
   const reader = res.body.getReader();
   const decoder = new TextDecoder();
   let buffer = '';
