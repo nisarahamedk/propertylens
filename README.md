@@ -2,7 +2,7 @@
 
 Search inside home tour videos by what you want to see or hear, then jump straight to that moment.
 
-Type "3 bed in Burnaby with a big kitchen island" and PropertyLens pulls out the filters (3+ beds, Burnaby), searches every scene of every tour for a kitchen island, and shows the matching moments with a frame, a caption and how strongly each matched on what is **seen** versus what is **heard**. On a tour you get a room-by-room timeline, a scene list that follows playback, and a chat that answers from the video with clickable timestamps.
+Type "3 bed in Surrey with a fenced backyard" and PropertyLens pulls out the filters (3+ beds, Surrey), searches every scene of every tour for a fenced backyard, and shows the matching moments with a frame, a caption and how strongly each matched on what is **seen** versus what is **heard**. On a tour you get a room-by-room timeline, a scene list that follows playback, and a chat that answers from the video with clickable timestamps.
 
 ## How it works
 

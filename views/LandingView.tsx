@@ -7,10 +7,11 @@ import { properties, totalScenes } from '../services/api';
 import type { Property } from '../types';
 
 const SUGGESTIONS = [
-  '3 bed in Burnaby with a big kitchen island',
-  'Backyard with mature trees',
-  'Under $1.5M with mountain views',
-  'Agent mentions a new roof',
+  // Each checked against the index: clear matches, not the closest-moments fallback.
+  '3 bed in Surrey with a fenced backyard',
+  'Soaker tub in the ensuite',
+  'Under $1M condo with city views',
+  'Close to SkyTrain',
 ];
 
 const LandingView: React.FC = () => {
