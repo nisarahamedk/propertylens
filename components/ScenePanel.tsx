@@ -18,8 +18,16 @@ const ScenePanel: React.FC<Props> = ({ segments, currentTime, matchedIds, terms,
   const listRef = useRef<HTMLOListElement>(null);
 
   useEffect(() => {
-    const el = listRef.current?.children[activeIndex] as HTMLElement | undefined;
-    el?.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+    // Scroll only the panel. scrollIntoView also scrolls the page, which on a
+    // phone pulls the video off screen every time playback reaches a new scene.
+    const list = listRef.current;
+    const box = list?.parentElement;
+    const el = list?.children[activeIndex] as HTMLElement | undefined;
+    if (!box || !el) return;
+    const top = el.getBoundingClientRect().top - box.getBoundingClientRect().top + box.scrollTop;
+    if (top < box.scrollTop || top + el.offsetHeight > box.scrollTop + box.clientHeight) {
+      box.scrollTo({ top: top - 12, behavior: 'smooth' });
+    }
   }, [activeIndex]);
 
   if (!segments.length) {
@@ -47,14 +55,14 @@ const ScenePanel: React.FC<Props> = ({ segments, currentTime, matchedIds, terms,
                 src={s.frame || fallbackImage}
                 alt=""
                 loading="lazy"
-                className="w-24 aspect-video object-cover border border-charcoal shrink-0"
+                className="w-24 self-start aspect-video object-cover border border-charcoal shrink-0"
               />
               <span className="min-w-0 flex-1">
                 <span className={`flex items-center gap-2 text-[10px] font-mono font-bold uppercase tracking-wider ${active ? 'text-olive' : 'text-warmWhite/60'}`}>
                   {formatTime(s.start)} · {ROOM_LABELS[s.room]}
                   {matched && <span className="bg-terracotta text-white px-1">Match</span>}
                 </span>
-                <span className={`block text-sm leading-snug mt-0.5 line-clamp-3 ${active ? 'text-charcoal' : 'text-warmWhite/85'}`}>
+                <span className={`text-sm leading-snug mt-0.5 line-clamp-3 ${active ? 'text-charcoal' : 'text-warmWhite/85'}`}>
                   <Highlight
                     text={s.caption}
                     terms={matched ? terms : []}

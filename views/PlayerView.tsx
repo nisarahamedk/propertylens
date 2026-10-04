@@ -34,9 +34,15 @@ const PlayerView: React.FC = () => {
       .catch(() => {});
   }, [query, property, matches.length]);
 
+  const playerBoxRef = useRef<HTMLDivElement>(null);
   const seek = useCallback((t: number) => {
     playerRef.current?.seekTo(t);
     setCurrentTime(t);
+    // On a phone the scene list and chat sit below the video; bring it back into view.
+    const box = playerBoxRef.current?.getBoundingClientRect();
+    if (box && (box.top < 0 || box.bottom > window.innerHeight)) {
+      playerBoxRef.current!.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
   }, []);
 
   const matchedIds = useMemo(() => new Set(matches.map(m => m.segmentId)), [matches]);
@@ -71,7 +77,7 @@ const PlayerView: React.FC = () => {
 
       <main className="flex-1 max-w-7xl mx-auto px-4 md:px-6 py-6 lg:py-8 flex flex-col lg:flex-row gap-8 w-full">
         <div className="flex-1 min-w-0">
-          <div className="border-2 border-charcoal bg-charcoal">
+          <div ref={playerBoxRef} className="border-2 border-charcoal bg-charcoal scroll-mt-20">
             <VideoPlayer ref={playerRef} youtubeId={property.youtubeId} startTime={startAt} onTimeUpdate={setCurrentTime} />
           </div>
           <ChapterTimeline
