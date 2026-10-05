@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-04T21:24:02.658Z",
+ "generatedAt": "2026-10-04T23:55:02.005Z",
  "models": {
   "embedding": "gemini-embedding-2",
   "describe": "gemini-3.5-flash-lite",
@@ -201,7 +201,8 @@
      "start": 4,
      "room": "exterior",
      "label": "Exterior",
-     "end": 22
+     "end": 22,
+     "frame": "/frames/D81OJRTOkLA_c0040.jpg"
     },
     {
      "start": 22,
@@ -213,7 +214,8 @@
      "start": 26,
      "room": "exterior",
      "label": "Exterior",
-     "end": 53
+     "end": 53,
+     "frame": "/frames/D81OJRTOkLA_c0260.jpg"
     },
     {
      "start": 53,
@@ -225,37 +227,43 @@
      "start": 58,
      "room": "exterior",
      "label": "Exterior",
-     "end": 66
+     "end": 66,
+     "frame": "/frames/D81OJRTOkLA_c0580.jpg"
     },
     {
      "start": 66,
      "room": "entry",
      "label": "Entryway",
-     "end": 68
+     "end": 68,
+     "frame": "/frames/D81OJRTOkLA_c0660.jpg"
     },
     {
      "start": 68,
      "room": "living",
      "label": "Living room",
-     "end": 70
+     "end": 70,
+     "frame": "/frames/D81OJRTOkLA_c0680.jpg"
     },
     {
      "start": 70,
      "room": "dining",
      "label": "Dining area",
-     "end": 74
+     "end": 74,
+     "frame": "/frames/D81OJRTOkLA_c0700.jpg"
     },
     {
      "start": 74,
      "room": "kitchen",
      "label": "Kitchen",
-     "end": 81
+     "end": 81,
+     "frame": "/frames/D81OJRTOkLA_c0740.jpg"
     },
     {
      "start": 81,
      "room": "dining",
      "label": "Dining nook",
-     "end": 98
+     "end": 98,
+     "frame": "/frames/D81OJRTOkLA_c0810.jpg"
     },
     {
      "start": 98,
@@ -279,31 +287,36 @@
      "start": 108,
      "room": "exterior",
      "label": "Exterior",
-     "end": 112
+     "end": 112,
+     "frame": "/frames/D81OJRTOkLA_c1080.jpg"
     },
     {
      "start": 112,
      "room": "dining",
      "label": "Dining nook",
-     "end": 117
+     "end": 117,
+     "frame": "/frames/D81OJRTOkLA_c1120.jpg"
     },
     {
      "start": 117,
      "room": "kitchen",
      "label": "Kitchen",
-     "end": 125
+     "end": 125,
+     "frame": "/frames/D81OJRTOkLA_c1170.jpg"
     },
     {
      "start": 125,
      "room": "living",
      "label": "Living room",
-     "end": 127
+     "end": 127,
+     "frame": "/frames/D81OJRTOkLA_c1250.jpg"
     },
     {
      "start": 127,
      "room": "living",
      "label": "Fireplace",
-     "end": 131
+     "end": 131,
+     "frame": "/frames/D81OJRTOkLA_c1270.jpg"
     },
     {
      "start": 131,
@@ -315,49 +328,57 @@
      "start": 135,
      "room": "bedroom",
      "label": "Nursery",
-     "end": 137
+     "end": 137,
+     "frame": "/frames/D81OJRTOkLA_c1350.jpg"
     },
     {
      "start": 137,
      "room": "bedroom",
      "label": "Primary bedroom",
-     "end": 139
+     "end": 139,
+     "frame": "/frames/D81OJRTOkLA_c1370.jpg"
     },
     {
      "start": 139,
      "room": "bathroom",
      "label": "Ensuite bathroom",
-     "end": 143
+     "end": 143,
+     "frame": "/frames/D81OJRTOkLA_c1390.jpg"
     },
     {
      "start": 143,
      "room": "office",
      "label": "Home office",
-     "end": 145
+     "end": 145,
+     "frame": "/frames/D81OJRTOkLA_c1430.jpg"
     },
     {
      "start": 145,
      "room": "backyard",
      "label": "Back deck",
-     "end": 152
+     "end": 152,
+     "frame": "/frames/D81OJRTOkLA_c1450.jpg"
     },
     {
      "start": 152,
      "room": "backyard",
      "label": "Backyard",
-     "end": 173
+     "end": 173,
+     "frame": "/frames/D81OJRTOkLA_c1520.jpg"
     },
     {
      "start": 173,
      "room": "backyard",
      "label": "Shed",
-     "end": 181
+     "end": 181,
+     "frame": "/frames/D81OJRTOkLA_c1730.jpg"
     },
     {
      "start": 181,
      "room": "backyard",
      "label": "Backyard",
-     "end": 185
+     "end": 185,
+     "frame": "/frames/D81OJRTOkLA_c1810.jpg"
     },
     {
      "start": 185,
@@ -369,7 +390,8 @@
      "start": 188,
      "room": "backyard",
      "label": "Backyard",
-     "end": 197
+     "end": 197,
+     "frame": "/frames/D81OJRTOkLA_c1880.jpg"
     },
     {
      "start": 197,
@@ -551,43 +573,50 @@
      "start": 11,
      "room": "exterior",
      "label": "Neighborhood view",
-     "end": 14
+     "end": 14,
+     "frame": "/frames/DGOF6dJ0t9E_c0110.jpg"
     },
     {
      "start": 14,
      "room": "exterior",
      "label": "Townhouse exterior",
-     "end": 19
+     "end": 19,
+     "frame": "/frames/DGOF6dJ0t9E_c0140.jpg"
     },
     {
      "start": 19,
      "room": "exterior",
      "label": "Green space",
-     "end": 21
+     "end": 21,
+     "frame": "/frames/DGOF6dJ0t9E_c0190.jpg"
     },
     {
      "start": 21,
      "room": "exterior",
      "label": "Townhouse back",
-     "end": 25
+     "end": 25,
+     "frame": "/frames/DGOF6dJ0t9E_c0210.jpg"
     },
     {
      "start": 25,
      "room": "backyard",
      "label": "Balcony",
-     "end": 28
+     "end": 28,
+     "frame": "/frames/DGOF6dJ0t9E_c0250.jpg"
     },
     {
      "start": 28,
      "room": "exterior",
      "label": "Townhouse front",
-     "end": 31
+     "end": 31,
+     "frame": "/frames/DGOF6dJ0t9E_c0280.jpg"
     },
     {
      "start": 31,
      "room": "entry",
      "label": "Entryway",
-     "end": 35
+     "end": 35,
+     "frame": "/frames/DGOF6dJ0t9E_c0310.jpg"
     },
     {
      "start": 35,
@@ -599,61 +628,71 @@
      "start": 44,
      "room": "living",
      "label": "Living room",
-     "end": 49
+     "end": 49,
+     "frame": "/frames/DGOF6dJ0t9E_c0440.jpg"
     },
     {
      "start": 49,
      "room": "backyard",
      "label": "Balcony",
-     "end": 51
+     "end": 51,
+     "frame": "/frames/DGOF6dJ0t9E_c0490.jpg"
     },
     {
      "start": 51,
      "room": "kitchen",
      "label": "Kitchen",
-     "end": 59
+     "end": 59,
+     "frame": "/frames/DGOF6dJ0t9E_c0510.jpg"
     },
     {
      "start": 59,
      "room": "dining",
      "label": "Dining room",
-     "end": 66
+     "end": 66,
+     "frame": "/frames/DGOF6dJ0t9E_c0590.jpg"
     },
     {
      "start": 66,
      "room": "bathroom",
      "label": "Powder room",
-     "end": 69
+     "end": 69,
+     "frame": "/frames/DGOF6dJ0t9E_c0660.jpg"
     },
     {
      "start": 69,
      "room": "bedroom",
      "label": "Primary bedroom",
-     "end": 74
+     "end": 74,
+     "frame": "/frames/DGOF6dJ0t9E_c0690.jpg"
     },
     {
      "start": 74,
      "room": "bathroom",
      "label": "Ensuite",
-     "end": 78
+     "end": 78,
+     "frame": "/frames/DGOF6dJ0t9E_c0740.jpg"
     },
     {
      "start": 78,
      "room": "office",
      "label": "Home office",
-     "end": 83
+     "end": 83,
+     "frame": "/frames/DGOF6dJ0t9E_c0780.jpg"
     },
     {
      "start": 83,
      "room": "office",
      "label": "Workspace",
-     "end": 87
+     "end": 87,
+     "frame": "/frames/DGOF6dJ0t9E_c0830.jpg"
     },
     {
      "start": 87,
      "room": "laundry",
      "label": "Laundry",
-     "end": 90
+     "end": 90,
+     "frame": "/frames/DGOF6dJ0t9E_c0870.jpg"
     },
     {
      "start": 90,
@@ -665,73 +704,85 @@
      "start": 95,
      "room": "amenity",
      "label": "Bear Creek Park",
-     "end": 98
+     "end": 98,
+     "frame": "/frames/DGOF6dJ0t9E_c0950.jpg"
     },
     {
      "start": 98,
      "room": "amenity",
      "label": "Community pool",
-     "end": 101
+     "end": 101,
+     "frame": "/frames/DGOF6dJ0t9E_c0980.jpg"
     },
     {
      "start": 101,
      "room": "amenity",
      "label": "Park plaza",
-     "end": 103
+     "end": 103,
+     "frame": "/frames/DGOF6dJ0t9E_c1010.jpg"
     },
     {
      "start": 103,
      "room": "amenity",
      "label": "King George Hub",
-     "end": 111
+     "end": 111,
+     "frame": "/frames/DGOF6dJ0t9E_c1030.jpg"
     },
     {
      "start": 111,
      "room": "amenity",
      "label": "King George Station",
-     "end": 117
+     "end": 117,
+     "frame": "/frames/DGOF6dJ0t9E_c1110.jpg"
     },
     {
      "start": 117,
      "room": "amenity",
      "label": "Surrey Arts Centre",
-     "end": 121
+     "end": 121,
+     "frame": "/frames/DGOF6dJ0t9E_c1170.jpg"
     },
     {
      "start": 121,
      "room": "amenity",
      "label": "Community Centre",
-     "end": 124
+     "end": 124,
+     "frame": "/frames/DGOF6dJ0t9E_c1210.jpg"
     },
     {
      "start": 124,
      "room": "amenity",
      "label": "Costco",
-     "end": 127
+     "end": 127,
+     "frame": "/frames/DGOF6dJ0t9E_c1240.jpg"
     },
     {
      "start": 127,
      "room": "amenity",
      "label": "Shopping plaza",
-     "end": 129
+     "end": 129,
+     "frame": "/frames/DGOF6dJ0t9E_c1270.jpg"
     },
     {
      "start": 129,
      "room": "amenity",
      "label": "Bear Creek Elementary",
-     "end": 132
+     "end": 132,
+     "frame": "/frames/DGOF6dJ0t9E_c1290.jpg"
     },
     {
      "start": 132,
      "room": "amenity",
      "label": "Frank Hurt Secondary",
-     "end": 134
+     "end": 134,
+     "frame": "/frames/DGOF6dJ0t9E_c1320.jpg"
     },
     {
      "start": 134,
      "room": "amenity",
      "label": "SFU Surrey",
-     "end": 139
+     "end": 139,
+     "frame": "/frames/DGOF6dJ0t9E_c1340.jpg"
     },
     {
      "start": 139,
@@ -951,49 +1002,57 @@
      "start": 45,
      "room": "dining",
      "label": "Dining room",
-     "end": 69
+     "end": 69,
+     "frame": "/frames/aLhcDVGvd_8_c0450.jpg"
     },
     {
      "start": 69,
      "room": "kitchen",
      "label": "Kitchen",
-     "end": 96
+     "end": 96,
+     "frame": "/frames/aLhcDVGvd_8_c0690.jpg"
     },
     {
      "start": 96,
      "room": "bedroom",
      "label": "Primary bedroom",
-     "end": 112
+     "end": 112,
+     "frame": "/frames/aLhcDVGvd_8_c0960.jpg"
     },
     {
      "start": 112,
      "room": "bathroom",
      "label": "Ensuite",
-     "end": 139
+     "end": 139,
+     "frame": "/frames/aLhcDVGvd_8_c1120.jpg"
     },
     {
      "start": 139,
      "room": "bedroom",
      "label": "Bedroom",
-     "end": 158
+     "end": 158,
+     "frame": "/frames/aLhcDVGvd_8_c1390.jpg"
     },
     {
      "start": 158,
      "room": "bathroom",
      "label": "Bathroom",
-     "end": 161
+     "end": 161,
+     "frame": "/frames/aLhcDVGvd_8_c1580.jpg"
     },
     {
      "start": 161,
      "room": "laundry",
      "label": "Laundry room",
-     "end": 163
+     "end": 163,
+     "frame": "/frames/aLhcDVGvd_8_c1610.jpg"
     },
     {
      "start": 163,
      "room": "backyard",
      "label": "Rooftop deck",
-     "end": 189
+     "end": 189,
+     "frame": "/frames/aLhcDVGvd_8_c1630.jpg"
     },
     {
      "start": 189,
@@ -1159,115 +1218,134 @@
      "start": 0,
      "room": "exterior",
      "label": "Front exterior",
-     "end": 19
+     "end": 19,
+     "frame": "/frames/6joXmtuyJmg_c0000.jpg"
     },
     {
      "start": 19,
      "room": "view",
      "label": "Aerial view",
-     "end": 25
+     "end": 25,
+     "frame": "/frames/6joXmtuyJmg_c0190.jpg"
     },
     {
      "start": 25,
      "room": "exterior",
      "label": "Front exterior",
-     "end": 36
+     "end": 36,
+     "frame": "/frames/6joXmtuyJmg_c0250.jpg"
     },
     {
      "start": 36,
      "room": "entry",
      "label": "Staircase",
-     "end": 39
+     "end": 39,
+     "frame": "/frames/6joXmtuyJmg_c0360.jpg"
     },
     {
      "start": 39,
      "room": "living",
      "label": "Living room",
-     "end": 49
+     "end": 49,
+     "frame": "/frames/6joXmtuyJmg_c0390.jpg"
     },
     {
      "start": 49,
      "room": "kitchen",
      "label": "Kitchen",
-     "end": 51
+     "end": 51,
+     "frame": "/frames/6joXmtuyJmg_c0490.jpg"
     },
     {
      "start": 51,
      "room": "dining",
      "label": "Dining area",
-     "end": 54
+     "end": 54,
+     "frame": "/frames/6joXmtuyJmg_c0510.jpg"
     },
     {
      "start": 54,
      "room": "bathroom",
      "label": "Bathroom",
-     "end": 59
+     "end": 59,
+     "frame": "/frames/6joXmtuyJmg_c0540.jpg"
     },
     {
      "start": 59,
      "room": "bedroom",
      "label": "Bedroom",
-     "end": 66
+     "end": 66,
+     "frame": "/frames/6joXmtuyJmg_c0590.jpg"
     },
     {
      "start": 66,
      "room": "bedroom",
      "label": "Primary bedroom",
-     "end": 69
+     "end": 69,
+     "frame": "/frames/6joXmtuyJmg_c0660.jpg"
     },
     {
      "start": 69,
      "room": "bathroom",
      "label": "Ensuite",
-     "end": 71
+     "end": 71,
+     "frame": "/frames/6joXmtuyJmg_c0690.jpg"
     },
     {
      "start": 71,
      "room": "office",
      "label": "Office",
-     "end": 73
+     "end": 73,
+     "frame": "/frames/6joXmtuyJmg_c0710.jpg"
     },
     {
      "start": 73,
      "room": "exterior",
      "label": "Exterior",
-     "end": 76
+     "end": 76,
+     "frame": "/frames/6joXmtuyJmg_c0730.jpg"
     },
     {
      "start": 76,
      "room": "kitchen",
      "label": "Kitchen",
-     "end": 78
+     "end": 78,
+     "frame": "/frames/6joXmtuyJmg_c0760.jpg"
     },
     {
      "start": 78,
      "room": "bedroom",
      "label": "Bedroom",
-     "end": 80
+     "end": 80,
+     "frame": "/frames/6joXmtuyJmg_c0780.jpg"
     },
     {
      "start": 80,
      "room": "kitchen",
      "label": "Kitchen",
-     "end": 82
+     "end": 82,
+     "frame": "/frames/6joXmtuyJmg_c0800.jpg"
     },
     {
      "start": 82,
      "room": "bedroom",
      "label": "Bedroom",
-     "end": 85
+     "end": 85,
+     "frame": "/frames/6joXmtuyJmg_c0820.jpg"
     },
     {
      "start": 85,
      "room": "view",
      "label": "Aerial view",
-     "end": 98
+     "end": 98,
+     "frame": "/frames/6joXmtuyJmg_c0850.jpg"
     },
     {
      "start": 98,
      "room": "exterior",
      "label": "Front exterior",
-     "end": 103
+     "end": 103,
+     "frame": "/frames/6joXmtuyJmg_c0980.jpg"
     },
     {
      "start": 103,
@@ -1279,25 +1357,29 @@
      "start": 108,
      "room": "view",
      "label": "Aerial view",
-     "end": 110
+     "end": 110,
+     "frame": "/frames/6joXmtuyJmg_c1080.jpg"
     },
     {
      "start": 110,
      "room": "exterior",
      "label": "Front exterior",
-     "end": 114
+     "end": 114,
+     "frame": "/frames/6joXmtuyJmg_c1100.jpg"
     },
     {
      "start": 114,
      "room": "view",
      "label": "Aerial view",
-     "end": 122
+     "end": 122,
+     "frame": "/frames/6joXmtuyJmg_c1140.jpg"
     },
     {
      "start": 122,
      "room": "exterior",
      "label": "Grocery store",
-     "end": 140.6
+     "end": 140.6,
+     "frame": "/frames/6joXmtuyJmg_c1220.jpg"
     }
    ],
    "summary": "This light beige two-story home features a corner lot with a manicured lawn and brick fence. Inside, you will find hardwood floors, high ceilings, a cozy fireplace, and multiple kitchen options.",
@@ -1401,55 +1483,64 @@
      "start": 3,
      "room": "exterior",
      "label": "Exterior",
-     "end": 11
+     "end": 11,
+     "frame": "/frames/pw3OPrdgeRw_c0030.jpg"
     },
     {
      "start": 11,
      "room": "kitchen",
      "label": "Kitchen",
-     "end": 20
+     "end": 20,
+     "frame": "/frames/pw3OPrdgeRw_c0110.jpg"
     },
     {
      "start": 20,
      "room": "bedroom",
      "label": "Primary Bedroom",
-     "end": 25
+     "end": 25,
+     "frame": "/frames/pw3OPrdgeRw_c0200.jpg"
     },
     {
      "start": 25,
      "room": "backyard",
      "label": "Deck",
-     "end": 33
+     "end": 33,
+     "frame": "/frames/pw3OPrdgeRw_c0250.jpg"
     },
     {
      "start": 33,
      "room": "bedroom",
      "label": "Primary Bedroom",
-     "end": 38
+     "end": 38,
+     "frame": "/frames/pw3OPrdgeRw_c0330.jpg"
     },
     {
      "start": 38,
      "room": "bathroom",
      "label": "Ensuite",
-     "end": 43
+     "end": 43,
+     "frame": "/frames/pw3OPrdgeRw_c0380.jpg"
     },
     {
      "start": 43,
      "room": "dining",
      "label": "Dining Room",
-     "end": 52
+     "end": 52,
+     "frame": "/frames/pw3OPrdgeRw_c0430.jpg"
     },
     {
      "start": 52,
      "room": "backyard",
      "label": "Backyard",
-     "end": 73
+     "end": 73,
+     "frame": "/frames/pw3OPrdgeRw_c0520.jpg"
     },
     {
      "start": 73,
      "room": "exterior",
      "label": "Exterior",
-     "end": 78
+     "end": 78,
+     "frame": "/frames/pw3OPrdgeRw_c0730.jpg"
     },
     {
      "start": 78,
@@ -1641,91 +1732,106 @@
      "start": 16,
      "room": "amenity",
      "label": "Riverfront",
-     "end": 29
+     "end": 29,
+     "frame": "/frames/26Ia4ow-fq0_c0160.jpg"
     },
     {
      "start": 29,
      "room": "living",
      "label": "Living Room",
-     "end": 44
+     "end": 44,
+     "frame": "/frames/26Ia4ow-fq0_c0290.jpg"
     },
     {
      "start": 44,
      "room": "backyard",
      "label": "Balcony",
-     "end": 46
+     "end": 46,
+     "frame": "/frames/26Ia4ow-fq0_c0440.jpg"
     },
     {
      "start": 46,
      "room": "kitchen",
      "label": "Kitchen",
-     "end": 66
+     "end": 66,
+     "frame": "/frames/26Ia4ow-fq0_c0460.jpg"
     },
     {
      "start": 66,
      "room": "laundry",
      "label": "Laundry",
-     "end": 69
+     "end": 69,
+     "frame": "/frames/26Ia4ow-fq0_c0660.jpg"
     },
     {
      "start": 69,
      "room": "bathroom",
      "label": "Bathroom",
-     "end": 76
+     "end": 76,
+     "frame": "/frames/26Ia4ow-fq0_c0690.jpg"
     },
     {
      "start": 76,
      "room": "bedroom",
      "label": "Bedroom",
-     "end": 81
+     "end": 81,
+     "frame": "/frames/26Ia4ow-fq0_c0760.jpg"
     },
     {
      "start": 81,
      "room": "bedroom",
      "label": "Primary Bedroom",
-     "end": 85
+     "end": 85,
+     "frame": "/frames/26Ia4ow-fq0_c0810.jpg"
     },
     {
      "start": 85,
      "room": "bathroom",
      "label": "Ensuite",
-     "end": 96
+     "end": 96,
+     "frame": "/frames/26Ia4ow-fq0_c0850.jpg"
     },
     {
      "start": 96,
      "room": "exterior",
      "label": "Exterior",
-     "end": 102
+     "end": 102,
+     "frame": "/frames/26Ia4ow-fq0_c0960.jpg"
     },
     {
      "start": 102,
      "room": "amenity",
      "label": "Indoor Pool",
-     "end": 105
+     "end": 105,
+     "frame": "/frames/26Ia4ow-fq0_c1020.jpg"
     },
     {
      "start": 105,
      "room": "amenity",
      "label": "Library",
-     "end": 110
+     "end": 110,
+     "frame": "/frames/26Ia4ow-fq0_c1050.jpg"
     },
     {
      "start": 110,
      "room": "living",
      "label": "Living Room",
-     "end": 120
+     "end": 120,
+     "frame": "/frames/26Ia4ow-fq0_c1100.jpg"
     },
     {
      "start": 120,
      "room": "backyard",
      "label": "Balcony",
-     "end": 126
+     "end": 126,
+     "frame": "/frames/26Ia4ow-fq0_c1200.jpg"
     },
     {
      "start": 126,
      "room": "amenity",
      "label": "Neighborhood",
-     "end": 146
+     "end": 146,
+     "frame": "/frames/26Ia4ow-fq0_c1260.jpg"
     },
     {
      "start": 146,
@@ -1737,7 +1843,8 @@
      "start": 160,
      "room": "exterior",
      "label": "Exterior",
-     "end": 165.5
+     "end": 165.5,
+     "frame": "/frames/26Ia4ow-fq0_c1600.jpg"
     }
    ],
    "summary": "This high-rise residential building offers a spacious living room with a stone-faced fireplace, a well-lit kitchen with dark wood cabinets, and a primary bathroom featuring a soaking tub with river views. The property is ideally located near waterfront parks, transit links, and the river market.",
@@ -1949,7 +2056,8 @@
      "start": 0,
      "room": "exterior",
      "label": "Front exterior",
-     "end": 21
+     "end": 21,
+     "frame": "/frames/EGkcUdFDLfk_c0000.jpg"
     },
     {
      "start": 21,
@@ -1961,43 +2069,50 @@
      "start": 34,
      "room": "entry",
      "label": "Foyer",
-     "end": 67
+     "end": 67,
+     "frame": "/frames/EGkcUdFDLfk_c0340.jpg"
     },
     {
      "start": 67,
      "room": "bathroom",
      "label": "Half bathroom",
-     "end": 82
+     "end": 82,
+     "frame": "/frames/EGkcUdFDLfk_c0670.jpg"
     },
     {
      "start": 82,
      "room": "kitchen",
      "label": "Kitchen",
-     "end": 129
+     "end": 129,
+     "frame": "/frames/EGkcUdFDLfk_c0820.jpg"
     },
     {
      "start": 129,
      "room": "entry",
      "label": "Staircase",
-     "end": 157
+     "end": 157,
+     "frame": "/frames/EGkcUdFDLfk_c1290.jpg"
     },
     {
      "start": 157,
      "room": "bathroom",
      "label": "Ensuite",
-     "end": 175
+     "end": 175,
+     "frame": "/frames/EGkcUdFDLfk_c1570.jpg"
     },
     {
      "start": 175,
      "room": "bedroom",
      "label": "Bedroom",
-     "end": 181
+     "end": 181,
+     "frame": "/frames/EGkcUdFDLfk_c1750.jpg"
     },
     {
      "start": 181,
      "room": "backyard",
      "label": "Backyard",
-     "end": 209
+     "end": 209,
+     "frame": "/frames/EGkcUdFDLfk_c1810.jpg"
     },
     {
      "start": 209,
@@ -2137,37 +2252,43 @@
      "start": 0,
      "room": "kitchen",
      "label": "Kitchen",
-     "end": 35
+     "end": 35,
+     "frame": "/frames/-Cc_DeNyVGM_c0000.jpg"
     },
     {
      "start": 35,
      "room": "living",
      "label": "Living Room",
-     "end": 56
+     "end": 56,
+     "frame": "/frames/-Cc_DeNyVGM_c0350.jpg"
     },
     {
      "start": 56,
      "room": "bedroom",
      "label": "Bedroom",
-     "end": 81
+     "end": 81,
+     "frame": "/frames/-Cc_DeNyVGM_c0560.jpg"
     },
     {
      "start": 81,
      "room": "office",
      "label": "Office",
-     "end": 88
+     "end": 88,
+     "frame": "/frames/-Cc_DeNyVGM_c0810.jpg"
     },
     {
      "start": 88,
      "room": "bathroom",
      "label": "Bathroom",
-     "end": 101
+     "end": 101,
+     "frame": "/frames/-Cc_DeNyVGM_c0880.jpg"
     },
     {
      "start": 101,
      "room": "bedroom",
      "label": "Bedroom",
-     "end": 115
+     "end": 115,
+     "frame": "/frames/-Cc_DeNyVGM_c1010.jpg"
     },
     {
      "start": 115,
@@ -2274,43 +2395,50 @@
      "start": 5,
      "room": "exterior",
      "label": "Building Exterior",
-     "end": 12
+     "end": 12,
+     "frame": "/frames/t0CuUyaJSWA_c0050.jpg"
     },
     {
      "start": 12,
      "room": "entry",
      "label": "Foyer",
-     "end": 17
+     "end": 17,
+     "frame": "/frames/t0CuUyaJSWA_c0120.jpg"
     },
     {
      "start": 17,
      "room": "kitchen",
      "label": "Kitchen",
-     "end": 29
+     "end": 29,
+     "frame": "/frames/t0CuUyaJSWA_c0170.jpg"
     },
     {
      "start": 29,
      "room": "living",
      "label": "Living Room",
-     "end": 39
+     "end": 39,
+     "frame": "/frames/t0CuUyaJSWA_c0290.jpg"
     },
     {
      "start": 39,
      "room": "backyard",
      "label": "Patio",
-     "end": 56
+     "end": 56,
+     "frame": "/frames/t0CuUyaJSWA_c0390.jpg"
     },
     {
      "start": 56,
      "room": "bathroom",
      "label": "Bathroom",
-     "end": 58
+     "end": 58,
+     "frame": "/frames/t0CuUyaJSWA_c0560.jpg"
     },
     {
      "start": 58,
      "room": "bedroom",
      "label": "Bedroom",
-     "end": 82.1
+     "end": 82.1,
+     "frame": "/frames/t0CuUyaJSWA_c0580.jpg"
     }
    ],
    "summary": "This charming Kitsilano home features a compact, well-equipped kitchen with modern appliances and a dining nook with lovely green views. Outside, a private patio offers a built-in wooden bench and a modern fire table surrounded by lush greenery.",
@@ -2411,43 +2539,50 @@
      "start": 0,
      "room": "exterior",
      "label": "Exterior",
-     "end": 5
+     "end": 5,
+     "frame": "/frames/xcvcEd23pes_c0000.jpg"
     },
     {
      "start": 5,
      "room": "backyard",
      "label": "Balcony",
-     "end": 8
+     "end": 8,
+     "frame": "/frames/xcvcEd23pes_c0050.jpg"
     },
     {
      "start": 8,
      "room": "living",
      "label": "Living Room",
-     "end": 15
+     "end": 15,
+     "frame": "/frames/xcvcEd23pes_c0080.jpg"
     },
     {
      "start": 15,
      "room": "kitchen",
      "label": "Kitchen",
-     "end": 19
+     "end": 19,
+     "frame": "/frames/xcvcEd23pes_c0150.jpg"
     },
     {
      "start": 19,
      "room": "laundry",
      "label": "Laundry",
-     "end": 35
+     "end": 35,
+     "frame": "/frames/xcvcEd23pes_c0190.jpg"
     },
     {
      "start": 35,
      "room": "bathroom",
      "label": "Bathroom",
-     "end": 38
+     "end": 38,
+     "frame": "/frames/xcvcEd23pes_c0350.jpg"
     },
     {
      "start": 38,
      "room": "bedroom",
      "label": "Bedroom",
-     "end": 42
+     "end": 42,
+     "frame": "/frames/xcvcEd23pes_c0380.jpg"
     },
     {
      "start": 42,
@@ -2459,19 +2594,22 @@
      "start": 50,
      "room": "bedroom",
      "label": "Primary Bedroom",
-     "end": 53
+     "end": 53,
+     "frame": "/frames/xcvcEd23pes_c0500.jpg"
     },
     {
      "start": 53,
      "room": "bathroom",
      "label": "Ensuite",
-     "end": 64
+     "end": 64,
+     "frame": "/frames/xcvcEd23pes_c0530.jpg"
     },
     {
      "start": 64,
      "room": "backyard",
      "label": "Balcony",
-     "end": 75
+     "end": 75,
+     "frame": "/frames/xcvcEd23pes_c0640.jpg"
     },
     {
      "start": 75,
@@ -2643,7 +2781,8 @@
      "start": 0,
      "room": "view",
      "label": "City View",
-     "end": 2
+     "end": 2,
+     "frame": "/frames/y5e0sukb39Y_c0000.jpg"
     },
     {
      "start": 2,
@@ -2655,91 +2794,106 @@
      "start": 4,
      "room": "exterior",
      "label": "City Tour",
-     "end": 8
+     "end": 8,
+     "frame": "/frames/y5e0sukb39Y_c0040.jpg"
     },
     {
      "start": 8,
      "room": "exterior",
      "label": "Street Tour",
-     "end": 10
+     "end": 10,
+     "frame": "/frames/y5e0sukb39Y_c0080.jpg"
     },
     {
      "start": 10,
      "room": "exterior",
      "label": "Beach Tour",
-     "end": 12
+     "end": 12,
+     "frame": "/frames/y5e0sukb39Y_c0100.jpg"
     },
     {
      "start": 12,
      "room": "view",
      "label": "Beach View",
-     "end": 15
+     "end": 15,
+     "frame": "/frames/y5e0sukb39Y_c0120.jpg"
     },
     {
      "start": 15,
      "room": "exterior",
      "label": "Property Aerial",
-     "end": 17
+     "end": 17,
+     "frame": "/frames/y5e0sukb39Y_c0150.jpg"
     },
     {
      "start": 17,
      "room": "exterior",
      "label": "Neighborhood Aerial",
-     "end": 25
+     "end": 25,
+     "frame": "/frames/y5e0sukb39Y_c0170.jpg"
     },
     {
      "start": 25,
      "room": "living",
      "label": "Living Room",
-     "end": 32
+     "end": 32,
+     "frame": "/frames/y5e0sukb39Y_c0250.jpg"
     },
     {
      "start": 32,
      "room": "exterior",
      "label": "House Aerial",
-     "end": 35
+     "end": 35,
+     "frame": "/frames/y5e0sukb39Y_c0320.jpg"
     },
     {
      "start": 35,
      "room": "living",
      "label": "Living Room",
-     "end": 38
+     "end": 38,
+     "frame": "/frames/y5e0sukb39Y_c0350.jpg"
     },
     {
      "start": 38,
      "room": "kitchen",
      "label": "Kitchen",
-     "end": 41
+     "end": 41,
+     "frame": "/frames/y5e0sukb39Y_c0380.jpg"
     },
     {
      "start": 41,
      "room": "bedroom",
      "label": "Bedroom",
-     "end": 44
+     "end": 44,
+     "frame": "/frames/y5e0sukb39Y_c0410.jpg"
     },
     {
      "start": 44,
      "room": "bathroom",
      "label": "Bathroom",
-     "end": 47
+     "end": 47,
+     "frame": "/frames/y5e0sukb39Y_c0440.jpg"
     },
     {
      "start": 47,
      "room": "bedroom",
      "label": "Bedroom",
-     "end": 50
+     "end": 50,
+     "frame": "/frames/y5e0sukb39Y_c0470.jpg"
     },
     {
      "start": 50,
      "room": "backyard",
      "label": "Backyard Patio",
-     "end": 56
+     "end": 56,
+     "frame": "/frames/y5e0sukb39Y_c0500.jpg"
     },
     {
      "start": 56,
      "room": "living",
      "label": "Living Room",
-     "end": 59
+     "end": 59,
+     "frame": "/frames/y5e0sukb39Y_c0560.jpg"
     },
     {
      "start": 59,
@@ -2751,25 +2905,29 @@
      "start": 67,
      "room": "bedroom",
      "label": "Bedroom",
-     "end": 70
+     "end": 70,
+     "frame": "/frames/y5e0sukb39Y_c0670.jpg"
     },
     {
      "start": 70,
      "room": "living",
      "label": "Basement Living",
-     "end": 73
+     "end": 73,
+     "frame": "/frames/y5e0sukb39Y_c0700.jpg"
     },
     {
      "start": 73,
      "room": "dining",
      "label": "Dining Room",
-     "end": 78
+     "end": 78,
+     "frame": "/frames/y5e0sukb39Y_c0730.jpg"
     },
     {
      "start": 78,
      "room": "view",
      "label": "City View",
-     "end": 82
+     "end": 82,
+     "frame": "/frames/y5e0sukb39Y_c0780.jpg"
     },
     {
      "start": 82,
@@ -2781,13 +2939,15 @@
      "start": 87,
      "room": "exterior",
      "label": "Park View",
-     "end": 90
+     "end": 90,
+     "frame": "/frames/y5e0sukb39Y_c0870.jpg"
     },
     {
      "start": 90,
      "room": "view",
      "label": "Beach View",
-     "end": 94
+     "end": 94,
+     "frame": "/frames/y5e0sukb39Y_c0900.jpg"
     },
     {
      "start": 94,
@@ -2799,13 +2959,15 @@
      "start": 99,
      "room": "exterior",
      "label": "School Area",
-     "end": 112
+     "end": 112,
+     "frame": "/frames/y5e0sukb39Y_c0990.jpg"
     },
     {
      "start": 112,
      "room": "backyard",
      "label": "Backyard",
-     "end": 116
+     "end": 116,
+     "frame": "/frames/y5e0sukb39Y_c1120.jpg"
     },
     {
      "start": 116,
@@ -2817,7 +2979,8 @@
      "start": 125,
      "room": "exterior",
      "label": "House Aerial",
-     "end": 128
+     "end": 128,
+     "frame": "/frames/y5e0sukb39Y_c1250.jpg"
     },
     {
      "start": 128,
@@ -3028,49 +3191,57 @@
      "start": 0,
      "room": "exterior",
      "label": "Front exterior",
-     "end": 19
+     "end": 19,
+     "frame": "/frames/Ivv1UQoG-Ik_c0000.jpg"
     },
     {
      "start": 19,
      "room": "entry",
      "label": "Entry",
-     "end": 21
+     "end": 21,
+     "frame": "/frames/Ivv1UQoG-Ik_c0190.jpg"
     },
     {
      "start": 21,
      "room": "living",
      "label": "Living room",
-     "end": 36
+     "end": 36,
+     "frame": "/frames/Ivv1UQoG-Ik_c0210.jpg"
     },
     {
      "start": 36,
      "room": "dining",
      "label": "Dining area",
-     "end": 40
+     "end": 40,
+     "frame": "/frames/Ivv1UQoG-Ik_c0360.jpg"
     },
     {
      "start": 40,
      "room": "office",
      "label": "Office",
-     "end": 43
+     "end": 43,
+     "frame": "/frames/Ivv1UQoG-Ik_c0400.jpg"
     },
     {
      "start": 43,
      "room": "bathroom",
      "label": "Powder room",
-     "end": 53
+     "end": 53,
+     "frame": "/frames/Ivv1UQoG-Ik_c0430.jpg"
     },
     {
      "start": 53,
      "room": "living",
      "label": "Family room",
-     "end": 56
+     "end": 56,
+     "frame": "/frames/Ivv1UQoG-Ik_c0530.jpg"
     },
     {
      "start": 56,
      "room": "kitchen",
      "label": "Kitchen",
-     "end": 90
+     "end": 90,
+     "frame": "/frames/Ivv1UQoG-Ik_c0560.jpg"
     },
     {
      "start": 90,
@@ -3082,79 +3253,92 @@
      "start": 99,
      "room": "bedroom",
      "label": "Bedroom",
-     "end": 102
+     "end": 102,
+     "frame": "/frames/Ivv1UQoG-Ik_c0990.jpg"
     },
     {
      "start": 102,
      "room": "bathroom",
      "label": "Bathroom",
-     "end": 107
+     "end": 107,
+     "frame": "/frames/Ivv1UQoG-Ik_c1020.jpg"
     },
     {
      "start": 107,
      "room": "bedroom",
      "label": "Bedroom",
-     "end": 113
+     "end": 113,
+     "frame": "/frames/Ivv1UQoG-Ik_c1070.jpg"
     },
     {
      "start": 113,
      "room": "bathroom",
      "label": "Ensuite",
-     "end": 130
+     "end": 130,
+     "frame": "/frames/Ivv1UQoG-Ik_c1130.jpg"
     },
     {
      "start": 130,
      "room": "bedroom",
      "label": "Bedroom",
-     "end": 134
+     "end": 134,
+     "frame": "/frames/Ivv1UQoG-Ik_c1300.jpg"
     },
     {
      "start": 134,
      "room": "backyard",
      "label": "Backyard",
-     "end": 143
+     "end": 143,
+     "frame": "/frames/Ivv1UQoG-Ik_c1340.jpg"
     },
     {
      "start": 143,
      "room": "basement",
      "label": "Basement entrance",
-     "end": 146
+     "end": 146,
+     "frame": "/frames/Ivv1UQoG-Ik_c1430.jpg"
     },
     {
      "start": 146,
      "room": "kitchen",
      "label": "Basement kitchen",
-     "end": 148
+     "end": 148,
+     "frame": "/frames/Ivv1UQoG-Ik_c1460.jpg"
     },
     {
      "start": 148,
      "room": "bathroom",
      "label": "Basement bathroom",
-     "end": 154
+     "end": 154,
+     "frame": "/frames/Ivv1UQoG-Ik_c1480.jpg"
     },
     {
      "start": 154,
      "room": "bedroom",
      "label": "Basement bedroom",
-     "end": 158
+     "end": 158,
+     "frame": "/frames/Ivv1UQoG-Ik_c1540.jpg"
     },
     {
      "start": 158,
      "room": "backyard",
      "label": "Backyard",
-     "end": 165
+     "end": 165,
+     "frame": "/frames/Ivv1UQoG-Ik_c1580.jpg"
     },
     {
      "start": 165,
      "room": "kitchen",
      "label": "Suite kitchen",
-     "end": 174
+     "end": 174,
+     "frame": "/frames/Ivv1UQoG-Ik_c1650.jpg"
     },
     {
      "start": 174,
      "room": "bathroom",
      "label": "Suite bathroom",
-     "end": 176
+     "end": 176,
+     "frame": "/frames/Ivv1UQoG-Ik_c1740.jpg"
     },
     {
      "start": 176,
@@ -3166,19 +3350,22 @@
      "start": 180,
      "room": "bedroom",
      "label": "Upper bedroom",
-     "end": 183
+     "end": 183,
+     "frame": "/frames/Ivv1UQoG-Ik_c1800.jpg"
     },
     {
      "start": 183,
      "room": "backyard",
      "label": "Balcony",
-     "end": 186
+     "end": 186,
+     "frame": "/frames/Ivv1UQoG-Ik_c1830.jpg"
     },
     {
      "start": 186,
      "room": "exterior",
      "label": "Front exterior",
-     "end": 190
+     "end": 190,
+     "frame": "/frames/Ivv1UQoG-Ik_c1860.jpg"
     },
     {
      "start": 190,
@@ -3299,7 +3486,8 @@
      "start": 12,
      "room": "exterior",
      "label": "Neighborhood",
-     "end": 17
+     "end": 17,
+     "frame": "/frames/LHUZG8hrQs0_c0120.jpg"
     },
     {
      "start": 17,
@@ -3311,7 +3499,8 @@
      "start": 24,
      "room": "exterior",
      "label": "Neighborhood",
-     "end": 34
+     "end": 34,
+     "frame": "/frames/LHUZG8hrQs0_c0240.jpg"
     },
     {
      "start": 34,
@@ -3323,7 +3512,8 @@
      "start": 73,
      "room": "exterior",
      "label": "Neighborhood",
-     "end": 84
+     "end": 84,
+     "frame": "/frames/LHUZG8hrQs0_c0730.jpg"
     },
     {
      "start": 84,
@@ -3335,19 +3525,22 @@
      "start": 86,
      "room": "living",
      "label": "Living area",
-     "end": 88
+     "end": 88,
+     "frame": "/frames/LHUZG8hrQs0_c0860.jpg"
     },
     {
      "start": 88,
      "room": "backyard",
      "label": "Balcony",
-     "end": 90
+     "end": 90,
+     "frame": "/frames/LHUZG8hrQs0_c0880.jpg"
     },
     {
      "start": 90,
      "room": "kitchen",
      "label": "Kitchen",
-     "end": 93
+     "end": 93,
+     "frame": "/frames/LHUZG8hrQs0_c0900.jpg"
     },
     {
      "start": 93,
@@ -3483,19 +3676,22 @@
      "start": 0,
      "room": "exterior",
      "label": "Front exterior",
-     "end": 5
+     "end": 5,
+     "frame": "/frames/fon-H-R4lbI_c0000.jpg"
     },
     {
      "start": 5,
      "room": "entry",
      "label": "Foyer",
-     "end": 9
+     "end": 9,
+     "frame": "/frames/fon-H-R4lbI_c0050.jpg"
     },
     {
      "start": 9,
      "room": "living",
      "label": "Living room",
-     "end": 12
+     "end": 12,
+     "frame": "/frames/fon-H-R4lbI_c0090.jpg"
     },
     {
      "start": 12,
@@ -3507,13 +3703,15 @@
      "start": 19,
      "room": "living",
      "label": "Living and dining",
-     "end": 26
+     "end": 26,
+     "frame": "/frames/fon-H-R4lbI_c0190.jpg"
     },
     {
      "start": 26,
      "room": "kitchen",
      "label": "Kitchen",
-     "end": 34
+     "end": 34,
+     "frame": "/frames/fon-H-R4lbI_c0260.jpg"
     },
     {
      "start": 34,
@@ -3525,13 +3723,15 @@
      "start": 36,
      "room": "bedroom",
      "label": "Primary bedroom",
-     "end": 39
+     "end": 39,
+     "frame": "/frames/fon-H-R4lbI_c0360.jpg"
     },
     {
      "start": 39,
      "room": "bathroom",
      "label": "Ensuite",
-     "end": 41
+     "end": 41,
+     "frame": "/frames/fon-H-R4lbI_c0390.jpg"
     },
     {
      "start": 41,
@@ -3543,37 +3743,43 @@
      "start": 43,
      "room": "bedroom",
      "label": "Basement bedroom",
-     "end": 45
+     "end": 45,
+     "frame": "/frames/fon-H-R4lbI_c0430.jpg"
     },
     {
      "start": 45,
      "room": "laundry",
      "label": "Laundry room",
-     "end": 47
+     "end": 47,
+     "frame": "/frames/fon-H-R4lbI_c0450.jpg"
     },
     {
      "start": 47,
      "room": "kitchen",
      "label": "Wet bar",
-     "end": 50
+     "end": 50,
+     "frame": "/frames/fon-H-R4lbI_c0470.jpg"
     },
     {
      "start": 50,
      "room": "living",
      "label": "Basement living room",
-     "end": 57
+     "end": 57,
+     "frame": "/frames/fon-H-R4lbI_c0500.jpg"
     },
     {
      "start": 57,
      "room": "backyard",
      "label": "Basement entrance",
-     "end": 59
+     "end": 59,
+     "frame": "/frames/fon-H-R4lbI_c0570.jpg"
     },
     {
      "start": 59,
      "room": "backyard",
      "label": "Deck and yard",
-     "end": 67
+     "end": 67,
+     "frame": "/frames/fon-H-R4lbI_c0590.jpg"
     },
     {
      "start": 67,
@@ -3585,43 +3791,50 @@
      "start": 69,
      "room": "kitchen",
      "label": "Kitchen details",
-     "end": 71
+     "end": 71,
+     "frame": "/frames/fon-H-R4lbI_c0690.jpg"
     },
     {
      "start": 71,
      "room": "bedroom",
      "label": "Bedroom",
-     "end": 73
+     "end": 73,
+     "frame": "/frames/fon-H-R4lbI_c0710.jpg"
     },
     {
      "start": 73,
      "room": "bathroom",
      "label": "Bathroom",
-     "end": 77
+     "end": 77,
+     "frame": "/frames/fon-H-R4lbI_c0730.jpg"
     },
     {
      "start": 77,
      "room": "dining",
      "label": "Dining area",
-     "end": 80
+     "end": 80,
+     "frame": "/frames/fon-H-R4lbI_c0770.jpg"
     },
     {
      "start": 80,
      "room": "backyard",
      "label": "Backyard",
-     "end": 82
+     "end": 82,
+     "frame": "/frames/fon-H-R4lbI_c0800.jpg"
     },
     {
      "start": 82,
      "room": "dining",
      "label": "Chandelier",
-     "end": 84
+     "end": 84,
+     "frame": "/frames/fon-H-R4lbI_c0820.jpg"
     },
     {
      "start": 84,
      "room": "bathroom",
      "label": "Bathroom",
-     "end": 91.2
+     "end": 91.2,
+     "frame": "/frames/fon-H-R4lbI_c0840.jpg"
     }
    ],
    "summary": "This Vancouver home features a bright living room with wide plank oak hardwood floors, a white fireplace, and large windows with natural light. Additionally, the property offers a gourmet kitchen with granite countertops and a finished basement with a wet bar.",
@@ -3771,145 +3984,169 @@
      "start": 7,
      "room": "exterior",
      "label": "City aerial view",
-     "end": 10
+     "end": 10,
+     "frame": "/frames/S3u8hvVV9ao_c0070.jpg"
     },
     {
      "start": 10,
      "room": "exterior",
      "label": "Street view",
-     "end": 14
+     "end": 14,
+     "frame": "/frames/S3u8hvVV9ao_c0100.jpg"
     },
     {
      "start": 14,
      "room": "exterior",
      "label": "Local shops",
-     "end": 18
+     "end": 18,
+     "frame": "/frames/S3u8hvVV9ao_c0140.jpg"
     },
     {
      "start": 18,
      "room": "exterior",
      "label": "Bike station",
-     "end": 25
+     "end": 25,
+     "frame": "/frames/S3u8hvVV9ao_c0180.jpg"
     },
     {
      "start": 25,
      "room": "exterior",
      "label": "City aerial view",
-     "end": 29
+     "end": 29,
+     "frame": "/frames/S3u8hvVV9ao_c0250.jpg"
     },
     {
      "start": 29,
      "room": "exterior",
      "label": "Bike station",
-     "end": 39
+     "end": 39,
+     "frame": "/frames/S3u8hvVV9ao_c0290.jpg"
     },
     {
      "start": 39,
      "room": "exterior",
      "label": "Colorful building",
-     "end": 41
+     "end": 41,
+     "frame": "/frames/S3u8hvVV9ao_c0390.jpg"
     },
     {
      "start": 41,
      "room": "exterior",
      "label": "33 Acres Brewing",
-     "end": 46
+     "end": 46,
+     "frame": "/frames/S3u8hvVV9ao_c0410.jpg"
     },
     {
      "start": 46,
      "room": "exterior",
      "label": "Intersection",
-     "end": 50
+     "end": 50,
+     "frame": "/frames/S3u8hvVV9ao_c0460.jpg"
     },
     {
      "start": 50,
      "room": "exterior",
      "label": "Brassneck Brewery",
-     "end": 52
+     "end": 52,
+     "frame": "/frames/S3u8hvVV9ao_c0500.jpg"
     },
     {
      "start": 52,
      "room": "exterior",
      "label": "Main St Brewing",
-     "end": 54
+     "end": 54,
+     "frame": "/frames/S3u8hvVV9ao_c0520.jpg"
     },
     {
      "start": 54,
      "room": "exterior",
      "label": "Sidewalk",
-     "end": 57
+     "end": 57,
+     "frame": "/frames/S3u8hvVV9ao_c0540.jpg"
     },
     {
      "start": 57,
      "room": "exterior",
      "label": "Building aerial view",
-     "end": 63
+     "end": 63,
+     "frame": "/frames/S3u8hvVV9ao_c0570.jpg"
     },
     {
      "start": 63,
      "room": "exterior",
      "label": "Street crossing",
-     "end": 66
+     "end": 66,
+     "frame": "/frames/S3u8hvVV9ao_c0630.jpg"
     },
     {
      "start": 66,
      "room": "exterior",
      "label": "Cartems",
-     "end": 70
+     "end": 70,
+     "frame": "/frames/S3u8hvVV9ao_c0660.jpg"
     },
     {
      "start": 70,
      "room": "exterior",
      "label": "The Wohlsein",
-     "end": 77
+     "end": 77,
+     "frame": "/frames/S3u8hvVV9ao_c0700.jpg"
     },
     {
      "start": 77,
      "room": "exterior",
      "label": "Formation Studio",
-     "end": 81
+     "end": 81,
+     "frame": "/frames/S3u8hvVV9ao_c0770.jpg"
     },
     {
      "start": 81,
      "room": "living",
      "label": "Living area",
-     "end": 84
+     "end": 84,
+     "frame": "/frames/S3u8hvVV9ao_c0810.jpg"
     },
     {
      "start": 84,
      "room": "bedroom",
      "label": "Primary bedroom",
-     "end": 87
+     "end": 87,
+     "frame": "/frames/S3u8hvVV9ao_c0840.jpg"
     },
     {
      "start": 87,
      "room": "kitchen",
      "label": "Kitchen",
-     "end": 90
+     "end": 90,
+     "frame": "/frames/S3u8hvVV9ao_c0870.jpg"
     },
     {
      "start": 90,
      "room": "bathroom",
      "label": "Bathroom",
-     "end": 93
+     "end": 93,
+     "frame": "/frames/S3u8hvVV9ao_c0900.jpg"
     },
     {
      "start": 93,
      "room": "living",
      "label": "Sliding glass partition",
-     "end": 103
+     "end": 103,
+     "frame": "/frames/S3u8hvVV9ao_c0930.jpg"
     },
     {
      "start": 103,
      "room": "exterior",
      "label": "City aerial view",
-     "end": 107
+     "end": 107,
+     "frame": "/frames/S3u8hvVV9ao_c1030.jpg"
     },
     {
      "start": 107,
      "room": "exterior",
      "label": "Building rooftop",
-     "end": 111
+     "end": 111,
+     "frame": "/frames/S3u8hvVV9ao_c1070.jpg"
     },
     {
      "start": 111,
@@ -4073,49 +4310,57 @@
      "start": 0,
      "room": "exterior",
      "label": "Exterior",
-     "end": 3
+     "end": 3,
+     "frame": "/frames/642yZATcCiA_c0000.jpg"
     },
     {
      "start": 3,
      "room": "living",
      "label": "Living Room",
-     "end": 7
+     "end": 7,
+     "frame": "/frames/642yZATcCiA_c0030.jpg"
     },
     {
      "start": 7,
      "room": "kitchen",
      "label": "Kitchen",
-     "end": 9
+     "end": 9,
+     "frame": "/frames/642yZATcCiA_c0070.jpg"
     },
     {
      "start": 9,
      "room": "living",
      "label": "Living Room",
-     "end": 23
+     "end": 23,
+     "frame": "/frames/642yZATcCiA_c0090.jpg"
     },
     {
      "start": 23,
      "room": "backyard",
      "label": "Balcony",
-     "end": 44
+     "end": 44,
+     "frame": "/frames/642yZATcCiA_c0230.jpg"
     },
     {
      "start": 44,
      "room": "living",
      "label": "Living Room",
-     "end": 56
+     "end": 56,
+     "frame": "/frames/642yZATcCiA_c0440.jpg"
     },
     {
      "start": 56,
      "room": "kitchen",
      "label": "Kitchen",
-     "end": 64
+     "end": 64,
+     "frame": "/frames/642yZATcCiA_c0560.jpg"
     },
     {
      "start": 64,
      "room": "bathroom",
      "label": "Bathroom",
-     "end": 73
+     "end": 73,
+     "frame": "/frames/642yZATcCiA_c0640.jpg"
     },
     {
      "start": 73,
@@ -4127,37 +4372,43 @@
      "start": 78,
      "room": "backyard",
      "label": "Balcony",
-     "end": 83
+     "end": 83,
+     "frame": "/frames/642yZATcCiA_c0780.jpg"
     },
     {
      "start": 83,
      "room": "backyard",
      "label": "Backyard",
-     "end": 94
+     "end": 94,
+     "frame": "/frames/642yZATcCiA_c0830.jpg"
     },
     {
      "start": 94,
      "room": "bedroom",
      "label": "Bedroom",
-     "end": 104
+     "end": 104,
+     "frame": "/frames/642yZATcCiA_c0940.jpg"
     },
     {
      "start": 104,
      "room": "bedroom",
      "label": "Primary Bedroom",
-     "end": 112
+     "end": 112,
+     "frame": "/frames/642yZATcCiA_c1040.jpg"
     },
     {
      "start": 112,
      "room": "bathroom",
      "label": "Bathroom",
-     "end": 121
+     "end": 121,
+     "frame": "/frames/642yZATcCiA_c1120.jpg"
     },
     {
      "start": 121,
      "room": "backyard",
      "label": "Balcony",
-     "end": 139.5
+     "end": 139.5,
+     "frame": "/frames/642yZATcCiA_c1210.jpg"
     }
    ],
    "summary": "This bright, open-concept Vancouver home features wide-plank wood flooring, a modern kitchen with a white quartz island, and a fireplace. It also includes spacious bedrooms with vaulted ceilings and direct balcony access overlooking the neighborhood.",
@@ -4336,19 +4587,22 @@
      "start": 2,
      "room": "backyard",
      "label": "Exterior",
-     "end": 9
+     "end": 9,
+     "frame": "/frames/rEy3q-DO2Yw_c0020.jpg"
     },
     {
      "start": 9,
      "room": "living",
      "label": "Living Room",
-     "end": 13
+     "end": 13,
+     "frame": "/frames/rEy3q-DO2Yw_c0090.jpg"
     },
     {
      "start": 13,
      "room": "backyard",
      "label": "Hot Tub",
-     "end": 18
+     "end": 18,
+     "frame": "/frames/rEy3q-DO2Yw_c0130.jpg"
     },
     {
      "start": 18,
@@ -4360,79 +4614,92 @@
      "start": 21,
      "room": "exterior",
      "label": "Exterior",
-     "end": 30
+     "end": 30,
+     "frame": "/frames/rEy3q-DO2Yw_c0210.jpg"
     },
     {
      "start": 30,
      "room": "entry",
      "label": "Entryway",
-     "end": 34
+     "end": 34,
+     "frame": "/frames/rEy3q-DO2Yw_c0300.jpg"
     },
     {
      "start": 34,
      "room": "dining",
      "label": "Dining Room",
-     "end": 37
+     "end": 37,
+     "frame": "/frames/rEy3q-DO2Yw_c0340.jpg"
     },
     {
      "start": 37,
      "room": "living",
      "label": "Living Room",
-     "end": 49
+     "end": 49,
+     "frame": "/frames/rEy3q-DO2Yw_c0370.jpg"
     },
     {
      "start": 49,
      "room": "kitchen",
      "label": "Kitchen",
-     "end": 55
+     "end": 55,
+     "frame": "/frames/rEy3q-DO2Yw_c0490.jpg"
     },
     {
      "start": 55,
      "room": "backyard",
      "label": "Terrace",
-     "end": 64
+     "end": 64,
+     "frame": "/frames/rEy3q-DO2Yw_c0550.jpg"
     },
     {
      "start": 64,
      "room": "office",
      "label": "Office",
-     "end": 66
+     "end": 66,
+     "frame": "/frames/rEy3q-DO2Yw_c0640.jpg"
     },
     {
      "start": 66,
      "room": "entry",
      "label": "Staircase",
-     "end": 71
+     "end": 71,
+     "frame": "/frames/rEy3q-DO2Yw_c0660.jpg"
     },
     {
      "start": 71,
      "room": "bedroom",
      "label": "Primary Bedroom",
-     "end": 78
+     "end": 78,
+     "frame": "/frames/rEy3q-DO2Yw_c0710.jpg"
     },
     {
      "start": 78,
      "room": "bathroom",
      "label": "Ensuite",
-     "end": 82
+     "end": 82,
+     "frame": "/frames/rEy3q-DO2Yw_c0780.jpg"
     },
     {
      "start": 82,
      "room": "entry",
      "label": "Hallway",
-     "end": 85
+     "end": 85,
+     "frame": "/frames/rEy3q-DO2Yw_c0820.jpg"
     },
     {
      "start": 85,
      "room": "entry",
      "label": "Staircase",
-     "end": 88
+     "end": 88,
+     "frame": "/frames/rEy3q-DO2Yw_c0850.jpg"
     },
     {
      "start": 88,
      "room": "living",
      "label": "Rec Room",
-     "end": 94
+     "end": 94,
+     "frame": "/frames/rEy3q-DO2Yw_c0880.jpg"
     },
     {
      "start": 94,
@@ -4462,13 +4729,15 @@
      "start": 104,
      "room": "backyard",
      "label": "Patio",
-     "end": 134
+     "end": 134,
+     "frame": "/frames/rEy3q-DO2Yw_c1040.jpg"
     },
     {
      "start": 134,
      "room": "view",
      "label": "City View",
-     "end": 137
+     "end": 137,
+     "frame": "/frames/rEy3q-DO2Yw_c1340.jpg"
     },
     {
      "start": 137,
@@ -4709,151 +4978,176 @@
      "start": 0,
      "room": "exterior",
      "label": "Exterior",
-     "end": 8
+     "end": 8,
+     "frame": "/frames/fW6IVybWUI0_c0000.jpg"
     },
     {
      "start": 8,
      "room": "backyard",
      "label": "Backyard",
-     "end": 11
+     "end": 11,
+     "frame": "/frames/fW6IVybWUI0_c0080.jpg"
     },
     {
      "start": 11,
      "room": "backyard",
      "label": "Pool",
-     "end": 24
+     "end": 24,
+     "frame": "/frames/fW6IVybWUI0_c0110.jpg"
     },
     {
      "start": 24,
      "room": "entry",
      "label": "Entry",
-     "end": 30
+     "end": 30,
+     "frame": "/frames/fW6IVybWUI0_c0240.jpg"
     },
     {
      "start": 30,
      "room": "garage",
      "label": "Garage",
-     "end": 32
+     "end": 32,
+     "frame": "/frames/fW6IVybWUI0_c0300.jpg"
     },
     {
      "start": 32,
      "room": "entry",
      "label": "Entry",
-     "end": 41
+     "end": 41,
+     "frame": "/frames/fW6IVybWUI0_c0320.jpg"
     },
     {
      "start": 41,
      "room": "living",
      "label": "Living room",
-     "end": 49
+     "end": 49,
+     "frame": "/frames/fW6IVybWUI0_c0410.jpg"
     },
     {
      "start": 49,
      "room": "kitchen",
      "label": "Kitchen",
-     "end": 57
+     "end": 57,
+     "frame": "/frames/fW6IVybWUI0_c0490.jpg"
     },
     {
      "start": 57,
      "room": "dining",
      "label": "Dining room",
-     "end": 67
+     "end": 67,
+     "frame": "/frames/fW6IVybWUI0_c0570.jpg"
     },
     {
      "start": 67,
      "room": "backyard",
      "label": "Backyard",
-     "end": 98
+     "end": 98,
+     "frame": "/frames/fW6IVybWUI0_c0670.jpg"
     },
     {
      "start": 98,
      "room": "bedroom",
      "label": "Bedroom",
-     "end": 100
+     "end": 100,
+     "frame": "/frames/fW6IVybWUI0_c0980.jpg"
     },
     {
      "start": 100,
      "room": "bathroom",
      "label": "Bathroom",
-     "end": 103
+     "end": 103,
+     "frame": "/frames/fW6IVybWUI0_c1000.jpg"
     },
     {
      "start": 103,
      "room": "backyard",
      "label": "Backyard",
-     "end": 112
+     "end": 112,
+     "frame": "/frames/fW6IVybWUI0_c1030.jpg"
     },
     {
      "start": 112,
      "room": "entry",
      "label": "Staircase",
-     "end": 128
+     "end": 128,
+     "frame": "/frames/fW6IVybWUI0_c1120.jpg"
     },
     {
      "start": 128,
      "room": "office",
      "label": "Office",
-     "end": 130
+     "end": 130,
+     "frame": "/frames/fW6IVybWUI0_c1280.jpg"
     },
     {
      "start": 130,
      "room": "bedroom",
      "label": "Bedroom",
-     "end": 133
+     "end": 133,
+     "frame": "/frames/fW6IVybWUI0_c1300.jpg"
     },
     {
      "start": 133,
      "room": "bathroom",
      "label": "Bathroom",
-     "end": 139
+     "end": 139,
+     "frame": "/frames/fW6IVybWUI0_c1330.jpg"
     },
     {
      "start": 139,
      "room": "bedroom",
      "label": "Walk-in closet",
-     "end": 141
+     "end": 141,
+     "frame": "/frames/fW6IVybWUI0_c1390.jpg"
     },
     {
      "start": 141,
      "room": "basement",
      "label": "Basement",
-     "end": 152
+     "end": 152,
+     "frame": "/frames/fW6IVybWUI0_c1410.jpg"
     },
     {
      "start": 152,
      "room": "basement",
      "label": "Wine cellar",
-     "end": 157
+     "end": 157,
+     "frame": "/frames/fW6IVybWUI0_c1520.jpg"
     },
     {
      "start": 157,
      "room": "basement",
      "label": "Home theater",
-     "end": 161
+     "end": 161,
+     "frame": "/frames/fW6IVybWUI0_c1570.jpg"
     },
     {
      "start": 161,
      "room": "bathroom",
      "label": "Steam room",
-     "end": 169
+     "end": 169,
+     "frame": "/frames/fW6IVybWUI0_c1610.jpg"
     },
     {
      "start": 169,
      "room": "bedroom",
      "label": "Bedroom",
-     "end": 172
+     "end": 172,
+     "frame": "/frames/fW6IVybWUI0_c1690.jpg"
     },
     {
      "start": 172,
      "room": "bathroom",
      "label": "Bathroom",
-     "end": 174
+     "end": 174,
+     "frame": "/frames/fW6IVybWUI0_c1720.jpg"
     },
     {
      "start": 174,
      "room": "backyard",
      "label": "Backyard",
-     "end": 222
+     "end": 222,
+     "frame": "/frames/fW6IVybWUI0_c1740.jpg"
     },
     {
      "start": 222,
@@ -4979,7 +5273,8 @@
      "start": 0,
      "room": "backyard",
      "label": "Balcony",
-     "end": 7
+     "end": 7,
+     "frame": "/frames/UV5cshFl8yw_c0000.jpg"
     },
     {
      "start": 7,
@@ -4991,49 +5286,57 @@
      "start": 13,
      "room": "entry",
      "label": "Building entrance",
-     "end": 19
+     "end": 19,
+     "frame": "/frames/UV5cshFl8yw_c0130.jpg"
     },
     {
      "start": 19,
      "room": "living",
      "label": "Living area",
-     "end": 23
+     "end": 23,
+     "frame": "/frames/UV5cshFl8yw_c0190.jpg"
     },
     {
      "start": 23,
      "room": "kitchen",
      "label": "Kitchen",
-     "end": 43
+     "end": 43,
+     "frame": "/frames/UV5cshFl8yw_c0230.jpg"
     },
     {
      "start": 43,
      "room": "bedroom",
      "label": "Bedroom",
-     "end": 51
+     "end": 51,
+     "frame": "/frames/UV5cshFl8yw_c0430.jpg"
     },
     {
      "start": 51,
      "room": "backyard",
      "label": "Balcony",
-     "end": 59
+     "end": 59,
+     "frame": "/frames/UV5cshFl8yw_c0510.jpg"
     },
     {
      "start": 59,
      "room": "bathroom",
      "label": "Bathroom",
-     "end": 63
+     "end": 63,
+     "frame": "/frames/UV5cshFl8yw_c0590.jpg"
     },
     {
      "start": 63,
      "room": "office",
      "label": "Office nook",
-     "end": 71
+     "end": 71,
+     "frame": "/frames/UV5cshFl8yw_c0630.jpg"
     },
     {
      "start": 71,
      "room": "backyard",
      "label": "Balcony",
-     "end": 79
+     "end": 79,
+     "frame": "/frames/UV5cshFl8yw_c0710.jpg"
     },
     {
      "start": 79,
@@ -5191,91 +5494,106 @@
      "start": 0,
      "room": "exterior",
      "label": "Exterior",
-     "end": 7
+     "end": 7,
+     "frame": "/frames/NMB7EBYl0kQ_c0000.jpg"
     },
     {
      "start": 7,
      "room": "backyard",
      "label": "Backyard",
-     "end": 10
+     "end": 10,
+     "frame": "/frames/NMB7EBYl0kQ_c0070.jpg"
     },
     {
      "start": 10,
      "room": "view",
      "label": "View",
-     "end": 12
+     "end": 12,
+     "frame": "/frames/NMB7EBYl0kQ_c0100.jpg"
     },
     {
      "start": 12,
      "room": "exterior",
      "label": "Exterior",
-     "end": 19
+     "end": 19,
+     "frame": "/frames/NMB7EBYl0kQ_c0120.jpg"
     },
     {
      "start": 19,
      "room": "backyard",
      "label": "Backyard",
-     "end": 34
+     "end": 34,
+     "frame": "/frames/NMB7EBYl0kQ_c0190.jpg"
     },
     {
      "start": 34,
      "room": "living",
      "label": "Living room",
-     "end": 42
+     "end": 42,
+     "frame": "/frames/NMB7EBYl0kQ_c0340.jpg"
     },
     {
      "start": 42,
      "room": "kitchen",
      "label": "Kitchen",
-     "end": 54
+     "end": 54,
+     "frame": "/frames/NMB7EBYl0kQ_c0420.jpg"
     },
     {
      "start": 54,
      "room": "dining",
      "label": "Dining room",
-     "end": 58
+     "end": 58,
+     "frame": "/frames/NMB7EBYl0kQ_c0540.jpg"
     },
     {
      "start": 58,
      "room": "backyard",
      "label": "Backyard",
-     "end": 68
+     "end": 68,
+     "frame": "/frames/NMB7EBYl0kQ_c0580.jpg"
     },
     {
      "start": 68,
      "room": "bedroom",
      "label": "Bedroom",
-     "end": 70
+     "end": 70,
+     "frame": "/frames/NMB7EBYl0kQ_c0680.jpg"
     },
     {
      "start": 70,
      "room": "bathroom",
      "label": "Bathroom",
-     "end": 73
+     "end": 73,
+     "frame": "/frames/NMB7EBYl0kQ_c0700.jpg"
     },
     {
      "start": 73,
      "room": "backyard",
      "label": "Backyard",
-     "end": 80
+     "end": 80,
+     "frame": "/frames/NMB7EBYl0kQ_c0730.jpg"
     },
     {
      "start": 80,
      "room": "entry",
      "label": "Entry",
-     "end": 85
+     "end": 85,
+     "frame": "/frames/NMB7EBYl0kQ_c0800.jpg"
     },
     {
      "start": 85,
      "room": "living",
      "label": "Living room",
-     "end": 87
+     "end": 87,
+     "frame": "/frames/NMB7EBYl0kQ_c0850.jpg"
     },
     {
      "start": 87,
      "room": "office",
      "label": "Office",
-     "end": 90
+     "end": 90,
+     "frame": "/frames/NMB7EBYl0kQ_c0870.jpg"
     },
     {
      "start": 90,
@@ -5293,19 +5611,22 @@
      "start": 94,
      "room": "bedroom",
      "label": "Bedroom",
-     "end": 96
+     "end": 96,
+     "frame": "/frames/NMB7EBYl0kQ_c0940.jpg"
     },
     {
      "start": 96,
      "room": "bathroom",
      "label": "Bathroom",
-     "end": 102
+     "end": 102,
+     "frame": "/frames/NMB7EBYl0kQ_c0960.jpg"
     },
     {
      "start": 102,
      "room": "garage",
      "label": "Garage",
-     "end": 110.6
+     "end": 110.6,
+     "frame": "/frames/NMB7EBYl0kQ_c1020.jpg"
     }
    ],
    "summary": "This luxury modern home in Kelowna features expansive glass walls, soaring wood-beam ceilings, and a sleek linear fireplace. Outside, you will find an infinity pool, fire pits, and breathtaking lake and mountain views.",
@@ -5489,91 +5810,106 @@
      "start": 0,
      "room": "view",
      "label": "Scenic view",
-     "end": 12
+     "end": 12,
+     "frame": "/frames/d7JDvQRFR7U_c0000.jpg"
     },
     {
      "start": 12,
      "room": "backyard",
      "label": "Patio",
-     "end": 42
+     "end": 42,
+     "frame": "/frames/d7JDvQRFR7U_c0120.jpg"
     },
     {
      "start": 42,
      "room": "exterior",
      "label": "Exterior",
-     "end": 45
+     "end": 45,
+     "frame": "/frames/d7JDvQRFR7U_c0420.jpg"
     },
     {
      "start": 45,
      "room": "garage",
      "label": "Garage",
-     "end": 53
+     "end": 53,
+     "frame": "/frames/d7JDvQRFR7U_c0450.jpg"
     },
     {
      "start": 53,
      "room": "backyard",
      "label": "Deck",
-     "end": 61
+     "end": 61,
+     "frame": "/frames/d7JDvQRFR7U_c0530.jpg"
     },
     {
      "start": 61,
      "room": "entry",
      "label": "Entryway",
-     "end": 65
+     "end": 65,
+     "frame": "/frames/d7JDvQRFR7U_c0610.jpg"
     },
     {
      "start": 65,
      "room": "living",
      "label": "Living room",
-     "end": 68
+     "end": 68,
+     "frame": "/frames/d7JDvQRFR7U_c0650.jpg"
     },
     {
      "start": 68,
      "room": "dining",
      "label": "Dining area",
-     "end": 70
+     "end": 70,
+     "frame": "/frames/d7JDvQRFR7U_c0680.jpg"
     },
     {
      "start": 70,
      "room": "kitchen",
      "label": "Kitchen",
-     "end": 82
+     "end": 82,
+     "frame": "/frames/d7JDvQRFR7U_c0700.jpg"
     },
     {
      "start": 82,
      "room": "bedroom",
      "label": "Primary bedroom",
-     "end": 87
+     "end": 87,
+     "frame": "/frames/d7JDvQRFR7U_c0820.jpg"
     },
     {
      "start": 87,
      "room": "office",
      "label": "Office",
-     "end": 92
+     "end": 92,
+     "frame": "/frames/d7JDvQRFR7U_c0870.jpg"
     },
     {
      "start": 92,
      "room": "bedroom",
      "label": "Bedroom",
-     "end": 95
+     "end": 95,
+     "frame": "/frames/d7JDvQRFR7U_c0920.jpg"
     },
     {
      "start": 95,
      "room": "bathroom",
      "label": "Bathroom",
-     "end": 97
+     "end": 97,
+     "frame": "/frames/d7JDvQRFR7U_c0950.jpg"
     },
     {
      "start": 97,
      "room": "bedroom",
      "label": "Bedroom",
-     "end": 126
+     "end": 126,
+     "frame": "/frames/d7JDvQRFR7U_c0970.jpg"
     },
     {
      "start": 126,
      "room": "backyard",
      "label": "Fire pit",
-     "end": 158
+     "end": 158,
+     "frame": "/frames/d7JDvQRFR7U_c1260.jpg"
     },
     {
      "start": 158,
@@ -5823,253 +6159,295 @@
      "start": 0,
      "room": "backyard",
      "label": "Balcony",
-     "end": 3
+     "end": 3,
+     "frame": "/frames/zpsVeRUlcxw_c0000.jpg"
     },
     {
      "start": 3,
      "room": "backyard",
      "label": "Pool",
-     "end": 5
+     "end": 5,
+     "frame": "/frames/zpsVeRUlcxw_c0030.jpg"
     },
     {
      "start": 5,
      "room": "kitchen",
      "label": "Kitchen",
-     "end": 7
+     "end": 7,
+     "frame": "/frames/zpsVeRUlcxw_c0050.jpg"
     },
     {
      "start": 7,
      "room": "backyard",
      "label": "Balcony",
-     "end": 10
+     "end": 10,
+     "frame": "/frames/zpsVeRUlcxw_c0070.jpg"
     },
     {
      "start": 10,
      "room": "living",
      "label": "Living room",
-     "end": 15
+     "end": 15,
+     "frame": "/frames/zpsVeRUlcxw_c0100.jpg"
     },
     {
      "start": 15,
      "room": "exterior",
      "label": "Exterior",
-     "end": 17
+     "end": 17,
+     "frame": "/frames/zpsVeRUlcxw_c0150.jpg"
     },
     {
      "start": 17,
      "room": "backyard",
      "label": "Balcony",
-     "end": 24
+     "end": 24,
+     "frame": "/frames/zpsVeRUlcxw_c0170.jpg"
     },
     {
      "start": 24,
      "room": "entry",
      "label": "Staircase",
-     "end": 27
+     "end": 27,
+     "frame": "/frames/zpsVeRUlcxw_c0240.jpg"
     },
     {
      "start": 27,
      "room": "living",
      "label": "Living room",
-     "end": 29
+     "end": 29,
+     "frame": "/frames/zpsVeRUlcxw_c0270.jpg"
     },
     {
      "start": 29,
      "room": "kitchen",
      "label": "Kitchen",
-     "end": 31
+     "end": 31,
+     "frame": "/frames/zpsVeRUlcxw_c0290.jpg"
     },
     {
      "start": 31,
      "room": "backyard",
      "label": "Balcony",
-     "end": 34
+     "end": 34,
+     "frame": "/frames/zpsVeRUlcxw_c0310.jpg"
     },
     {
      "start": 34,
      "room": "backyard",
      "label": "Pool",
-     "end": 41
+     "end": 41,
+     "frame": "/frames/zpsVeRUlcxw_c0340.jpg"
     },
     {
      "start": 41,
      "room": "exterior",
      "label": "Exterior",
-     "end": 44
+     "end": 44,
+     "frame": "/frames/zpsVeRUlcxw_c0410.jpg"
     },
     {
      "start": 44,
      "room": "exterior",
      "label": "Entrance",
-     "end": 47
+     "end": 47,
+     "frame": "/frames/zpsVeRUlcxw_c0440.jpg"
     },
     {
      "start": 47,
      "room": "view",
      "label": "View",
-     "end": 49
+     "end": 49,
+     "frame": "/frames/zpsVeRUlcxw_c0470.jpg"
     },
     {
      "start": 49,
      "room": "exterior",
      "label": "Entrance",
-     "end": 52
+     "end": 52,
+     "frame": "/frames/zpsVeRUlcxw_c0490.jpg"
     },
     {
      "start": 52,
      "room": "entry",
      "label": "Entryway",
-     "end": 54
+     "end": 54,
+     "frame": "/frames/zpsVeRUlcxw_c0520.jpg"
     },
     {
      "start": 54,
      "room": "dining",
      "label": "Dining room",
-     "end": 56
+     "end": 56,
+     "frame": "/frames/zpsVeRUlcxw_c0540.jpg"
     },
     {
      "start": 56,
      "room": "living",
      "label": "Living room",
-     "end": 68
+     "end": 68,
+     "frame": "/frames/zpsVeRUlcxw_c0560.jpg"
     },
     {
      "start": 68,
      "room": "kitchen",
      "label": "Kitchen",
-     "end": 73
+     "end": 73,
+     "frame": "/frames/zpsVeRUlcxw_c0680.jpg"
     },
     {
      "start": 73,
      "room": "kitchen",
      "label": "Pantry",
-     "end": 75
+     "end": 75,
+     "frame": "/frames/zpsVeRUlcxw_c0730.jpg"
     },
     {
      "start": 75,
      "room": "living",
      "label": "Living room",
-     "end": 81
+     "end": 81,
+     "frame": "/frames/zpsVeRUlcxw_c0750.jpg"
     },
     {
      "start": 81,
      "room": "exterior",
      "label": "Exterior",
-     "end": 86
+     "end": 86,
+     "frame": "/frames/zpsVeRUlcxw_c0810.jpg"
     },
     {
      "start": 86,
      "room": "backyard",
      "label": "Balcony",
-     "end": 90
+     "end": 90,
+     "frame": "/frames/zpsVeRUlcxw_c0860.jpg"
     },
     {
      "start": 90,
      "room": "living",
      "label": "Living room",
-     "end": 93
+     "end": 93,
+     "frame": "/frames/zpsVeRUlcxw_c0900.jpg"
     },
     {
      "start": 93,
      "room": "exterior",
      "label": "Exterior",
-     "end": 104
+     "end": 104,
+     "frame": "/frames/zpsVeRUlcxw_c0930.jpg"
     },
     {
      "start": 104,
      "room": "living",
      "label": "Living room",
-     "end": 125
+     "end": 125,
+     "frame": "/frames/zpsVeRUlcxw_c1040.jpg"
     },
     {
      "start": 125,
      "room": "entry",
      "label": "Staircase",
-     "end": 127
+     "end": 127,
+     "frame": "/frames/zpsVeRUlcxw_c1250.jpg"
     },
     {
      "start": 127,
      "room": "bedroom",
      "label": "Primary bedroom",
-     "end": 132
+     "end": 132,
+     "frame": "/frames/zpsVeRUlcxw_c1270.jpg"
     },
     {
      "start": 132,
      "room": "bathroom",
      "label": "Ensuite",
-     "end": 136
+     "end": 136,
+     "frame": "/frames/zpsVeRUlcxw_c1320.jpg"
     },
     {
      "start": 136,
      "room": "bedroom",
      "label": "Walk-in closet",
-     "end": 139
+     "end": 139,
+     "frame": "/frames/zpsVeRUlcxw_c1360.jpg"
     },
     {
      "start": 139,
      "room": "entry",
      "label": "Staircase",
-     "end": 142
+     "end": 142,
+     "frame": "/frames/zpsVeRUlcxw_c1390.jpg"
     },
     {
      "start": 142,
      "room": "living",
      "label": "Living room",
-     "end": 145
+     "end": 145,
+     "frame": "/frames/zpsVeRUlcxw_c1420.jpg"
     },
     {
      "start": 145,
      "room": "bedroom",
      "label": "Bedroom",
-     "end": 149
+     "end": 149,
+     "frame": "/frames/zpsVeRUlcxw_c1450.jpg"
     },
     {
      "start": 149,
      "room": "bathroom",
      "label": "Bathroom",
-     "end": 152
+     "end": 152,
+     "frame": "/frames/zpsVeRUlcxw_c1490.jpg"
     },
     {
      "start": 152,
      "room": "bedroom",
      "label": "Bedroom",
-     "end": 156
+     "end": 156,
+     "frame": "/frames/zpsVeRUlcxw_c1520.jpg"
     },
     {
      "start": 156,
      "room": "entry",
      "label": "Staircase",
-     "end": 161
+     "end": 161,
+     "frame": "/frames/zpsVeRUlcxw_c1560.jpg"
     },
     {
      "start": 161,
      "room": "living",
      "label": "Living room",
-     "end": 166
+     "end": 166,
+     "frame": "/frames/zpsVeRUlcxw_c1610.jpg"
     },
     {
      "start": 166,
      "room": "living",
      "label": "Bar",
-     "end": 168
+     "end": 168,
+     "frame": "/frames/zpsVeRUlcxw_c1660.jpg"
     },
     {
      "start": 168,
      "room": "living",
      "label": "Wine cellar",
-     "end": 171
+     "end": 171,
+     "frame": "/frames/zpsVeRUlcxw_c1680.jpg"
     },
     {
      "start": 171,
      "room": "living",
      "label": "Game room",
-     "end": 176
+     "end": 176,
+     "frame": "/frames/zpsVeRUlcxw_c1710.jpg"
     },
     {
      "start": 176,
      "room": "living",
      "label": "Home theater",
-     "end": 181
+     "end": 181,
+     "frame": "/frames/zpsVeRUlcxw_c1760.jpg"
     },
     {
      "start": 181,
@@ -6081,25 +6459,29 @@
      "start": 183,
      "room": "bathroom",
      "label": "Sauna",
-     "end": 185
+     "end": 185,
+     "frame": "/frames/zpsVeRUlcxw_c1830.jpg"
     },
     {
      "start": 185,
      "room": "exterior",
      "label": "Exterior",
-     "end": 194
+     "end": 194,
+     "frame": "/frames/zpsVeRUlcxw_c1850.jpg"
     },
     {
      "start": 194,
      "room": "exterior",
      "label": "Entrance",
-     "end": 203
+     "end": 203,
+     "frame": "/frames/zpsVeRUlcxw_c1940.jpg"
     },
     {
      "start": 203,
      "room": "view",
      "label": "View",
-     "end": 210
+     "end": 210,
+     "frame": "/frames/zpsVeRUlcxw_c2030.jpg"
     },
     {
      "start": 210,
@@ -6329,13 +6711,15 @@
      "start": 16,
      "room": "view",
      "label": "Aerial view",
-     "end": 37
+     "end": 37,
+     "frame": "/frames/-Sha8jEG9hI_c0160.jpg"
     },
     {
      "start": 37,
      "room": "backyard",
      "label": "Dog park",
-     "end": 43
+     "end": 43,
+     "frame": "/frames/-Sha8jEG9hI_c0370.jpg"
     },
     {
      "start": 43,
@@ -6347,79 +6731,92 @@
      "start": 55,
      "room": "view",
      "label": "Aerial view",
-     "end": 76
+     "end": 76,
+     "frame": "/frames/-Sha8jEG9hI_c0550.jpg"
     },
     {
      "start": 76,
      "room": "entry",
      "label": "Lobby",
-     "end": 81
+     "end": 81,
+     "frame": "/frames/-Sha8jEG9hI_c0760.jpg"
     },
     {
      "start": 81,
      "room": "kitchen",
      "label": "Kitchen",
-     "end": 106
+     "end": 106,
+     "frame": "/frames/-Sha8jEG9hI_c0810.jpg"
     },
     {
      "start": 106,
      "room": "living",
      "label": "Living room",
-     "end": 112
+     "end": 112,
+     "frame": "/frames/-Sha8jEG9hI_c1060.jpg"
     },
     {
      "start": 112,
      "room": "office",
      "label": "Den",
-     "end": 124
+     "end": 124,
+     "frame": "/frames/-Sha8jEG9hI_c1120.jpg"
     },
     {
      "start": 124,
      "room": "office",
      "label": "Solarium",
-     "end": 139
+     "end": 139,
+     "frame": "/frames/-Sha8jEG9hI_c1240.jpg"
     },
     {
      "start": 139,
      "room": "bedroom",
      "label": "Bedroom",
-     "end": 153
+     "end": 153,
+     "frame": "/frames/-Sha8jEG9hI_c1390.jpg"
     },
     {
      "start": 153,
      "room": "backyard",
      "label": "Balcony",
-     "end": 165
+     "end": 165,
+     "frame": "/frames/-Sha8jEG9hI_c1530.jpg"
     },
     {
      "start": 165,
      "room": "amenity",
      "label": "Rooftop pool",
-     "end": 170
+     "end": 170,
+     "frame": "/frames/-Sha8jEG9hI_c1650.jpg"
     },
     {
      "start": 170,
      "room": "amenity",
      "label": "Hot tub",
-     "end": 172
+     "end": 172,
+     "frame": "/frames/-Sha8jEG9hI_c1700.jpg"
     },
     {
      "start": 172,
      "room": "amenity",
      "label": "Fitness center",
-     "end": 174
+     "end": 174,
+     "frame": "/frames/-Sha8jEG9hI_c1720.jpg"
     },
     {
      "start": 174,
      "room": "amenity",
      "label": "Playroom",
-     "end": 177
+     "end": 177,
+     "frame": "/frames/-Sha8jEG9hI_c1740.jpg"
     },
     {
      "start": 177,
      "room": "entry",
      "label": "Lobby",
-     "end": 194
+     "end": 194,
+     "frame": "/frames/-Sha8jEG9hI_c1770.jpg"
     },
     {
      "start": 194,
@@ -6532,121 +6929,141 @@
      "start": 0,
      "room": "backyard",
      "label": "Pool and patio",
-     "end": 6
+     "end": 6,
+     "frame": "/frames/rayEIwFozcY_c0000.jpg"
     },
     {
      "start": 6,
      "room": "entry",
      "label": "Entryway",
-     "end": 9
+     "end": 9,
+     "frame": "/frames/rayEIwFozcY_c0060.jpg"
     },
     {
      "start": 9,
      "room": "entry",
      "label": "Staircase",
-     "end": 13
+     "end": 13,
+     "frame": "/frames/rayEIwFozcY_c0090.jpg"
     },
     {
      "start": 13,
      "room": "exterior",
      "label": "Exterior",
-     "end": 16
+     "end": 16,
+     "frame": "/frames/rayEIwFozcY_c0130.jpg"
     },
     {
      "start": 16,
      "room": "dining",
      "label": "Dining room",
-     "end": 19
+     "end": 19,
+     "frame": "/frames/rayEIwFozcY_c0160.jpg"
     },
     {
      "start": 19,
      "room": "living",
      "label": "Living room",
-     "end": 23
+     "end": 23,
+     "frame": "/frames/rayEIwFozcY_c0190.jpg"
     },
     {
      "start": 23,
      "room": "kitchen",
      "label": "Kitchen",
-     "end": 26
+     "end": 26,
+     "frame": "/frames/rayEIwFozcY_c0230.jpg"
     },
     {
      "start": 26,
      "room": "entry",
      "label": "Staircase",
-     "end": 30
+     "end": 30,
+     "frame": "/frames/rayEIwFozcY_c0260.jpg"
     },
     {
      "start": 30,
      "room": "office",
      "label": "Office",
-     "end": 32
+     "end": 32,
+     "frame": "/frames/rayEIwFozcY_c0300.jpg"
     },
     {
      "start": 32,
      "room": "living",
      "label": "Living room",
-     "end": 34
+     "end": 34,
+     "frame": "/frames/rayEIwFozcY_c0320.jpg"
     },
     {
      "start": 34,
      "room": "bedroom",
      "label": "Bedroom",
-     "end": 36
+     "end": 36,
+     "frame": "/frames/rayEIwFozcY_c0340.jpg"
     },
     {
      "start": 36,
      "room": "view",
      "label": "View",
-     "end": 39
+     "end": 39,
+     "frame": "/frames/rayEIwFozcY_c0360.jpg"
     },
     {
      "start": 39,
      "room": "entry",
      "label": "Entryway",
-     "end": 41
+     "end": 41,
+     "frame": "/frames/rayEIwFozcY_c0390.jpg"
     },
     {
      "start": 41,
      "room": "living",
      "label": "Living room",
-     "end": 44
+     "end": 44,
+     "frame": "/frames/rayEIwFozcY_c0410.jpg"
     },
     {
      "start": 44,
      "room": "kitchen",
      "label": "Kitchen",
-     "end": 47
+     "end": 47,
+     "frame": "/frames/rayEIwFozcY_c0440.jpg"
     },
     {
      "start": 47,
      "room": "living",
      "label": "Living room",
-     "end": 50
+     "end": 50,
+     "frame": "/frames/rayEIwFozcY_c0470.jpg"
     },
     {
      "start": 50,
      "room": "exterior",
      "label": "Aerial view",
-     "end": 53
+     "end": 53,
+     "frame": "/frames/rayEIwFozcY_c0500.jpg"
     },
     {
      "start": 53,
      "room": "backyard",
      "label": "Backyard",
-     "end": 57
+     "end": 57,
+     "frame": "/frames/rayEIwFozcY_c0530.jpg"
     },
     {
      "start": 57,
      "room": "view",
      "label": "View",
-     "end": 59
+     "end": 59,
+     "frame": "/frames/rayEIwFozcY_c0570.jpg"
     },
     {
      "start": 59,
      "room": "backyard",
      "label": "Backyard",
-     "end": 67.1
+     "end": 67.1,
+     "frame": "/frames/rayEIwFozcY_c0590.jpg"
     }
    ],
    "summary": "This stunning ultra-luxury modern waterfront mansion in Vancouver features sleek metal and glass architecture with expansive ocean views. The home offers exceptional amenities including an infinity pool, custom lighting, a putting green, and spa-like bathrooms.",
@@ -6875,91 +7292,106 @@
      "start": 5,
      "room": "exterior",
      "label": "Exterior",
-     "end": 25
+     "end": 25,
+     "frame": "/frames/TlMUknHQYLU_c0050.jpg"
     },
     {
      "start": 25,
      "room": "entry",
      "label": "Entry",
-     "end": 30
+     "end": 30,
+     "frame": "/frames/TlMUknHQYLU_c0250.jpg"
     },
     {
      "start": 30,
      "room": "kitchen",
      "label": "Kitchen",
-     "end": 33
+     "end": 33,
+     "frame": "/frames/TlMUknHQYLU_c0300.jpg"
     },
     {
      "start": 33,
      "room": "dining",
      "label": "Dining Room",
-     "end": 35
+     "end": 35,
+     "frame": "/frames/TlMUknHQYLU_c0330.jpg"
     },
     {
      "start": 35,
      "room": "living",
      "label": "Living Room",
-     "end": 47
+     "end": 47,
+     "frame": "/frames/TlMUknHQYLU_c0350.jpg"
     },
     {
      "start": 47,
      "room": "backyard",
      "label": "Backyard",
-     "end": 60
+     "end": 60,
+     "frame": "/frames/TlMUknHQYLU_c0470.jpg"
     },
     {
      "start": 60,
      "room": "exterior",
      "label": "Exterior",
-     "end": 98
+     "end": 98,
+     "frame": "/frames/TlMUknHQYLU_c0600.jpg"
     },
     {
      "start": 98,
      "room": "bathroom",
      "label": "Powder Room",
-     "end": 133
+     "end": 133,
+     "frame": "/frames/TlMUknHQYLU_c0980.jpg"
     },
     {
      "start": 133,
      "room": "bedroom",
      "label": "Primary Bedroom",
-     "end": 146
+     "end": 146,
+     "frame": "/frames/TlMUknHQYLU_c1330.jpg"
     },
     {
      "start": 146,
      "room": "bathroom",
      "label": "Ensuite Bathroom",
-     "end": 161
+     "end": 161,
+     "frame": "/frames/TlMUknHQYLU_c1460.jpg"
     },
     {
      "start": 161,
      "room": "basement",
      "label": "Basement Bar",
-     "end": 170
+     "end": 170,
+     "frame": "/frames/TlMUknHQYLU_c1610.jpg"
     },
     {
      "start": 170,
      "room": "basement",
      "label": "Wine Cellar",
-     "end": 172
+     "end": 172,
+     "frame": "/frames/TlMUknHQYLU_c1700.jpg"
     },
     {
      "start": 172,
      "room": "basement",
      "label": "Home Theater",
-     "end": 184
+     "end": 184,
+     "frame": "/frames/TlMUknHQYLU_c1720.jpg"
     },
     {
      "start": 184,
      "room": "backyard",
      "label": "Backyard",
-     "end": 199
+     "end": 199,
+     "frame": "/frames/TlMUknHQYLU_c1840.jpg"
     },
     {
      "start": 199,
      "room": "exterior",
      "label": "Exterior",
-     "end": 214.4
+     "end": 214.4,
+     "frame": "/frames/TlMUknHQYLU_c1990.jpg"
     }
    ],
    "summary": "This award-winning modern luxury home features sleek architectural lines, high-end contemporary finishes, and extensive outdoor living spaces. Inside, you will find an open-concept living area, a gourmet kitchen, and a sophisticated basement complete with a home theater and wine cellar.",
@@ -7112,25 +7544,29 @@
      "start": 0,
      "room": "exterior",
      "label": "Exterior",
-     "end": 6
+     "end": 6,
+     "frame": "/frames/f7Ji5F_Qxl4_c0000.jpg"
     },
     {
      "start": 6,
      "room": "backyard",
      "label": "Balcony",
-     "end": 10
+     "end": 10,
+     "frame": "/frames/f7Ji5F_Qxl4_c0060.jpg"
     },
     {
      "start": 10,
      "room": "living",
      "label": "Living room",
-     "end": 14
+     "end": 14,
+     "frame": "/frames/f7Ji5F_Qxl4_c0100.jpg"
     },
     {
      "start": 14,
      "room": "backyard",
      "label": "Balcony",
-     "end": 16
+     "end": 16,
+     "frame": "/frames/f7Ji5F_Qxl4_c0140.jpg"
     },
     {
      "start": 16,
@@ -7142,13 +7578,15 @@
      "start": 26,
      "room": "view",
      "label": "City view",
-     "end": 30
+     "end": 30,
+     "frame": "/frames/f7Ji5F_Qxl4_c0260.jpg"
     },
     {
      "start": 30,
      "room": "backyard",
      "label": "Balcony",
-     "end": 39
+     "end": 39,
+     "frame": "/frames/f7Ji5F_Qxl4_c0300.jpg"
     },
     {
      "start": 39,
@@ -7160,7 +7598,8 @@
      "start": 50,
      "room": "view",
      "label": "City view",
-     "end": 53
+     "end": 53,
+     "frame": "/frames/f7Ji5F_Qxl4_c0500.jpg"
     },
     {
      "start": 53,
@@ -7172,7 +7611,8 @@
      "start": 63,
      "room": "exterior",
      "label": "Exterior",
-     "end": 71
+     "end": 71,
+     "frame": "/frames/f7Ji5F_Qxl4_c0630.jpg"
     },
     {
      "start": 71,
@@ -7184,7 +7624,8 @@
      "start": 92,
      "room": "view",
      "label": "City view",
-     "end": 94
+     "end": 94,
+     "frame": "/frames/f7Ji5F_Qxl4_c0920.jpg"
     },
     {
      "start": 94,
@@ -7196,7 +7637,8 @@
      "start": 96,
      "room": "exterior",
      "label": "Exterior",
-     "end": 114
+     "end": 114,
+     "frame": "/frames/f7Ji5F_Qxl4_c0960.jpg"
     },
     {
      "start": 114,
@@ -7208,7 +7650,8 @@
      "start": 124,
      "room": "exterior",
      "label": "Exterior",
-     "end": 128
+     "end": 128,
+     "frame": "/frames/f7Ji5F_Qxl4_c1240.jpg"
     },
     {
      "start": 128,
@@ -7220,13 +7663,15 @@
      "start": 141,
      "room": "exterior",
      "label": "For sale sign",
-     "end": 143
+     "end": 143,
+     "frame": "/frames/f7Ji5F_Qxl4_c1410.jpg"
     },
     {
      "start": 143,
      "room": "living",
      "label": "Living room",
-     "end": 152
+     "end": 152,
+     "frame": "/frames/f7Ji5F_Qxl4_c1430.jpg"
     }
    ],
    "summary": "This modern high-rise condominium in Vancouver offers a spacious living room with expansive floor-to-ceiling windows, hardwood floors, and an open layout connected to the kitchen. Residents can also enjoy an exterior rooftop patio featuring outdoor furniture and stunning city and mountain views.",
@@ -7429,19 +7874,22 @@
      "start": 0,
      "room": "exterior",
      "label": "Exterior",
-     "end": 17
+     "end": 17,
+     "frame": "/frames/nml0jgA_QZ0_c0000.jpg"
     },
     {
      "start": 17,
      "room": "entry",
      "label": "Entryway",
-     "end": 40
+     "end": 40,
+     "frame": "/frames/nml0jgA_QZ0_c0170.jpg"
     },
     {
      "start": 40,
      "room": "dining",
      "label": "Dining room",
-     "end": 48
+     "end": 48,
+     "frame": "/frames/nml0jgA_QZ0_c0400.jpg"
     },
     {
      "start": 48,
@@ -7453,97 +7901,113 @@
      "start": 57,
      "room": "living",
      "label": "Living room",
-     "end": 76
+     "end": 76,
+     "frame": "/frames/nml0jgA_QZ0_c0570.jpg"
     },
     {
      "start": 76,
      "room": "kitchen",
      "label": "Kitchen",
-     "end": 102
+     "end": 102,
+     "frame": "/frames/nml0jgA_QZ0_c0760.jpg"
     },
     {
      "start": 102,
      "room": "basement",
      "label": "Media room",
-     "end": 110
+     "end": 110,
+     "frame": "/frames/nml0jgA_QZ0_c1020.jpg"
     },
     {
      "start": 110,
      "room": "bathroom",
      "label": "Powder room",
-     "end": 117
+     "end": 117,
+     "frame": "/frames/nml0jgA_QZ0_c1100.jpg"
     },
     {
      "start": 117,
      "room": "office",
      "label": "Office",
-     "end": 121
+     "end": 121,
+     "frame": "/frames/nml0jgA_QZ0_c1170.jpg"
     },
     {
      "start": 121,
      "room": "bathroom",
      "label": "Bathroom",
-     "end": 127
+     "end": 127,
+     "frame": "/frames/nml0jgA_QZ0_c1210.jpg"
     },
     {
      "start": 127,
      "room": "laundry",
      "label": "Laundry room",
-     "end": 131
+     "end": 131,
+     "frame": "/frames/nml0jgA_QZ0_c1270.jpg"
     },
     {
      "start": 131,
      "room": "bedroom",
      "label": "Primary bedroom",
-     "end": 140
+     "end": 140,
+     "frame": "/frames/nml0jgA_QZ0_c1310.jpg"
     },
     {
      "start": 140,
      "room": "bathroom",
      "label": "Primary ensuite",
-     "end": 148
+     "end": 148,
+     "frame": "/frames/nml0jgA_QZ0_c1400.jpg"
     },
     {
      "start": 148,
      "room": "bedroom",
      "label": "Walk-in closet",
-     "end": 150
+     "end": 150,
+     "frame": "/frames/nml0jgA_QZ0_c1480.jpg"
     },
     {
      "start": 150,
      "room": "bedroom",
      "label": "Bedroom",
-     "end": 154
+     "end": 154,
+     "frame": "/frames/nml0jgA_QZ0_c1500.jpg"
     },
     {
      "start": 154,
      "room": "bathroom",
      "label": "Bathroom",
-     "end": 158
+     "end": 158,
+     "frame": "/frames/nml0jgA_QZ0_c1540.jpg"
     },
     {
      "start": 158,
      "room": "bedroom",
      "label": "Bedroom",
-     "end": 160
+     "end": 160,
+     "frame": "/frames/nml0jgA_QZ0_c1580.jpg"
     },
     {
      "start": 160,
      "room": "bathroom",
      "label": "Bathroom",
-     "end": 165
+     "end": 165,
+     "frame": "/frames/nml0jgA_QZ0_c1600.jpg"
     },
     {
      "start": 165,
      "room": "backyard",
      "label": "Patio",
-     "end": 168
+     "end": 168,
+     "frame": "/frames/nml0jgA_QZ0_c1650.jpg"
     },
     {
      "start": 168,
      "room": "backyard",
      "label": "Backyard",
-     "end": 181
+     "end": 181,
+     "frame": "/frames/nml0jgA_QZ0_c1680.jpg"
     },
     {
      "start": 181,
@@ -7733,7 +8197,8 @@
      "start": 0,
      "room": "exterior",
      "label": "Exterior",
-     "end": 2
+     "end": 2,
+     "frame": "/frames/8iugptfOqDk_c0000.jpg"
     },
     {
      "start": 2,
@@ -7745,7 +8210,8 @@
      "start": 8,
      "room": "exterior",
      "label": "Exterior",
-     "end": 18
+     "end": 18,
+     "frame": "/frames/8iugptfOqDk_c0080.jpg"
     },
     {
      "start": 18,
@@ -7757,121 +8223,141 @@
      "start": 29,
      "room": "entry",
      "label": "Entry",
-     "end": 31
+     "end": 31,
+     "frame": "/frames/8iugptfOqDk_c0290.jpg"
     },
     {
      "start": 31,
      "room": "living",
      "label": "Living room",
-     "end": 39
+     "end": 39,
+     "frame": "/frames/8iugptfOqDk_c0310.jpg"
     },
     {
      "start": 39,
      "room": "dining",
      "label": "Dining room",
-     "end": 41
+     "end": 41,
+     "frame": "/frames/8iugptfOqDk_c0390.jpg"
     },
     {
      "start": 41,
      "room": "kitchen",
      "label": "Kitchen",
-     "end": 46
+     "end": 46,
+     "frame": "/frames/8iugptfOqDk_c0410.jpg"
     },
     {
      "start": 46,
      "room": "living",
      "label": "Living room",
-     "end": 50
+     "end": 50,
+     "frame": "/frames/8iugptfOqDk_c0460.jpg"
     },
     {
      "start": 50,
      "room": "dining",
      "label": "Dining room",
-     "end": 54
+     "end": 54,
+     "frame": "/frames/8iugptfOqDk_c0500.jpg"
     },
     {
      "start": 54,
      "room": "kitchen",
      "label": "Kitchen",
-     "end": 68
+     "end": 68,
+     "frame": "/frames/8iugptfOqDk_c0540.jpg"
     },
     {
      "start": 68,
      "room": "living",
      "label": "Living room",
-     "end": 74
+     "end": 74,
+     "frame": "/frames/8iugptfOqDk_c0680.jpg"
     },
     {
      "start": 74,
      "room": "kitchen",
      "label": "Kitchen",
-     "end": 80
+     "end": 80,
+     "frame": "/frames/8iugptfOqDk_c0740.jpg"
     },
     {
      "start": 80,
      "room": "bathroom",
      "label": "Powder room",
-     "end": 82
+     "end": 82,
+     "frame": "/frames/8iugptfOqDk_c0800.jpg"
     },
     {
      "start": 82,
      "room": "office",
      "label": "Office",
-     "end": 84
+     "end": 84,
+     "frame": "/frames/8iugptfOqDk_c0820.jpg"
     },
     {
      "start": 84,
      "room": "laundry",
      "label": "Laundry room",
-     "end": 86
+     "end": 86,
+     "frame": "/frames/8iugptfOqDk_c0840.jpg"
     },
     {
      "start": 86,
      "room": "entry",
      "label": "Staircase",
-     "end": 89
+     "end": 89,
+     "frame": "/frames/8iugptfOqDk_c0860.jpg"
     },
     {
      "start": 89,
      "room": "bedroom",
      "label": "Primary bedroom",
-     "end": 103
+     "end": 103,
+     "frame": "/frames/8iugptfOqDk_c0890.jpg"
     },
     {
      "start": 103,
      "room": "office",
      "label": "Office",
-     "end": 107
+     "end": 107,
+     "frame": "/frames/8iugptfOqDk_c1030.jpg"
     },
     {
      "start": 107,
      "room": "bathroom",
      "label": "Ensuite",
-     "end": 118
+     "end": 118,
+     "frame": "/frames/8iugptfOqDk_c1070.jpg"
     },
     {
      "start": 118,
      "room": "bedroom",
      "label": "Bedroom",
-     "end": 126
+     "end": 126,
+     "frame": "/frames/8iugptfOqDk_c1180.jpg"
     },
     {
      "start": 126,
      "room": "bathroom",
      "label": "Bathroom",
-     "end": 132
+     "end": 132,
+     "frame": "/frames/8iugptfOqDk_c1260.jpg"
     },
     {
      "start": 132,
      "room": "backyard",
      "label": "Balcony",
-     "end": 135
+     "end": 135,
+     "frame": "/frames/8iugptfOqDk_c1320.jpg"
     },
     {
      "start": 135,
      "room": "backyard",
      "label": "Backyard",
-     "end": 155
+     "end": 155,
+     "frame": "/frames/8iugptfOqDk_c1350.jpg"
     },
     {
      "start": 155,
@@ -8129,7 +8615,8 @@
      "start": 0,
      "room": "exterior",
      "label": "Aerial view",
-     "end": 6
+     "end": 6,
+     "frame": "/frames/u8dIDj_aQU4_c0000.jpg"
     },
     {
      "start": 6,
@@ -8141,157 +8628,183 @@
      "start": 12,
      "room": "exterior",
      "label": "Aerial view",
-     "end": 20
+     "end": 20,
+     "frame": "/frames/u8dIDj_aQU4_c0120.jpg"
     },
     {
      "start": 20,
      "room": "exterior",
      "label": "Front exterior",
-     "end": 22
+     "end": 22,
+     "frame": "/frames/u8dIDj_aQU4_c0200.jpg"
     },
     {
      "start": 22,
      "room": "exterior",
      "label": "Community sign",
-     "end": 24
+     "end": 24,
+     "frame": "/frames/u8dIDj_aQU4_c0220.jpg"
     },
     {
      "start": 24,
      "room": "exterior",
      "label": "Front exterior",
-     "end": 26
+     "end": 26,
+     "frame": "/frames/u8dIDj_aQU4_c0240.jpg"
     },
     {
      "start": 26,
      "room": "entry",
      "label": "Entryway",
-     "end": 30
+     "end": 30,
+     "frame": "/frames/u8dIDj_aQU4_c0260.jpg"
     },
     {
      "start": 30,
      "room": "living",
      "label": "Living room",
-     "end": 34
+     "end": 34,
+     "frame": "/frames/u8dIDj_aQU4_c0300.jpg"
     },
     {
      "start": 34,
      "room": "kitchen",
      "label": "Kitchen",
-     "end": 39
+     "end": 39,
+     "frame": "/frames/u8dIDj_aQU4_c0340.jpg"
     },
     {
      "start": 39,
      "room": "living",
      "label": "Living room",
-     "end": 44
+     "end": 44,
+     "frame": "/frames/u8dIDj_aQU4_c0390.jpg"
     },
     {
      "start": 44,
      "room": "backyard",
      "label": "Balcony view",
-     "end": 46
+     "end": 46,
+     "frame": "/frames/u8dIDj_aQU4_c0440.jpg"
     },
     {
      "start": 46,
      "room": "living",
      "label": "Living room",
-     "end": 48
+     "end": 48,
+     "frame": "/frames/u8dIDj_aQU4_c0460.jpg"
     },
     {
      "start": 48,
      "room": "kitchen",
      "label": "Kitchen",
-     "end": 73
+     "end": 73,
+     "frame": "/frames/u8dIDj_aQU4_c0480.jpg"
     },
     {
      "start": 73,
      "room": "living",
      "label": "Living room",
-     "end": 85
+     "end": 85,
+     "frame": "/frames/u8dIDj_aQU4_c0730.jpg"
     },
     {
      "start": 85,
      "room": "dining",
      "label": "Dining room",
-     "end": 89
+     "end": 89,
+     "frame": "/frames/u8dIDj_aQU4_c0850.jpg"
     },
     {
      "start": 89,
      "room": "bedroom",
      "label": "Bedroom",
-     "end": 93
+     "end": 93,
+     "frame": "/frames/u8dIDj_aQU4_c0890.jpg"
     },
     {
      "start": 93,
      "room": "bathroom",
      "label": "Bathroom",
-     "end": 95
+     "end": 95,
+     "frame": "/frames/u8dIDj_aQU4_c0930.jpg"
     },
     {
      "start": 95,
      "room": "laundry",
      "label": "Laundry room",
-     "end": 97
+     "end": 97,
+     "frame": "/frames/u8dIDj_aQU4_c0950.jpg"
     },
     {
      "start": 97,
      "room": "bathroom",
      "label": "Powder room",
-     "end": 99
+     "end": 99,
+     "frame": "/frames/u8dIDj_aQU4_c0970.jpg"
     },
     {
      "start": 99,
      "room": "entry",
      "label": "Entryway",
-     "end": 103
+     "end": 103,
+     "frame": "/frames/u8dIDj_aQU4_c0990.jpg"
     },
     {
      "start": 103,
      "room": "entry",
      "label": "Staircase",
-     "end": 105
+     "end": 105,
+     "frame": "/frames/u8dIDj_aQU4_c1030.jpg"
     },
     {
      "start": 105,
      "room": "entry",
      "label": "Hallway",
-     "end": 107
+     "end": 107,
+     "frame": "/frames/u8dIDj_aQU4_c1050.jpg"
     },
     {
      "start": 107,
      "room": "bedroom",
      "label": "Primary bedroom",
-     "end": 117
+     "end": 117,
+     "frame": "/frames/u8dIDj_aQU4_c1070.jpg"
     },
     {
      "start": 117,
      "room": "bathroom",
      "label": "Primary ensuite",
-     "end": 129
+     "end": 129,
+     "frame": "/frames/u8dIDj_aQU4_c1170.jpg"
     },
     {
      "start": 129,
      "room": "backyard",
      "label": "Balcony",
-     "end": 133
+     "end": 133,
+     "frame": "/frames/u8dIDj_aQU4_c1290.jpg"
     },
     {
      "start": 133,
      "room": "office",
      "label": "Office",
-     "end": 139
+     "end": 139,
+     "frame": "/frames/u8dIDj_aQU4_c1330.jpg"
     },
     {
      "start": 139,
      "room": "entry",
      "label": "Staircase",
-     "end": 141
+     "end": 141,
+     "frame": "/frames/u8dIDj_aQU4_c1390.jpg"
     },
     {
      "start": 141,
      "room": "living",
      "label": "Living room",
-     "end": 146
+     "end": 146,
+     "frame": "/frames/u8dIDj_aQU4_c1410.jpg"
     },
     {
      "start": 146,
@@ -8303,43 +8816,50 @@
      "start": 150,
      "room": "living",
      "label": "Living room",
-     "end": 152
+     "end": 152,
+     "frame": "/frames/u8dIDj_aQU4_c1500.jpg"
     },
     {
      "start": 152,
      "room": "kitchen",
      "label": "Kitchenette",
-     "end": 158
+     "end": 158,
+     "frame": "/frames/u8dIDj_aQU4_c1520.jpg"
     },
     {
      "start": 158,
      "room": "bedroom",
      "label": "Bedroom",
-     "end": 162
+     "end": 162,
+     "frame": "/frames/u8dIDj_aQU4_c1580.jpg"
     },
     {
      "start": 162,
      "room": "office",
      "label": "Office",
-     "end": 164
+     "end": 164,
+     "frame": "/frames/u8dIDj_aQU4_c1620.jpg"
     },
     {
      "start": 164,
      "room": "bathroom",
      "label": "Bathroom",
-     "end": 169
+     "end": 169,
+     "frame": "/frames/u8dIDj_aQU4_c1640.jpg"
     },
     {
      "start": 169,
      "room": "backyard",
      "label": "Backyard",
-     "end": 202
+     "end": 202,
+     "frame": "/frames/u8dIDj_aQU4_c1690.jpg"
     },
     {
      "start": 202,
      "room": "exterior",
      "label": "Aerial view",
-     "end": 234
+     "end": 234,
+     "frame": "/frames/u8dIDj_aQU4_c2020.jpg"
     },
     {
      "start": 234,
@@ -8482,37 +9002,43 @@
      "start": 0,
      "room": "exterior",
      "label": "Exterior",
-     "end": 25
+     "end": 25,
+     "frame": "/frames/DqXM07TYfdM_c0000.jpg"
     },
     {
      "start": 25,
      "room": "entry",
      "label": "Entryway",
-     "end": 30
+     "end": 30,
+     "frame": "/frames/DqXM07TYfdM_c0250.jpg"
     },
     {
      "start": 30,
      "room": "office",
      "label": "Office",
-     "end": 33
+     "end": 33,
+     "frame": "/frames/DqXM07TYfdM_c0300.jpg"
     },
     {
      "start": 33,
      "room": "living",
      "label": "Living room",
-     "end": 36
+     "end": 36,
+     "frame": "/frames/DqXM07TYfdM_c0330.jpg"
     },
     {
      "start": 36,
      "room": "kitchen",
      "label": "Kitchen",
-     "end": 38
+     "end": 38,
+     "frame": "/frames/DqXM07TYfdM_c0360.jpg"
     },
     {
      "start": 38,
      "room": "dining",
      "label": "Dining area",
-     "end": 40
+     "end": 40,
+     "frame": "/frames/DqXM07TYfdM_c0380.jpg"
     },
     {
      "start": 40,
@@ -8524,7 +9050,8 @@
      "start": 47,
      "room": "bathroom",
      "label": "Powder room",
-     "end": 49
+     "end": 49,
+     "frame": "/frames/DqXM07TYfdM_c0470.jpg"
     },
     {
      "start": 49,
@@ -8536,37 +9063,43 @@
      "start": 52,
      "room": "bedroom",
      "label": "Bedroom",
-     "end": 56
+     "end": 56,
+     "frame": "/frames/DqXM07TYfdM_c0520.jpg"
     },
     {
      "start": 56,
      "room": "bathroom",
      "label": "Ensuite",
-     "end": 58
+     "end": 58,
+     "frame": "/frames/DqXM07TYfdM_c0560.jpg"
     },
     {
      "start": 58,
      "room": "basement",
      "label": "Basement",
-     "end": 60
+     "end": 60,
+     "frame": "/frames/DqXM07TYfdM_c0580.jpg"
     },
     {
      "start": 60,
      "room": "office",
      "label": "Office",
-     "end": 63
+     "end": 63,
+     "frame": "/frames/DqXM07TYfdM_c0600.jpg"
     },
     {
      "start": 63,
      "room": "bathroom",
      "label": "Bathroom",
-     "end": 77
+     "end": 77,
+     "frame": "/frames/DqXM07TYfdM_c0630.jpg"
     },
     {
      "start": 77,
      "room": "backyard",
      "label": "Backyard",
-     "end": 120.3
+     "end": 120.3,
+     "frame": "/frames/DqXM07TYfdM_c0770.jpg"
     }
    ],
    "summary": "This two-story blue and stone house features a bright, open-concept interior with hardwood floors and a cozy fireplace. Outside, you will find a manicured lawn and a fenced backyard with a concrete patio and privacy hedges.",
@@ -8708,73 +9241,85 @@
      "start": 5,
      "room": "exterior",
      "label": "Exterior",
-     "end": 18
+     "end": 18,
+     "frame": "/frames/P7Fj7Qs6ro8_c0050.jpg"
     },
     {
      "start": 18,
      "room": "living",
      "label": "Living room",
-     "end": 22
+     "end": 22,
+     "frame": "/frames/P7Fj7Qs6ro8_c0180.jpg"
     },
     {
      "start": 22,
      "room": "kitchen",
      "label": "Kitchen",
-     "end": 25
+     "end": 25,
+     "frame": "/frames/P7Fj7Qs6ro8_c0220.jpg"
     },
     {
      "start": 25,
      "room": "office",
      "label": "Office",
-     "end": 27
+     "end": 27,
+     "frame": "/frames/P7Fj7Qs6ro8_c0250.jpg"
     },
     {
      "start": 27,
      "room": "dining",
      "label": "Dining room",
-     "end": 58
+     "end": 58,
+     "frame": "/frames/P7Fj7Qs6ro8_c0270.jpg"
     },
     {
      "start": 58,
      "room": "backyard",
      "label": "Backyard",
-     "end": 73
+     "end": 73,
+     "frame": "/frames/P7Fj7Qs6ro8_c0580.jpg"
     },
     {
      "start": 73,
      "room": "bathroom",
      "label": "Powder room",
-     "end": 75
+     "end": 75,
+     "frame": "/frames/P7Fj7Qs6ro8_c0730.jpg"
     },
     {
      "start": 75,
      "room": "entry",
      "label": "Staircase",
-     "end": 77
+     "end": 77,
+     "frame": "/frames/P7Fj7Qs6ro8_c0750.jpg"
     },
     {
      "start": 77,
      "room": "bedroom",
      "label": "Bedroom",
-     "end": 81
+     "end": 81,
+     "frame": "/frames/P7Fj7Qs6ro8_c0770.jpg"
     },
     {
      "start": 81,
      "room": "bathroom",
      "label": "Bathroom",
-     "end": 86
+     "end": 86,
+     "frame": "/frames/P7Fj7Qs6ro8_c0810.jpg"
     },
     {
      "start": 86,
      "room": "entry",
      "label": "Hallway",
-     "end": 90
+     "end": 90,
+     "frame": "/frames/P7Fj7Qs6ro8_c0860.jpg"
     },
     {
      "start": 90,
      "room": "entry",
      "label": "Entryway",
-     "end": 108
+     "end": 108,
+     "frame": "/frames/P7Fj7Qs6ro8_c0900.jpg"
     },
     {
      "start": 108,
@@ -8875,31 +9420,36 @@
      "start": 0,
      "room": "exterior",
      "label": "Exterior",
-     "end": 7
+     "end": 7,
+     "frame": "/frames/tV6iDi7mumI_c0000.jpg"
     },
     {
      "start": 7,
      "room": "entry",
      "label": "Entryway",
-     "end": 11
+     "end": 11,
+     "frame": "/frames/tV6iDi7mumI_c0070.jpg"
     },
     {
      "start": 11,
      "room": "living",
      "label": "Living room",
-     "end": 13
+     "end": 13,
+     "frame": "/frames/tV6iDi7mumI_c0110.jpg"
     },
     {
      "start": 13,
      "room": "dining",
      "label": "Dining area",
-     "end": 16
+     "end": 16,
+     "frame": "/frames/tV6iDi7mumI_c0130.jpg"
     },
     {
      "start": 16,
      "room": "entry",
      "label": "Hallway",
-     "end": 18
+     "end": 18,
+     "frame": "/frames/tV6iDi7mumI_c0160.jpg"
     },
     {
      "start": 18,
@@ -8911,7 +9461,8 @@
      "start": 23,
      "room": "bathroom",
      "label": "Sauna",
-     "end": 26
+     "end": 26,
+     "frame": "/frames/tV6iDi7mumI_c0230.jpg"
     },
     {
      "start": 26,
@@ -8923,19 +9474,22 @@
      "start": 33,
      "room": "living",
      "label": "Living room",
-     "end": 46
+     "end": 46,
+     "frame": "/frames/tV6iDi7mumI_c0330.jpg"
     },
     {
      "start": 46,
      "room": "kitchen",
      "label": "Kitchen",
-     "end": 51
+     "end": 51,
+     "frame": "/frames/tV6iDi7mumI_c0460.jpg"
     },
     {
      "start": 51,
      "room": "backyard",
      "label": "Backyard",
-     "end": 60.1
+     "end": 60.1,
+     "frame": "/frames/tV6iDi7mumI_c0510.jpg"
     }
    ],
    "summary": "This Surrey home features a grand entryway with a wooden staircase leading to an open-concept living area. The fully finished basement offers a custom wood sauna, home theater, pool table area, and a spacious home gym.",
@@ -9033,73 +9587,85 @@
      "start": 0,
      "room": "exterior",
      "label": "Exterior",
-     "end": 14
+     "end": 14,
+     "frame": "/frames/LG7VIk8kSWU_c0000.jpg"
     },
     {
      "start": 14,
      "room": "entry",
      "label": "Entryway",
-     "end": 17
+     "end": 17,
+     "frame": "/frames/LG7VIk8kSWU_c0140.jpg"
     },
     {
      "start": 17,
      "room": "living",
      "label": "Living room",
-     "end": 21
+     "end": 21,
+     "frame": "/frames/LG7VIk8kSWU_c0170.jpg"
     },
     {
      "start": 21,
      "room": "dining",
      "label": "Dining room",
-     "end": 24
+     "end": 24,
+     "frame": "/frames/LG7VIk8kSWU_c0210.jpg"
     },
     {
      "start": 24,
      "room": "kitchen",
      "label": "Kitchen",
-     "end": 33
+     "end": 33,
+     "frame": "/frames/LG7VIk8kSWU_c0240.jpg"
     },
     {
      "start": 33,
      "room": "bathroom",
      "label": "Bathroom",
-     "end": 36
+     "end": 36,
+     "frame": "/frames/LG7VIk8kSWU_c0330.jpg"
     },
     {
      "start": 36,
      "room": "bedroom",
      "label": "Primary bedroom",
-     "end": 42
+     "end": 42,
+     "frame": "/frames/LG7VIk8kSWU_c0360.jpg"
     },
     {
      "start": 42,
      "room": "bathroom",
      "label": "Ensuite",
-     "end": 44
+     "end": 44,
+     "frame": "/frames/LG7VIk8kSWU_c0420.jpg"
     },
     {
      "start": 44,
      "room": "bedroom",
      "label": "Walk-in closet",
-     "end": 46
+     "end": 46,
+     "frame": "/frames/LG7VIk8kSWU_c0440.jpg"
     },
     {
      "start": 46,
      "room": "bedroom",
      "label": "Bedroom",
-     "end": 50
+     "end": 50,
+     "frame": "/frames/LG7VIk8kSWU_c0460.jpg"
     },
     {
      "start": 50,
      "room": "laundry",
      "label": "Laundry room",
-     "end": 52
+     "end": 52,
+     "frame": "/frames/LG7VIk8kSWU_c0500.jpg"
     },
     {
      "start": 52,
      "room": "backyard",
      "label": "Backyard",
-     "end": 60
+     "end": 60,
+     "frame": "/frames/LG7VIk8kSWU_c0520.jpg"
     },
     {
      "start": 60,
@@ -9206,7 +9772,8 @@
      "start": 0,
      "room": "exterior",
      "label": "Exterior",
-     "end": 4
+     "end": 4,
+     "frame": "/frames/OKWSDc86FHk_c0000.jpg"
     },
     {
      "start": 4,
@@ -9218,19 +9785,22 @@
      "start": 7,
      "room": "view",
      "label": "Aerial view",
-     "end": 10
+     "end": 10,
+     "frame": "/frames/OKWSDc86FHk_c0070.jpg"
     },
     {
      "start": 10,
      "room": "living",
      "label": "Living room",
-     "end": 13
+     "end": 13,
+     "frame": "/frames/OKWSDc86FHk_c0100.jpg"
     },
     {
      "start": 13,
      "room": "bedroom",
      "label": "Nursery",
-     "end": 15
+     "end": 15,
+     "frame": "/frames/OKWSDc86FHk_c0130.jpg"
     },
     {
      "start": 15,
@@ -9242,7 +9812,8 @@
      "start": 17,
      "room": "view",
      "label": "Aerial view",
-     "end": 19
+     "end": 19,
+     "frame": "/frames/OKWSDc86FHk_c0170.jpg"
     },
     {
      "start": 19,
@@ -9254,55 +9825,64 @@
      "start": 21,
      "room": "living",
      "label": "Living room",
-     "end": 25
+     "end": 25,
+     "frame": "/frames/OKWSDc86FHk_c0210.jpg"
     },
     {
      "start": 25,
      "room": "kitchen",
      "label": "Kitchen",
-     "end": 31
+     "end": 31,
+     "frame": "/frames/OKWSDc86FHk_c0250.jpg"
     },
     {
      "start": 31,
      "room": "dining",
      "label": "Dining area",
-     "end": 37
+     "end": 37,
+     "frame": "/frames/OKWSDc86FHk_c0310.jpg"
     },
     {
      "start": 37,
      "room": "bedroom",
      "label": "Primary bedroom",
-     "end": 40
+     "end": 40,
+     "frame": "/frames/OKWSDc86FHk_c0370.jpg"
     },
     {
      "start": 40,
      "room": "bathroom",
      "label": "Bathroom",
-     "end": 43
+     "end": 43,
+     "frame": "/frames/OKWSDc86FHk_c0400.jpg"
     },
     {
      "start": 43,
      "room": "bedroom",
      "label": "Bedroom",
-     "end": 45
+     "end": 45,
+     "frame": "/frames/OKWSDc86FHk_c0430.jpg"
     },
     {
      "start": 45,
      "room": "bedroom",
      "label": "Nursery",
-     "end": 49
+     "end": 49,
+     "frame": "/frames/OKWSDc86FHk_c0450.jpg"
     },
     {
      "start": 49,
      "room": "bathroom",
      "label": "Bathroom",
-     "end": 52
+     "end": 52,
+     "frame": "/frames/OKWSDc86FHk_c0490.jpg"
     },
     {
      "start": 52,
      "room": "backyard",
      "label": "Balcony",
-     "end": 70.8
+     "end": 70.8,
+     "frame": "/frames/OKWSDc86FHk_c0520.jpg"
     }
    ],
    "summary": "This modern Surrey townhouse features an open-concept living area with dark wood floors, a cozy electric fireplace, and abundant natural light. It also offers a private balcony with community views in the desirable Clayton Heights neighborhood.",
@@ -9530,13 +10110,15 @@
      "start": 4,
      "room": "exterior",
      "label": "Front exterior",
-     "end": 7
+     "end": 7,
+     "frame": "/frames/D_7Td8HdCCc_c0040.jpg"
     },
     {
      "start": 7,
      "room": "view",
      "label": "Aerial view",
-     "end": 9
+     "end": 9,
+     "frame": "/frames/D_7Td8HdCCc_c0070.jpg"
     },
     {
      "start": 9,
@@ -9548,7 +10130,8 @@
      "start": 11,
      "room": "backyard",
      "label": "Backyard",
-     "end": 13
+     "end": 13,
+     "frame": "/frames/D_7Td8HdCCc_c0110.jpg"
     },
     {
      "start": 13,
@@ -9572,151 +10155,176 @@
      "start": 24,
      "room": "view",
      "label": "Aerial view",
-     "end": 28
+     "end": 28,
+     "frame": "/frames/D_7Td8HdCCc_c0240.jpg"
     },
     {
      "start": 28,
      "room": "bedroom",
      "label": "Bedroom",
-     "end": 30
+     "end": 30,
+     "frame": "/frames/D_7Td8HdCCc_c0280.jpg"
     },
     {
      "start": 30,
      "room": "entry",
      "label": "Entryway",
-     "end": 37
+     "end": 37,
+     "frame": "/frames/D_7Td8HdCCc_c0300.jpg"
     },
     {
      "start": 37,
      "room": "living",
      "label": "Living room",
-     "end": 40
+     "end": 40,
+     "frame": "/frames/D_7Td8HdCCc_c0370.jpg"
     },
     {
      "start": 40,
      "room": "kitchen",
      "label": "Kitchen",
-     "end": 42
+     "end": 42,
+     "frame": "/frames/D_7Td8HdCCc_c0400.jpg"
     },
     {
      "start": 42,
      "room": "bathroom",
      "label": "Bathroom",
-     "end": 45
+     "end": 45,
+     "frame": "/frames/D_7Td8HdCCc_c0420.jpg"
     },
     {
      "start": 45,
      "room": "exterior",
      "label": "Front exterior",
-     "end": 49
+     "end": 49,
+     "frame": "/frames/D_7Td8HdCCc_c0450.jpg"
     },
     {
      "start": 49,
      "room": "living",
      "label": "Sunroom",
-     "end": 52
+     "end": 52,
+     "frame": "/frames/D_7Td8HdCCc_c0490.jpg"
     },
     {
      "start": 52,
      "room": "view",
      "label": "View",
-     "end": 55
+     "end": 55,
+     "frame": "/frames/D_7Td8HdCCc_c0520.jpg"
     },
     {
      "start": 55,
      "room": "exterior",
      "label": "Side gate",
-     "end": 58
+     "end": 58,
+     "frame": "/frames/D_7Td8HdCCc_c0550.jpg"
     },
     {
      "start": 58,
      "room": "entry",
      "label": "Entryway",
-     "end": 62
+     "end": 62,
+     "frame": "/frames/D_7Td8HdCCc_c0580.jpg"
     },
     {
      "start": 62,
      "room": "entry",
      "label": "Stairs",
-     "end": 66
+     "end": 66,
+     "frame": "/frames/D_7Td8HdCCc_c0620.jpg"
     },
     {
      "start": 66,
      "room": "living",
      "label": "Living room",
-     "end": 69
+     "end": 69,
+     "frame": "/frames/D_7Td8HdCCc_c0660.jpg"
     },
     {
      "start": 69,
      "room": "living",
      "label": "Sunroom",
-     "end": 72
+     "end": 72,
+     "frame": "/frames/D_7Td8HdCCc_c0690.jpg"
     },
     {
      "start": 72,
      "room": "living",
      "label": "Living room",
-     "end": 77
+     "end": 77,
+     "frame": "/frames/D_7Td8HdCCc_c0720.jpg"
     },
     {
      "start": 77,
      "room": "living",
      "label": "Fireplace",
-     "end": 86
+     "end": 86,
+     "frame": "/frames/D_7Td8HdCCc_c0770.jpg"
     },
     {
      "start": 86,
      "room": "kitchen",
      "label": "Kitchen",
-     "end": 109
+     "end": 109,
+     "frame": "/frames/D_7Td8HdCCc_c0860.jpg"
     },
     {
      "start": 109,
      "room": "exterior",
      "label": "Side gate",
-     "end": 113
+     "end": 113,
+     "frame": "/frames/D_7Td8HdCCc_c1090.jpg"
     },
     {
      "start": 113,
      "room": "backyard",
      "label": "Backyard",
-     "end": 122
+     "end": 122,
+     "frame": "/frames/D_7Td8HdCCc_c1130.jpg"
     },
     {
      "start": 122,
      "room": "backyard",
      "label": "Garden",
-     "end": 125
+     "end": 125,
+     "frame": "/frames/D_7Td8HdCCc_c1220.jpg"
     },
     {
      "start": 125,
      "room": "backyard",
      "label": "BBQ area",
-     "end": 130
+     "end": 130,
+     "frame": "/frames/D_7Td8HdCCc_c1250.jpg"
     },
     {
      "start": 130,
      "room": "backyard",
      "label": "Pond",
-     "end": 134
+     "end": 134,
+     "frame": "/frames/D_7Td8HdCCc_c1300.jpg"
     },
     {
      "start": 134,
      "room": "backyard",
      "label": "Backyard",
-     "end": 136
+     "end": 136,
+     "frame": "/frames/D_7Td8HdCCc_c1340.jpg"
     },
     {
      "start": 136,
      "room": "exterior",
      "label": "Exterior stairs",
-     "end": 138
+     "end": 138,
+     "frame": "/frames/D_7Td8HdCCc_c1360.jpg"
     },
     {
      "start": 138,
      "room": "backyard",
      "label": "Backyard",
-     "end": 159
+     "end": 159,
+     "frame": "/frames/D_7Td8HdCCc_c1380.jpg"
     },
     {
      "start": 159,
@@ -9728,7 +10336,8 @@
      "start": 166,
      "room": "view",
      "label": "Aerial view",
-     "end": 174
+     "end": 174,
+     "frame": "/frames/D_7Td8HdCCc_c1660.jpg"
     },
     {
      "start": 174,
@@ -9872,7 +10481,8 @@
      "start": 0,
      "room": "exterior",
      "label": "Exterior",
-     "end": 3
+     "end": 3,
+     "frame": "/frames/OUcE_MRkn7M_c0000.jpg"
     },
     {
      "start": 3,
@@ -9884,25 +10494,29 @@
      "start": 9,
      "room": "entry",
      "label": "Foyer",
-     "end": 13
+     "end": 13,
+     "frame": "/frames/OUcE_MRkn7M_c0090.jpg"
     },
     {
      "start": 13,
      "room": "living",
      "label": "Living room",
-     "end": 25
+     "end": 25,
+     "frame": "/frames/OUcE_MRkn7M_c0130.jpg"
     },
     {
      "start": 25,
      "room": "kitchen",
      "label": "Kitchen",
-     "end": 39
+     "end": 39,
+     "frame": "/frames/OUcE_MRkn7M_c0250.jpg"
     },
     {
      "start": 39,
      "room": "backyard",
      "label": "Backyard",
-     "end": 51
+     "end": 51,
+     "frame": "/frames/OUcE_MRkn7M_c0390.jpg"
     },
     {
      "start": 51,
@@ -9914,73 +10528,85 @@
      "start": 54,
      "room": "bathroom",
      "label": "Bathroom",
-     "end": 56
+     "end": 56,
+     "frame": "/frames/OUcE_MRkn7M_c0540.jpg"
     },
     {
      "start": 56,
      "room": "entry",
      "label": "Staircase",
-     "end": 60
+     "end": 60,
+     "frame": "/frames/OUcE_MRkn7M_c0560.jpg"
     },
     {
      "start": 60,
      "room": "bedroom",
      "label": "Primary bedroom",
-     "end": 62
+     "end": 62,
+     "frame": "/frames/OUcE_MRkn7M_c0600.jpg"
     },
     {
      "start": 62,
      "room": "bedroom",
      "label": "Bedroom",
-     "end": 64
+     "end": 64,
+     "frame": "/frames/OUcE_MRkn7M_c0620.jpg"
     },
     {
      "start": 64,
      "room": "bathroom",
      "label": "Bathroom",
-     "end": 69
+     "end": 69,
+     "frame": "/frames/OUcE_MRkn7M_c0640.jpg"
     },
     {
      "start": 69,
      "room": "entry",
      "label": "Staircase",
-     "end": 71
+     "end": 71,
+     "frame": "/frames/OUcE_MRkn7M_c0690.jpg"
     },
     {
      "start": 71,
      "room": "basement",
      "label": "Basement",
-     "end": 77
+     "end": 77,
+     "frame": "/frames/OUcE_MRkn7M_c0710.jpg"
     },
     {
      "start": 77,
      "room": "basement",
      "label": "Basement bar",
-     "end": 80
+     "end": 80,
+     "frame": "/frames/OUcE_MRkn7M_c0770.jpg"
     },
     {
      "start": 80,
      "room": "bathroom",
      "label": "Bathroom",
-     "end": 85
+     "end": 85,
+     "frame": "/frames/OUcE_MRkn7M_c0800.jpg"
     },
     {
      "start": 85,
      "room": "basement",
      "label": "Basement",
-     "end": 90
+     "end": 90,
+     "frame": "/frames/OUcE_MRkn7M_c0850.jpg"
     },
     {
      "start": 90,
      "room": "entry",
      "label": "Foyer",
-     "end": 96
+     "end": 96,
+     "frame": "/frames/OUcE_MRkn7M_c0900.jpg"
     },
     {
      "start": 96,
      "room": "exterior",
      "label": "Exterior",
-     "end": 99
+     "end": 99,
+     "frame": "/frames/OUcE_MRkn7M_c0960.jpg"
     },
     {
      "start": 99,
@@ -10091,73 +10717,85 @@
      "start": 4,
      "room": "exterior",
      "label": "Front exterior",
-     "end": 13
+     "end": 13,
+     "frame": "/frames/I2qrsxKbzeA_c0040.jpg"
     },
     {
      "start": 13,
      "room": "view",
      "label": "Aerial view",
-     "end": 17
+     "end": 17,
+     "frame": "/frames/I2qrsxKbzeA_c0130.jpg"
     },
     {
      "start": 17,
      "room": "exterior",
      "label": "Front exterior",
-     "end": 20
+     "end": 20,
+     "frame": "/frames/I2qrsxKbzeA_c0170.jpg"
     },
     {
      "start": 20,
      "room": "view",
      "label": "City view",
-     "end": 24
+     "end": 24,
+     "frame": "/frames/I2qrsxKbzeA_c0200.jpg"
     },
     {
      "start": 24,
      "room": "exterior",
      "label": "Front exterior",
-     "end": 27
+     "end": 27,
+     "frame": "/frames/I2qrsxKbzeA_c0240.jpg"
     },
     {
      "start": 27,
      "room": "living",
      "label": "Living room",
-     "end": 31
+     "end": 31,
+     "frame": "/frames/I2qrsxKbzeA_c0270.jpg"
     },
     {
      "start": 31,
      "room": "kitchen",
      "label": "Kitchen",
-     "end": 33
+     "end": 33,
+     "frame": "/frames/I2qrsxKbzeA_c0310.jpg"
     },
     {
      "start": 33,
      "room": "bedroom",
      "label": "Bedroom",
-     "end": 36
+     "end": 36,
+     "frame": "/frames/I2qrsxKbzeA_c0330.jpg"
     },
     {
      "start": 36,
      "room": "bathroom",
      "label": "Bathroom",
-     "end": 38
+     "end": 38,
+     "frame": "/frames/I2qrsxKbzeA_c0360.jpg"
     },
     {
      "start": 38,
      "room": "living",
      "label": "Sunroom",
-     "end": 45
+     "end": 45,
+     "frame": "/frames/I2qrsxKbzeA_c0380.jpg"
     },
     {
      "start": 45,
      "room": "bedroom",
      "label": "Mortgage helper",
-     "end": 53
+     "end": 53,
+     "frame": "/frames/I2qrsxKbzeA_c0450.jpg"
     },
     {
      "start": 53,
      "room": "backyard",
      "label": "Backyard",
-     "end": 67
+     "end": 67,
+     "frame": "/frames/I2qrsxKbzeA_c0530.jpg"
     },
     {
      "start": 67,
@@ -10292,79 +10930,92 @@
      "start": 19,
      "room": "exterior",
      "label": "Exterior",
-     "end": 27
+     "end": 27,
+     "frame": "/frames/3bbHcGjiCD8_c0190.jpg"
     },
     {
      "start": 27,
      "room": "living",
      "label": "Living room",
-     "end": 33
+     "end": 33,
+     "frame": "/frames/3bbHcGjiCD8_c0270.jpg"
     },
     {
      "start": 33,
      "room": "dining",
      "label": "Dining area",
-     "end": 37
+     "end": 37,
+     "frame": "/frames/3bbHcGjiCD8_c0330.jpg"
     },
     {
      "start": 37,
      "room": "kitchen",
      "label": "Kitchen",
-     "end": 44
+     "end": 44,
+     "frame": "/frames/3bbHcGjiCD8_c0370.jpg"
     },
     {
      "start": 44,
      "room": "office",
      "label": "Office",
-     "end": 46
+     "end": 46,
+     "frame": "/frames/3bbHcGjiCD8_c0440.jpg"
     },
     {
      "start": 46,
      "room": "laundry",
      "label": "Laundry room",
-     "end": 49
+     "end": 49,
+     "frame": "/frames/3bbHcGjiCD8_c0460.jpg"
     },
     {
      "start": 49,
      "room": "bedroom",
      "label": "Primary bedroom",
-     "end": 53
+     "end": 53,
+     "frame": "/frames/3bbHcGjiCD8_c0490.jpg"
     },
     {
      "start": 53,
      "room": "bathroom",
      "label": "Ensuite",
-     "end": 56
+     "end": 56,
+     "frame": "/frames/3bbHcGjiCD8_c0530.jpg"
     },
     {
      "start": 56,
      "room": "bedroom",
      "label": "Second bedroom",
-     "end": 60
+     "end": 60,
+     "frame": "/frames/3bbHcGjiCD8_c0560.jpg"
     },
     {
      "start": 60,
      "room": "bathroom",
      "label": "Bathroom",
-     "end": 63
+     "end": 63,
+     "frame": "/frames/3bbHcGjiCD8_c0600.jpg"
     },
     {
      "start": 63,
      "room": "office",
      "label": "Office",
-     "end": 65
+     "end": 65,
+     "frame": "/frames/3bbHcGjiCD8_c0630.jpg"
     },
     {
      "start": 65,
      "room": "laundry",
      "label": "Laundry room",
-     "end": 67
+     "end": 67,
+     "frame": "/frames/3bbHcGjiCD8_c0650.jpg"
     },
     {
      "start": 67,
      "room": "backyard",
      "label": "Backyard",
-     "end": 102.1
+     "end": 102.1,
+     "frame": "/frames/3bbHcGjiCD8_c0670.jpg"
     }
    ],
    "summary": "This single-level bungalow features light wood laminate flooring, white cabinetry, and modern interior fixtures. The sunny backyard offers a covered wooden deck, hot tub, artificial turf, and privacy hedges.",
@@ -10525,19 +11176,22 @@
      "start": 0,
      "room": "exterior",
      "label": "Aerial view",
-     "end": 18
+     "end": 18,
+     "frame": "/frames/2LAyRWvU2OY_c0000.jpg"
     },
     {
      "start": 18,
      "room": "entry",
      "label": "Entryway",
-     "end": 36
+     "end": 36,
+     "frame": "/frames/2LAyRWvU2OY_c0180.jpg"
     },
     {
      "start": 36,
      "room": "kitchen",
      "label": "Kitchen",
-     "end": 45
+     "end": 45,
+     "frame": "/frames/2LAyRWvU2OY_c0360.jpg"
     },
     {
      "start": 45,
@@ -10549,55 +11203,64 @@
      "start": 48,
      "room": "bathroom",
      "label": "Powder room",
-     "end": 50
+     "end": 50,
+     "frame": "/frames/2LAyRWvU2OY_c0480.jpg"
     },
     {
      "start": 50,
      "room": "bedroom",
      "label": "Primary bedroom",
-     "end": 56
+     "end": 56,
+     "frame": "/frames/2LAyRWvU2OY_c0500.jpg"
     },
     {
      "start": 56,
      "room": "bathroom",
      "label": "Ensuite",
-     "end": 63
+     "end": 63,
+     "frame": "/frames/2LAyRWvU2OY_c0560.jpg"
     },
     {
      "start": 63,
      "room": "entry",
      "label": "Staircase",
-     "end": 78
+     "end": 78,
+     "frame": "/frames/2LAyRWvU2OY_c0630.jpg"
     },
     {
      "start": 78,
      "room": "bedroom",
      "label": "Upper bedroom",
-     "end": 90
+     "end": 90,
+     "frame": "/frames/2LAyRWvU2OY_c0780.jpg"
     },
     {
      "start": 90,
      "room": "bathroom",
      "label": "Upper bathroom",
-     "end": 93
+     "end": 93,
+     "frame": "/frames/2LAyRWvU2OY_c0900.jpg"
     },
     {
      "start": 93,
      "room": "backyard",
      "label": "Balcony",
-     "end": 107
+     "end": 107,
+     "frame": "/frames/2LAyRWvU2OY_c0930.jpg"
     },
     {
      "start": 107,
      "room": "backyard",
      "label": "Patio",
-     "end": 123
+     "end": 123,
+     "frame": "/frames/2LAyRWvU2OY_c1070.jpg"
     },
     {
      "start": 123,
      "room": "exterior",
      "label": "Aerial view",
-     "end": 137
+     "end": 137,
+     "frame": "/frames/2LAyRWvU2OY_c1230.jpg"
     },
     {
      "start": 137,
@@ -10694,55 +11357,64 @@
      "start": 0,
      "room": "exterior",
      "label": "Exterior",
-     "end": 8
+     "end": 8,
+     "frame": "/frames/Y-orbsMwDsQ_c0000.jpg"
     },
     {
      "start": 8,
      "room": "view",
      "label": "Aerial view",
-     "end": 11
+     "end": 11,
+     "frame": "/frames/Y-orbsMwDsQ_c0080.jpg"
     },
     {
      "start": 11,
      "room": "living",
      "label": "Living room",
-     "end": 13
+     "end": 13,
+     "frame": "/frames/Y-orbsMwDsQ_c0110.jpg"
     },
     {
      "start": 13,
      "room": "kitchen",
      "label": "Kitchen",
-     "end": 23
+     "end": 23,
+     "frame": "/frames/Y-orbsMwDsQ_c0130.jpg"
     },
     {
      "start": 23,
      "room": "bedroom",
      "label": "Bedroom",
-     "end": 26
+     "end": 26,
+     "frame": "/frames/Y-orbsMwDsQ_c0230.jpg"
     },
     {
      "start": 26,
      "room": "kitchen",
      "label": "Kitchen",
-     "end": 28
+     "end": 28,
+     "frame": "/frames/Y-orbsMwDsQ_c0260.jpg"
     },
     {
      "start": 28,
      "room": "living",
      "label": "Living room",
-     "end": 33
+     "end": 33,
+     "frame": "/frames/Y-orbsMwDsQ_c0280.jpg"
     },
     {
      "start": 33,
      "room": "kitchen",
      "label": "Kitchen",
-     "end": 36
+     "end": 36,
+     "frame": "/frames/Y-orbsMwDsQ_c0330.jpg"
     },
     {
      "start": 36,
      "room": "laundry",
      "label": "Laundry room",
-     "end": 39
+     "end": 39,
+     "frame": "/frames/Y-orbsMwDsQ_c0360.jpg"
     },
     {
      "start": 39,
@@ -10754,13 +11426,15 @@
      "start": 46,
      "room": "view",
      "label": "Aerial view",
-     "end": 48
+     "end": 48,
+     "frame": "/frames/Y-orbsMwDsQ_c0460.jpg"
     },
     {
      "start": 48,
      "room": "backyard",
      "label": "Backyard",
-     "end": 51
+     "end": 51,
+     "frame": "/frames/Y-orbsMwDsQ_c0480.jpg"
     },
     {
      "start": 51,
@@ -10918,73 +11592,85 @@
      "start": 44,
      "room": "exterior",
      "label": "Exterior",
-     "end": 46
+     "end": 46,
+     "frame": "/frames/cOin8XMcmcU_c0440.jpg"
     },
     {
      "start": 46,
      "room": "amenity",
      "label": "Playground",
-     "end": 49
+     "end": 49,
+     "frame": "/frames/cOin8XMcmcU_c0460.jpg"
     },
     {
      "start": 49,
      "room": "entry",
      "label": "Entry",
-     "end": 51
+     "end": 51,
+     "frame": "/frames/cOin8XMcmcU_c0490.jpg"
     },
     {
      "start": 51,
      "room": "backyard",
      "label": "Patio",
-     "end": 53
+     "end": 53,
+     "frame": "/frames/cOin8XMcmcU_c0510.jpg"
     },
     {
      "start": 53,
      "room": "entry",
      "label": "Front door",
-     "end": 57
+     "end": 57,
+     "frame": "/frames/cOin8XMcmcU_c0530.jpg"
     },
     {
      "start": 57,
      "room": "living",
      "label": "Living room",
-     "end": 71
+     "end": 71,
+     "frame": "/frames/cOin8XMcmcU_c0570.jpg"
     },
     {
      "start": 71,
      "room": "kitchen",
      "label": "Kitchen",
-     "end": 82
+     "end": 82,
+     "frame": "/frames/cOin8XMcmcU_c0710.jpg"
     },
     {
      "start": 82,
      "room": "bathroom",
      "label": "Bathroom",
-     "end": 87
+     "end": 87,
+     "frame": "/frames/cOin8XMcmcU_c0820.jpg"
     },
     {
      "start": 87,
      "room": "bedroom",
      "label": "Bedroom",
-     "end": 95
+     "end": 95,
+     "frame": "/frames/cOin8XMcmcU_c0870.jpg"
     },
     {
      "start": 95,
      "room": "bathroom",
      "label": "Ensuite",
-     "end": 100
+     "end": 100,
+     "frame": "/frames/cOin8XMcmcU_c0950.jpg"
     },
     {
      "start": 100,
      "room": "bedroom",
      "label": "Bedroom",
-     "end": 104
+     "end": 104,
+     "frame": "/frames/cOin8XMcmcU_c1000.jpg"
     },
     {
      "start": 104,
      "room": "backyard",
      "label": "Patio",
-     "end": 110
+     "end": 110,
+     "frame": "/frames/cOin8XMcmcU_c1040.jpg"
     },
     {
      "start": 110,
@@ -11117,7 +11803,8 @@
      "start": 0,
      "room": "exterior",
      "label": "Exterior",
-     "end": 9
+     "end": 9,
+     "frame": "/frames/9LNkVG1YMk8_c0000.jpg"
     },
     {
      "start": 9,
@@ -11129,25 +11816,29 @@
      "start": 12,
      "room": "view",
      "label": "View",
-     "end": 15
+     "end": 15,
+     "frame": "/frames/9LNkVG1YMk8_c0120.jpg"
     },
     {
      "start": 15,
      "room": "exterior",
      "label": "Exterior",
-     "end": 22
+     "end": 22,
+     "frame": "/frames/9LNkVG1YMk8_c0150.jpg"
     },
     {
      "start": 22,
      "room": "backyard",
      "label": "Backyard",
-     "end": 27
+     "end": 27,
+     "frame": "/frames/9LNkVG1YMk8_c0220.jpg"
     },
     {
      "start": 27,
      "room": "exterior",
      "label": "Exterior",
-     "end": 29
+     "end": 29,
+     "frame": "/frames/9LNkVG1YMk8_c0270.jpg"
     },
     {
      "start": 29,
@@ -11159,19 +11850,22 @@
      "start": 49,
      "room": "exterior",
      "label": "Exterior",
-     "end": 61
+     "end": 61,
+     "frame": "/frames/9LNkVG1YMk8_c0490.jpg"
     },
     {
      "start": 61,
      "room": "backyard",
      "label": "Backyard",
-     "end": 63
+     "end": 63,
+     "frame": "/frames/9LNkVG1YMk8_c0610.jpg"
     },
     {
      "start": 63,
      "room": "view",
      "label": "View",
-     "end": 66
+     "end": 66,
+     "frame": "/frames/9LNkVG1YMk8_c0630.jpg"
     },
     {
      "start": 66,
@@ -11183,7 +11877,8 @@
      "start": 70,
      "room": "view",
      "label": "View",
-     "end": 74
+     "end": 74,
+     "frame": "/frames/9LNkVG1YMk8_c0700.jpg"
     },
     {
      "start": 74,
@@ -11333,79 +12028,92 @@
      "start": 0,
      "room": "exterior",
      "label": "Exterior",
-     "end": 7
+     "end": 7,
+     "frame": "/frames/73qj_6Qhae0_c0000.jpg"
     },
     {
      "start": 7,
      "room": "kitchen",
      "label": "Kitchen",
-     "end": 20
+     "end": 20,
+     "frame": "/frames/73qj_6Qhae0_c0070.jpg"
     },
     {
      "start": 20,
      "room": "living",
      "label": "Living room",
-     "end": 29
+     "end": 29,
+     "frame": "/frames/73qj_6Qhae0_c0200.jpg"
     },
     {
      "start": 29,
      "room": "bathroom",
      "label": "Bathroom",
-     "end": 35
+     "end": 35,
+     "frame": "/frames/73qj_6Qhae0_c0290.jpg"
     },
     {
      "start": 35,
      "room": "backyard",
      "label": "Backyard",
-     "end": 49
+     "end": 49,
+     "frame": "/frames/73qj_6Qhae0_c0350.jpg"
     },
     {
      "start": 49,
      "room": "bedroom",
      "label": "Bedroom",
-     "end": 60
+     "end": 60,
+     "frame": "/frames/73qj_6Qhae0_c0490.jpg"
     },
     {
      "start": 60,
      "room": "bathroom",
      "label": "Bathroom",
-     "end": 70
+     "end": 70,
+     "frame": "/frames/73qj_6Qhae0_c0600.jpg"
     },
     {
      "start": 70,
      "room": "laundry",
      "label": "Laundry",
-     "end": 74
+     "end": 74,
+     "frame": "/frames/73qj_6Qhae0_c0700.jpg"
     },
     {
      "start": 74,
      "room": "bedroom",
      "label": "Bedroom",
-     "end": 81
+     "end": 81,
+     "frame": "/frames/73qj_6Qhae0_c0740.jpg"
     },
     {
      "start": 81,
      "room": "bedroom",
      "label": "Primary bedroom",
-     "end": 87
+     "end": 87,
+     "frame": "/frames/73qj_6Qhae0_c0810.jpg"
     },
     {
      "start": 87,
      "room": "bedroom",
      "label": "Walk-in closet",
-     "end": 90
+     "end": 90,
+     "frame": "/frames/73qj_6Qhae0_c0870.jpg"
     },
     {
      "start": 90,
      "room": "bathroom",
      "label": "Ensuite",
-     "end": 104
+     "end": 104,
+     "frame": "/frames/73qj_6Qhae0_c0900.jpg"
     },
     {
      "start": 104,
      "room": "backyard",
      "label": "Balcony",
-     "end": 112
+     "end": 112,
+     "frame": "/frames/73qj_6Qhae0_c1040.jpg"
     },
     {
      "start": 112,
@@ -11536,67 +12244,78 @@
      "start": 3,
      "room": "entry",
      "label": "Entryway",
-     "end": 8
+     "end": 8,
+     "frame": "/frames/z4P-cOSaFBc_c0030.jpg"
     },
     {
      "start": 8,
      "room": "bathroom",
      "label": "Bathroom",
-     "end": 15
+     "end": 15,
+     "frame": "/frames/z4P-cOSaFBc_c0080.jpg"
     },
     {
      "start": 15,
      "room": "dining",
      "label": "Dining area",
-     "end": 20
+     "end": 20,
+     "frame": "/frames/z4P-cOSaFBc_c0150.jpg"
     },
     {
      "start": 20,
      "room": "living",
      "label": "Living room",
-     "end": 23
+     "end": 23,
+     "frame": "/frames/z4P-cOSaFBc_c0200.jpg"
     },
     {
      "start": 23,
      "room": "kitchen",
      "label": "Kitchen",
-     "end": 33
+     "end": 33,
+     "frame": "/frames/z4P-cOSaFBc_c0230.jpg"
     },
     {
      "start": 33,
      "room": "living",
      "label": "Living room",
-     "end": 43
+     "end": 43,
+     "frame": "/frames/z4P-cOSaFBc_c0330.jpg"
     },
     {
      "start": 43,
      "room": "backyard",
      "label": "Balcony",
-     "end": 57
+     "end": 57,
+     "frame": "/frames/z4P-cOSaFBc_c0430.jpg"
     },
     {
      "start": 57,
      "room": "bedroom",
      "label": "Bedroom",
-     "end": 64
+     "end": 64,
+     "frame": "/frames/z4P-cOSaFBc_c0570.jpg"
     },
     {
      "start": 64,
      "room": "laundry",
      "label": "Laundry closet",
-     "end": 70
+     "end": 70,
+     "frame": "/frames/z4P-cOSaFBc_c0640.jpg"
     },
     {
      "start": 70,
      "room": "bedroom",
      "label": "Bedroom",
-     "end": 81
+     "end": 81,
+     "frame": "/frames/z4P-cOSaFBc_c0700.jpg"
     },
     {
      "start": 81,
      "room": "bathroom",
      "label": "Bathroom",
-     "end": 89
+     "end": 89,
+     "frame": "/frames/z4P-cOSaFBc_c0810.jpg"
     },
     {
      "start": 89,
@@ -11720,79 +12439,92 @@
      "start": 0,
      "room": "view",
      "label": "Aerial view",
-     "end": 4
+     "end": 4,
+     "frame": "/frames/fo7NwLhtTOc_c0000.jpg"
     },
     {
      "start": 4,
      "room": "exterior",
      "label": "Front exterior",
-     "end": 15
+     "end": 15,
+     "frame": "/frames/fo7NwLhtTOc_c0040.jpg"
     },
     {
      "start": 15,
      "room": "living",
      "label": "Living room",
-     "end": 21
+     "end": 21,
+     "frame": "/frames/fo7NwLhtTOc_c0150.jpg"
     },
     {
      "start": 21,
      "room": "kitchen",
      "label": "Kitchen",
-     "end": 30
+     "end": 30,
+     "frame": "/frames/fo7NwLhtTOc_c0210.jpg"
     },
     {
      "start": 30,
      "room": "bathroom",
      "label": "Bathroom",
-     "end": 34
+     "end": 34,
+     "frame": "/frames/fo7NwLhtTOc_c0300.jpg"
     },
     {
      "start": 34,
      "room": "bedroom",
      "label": "Primary bedroom",
-     "end": 41
+     "end": 41,
+     "frame": "/frames/fo7NwLhtTOc_c0340.jpg"
     },
     {
      "start": 41,
      "room": "bathroom",
      "label": "Ensuite",
-     "end": 45
+     "end": 45,
+     "frame": "/frames/fo7NwLhtTOc_c0410.jpg"
     },
     {
      "start": 45,
      "room": "bedroom",
      "label": "Bedroom",
-     "end": 51
+     "end": 51,
+     "frame": "/frames/fo7NwLhtTOc_c0450.jpg"
     },
     {
      "start": 51,
      "room": "entry",
      "label": "Entryway",
-     "end": 53
+     "end": 53,
+     "frame": "/frames/fo7NwLhtTOc_c0510.jpg"
     },
     {
      "start": 53,
      "room": "backyard",
      "label": "Patio",
-     "end": 56
+     "end": 56,
+     "frame": "/frames/fo7NwLhtTOc_c0530.jpg"
     },
     {
      "start": 56,
      "room": "backyard",
      "label": "Backyard",
-     "end": 68
+     "end": 68,
+     "frame": "/frames/fo7NwLhtTOc_c0560.jpg"
     },
     {
      "start": 68,
      "room": "garage",
      "label": "Garage",
-     "end": 74
+     "end": 74,
+     "frame": "/frames/fo7NwLhtTOc_c0680.jpg"
     },
     {
      "start": 74,
      "room": "view",
      "label": "Aerial view",
-     "end": 95
+     "end": 95,
+     "frame": "/frames/fo7NwLhtTOc_c0740.jpg"
     },
     {
      "start": 95,
@@ -11900,73 +12632,85 @@
      "start": 8,
      "room": "living",
      "label": "Living room",
-     "end": 10
+     "end": 10,
+     "frame": "/frames/e6qCpshmtmQ_c0080.jpg"
     },
     {
      "start": 10,
      "room": "kitchen",
      "label": "Kitchen",
-     "end": 18
+     "end": 18,
+     "frame": "/frames/e6qCpshmtmQ_c0100.jpg"
     },
     {
      "start": 18,
      "room": "bathroom",
      "label": "Bathroom",
-     "end": 22
+     "end": 22,
+     "frame": "/frames/e6qCpshmtmQ_c0180.jpg"
     },
     {
      "start": 22,
      "room": "backyard",
      "label": "Balcony",
-     "end": 25
+     "end": 25,
+     "frame": "/frames/e6qCpshmtmQ_c0220.jpg"
     },
     {
      "start": 25,
      "room": "bedroom",
      "label": "Bedroom",
-     "end": 31
+     "end": 31,
+     "frame": "/frames/e6qCpshmtmQ_c0250.jpg"
     },
     {
      "start": 31,
      "room": "laundry",
      "label": "Laundry",
-     "end": 33
+     "end": 33,
+     "frame": "/frames/e6qCpshmtmQ_c0310.jpg"
     },
     {
      "start": 33,
      "room": "view",
      "label": "View",
-     "end": 41
+     "end": 41,
+     "frame": "/frames/e6qCpshmtmQ_c0330.jpg"
     },
     {
      "start": 41,
      "room": "amenity",
      "label": "Courtyard",
-     "end": 43
+     "end": 43,
+     "frame": "/frames/e6qCpshmtmQ_c0410.jpg"
     },
     {
      "start": 43,
      "room": "amenity",
      "label": "Lounge",
-     "end": 46
+     "end": 46,
+     "frame": "/frames/e6qCpshmtmQ_c0430.jpg"
     },
     {
      "start": 46,
      "room": "amenity",
      "label": "Gym",
-     "end": 48
+     "end": 48,
+     "frame": "/frames/e6qCpshmtmQ_c0460.jpg"
     },
     {
      "start": 48,
      "room": "amenity",
      "label": "Basketball court",
-     "end": 50
+     "end": 50,
+     "frame": "/frames/e6qCpshmtmQ_c0480.jpg"
     },
     {
      "start": 50,
      "room": "amenity",
      "label": "Outdoor seating",
-     "end": 55
+     "end": 55,
+     "frame": "/frames/e6qCpshmtmQ_c0500.jpg"
     },
     {
      "start": 55,
@@ -12092,19 +12836,22 @@
      "start": 3,
      "room": "entry",
      "label": "Building entrance",
-     "end": 5
+     "end": 5,
+     "frame": "/frames/EkU5olml9M8_c0030.jpg"
     },
     {
      "start": 5,
      "room": "exterior",
      "label": "Exterior view",
-     "end": 9
+     "end": 9,
+     "frame": "/frames/EkU5olml9M8_c0050.jpg"
     },
     {
      "start": 9,
      "room": "amenity",
      "label": "Rooftop terrace",
-     "end": 13
+     "end": 13,
+     "frame": "/frames/EkU5olml9M8_c0090.jpg"
     },
     {
      "start": 13,
@@ -12116,61 +12863,71 @@
      "start": 17,
      "room": "kitchen",
      "label": "Kitchen",
-     "end": 26
+     "end": 26,
+     "frame": "/frames/EkU5olml9M8_c0170.jpg"
     },
     {
      "start": 26,
      "room": "bedroom",
      "label": "Bedroom",
-     "end": 31
+     "end": 31,
+     "frame": "/frames/EkU5olml9M8_c0260.jpg"
     },
     {
      "start": 31,
      "room": "bathroom",
      "label": "Bathroom",
-     "end": 37
+     "end": 37,
+     "frame": "/frames/EkU5olml9M8_c0310.jpg"
     },
     {
      "start": 37,
      "room": "bedroom",
      "label": "Bedroom",
-     "end": 41
+     "end": 41,
+     "frame": "/frames/EkU5olml9M8_c0370.jpg"
     },
     {
      "start": 41,
      "room": "bathroom",
      "label": "Bathroom",
-     "end": 47
+     "end": 47,
+     "frame": "/frames/EkU5olml9M8_c0410.jpg"
     },
     {
      "start": 47,
      "room": "laundry",
      "label": "Laundry",
-     "end": 50
+     "end": 50,
+     "frame": "/frames/EkU5olml9M8_c0470.jpg"
     },
     {
      "start": 50,
      "room": "living",
      "label": "Living room",
-     "end": 53
+     "end": 53,
+     "frame": "/frames/EkU5olml9M8_c0500.jpg"
     },
     {
      "start": 53,
      "room": "backyard",
      "label": "Balcony",
-     "end": 73
+     "end": 73,
+     "frame": "/frames/EkU5olml9M8_c0530.jpg"
     },
     {
      "start": 73,
      "room": "entry",
      "label": "Building entrance",
-     "end": 75
+     "end": 75,
+     "frame": "/frames/EkU5olml9M8_c0730.jpg"
     },
     {
      "start": 75,
      "room": "view",
      "label": "Aerial view",
-     "end": 78
+     "end": 78,
+     "frame": "/frames/EkU5olml9M8_c0750.jpg"
     },
     {
      "start": 78,
@@ -12413,7 +13170,8 @@
      "start": 10,
      "room": "amenity",
      "label": "Building model",
-     "end": 54
+     "end": 54,
+     "frame": "/frames/_zHBPkJ3tno_c0100.jpg"
     },
     {
      "start": 54,
@@ -12437,61 +13195,71 @@
      "start": 78,
      "room": "entry",
      "label": "Entry closet",
-     "end": 84
+     "end": 84,
+     "frame": "/frames/_zHBPkJ3tno_c0780.jpg"
     },
     {
      "start": 84,
      "room": "laundry",
      "label": "Laundry",
-     "end": 92
+     "end": 92,
+     "frame": "/frames/_zHBPkJ3tno_c0840.jpg"
     },
     {
      "start": 92,
      "room": "bedroom",
      "label": "Primary bedroom",
-     "end": 105
+     "end": 105,
+     "frame": "/frames/_zHBPkJ3tno_c0920.jpg"
     },
     {
      "start": 105,
      "room": "bathroom",
      "label": "Primary ensuite",
-     "end": 124
+     "end": 124,
+     "frame": "/frames/_zHBPkJ3tno_c1050.jpg"
     },
     {
      "start": 124,
      "room": "bedroom",
      "label": "Second bedroom",
-     "end": 134
+     "end": 134,
+     "frame": "/frames/_zHBPkJ3tno_c1240.jpg"
     },
     {
      "start": 134,
      "room": "office",
      "label": "Den",
-     "end": 163
+     "end": 163,
+     "frame": "/frames/_zHBPkJ3tno_c1340.jpg"
     },
     {
      "start": 163,
      "room": "bathroom",
      "label": "Second bathroom",
-     "end": 170
+     "end": 170,
+     "frame": "/frames/_zHBPkJ3tno_c1630.jpg"
     },
     {
      "start": 170,
      "room": "living",
      "label": "Living area",
-     "end": 176
+     "end": 176,
+     "frame": "/frames/_zHBPkJ3tno_c1700.jpg"
     },
     {
      "start": 176,
      "room": "kitchen",
      "label": "Kitchen",
-     "end": 213
+     "end": 213,
+     "frame": "/frames/_zHBPkJ3tno_c1760.jpg"
     },
     {
      "start": 213,
      "room": "backyard",
      "label": "Balcony",
-     "end": 237.8
+     "end": 237.8,
+     "frame": "/frames/_zHBPkJ3tno_c2130.jpg"
     }
    ],
    "summary": "This modern high-rise home in Burnaby offers an open-concept living space with dark cabinetry, white quartz countertops, and expansive windows with panoramic city and mountain views. Residents will enjoy multi-level amenity spaces, including a fitness center, yoga area, pool, and a master ensuite with a dual vanity.",
@@ -12628,67 +13396,78 @@
      "start": 0,
      "room": "exterior",
      "label": "Exterior",
-     "end": 10
+     "end": 10,
+     "frame": "/frames/1HgU7YOVlyw_c0000.jpg"
     },
     {
      "start": 10,
      "room": "living",
      "label": "Living room",
-     "end": 22
+     "end": 22,
+     "frame": "/frames/1HgU7YOVlyw_c0100.jpg"
     },
     {
      "start": 22,
      "room": "dining",
      "label": "Dining room",
-     "end": 26
+     "end": 26,
+     "frame": "/frames/1HgU7YOVlyw_c0220.jpg"
     },
     {
      "start": 26,
      "room": "kitchen",
      "label": "Kitchen",
-     "end": 33
+     "end": 33,
+     "frame": "/frames/1HgU7YOVlyw_c0260.jpg"
     },
     {
      "start": 33,
      "room": "bedroom",
      "label": "Bedroom",
-     "end": 44
+     "end": 44,
+     "frame": "/frames/1HgU7YOVlyw_c0330.jpg"
     },
     {
      "start": 44,
      "room": "bathroom",
      "label": "Bathroom",
-     "end": 51
+     "end": 51,
+     "frame": "/frames/1HgU7YOVlyw_c0440.jpg"
     },
     {
      "start": 51,
      "room": "basement",
      "label": "Basement",
-     "end": 64
+     "end": 64,
+     "frame": "/frames/1HgU7YOVlyw_c0510.jpg"
     },
     {
      "start": 64,
      "room": "bedroom",
      "label": "Bedroom",
-     "end": 83
+     "end": 83,
+     "frame": "/frames/1HgU7YOVlyw_c0640.jpg"
     },
     {
      "start": 83,
      "room": "laundry",
      "label": "Laundry room",
-     "end": 87
+     "end": 87,
+     "frame": "/frames/1HgU7YOVlyw_c0830.jpg"
     },
     {
      "start": 87,
      "room": "bathroom",
      "label": "Bathroom",
-     "end": 94
+     "end": 94,
+     "frame": "/frames/1HgU7YOVlyw_c0870.jpg"
     },
     {
      "start": 94,
      "room": "backyard",
      "label": "Backyard",
-     "end": 107
+     "end": 107,
+     "frame": "/frames/1HgU7YOVlyw_c0940.jpg"
     },
     {
      "start": 107,
@@ -12799,79 +13578,92 @@
      "start": 3,
      "room": "exterior",
      "label": "Building exterior",
-     "end": 6
+     "end": 6,
+     "frame": "/frames/s3dixKo9vRc_c0030.jpg"
     },
     {
      "start": 6,
      "room": "entry",
      "label": "Lobby",
-     "end": 8
+     "end": 8,
+     "frame": "/frames/s3dixKo9vRc_c0060.jpg"
     },
     {
      "start": 8,
      "room": "kitchen",
      "label": "Kitchen",
-     "end": 23
+     "end": 23,
+     "frame": "/frames/s3dixKo9vRc_c0080.jpg"
     },
     {
      "start": 23,
      "room": "living",
      "label": "Living room",
-     "end": 29
+     "end": 29,
+     "frame": "/frames/s3dixKo9vRc_c0230.jpg"
     },
     {
      "start": 29,
      "room": "backyard",
      "label": "Balcony",
-     "end": 32
+     "end": 32,
+     "frame": "/frames/s3dixKo9vRc_c0290.jpg"
     },
     {
      "start": 32,
      "room": "bathroom",
      "label": "Bathroom",
-     "end": 41
+     "end": 41,
+     "frame": "/frames/s3dixKo9vRc_c0320.jpg"
     },
     {
      "start": 41,
      "room": "bedroom",
      "label": "Bedroom",
-     "end": 47
+     "end": 47,
+     "frame": "/frames/s3dixKo9vRc_c0410.jpg"
     },
     {
      "start": 47,
      "room": "view",
      "label": "View",
-     "end": 55
+     "end": 55,
+     "frame": "/frames/s3dixKo9vRc_c0470.jpg"
     },
     {
      "start": 55,
      "room": "amenity",
      "label": "Gym",
-     "end": 58
+     "end": 58,
+     "frame": "/frames/s3dixKo9vRc_c0550.jpg"
     },
     {
      "start": 58,
      "room": "amenity",
      "label": "Outdoor lounge",
-     "end": 61
+     "end": 61,
+     "frame": "/frames/s3dixKo9vRc_c0580.jpg"
     },
     {
      "start": 61,
      "room": "amenity",
      "label": "Common room",
-     "end": 63
+     "end": 63,
+     "frame": "/frames/s3dixKo9vRc_c0610.jpg"
     },
     {
      "start": 63,
      "room": "amenity",
      "label": "Outdoor patio",
-     "end": 66
+     "end": 66,
+     "frame": "/frames/s3dixKo9vRc_c0630.jpg"
     },
     {
      "start": 66,
      "room": "exterior",
      "label": "Building exterior",
-     "end": 69
+     "end": 69,
+     "frame": "/frames/s3dixKo9vRc_c0660.jpg"
     },
     {
      "start": 69,
@@ -12979,85 +13771,99 @@
      "start": 0,
      "room": "view",
      "label": "Aerial view",
-     "end": 3
+     "end": 3,
+     "frame": "/frames/ndfIB2HMREE_c0000.jpg"
     },
     {
      "start": 3,
      "room": "exterior",
      "label": "Exterior",
-     "end": 8
+     "end": 8,
+     "frame": "/frames/ndfIB2HMREE_c0030.jpg"
     },
     {
      "start": 8,
      "room": "view",
      "label": "Aerial view",
-     "end": 16
+     "end": 16,
+     "frame": "/frames/ndfIB2HMREE_c0080.jpg"
     },
     {
      "start": 16,
      "room": "exterior",
      "label": "Exterior",
-     "end": 22
+     "end": 22,
+     "frame": "/frames/ndfIB2HMREE_c0160.jpg"
     },
     {
      "start": 22,
      "room": "kitchen",
      "label": "Kitchen",
-     "end": 30
+     "end": 30,
+     "frame": "/frames/ndfIB2HMREE_c0220.jpg"
     },
     {
      "start": 30,
      "room": "living",
      "label": "Living room",
-     "end": 34
+     "end": 34,
+     "frame": "/frames/ndfIB2HMREE_c0300.jpg"
     },
     {
      "start": 34,
      "room": "bedroom",
      "label": "Bedroom",
-     "end": 39
+     "end": 39,
+     "frame": "/frames/ndfIB2HMREE_c0340.jpg"
     },
     {
      "start": 39,
      "room": "office",
      "label": "Office",
-     "end": 41
+     "end": 41,
+     "frame": "/frames/ndfIB2HMREE_c0390.jpg"
     },
     {
      "start": 41,
      "room": "bathroom",
      "label": "Bathroom",
-     "end": 44
+     "end": 44,
+     "frame": "/frames/ndfIB2HMREE_c0410.jpg"
     },
     {
      "start": 44,
      "room": "office",
      "label": "Office",
-     "end": 48
+     "end": 48,
+     "frame": "/frames/ndfIB2HMREE_c0440.jpg"
     },
     {
      "start": 48,
      "room": "entry",
      "label": "Staircase",
-     "end": 50
+     "end": 50,
+     "frame": "/frames/ndfIB2HMREE_c0480.jpg"
     },
     {
      "start": 50,
      "room": "office",
      "label": "Office",
-     "end": 55
+     "end": 55,
+     "frame": "/frames/ndfIB2HMREE_c0500.jpg"
     },
     {
      "start": 55,
      "room": "backyard",
      "label": "Patio",
-     "end": 58
+     "end": 58,
+     "frame": "/frames/ndfIB2HMREE_c0550.jpg"
     },
     {
      "start": 58,
      "room": "view",
      "label": "Aerial view",
-     "end": 67
+     "end": 67,
+     "frame": "/frames/ndfIB2HMREE_c0580.jpg"
     },
     {
      "start": 67,
@@ -13183,55 +13989,64 @@
      "start": 4,
      "room": "entry",
      "label": "Entryway",
-     "end": 6
+     "end": 6,
+     "frame": "/frames/cc1PFZuphn0_c0040.jpg"
     },
     {
      "start": 6,
      "room": "living",
      "label": "Living room",
-     "end": 12
+     "end": 12,
+     "frame": "/frames/cc1PFZuphn0_c0060.jpg"
     },
     {
      "start": 12,
      "room": "kitchen",
      "label": "Kitchen",
-     "end": 34
+     "end": 34,
+     "frame": "/frames/cc1PFZuphn0_c0120.jpg"
     },
     {
      "start": 34,
      "room": "backyard",
      "label": "Balcony",
-     "end": 44
+     "end": 44,
+     "frame": "/frames/cc1PFZuphn0_c0340.jpg"
     },
     {
      "start": 44,
      "room": "bathroom",
      "label": "Bathroom",
-     "end": 49
+     "end": 49,
+     "frame": "/frames/cc1PFZuphn0_c0440.jpg"
     },
     {
      "start": 49,
      "room": "bedroom",
      "label": "Primary bedroom",
-     "end": 69
+     "end": 69,
+     "frame": "/frames/cc1PFZuphn0_c0490.jpg"
     },
     {
      "start": 69,
      "room": "bathroom",
      "label": "Ensuite bathroom",
-     "end": 74
+     "end": 74,
+     "frame": "/frames/cc1PFZuphn0_c0690.jpg"
     },
     {
      "start": 74,
      "room": "bedroom",
      "label": "Second bedroom",
-     "end": 82
+     "end": 82,
+     "frame": "/frames/cc1PFZuphn0_c0740.jpg"
     },
     {
      "start": 82,
      "room": "bathroom",
      "label": "Second bathroom",
-     "end": 87
+     "end": 87,
+     "frame": "/frames/cc1PFZuphn0_c0820.jpg"
     },
     {
      "start": 87,
@@ -13419,97 +14234,113 @@
      "start": 0,
      "room": "exterior",
      "label": "Exterior",
-     "end": 9
+     "end": 9,
+     "frame": "/frames/3YsFoLaS3ys_c0000.jpg"
     },
     {
      "start": 9,
      "room": "entry",
      "label": "Entryway",
-     "end": 19
+     "end": 19,
+     "frame": "/frames/3YsFoLaS3ys_c0090.jpg"
     },
     {
      "start": 19,
      "room": "living",
      "label": "Living room",
-     "end": 28
+     "end": 28,
+     "frame": "/frames/3YsFoLaS3ys_c0190.jpg"
     },
     {
      "start": 28,
      "room": "dining",
      "label": "Dining room",
-     "end": 41
+     "end": 41,
+     "frame": "/frames/3YsFoLaS3ys_c0280.jpg"
     },
     {
      "start": 41,
      "room": "kitchen",
      "label": "Kitchen",
-     "end": 56
+     "end": 56,
+     "frame": "/frames/3YsFoLaS3ys_c0410.jpg"
     },
     {
      "start": 56,
      "room": "backyard",
      "label": "Back patio",
-     "end": 70
+     "end": 70,
+     "frame": "/frames/3YsFoLaS3ys_c0560.jpg"
     },
     {
      "start": 70,
      "room": "entry",
      "label": "Hallway",
-     "end": 75
+     "end": 75,
+     "frame": "/frames/3YsFoLaS3ys_c0700.jpg"
     },
     {
      "start": 75,
      "room": "bedroom",
      "label": "Primary bedroom",
-     "end": 86
+     "end": 86,
+     "frame": "/frames/3YsFoLaS3ys_c0750.jpg"
     },
     {
      "start": 86,
      "room": "bathroom",
      "label": "Ensuite",
-     "end": 92
+     "end": 92,
+     "frame": "/frames/3YsFoLaS3ys_c0860.jpg"
     },
     {
      "start": 92,
      "room": "bathroom",
      "label": "Guest bathroom",
-     "end": 103
+     "end": 103,
+     "frame": "/frames/3YsFoLaS3ys_c0920.jpg"
     },
     {
      "start": 103,
      "room": "bedroom",
      "label": "Bedroom",
-     "end": 113
+     "end": 113,
+     "frame": "/frames/3YsFoLaS3ys_c1030.jpg"
     },
     {
      "start": 113,
      "room": "backyard",
      "label": "Balcony",
-     "end": 120
+     "end": 120,
+     "frame": "/frames/3YsFoLaS3ys_c1130.jpg"
     },
     {
      "start": 120,
      "room": "bathroom",
      "label": "Basement bathroom",
-     "end": 131
+     "end": 131,
+     "frame": "/frames/3YsFoLaS3ys_c1200.jpg"
     },
     {
      "start": 131,
      "room": "basement",
      "label": "Entertainment lounge",
-     "end": 154
+     "end": 154,
+     "frame": "/frames/3YsFoLaS3ys_c1310.jpg"
     },
     {
      "start": 154,
      "room": "bedroom",
      "label": "Bedroom",
-     "end": 162
+     "end": 162,
+     "frame": "/frames/3YsFoLaS3ys_c1540.jpg"
     },
     {
      "start": 162,
      "room": "exterior",
      "label": "Exterior",
-     "end": 168
+     "end": 168,
+     "frame": "/frames/3YsFoLaS3ys_c1620.jpg"
     },
     {
      "start": 168,
@@ -13705,79 +14536,92 @@
      "start": 5,
      "room": "entry",
      "label": "Entryway",
-     "end": 13
+     "end": 13,
+     "frame": "/frames/htkHR2rdoc4_c0050.jpg"
     },
     {
      "start": 13,
      "room": "living",
      "label": "Living room",
-     "end": 23
+     "end": 23,
+     "frame": "/frames/htkHR2rdoc4_c0130.jpg"
     },
     {
      "start": 23,
      "room": "kitchen",
      "label": "Kitchen",
-     "end": 51
+     "end": 51,
+     "frame": "/frames/htkHR2rdoc4_c0230.jpg"
     },
     {
      "start": 51,
      "room": "dining",
      "label": "Dining area",
-     "end": 54
+     "end": 54,
+     "frame": "/frames/htkHR2rdoc4_c0510.jpg"
     },
     {
      "start": 54,
      "room": "backyard",
      "label": "Balcony",
-     "end": 86
+     "end": 86,
+     "frame": "/frames/htkHR2rdoc4_c0540.jpg"
     },
     {
      "start": 86,
      "room": "bedroom",
      "label": "Primary bedroom",
-     "end": 96
+     "end": 96,
+     "frame": "/frames/htkHR2rdoc4_c0860.jpg"
     },
     {
      "start": 96,
      "room": "bathroom",
      "label": "Ensuite",
-     "end": 118
+     "end": 118,
+     "frame": "/frames/htkHR2rdoc4_c0960.jpg"
     },
     {
      "start": 118,
      "room": "backyard",
      "label": "Primary balcony",
-     "end": 136
+     "end": 136,
+     "frame": "/frames/htkHR2rdoc4_c1180.jpg"
     },
     {
      "start": 136,
      "room": "bathroom",
      "label": "Powder room",
-     "end": 141
+     "end": 141,
+     "frame": "/frames/htkHR2rdoc4_c1360.jpg"
     },
     {
      "start": 141,
      "room": "office",
      "label": "Office",
-     "end": 150
+     "end": 150,
+     "frame": "/frames/htkHR2rdoc4_c1410.jpg"
     },
     {
      "start": 150,
      "room": "laundry",
      "label": "Laundry",
-     "end": 158
+     "end": 158,
+     "frame": "/frames/htkHR2rdoc4_c1500.jpg"
     },
     {
      "start": 158,
      "room": "bathroom",
      "label": "Bathroom",
-     "end": 164
+     "end": 164,
+     "frame": "/frames/htkHR2rdoc4_c1580.jpg"
     },
     {
      "start": 164,
      "room": "bedroom",
      "label": "Bedroom",
-     "end": 173
+     "end": 173,
+     "frame": "/frames/htkHR2rdoc4_c1640.jpg"
     },
     {
      "start": 173,
@@ -14010,43 +14854,50 @@
      "start": 0,
      "room": "view",
      "label": "City view",
-     "end": 12
+     "end": 12,
+     "frame": "/frames/NyFR97bnCtA_c0000.jpg"
     },
     {
      "start": 12,
      "room": "entry",
      "label": "Entryway",
-     "end": 20
+     "end": 20,
+     "frame": "/frames/NyFR97bnCtA_c0120.jpg"
     },
     {
      "start": 20,
      "room": "kitchen",
      "label": "Kitchen",
-     "end": 24
+     "end": 24,
+     "frame": "/frames/NyFR97bnCtA_c0200.jpg"
     },
     {
      "start": 24,
      "room": "dining",
      "label": "Dining area",
-     "end": 27
+     "end": 27,
+     "frame": "/frames/NyFR97bnCtA_c0240.jpg"
     },
     {
      "start": 27,
      "room": "living",
      "label": "Living room",
-     "end": 45
+     "end": 45,
+     "frame": "/frames/NyFR97bnCtA_c0270.jpg"
     },
     {
      "start": 45,
      "room": "office",
      "label": "Office",
-     "end": 47
+     "end": 47,
+     "frame": "/frames/NyFR97bnCtA_c0450.jpg"
     },
     {
      "start": 47,
      "room": "living",
      "label": "Living room",
-     "end": 57
+     "end": 57,
+     "frame": "/frames/NyFR97bnCtA_c0470.jpg"
     },
     {
      "start": 57,
@@ -14058,7 +14909,8 @@
      "start": 65,
      "room": "backyard",
      "label": "Dining terrace",
-     "end": 67
+     "end": 67,
+     "frame": "/frames/NyFR97bnCtA_c0650.jpg"
     },
     {
      "start": 67,
@@ -14070,25 +14922,29 @@
      "start": 70,
      "room": "kitchen",
      "label": "Kitchen bar",
-     "end": 79
+     "end": 79,
+     "frame": "/frames/NyFR97bnCtA_c0700.jpg"
     },
     {
      "start": 79,
      "room": "dining",
      "label": "Dining area",
-     "end": 99
+     "end": 99,
+     "frame": "/frames/NyFR97bnCtA_c0790.jpg"
     },
     {
      "start": 99,
      "room": "kitchen",
      "label": "Kitchen",
-     "end": 146
+     "end": 146,
+     "frame": "/frames/NyFR97bnCtA_c0990.jpg"
     },
     {
      "start": 146,
      "room": "backyard",
      "label": "Patio",
-     "end": 163
+     "end": 163,
+     "frame": "/frames/NyFR97bnCtA_c1460.jpg"
     },
     {
      "start": 163,
@@ -14100,19 +14956,22 @@
      "start": 172,
      "room": "bedroom",
      "label": "Bedroom",
-     "end": 182
+     "end": 182,
+     "frame": "/frames/NyFR97bnCtA_c1720.jpg"
     },
     {
      "start": 182,
      "room": "bedroom",
      "label": "Primary bedroom",
-     "end": 198
+     "end": 198,
+     "frame": "/frames/NyFR97bnCtA_c1820.jpg"
     },
     {
      "start": 198,
      "room": "bathroom",
      "label": "Ensuite",
-     "end": 200
+     "end": 200,
+     "frame": "/frames/NyFR97bnCtA_c1980.jpg"
     },
     {
      "start": 200,
@@ -14124,13 +14983,15 @@
      "start": 204,
      "room": "bedroom",
      "label": "Primary bedroom",
-     "end": 213
+     "end": 213,
+     "frame": "/frames/NyFR97bnCtA_c2040.jpg"
     },
     {
      "start": 213,
      "room": "view",
      "label": "City view",
-     "end": 222.6
+     "end": 222.6,
+     "frame": "/frames/NyFR97bnCtA_c2130.jpg"
     }
    ],
    "summary": "This luxurious downtown Vancouver high-rise penthouse features expansive floor-to-ceiling windows with stunning city, mountain, and water views. The spacious open-concept interior includes wide-plank wood flooring, a modern kitchen with a large island, and a sweeping outdoor terrace.",
@@ -14242,91 +15103,106 @@
      "start": 6,
      "room": "exterior",
      "label": "Exterior",
-     "end": 15
+     "end": 15,
+     "frame": "/frames/QjLv1-38NdE_c0060.jpg"
     },
     {
      "start": 15,
      "room": "exterior",
      "label": "Building exterior",
-     "end": 18
+     "end": 18,
+     "frame": "/frames/QjLv1-38NdE_c0150.jpg"
     },
     {
      "start": 18,
      "room": "amenity",
      "label": "Building entrance",
-     "end": 20
+     "end": 20,
+     "frame": "/frames/QjLv1-38NdE_c0180.jpg"
     },
     {
      "start": 20,
      "room": "kitchen",
      "label": "Kitchen",
-     "end": 23
+     "end": 23,
+     "frame": "/frames/QjLv1-38NdE_c0200.jpg"
     },
     {
      "start": 23,
      "room": "living",
      "label": "Living room",
-     "end": 29
+     "end": 29,
+     "frame": "/frames/QjLv1-38NdE_c0230.jpg"
     },
     {
      "start": 29,
      "room": "backyard",
      "label": "Balcony",
-     "end": 35
+     "end": 35,
+     "frame": "/frames/QjLv1-38NdE_c0290.jpg"
     },
     {
      "start": 35,
      "room": "living",
      "label": "Living and dining",
-     "end": 40
+     "end": 40,
+     "frame": "/frames/QjLv1-38NdE_c0350.jpg"
     },
     {
      "start": 40,
      "room": "kitchen",
      "label": "Kitchen",
-     "end": 43
+     "end": 43,
+     "frame": "/frames/QjLv1-38NdE_c0400.jpg"
     },
     {
      "start": 43,
      "room": "bedroom",
      "label": "Nursery",
-     "end": 46
+     "end": 46,
+     "frame": "/frames/QjLv1-38NdE_c0430.jpg"
     },
     {
      "start": 46,
      "room": "backyard",
      "label": "Balcony",
-     "end": 49
+     "end": 49,
+     "frame": "/frames/QjLv1-38NdE_c0460.jpg"
     },
     {
      "start": 49,
      "room": "bathroom",
      "label": "Bathroom",
-     "end": 51
+     "end": 51,
+     "frame": "/frames/QjLv1-38NdE_c0490.jpg"
     },
     {
      "start": 51,
      "room": "bedroom",
      "label": "Primary bedroom",
-     "end": 57
+     "end": 57,
+     "frame": "/frames/QjLv1-38NdE_c0510.jpg"
     },
     {
      "start": 57,
      "room": "view",
      "label": "View",
-     "end": 63
+     "end": 63,
+     "frame": "/frames/QjLv1-38NdE_c0570.jpg"
     },
     {
      "start": 63,
      "room": "bathroom",
      "label": "Bathroom",
-     "end": 65
+     "end": 65,
+     "frame": "/frames/QjLv1-38NdE_c0630.jpg"
     },
     {
      "start": 65,
      "room": "view",
      "label": "View",
-     "end": 73
+     "end": 73,
+     "frame": "/frames/QjLv1-38NdE_c0650.jpg"
     },
     {
      "start": 73,
@@ -14536,79 +15412,92 @@
      "start": 5,
      "room": "exterior",
      "label": "Exterior",
-     "end": 14
+     "end": 14,
+     "frame": "/frames/vndhQP-5-H0_c0050.jpg"
     },
     {
      "start": 14,
      "room": "entry",
      "label": "Lobby",
-     "end": 22
+     "end": 22,
+     "frame": "/frames/vndhQP-5-H0_c0140.jpg"
     },
     {
      "start": 22,
      "room": "living",
      "label": "Living room",
-     "end": 46
+     "end": 46,
+     "frame": "/frames/vndhQP-5-H0_c0220.jpg"
     },
     {
      "start": 46,
      "room": "kitchen",
      "label": "Kitchen",
-     "end": 66
+     "end": 66,
+     "frame": "/frames/vndhQP-5-H0_c0460.jpg"
     },
     {
      "start": 66,
      "room": "dining",
      "label": "Dining area",
-     "end": 80
+     "end": 80,
+     "frame": "/frames/vndhQP-5-H0_c0660.jpg"
     },
     {
      "start": 80,
      "room": "office",
      "label": "Office",
-     "end": 91
+     "end": 91,
+     "frame": "/frames/vndhQP-5-H0_c0800.jpg"
     },
     {
      "start": 91,
      "room": "backyard",
      "label": "Balcony",
-     "end": 118
+     "end": 118,
+     "frame": "/frames/vndhQP-5-H0_c0910.jpg"
     },
     {
      "start": 118,
      "room": "bedroom",
      "label": "Primary bedroom",
-     "end": 131
+     "end": 131,
+     "frame": "/frames/vndhQP-5-H0_c1180.jpg"
     },
     {
      "start": 131,
      "room": "bathroom",
      "label": "Bathroom",
-     "end": 135
+     "end": 135,
+     "frame": "/frames/vndhQP-5-H0_c1310.jpg"
     },
     {
      "start": 135,
      "room": "amenity",
      "label": "Pool",
-     "end": 139
+     "end": 139,
+     "frame": "/frames/vndhQP-5-H0_c1350.jpg"
     },
     {
      "start": 139,
      "room": "amenity",
      "label": "Gym",
-     "end": 144
+     "end": 144,
+     "frame": "/frames/vndhQP-5-H0_c1390.jpg"
     },
     {
      "start": 144,
      "room": "amenity",
      "label": "Lounge",
-     "end": 150
+     "end": 150,
+     "frame": "/frames/vndhQP-5-H0_c1440.jpg"
     },
     {
      "start": 150,
      "room": "backyard",
      "label": "Park",
-     "end": 200.6
+     "end": 200.6,
+     "frame": "/frames/vndhQP-5-H0_c1500.jpg"
     }
    ],
    "summary": "This modern high-rise condominium offers a bright open layout with stunning city views, dark wood floors, and floor-to-ceiling windows. Residents can enjoy upscale building amenities including a rooftop pool, gym, and a convenient location near a scenic waterfront park.",
@@ -14814,73 +15703,85 @@
      "start": 2,
      "room": "exterior",
      "label": "Building exterior",
-     "end": 35
+     "end": 35,
+     "frame": "/frames/bb_k5aj-Z_w_c0020.jpg"
     },
     {
      "start": 35,
      "room": "entry",
      "label": "Lobby",
-     "end": 44
+     "end": 44,
+     "frame": "/frames/bb_k5aj-Z_w_c0350.jpg"
     },
     {
      "start": 44,
      "room": "amenity",
      "label": "Rooftop pool",
-     "end": 58
+     "end": 58,
+     "frame": "/frames/bb_k5aj-Z_w_c0440.jpg"
     },
     {
      "start": 58,
      "room": "kitchen",
      "label": "Kitchen",
-     "end": 82
+     "end": 82,
+     "frame": "/frames/bb_k5aj-Z_w_c0580.jpg"
     },
     {
      "start": 82,
      "room": "office",
      "label": "Pantry and office",
-     "end": 92
+     "end": 92,
+     "frame": "/frames/bb_k5aj-Z_w_c0820.jpg"
     },
     {
      "start": 92,
      "room": "living",
      "label": "Living room",
-     "end": 109
+     "end": 109,
+     "frame": "/frames/bb_k5aj-Z_w_c0920.jpg"
     },
     {
      "start": 109,
      "room": "backyard",
      "label": "Balcony",
-     "end": 134
+     "end": 134,
+     "frame": "/frames/bb_k5aj-Z_w_c1090.jpg"
     },
     {
      "start": 134,
      "room": "bathroom",
      "label": "Bathroom",
-     "end": 140
+     "end": 140,
+     "frame": "/frames/bb_k5aj-Z_w_c1340.jpg"
     },
     {
      "start": 140,
      "room": "bedroom",
      "label": "Primary bedroom",
-     "end": 163
+     "end": 163,
+     "frame": "/frames/bb_k5aj-Z_w_c1400.jpg"
     },
     {
      "start": 163,
      "room": "backyard",
      "label": "Balcony",
-     "end": 175
+     "end": 175,
+     "frame": "/frames/bb_k5aj-Z_w_c1630.jpg"
     },
     {
      "start": 175,
      "room": "view",
      "label": "View",
-     "end": 180
+     "end": 180,
+     "frame": "/frames/bb_k5aj-Z_w_c1750.jpg"
     },
     {
      "start": 180,
      "room": "backyard",
      "label": "Balcony",
-     "end": 194
+     "end": 194,
+     "frame": "/frames/bb_k5aj-Z_w_c1800.jpg"
     },
     {
      "start": 194,
@@ -14987,13 +15888,15 @@
      "start": 12,
      "room": "living",
      "label": "Living room",
-     "end": 25
+     "end": 25,
+     "frame": "/frames/eoHm7-tVWGQ_c0120.jpg"
     },
     {
      "start": 25,
      "room": "kitchen",
      "label": "Kitchen",
-     "end": 37
+     "end": 37,
+     "frame": "/frames/eoHm7-tVWGQ_c0250.jpg"
     },
     {
      "start": 37,
@@ -15005,13 +15908,15 @@
      "start": 40,
      "room": "bedroom",
      "label": "Bedroom",
-     "end": 47
+     "end": 47,
+     "frame": "/frames/eoHm7-tVWGQ_c0400.jpg"
     },
     {
      "start": 47,
      "room": "bathroom",
      "label": "Bathroom",
-     "end": 50
+     "end": 50,
+     "frame": "/frames/eoHm7-tVWGQ_c0470.jpg"
     },
     {
      "start": 50,
@@ -15023,13 +15928,15 @@
      "start": 52,
      "room": "bathroom",
      "label": "Bathroom",
-     "end": 55
+     "end": 55,
+     "frame": "/frames/eoHm7-tVWGQ_c0520.jpg"
     },
     {
      "start": 55,
      "room": "living",
      "label": "Living room",
-     "end": 60.1
+     "end": 60.1,
+     "frame": "/frames/eoHm7-tVWGQ_c0550.jpg"
     }
    ],
    "summary": "This Vancouver home features a bright two-story living room with dramatic floor-to-ceiling windows and stunning city views. It also boasts a modern kitchen that overlooks the light-filled main living space.",
@@ -15173,97 +16080,113 @@
      "start": 6,
      "room": "view",
      "label": "Aerial view",
-     "end": 24
+     "end": 24,
+     "frame": "/frames/1mS1CDw51Xg_c0060.jpg"
     },
     {
      "start": 24,
      "room": "living",
      "label": "Living room",
-     "end": 33
+     "end": 33,
+     "frame": "/frames/1mS1CDw51Xg_c0240.jpg"
     },
     {
      "start": 33,
      "room": "dining",
      "label": "Dining area",
-     "end": 35
+     "end": 35,
+     "frame": "/frames/1mS1CDw51Xg_c0330.jpg"
     },
     {
      "start": 35,
      "room": "kitchen",
      "label": "Kitchen",
-     "end": 46
+     "end": 46,
+     "frame": "/frames/1mS1CDw51Xg_c0350.jpg"
     },
     {
      "start": 46,
      "room": "bathroom",
      "label": "Bathroom",
-     "end": 48
+     "end": 48,
+     "frame": "/frames/1mS1CDw51Xg_c0460.jpg"
     },
     {
      "start": 48,
      "room": "bedroom",
      "label": "Primary bedroom",
-     "end": 52
+     "end": 52,
+     "frame": "/frames/1mS1CDw51Xg_c0480.jpg"
     },
     {
      "start": 52,
      "room": "bathroom",
      "label": "Ensuite",
-     "end": 58
+     "end": 58,
+     "frame": "/frames/1mS1CDw51Xg_c0520.jpg"
     },
     {
      "start": 58,
      "room": "bedroom",
      "label": "Second bedroom",
-     "end": 62
+     "end": 62,
+     "frame": "/frames/1mS1CDw51Xg_c0580.jpg"
     },
     {
      "start": 62,
      "room": "bathroom",
      "label": "Second bathroom",
-     "end": 64
+     "end": 64,
+     "frame": "/frames/1mS1CDw51Xg_c0620.jpg"
     },
     {
      "start": 64,
      "room": "backyard",
      "label": "Balcony",
-     "end": 66
+     "end": 66,
+     "frame": "/frames/1mS1CDw51Xg_c0640.jpg"
     },
     {
      "start": 66,
      "room": "view",
      "label": "View",
-     "end": 70
+     "end": 70,
+     "frame": "/frames/1mS1CDw51Xg_c0660.jpg"
     },
     {
      "start": 70,
      "room": "amenity",
      "label": "Gym",
-     "end": 78
+     "end": 78,
+     "frame": "/frames/1mS1CDw51Xg_c0700.jpg"
     },
     {
      "start": 78,
      "room": "amenity",
      "label": "Squash court",
-     "end": 80
+     "end": 80,
+     "frame": "/frames/1mS1CDw51Xg_c0780.jpg"
     },
     {
      "start": 80,
      "room": "amenity",
      "label": "Pool",
-     "end": 84
+     "end": 84,
+     "frame": "/frames/1mS1CDw51Xg_c0800.jpg"
     },
     {
      "start": 84,
      "room": "amenity",
      "label": "Hot tub",
-     "end": 86
+     "end": 86,
+     "frame": "/frames/1mS1CDw51Xg_c0840.jpg"
     },
     {
      "start": 86,
      "room": "view",
      "label": "Aerial view",
-     "end": 110
+     "end": 110,
+     "frame": "/frames/1mS1CDw51Xg_c0860.jpg"
     },
     {
      "start": 110,
@@ -15415,121 +16338,141 @@
      "start": 0,
      "room": "exterior",
      "label": "Exterior",
-     "end": 7
+     "end": 7,
+     "frame": "/frames/P8ZO-XzBjDk_c0000.jpg"
     },
     {
      "start": 7,
      "room": "entry",
      "label": "Entry",
-     "end": 10
+     "end": 10,
+     "frame": "/frames/P8ZO-XzBjDk_c0070.jpg"
     },
     {
      "start": 10,
      "room": "amenity",
      "label": "Lobby",
-     "end": 12
+     "end": 12,
+     "frame": "/frames/P8ZO-XzBjDk_c0100.jpg"
     },
     {
      "start": 12,
      "room": "living",
      "label": "Living room",
-     "end": 19
+     "end": 19,
+     "frame": "/frames/P8ZO-XzBjDk_c0120.jpg"
     },
     {
      "start": 19,
      "room": "view",
      "label": "View",
-     "end": 28
+     "end": 28,
+     "frame": "/frames/P8ZO-XzBjDk_c0190.jpg"
     },
     {
      "start": 28,
      "room": "living",
      "label": "Living room",
-     "end": 35
+     "end": 35,
+     "frame": "/frames/P8ZO-XzBjDk_c0280.jpg"
     },
     {
      "start": 35,
      "room": "dining",
      "label": "Dining area",
-     "end": 39
+     "end": 39,
+     "frame": "/frames/P8ZO-XzBjDk_c0350.jpg"
     },
     {
      "start": 39,
      "room": "kitchen",
      "label": "Kitchen",
-     "end": 53
+     "end": 53,
+     "frame": "/frames/P8ZO-XzBjDk_c0390.jpg"
     },
     {
      "start": 53,
      "room": "bedroom",
      "label": "Bedroom",
-     "end": 58
+     "end": 58,
+     "frame": "/frames/P8ZO-XzBjDk_c0530.jpg"
     },
     {
      "start": 58,
      "room": "view",
      "label": "View",
-     "end": 62
+     "end": 62,
+     "frame": "/frames/P8ZO-XzBjDk_c0580.jpg"
     },
     {
      "start": 62,
      "room": "bedroom",
      "label": "Bedroom",
-     "end": 64
+     "end": 64,
+     "frame": "/frames/P8ZO-XzBjDk_c0620.jpg"
     },
     {
      "start": 64,
      "room": "bathroom",
      "label": "Bathroom",
-     "end": 69
+     "end": 69,
+     "frame": "/frames/P8ZO-XzBjDk_c0640.jpg"
     },
     {
      "start": 69,
      "room": "bedroom",
      "label": "Bedroom",
-     "end": 71
+     "end": 71,
+     "frame": "/frames/P8ZO-XzBjDk_c0690.jpg"
     },
     {
      "start": 71,
      "room": "view",
      "label": "View",
-     "end": 74
+     "end": 74,
+     "frame": "/frames/P8ZO-XzBjDk_c0710.jpg"
     },
     {
      "start": 74,
      "room": "bathroom",
      "label": "Bathroom",
-     "end": 76
+     "end": 76,
+     "frame": "/frames/P8ZO-XzBjDk_c0740.jpg"
     },
     {
      "start": 76,
      "room": "backyard",
      "label": "Balcony",
-     "end": 90
+     "end": 90,
+     "frame": "/frames/P8ZO-XzBjDk_c0760.jpg"
     },
     {
      "start": 90,
      "room": "amenity",
      "label": "Library",
-     "end": 94
+     "end": 94,
+     "frame": "/frames/P8ZO-XzBjDk_c0900.jpg"
     },
     {
      "start": 94,
      "room": "amenity",
      "label": "Game room",
-     "end": 101
+     "end": 101,
+     "frame": "/frames/P8ZO-XzBjDk_c0940.jpg"
     },
     {
      "start": 101,
      "room": "amenity",
      "label": "Gym",
-     "end": 106
+     "end": 106,
+     "frame": "/frames/P8ZO-XzBjDk_c1010.jpg"
     },
     {
      "start": 106,
      "room": "amenity",
      "label": "Pool and hot tub",
-     "end": 117.2
+     "end": 117.2,
+     "frame": "/frames/P8ZO-XzBjDk_c1060.jpg"
     }
    ],
    "summary": "This bright, open-concept home features floor-to-ceiling windows with panoramic city and water views, light wood-look flooring, and a comfortable bedroom. Residents can enjoy premium building amenities, including a fully equipped fitness center, an indoor swimming pool, a hot tub, and recreation lounges.",
@@ -15677,79 +16620,92 @@
      "start": 8,
      "room": "exterior",
      "label": "Building exterior",
-     "end": 12
+     "end": 12,
+     "frame": "/frames/PExhZ7iwiHQ_c0080.jpg"
     },
     {
      "start": 12,
      "room": "living",
      "label": "Living room",
-     "end": 26
+     "end": 26,
+     "frame": "/frames/PExhZ7iwiHQ_c0120.jpg"
     },
     {
      "start": 26,
      "room": "kitchen",
      "label": "Kitchen",
-     "end": 40
+     "end": 40,
+     "frame": "/frames/PExhZ7iwiHQ_c0260.jpg"
     },
     {
      "start": 40,
      "room": "bathroom",
      "label": "Powder room",
-     "end": 43
+     "end": 43,
+     "frame": "/frames/PExhZ7iwiHQ_c0400.jpg"
     },
     {
      "start": 43,
      "room": "living",
      "label": "Living room",
-     "end": 45
+     "end": 45,
+     "frame": "/frames/PExhZ7iwiHQ_c0430.jpg"
     },
     {
      "start": 45,
      "room": "bedroom",
      "label": "Primary bedroom",
-     "end": 50
+     "end": 50,
+     "frame": "/frames/PExhZ7iwiHQ_c0450.jpg"
     },
     {
      "start": 50,
      "room": "bathroom",
      "label": "Primary ensuite",
-     "end": 61
+     "end": 61,
+     "frame": "/frames/PExhZ7iwiHQ_c0500.jpg"
     },
     {
      "start": 61,
      "room": "bedroom",
      "label": "Primary bedroom",
-     "end": 66
+     "end": 66,
+     "frame": "/frames/PExhZ7iwiHQ_c0610.jpg"
     },
     {
      "start": 66,
      "room": "bedroom",
      "label": "Second bedroom",
-     "end": 71
+     "end": 71,
+     "frame": "/frames/PExhZ7iwiHQ_c0660.jpg"
     },
     {
      "start": 71,
      "room": "bathroom",
      "label": "Second bathroom",
-     "end": 80
+     "end": 80,
+     "frame": "/frames/PExhZ7iwiHQ_c0710.jpg"
     },
     {
      "start": 80,
      "room": "bedroom",
      "label": "Second bedroom",
-     "end": 85
+     "end": 85,
+     "frame": "/frames/PExhZ7iwiHQ_c0800.jpg"
     },
     {
      "start": 85,
      "room": "amenity",
      "label": "Building amenities",
-     "end": 88
+     "end": 88,
+     "frame": "/frames/PExhZ7iwiHQ_c0850.jpg"
     },
     {
      "start": 88,
      "room": "exterior",
      "label": "Neighborhood",
-     "end": 113.3
+     "end": 113.3,
+     "frame": "/frames/PExhZ7iwiHQ_c0880.jpg"
     }
    ],
    "summary": "This modern high-rise home features an open-concept living area with floor-to-ceiling windows showcasing stunning views of downtown Vancouver, the harbor, and the mountains. The luxurious interior includes a sleek kitchen with high-end appliances and elegant bathrooms with dark grey marble-tiled walls and glass-enclosed showers.",
@@ -15975,7 +16931,8 @@
      "start": 0,
      "room": "exterior",
      "label": "Exterior",
-     "end": 12
+     "end": 12,
+     "frame": "/frames/Gueg_zB5kAk_c0000.jpg"
     },
     {
      "start": 12,
@@ -15987,85 +16944,99 @@
      "start": 27,
      "room": "exterior",
      "label": "Exterior",
-     "end": 30
+     "end": 30,
+     "frame": "/frames/Gueg_zB5kAk_c0270.jpg"
     },
     {
      "start": 30,
      "room": "entry",
      "label": "Entry",
-     "end": 32
+     "end": 32,
+     "frame": "/frames/Gueg_zB5kAk_c0300.jpg"
     },
     {
      "start": 32,
      "room": "living",
      "label": "Living room",
-     "end": 34
+     "end": 34,
+     "frame": "/frames/Gueg_zB5kAk_c0320.jpg"
     },
     {
      "start": 34,
      "room": "kitchen",
      "label": "Kitchen",
-     "end": 41
+     "end": 41,
+     "frame": "/frames/Gueg_zB5kAk_c0340.jpg"
     },
     {
      "start": 41,
      "room": "dining",
      "label": "Dining area",
-     "end": 46
+     "end": 46,
+     "frame": "/frames/Gueg_zB5kAk_c0410.jpg"
     },
     {
      "start": 46,
      "room": "living",
      "label": "Living room",
-     "end": 50
+     "end": 50,
+     "frame": "/frames/Gueg_zB5kAk_c0460.jpg"
     },
     {
      "start": 50,
      "room": "backyard",
      "label": "Backyard",
-     "end": 55
+     "end": 55,
+     "frame": "/frames/Gueg_zB5kAk_c0500.jpg"
     },
     {
      "start": 55,
      "room": "living",
      "label": "Living room",
-     "end": 58
+     "end": 58,
+     "frame": "/frames/Gueg_zB5kAk_c0550.jpg"
     },
     {
      "start": 58,
      "room": "dining",
      "label": "Dining area",
-     "end": 63
+     "end": 63,
+     "frame": "/frames/Gueg_zB5kAk_c0580.jpg"
     },
     {
      "start": 63,
      "room": "kitchen",
      "label": "Kitchen",
-     "end": 71
+     "end": 71,
+     "frame": "/frames/Gueg_zB5kAk_c0630.jpg"
     },
     {
      "start": 71,
      "room": "living",
      "label": "Living room",
-     "end": 74
+     "end": 74,
+     "frame": "/frames/Gueg_zB5kAk_c0710.jpg"
     },
     {
      "start": 74,
      "room": "bathroom",
      "label": "Bathroom",
-     "end": 78
+     "end": 78,
+     "frame": "/frames/Gueg_zB5kAk_c0740.jpg"
     },
     {
      "start": 78,
      "room": "backyard",
      "label": "Backyard",
-     "end": 80
+     "end": 80,
+     "frame": "/frames/Gueg_zB5kAk_c0780.jpg"
     },
     {
      "start": 80,
      "room": "entry",
      "label": "Stairs",
-     "end": 82
+     "end": 82,
+     "frame": "/frames/Gueg_zB5kAk_c0800.jpg"
     },
     {
      "start": 82,
@@ -16077,25 +17048,29 @@
      "start": 88,
      "room": "bedroom",
      "label": "Bedroom",
-     "end": 90
+     "end": 90,
+     "frame": "/frames/Gueg_zB5kAk_c0880.jpg"
     },
     {
      "start": 90,
      "room": "bedroom",
      "label": "Primary bedroom",
-     "end": 98
+     "end": 98,
+     "frame": "/frames/Gueg_zB5kAk_c0900.jpg"
     },
     {
      "start": 98,
      "room": "backyard",
      "label": "Balcony",
-     "end": 102
+     "end": 102,
+     "frame": "/frames/Gueg_zB5kAk_c0980.jpg"
     },
     {
      "start": 102,
      "room": "bathroom",
      "label": "Ensuite",
-     "end": 120
+     "end": 120,
+     "frame": "/frames/Gueg_zB5kAk_c1020.jpg"
     },
     {
      "start": 120,
@@ -16107,43 +17082,50 @@
      "start": 122,
      "room": "office",
      "label": "Office",
-     "end": 125
+     "end": 125,
+     "frame": "/frames/Gueg_zB5kAk_c1220.jpg"
     },
     {
      "start": 125,
      "room": "bedroom",
      "label": "Bedroom",
-     "end": 129
+     "end": 129,
+     "frame": "/frames/Gueg_zB5kAk_c1250.jpg"
     },
     {
      "start": 129,
      "room": "entry",
      "label": "Stairs",
-     "end": 131
+     "end": 131,
+     "frame": "/frames/Gueg_zB5kAk_c1290.jpg"
     },
     {
      "start": 131,
      "room": "basement",
      "label": "Basement",
-     "end": 140
+     "end": 140,
+     "frame": "/frames/Gueg_zB5kAk_c1310.jpg"
     },
     {
      "start": 140,
      "room": "bathroom",
      "label": "Bathroom",
-     "end": 153
+     "end": 153,
+     "frame": "/frames/Gueg_zB5kAk_c1400.jpg"
     },
     {
      "start": 153,
      "room": "laundry",
      "label": "Laundry",
-     "end": 156
+     "end": 156,
+     "frame": "/frames/Gueg_zB5kAk_c1530.jpg"
     },
     {
      "start": 156,
      "room": "backyard",
      "label": "Backyard",
-     "end": 170
+     "end": 170,
+     "frame": "/frames/Gueg_zB5kAk_c1560.jpg"
     },
     {
      "start": 170,
@@ -16155,7 +17137,8 @@
      "start": 182,
      "room": "amenity",
      "label": "Community",
-     "end": 213.3
+     "end": 213.3,
+     "frame": "/frames/Gueg_zB5kAk_c1820.jpg"
     }
    ],
    "summary": "This modern end-unit townhouse offers an open-concept main floor with a stylish kitchen and a private fenced backyard. Enjoy a spacious master suite with a private balcony, a versatile finished basement, and the convenience of being next to a golf course with nearby amenities.",

@@ -1,4 +1,4 @@
-import type { Moment, Property, PropertyMatch, SearchFilters, SearchResponse } from '../types.js';
+import type { Chapter, Moment, Property, PropertyMatch, Room, SearchFilters, SearchResponse } from '../types.js';
 import { RANKING } from './config.js';
 import { embed, getApiKey, queryText } from './gemini.js';
 import { looksFiltered, parseWithModel, parseWithRules, type ParsedQuery } from './queryParser.js';
@@ -43,7 +43,50 @@ function rankOf<T>(items: T[], key: (t: T) => number): Map<T, number> {
   return new Map(sorted.map((t, i) => [t, key(t) > 0 ? i + 1 : Infinity]));
 }
 
-const overlaps = (a: Moment, b: Moment) => a.start < b.end && b.start < a.end;
+const overlaps = (a: { start: number; end: number }, b: { start: number; end: number }) => a.start < b.end && b.start < a.end;
+
+// Words that point a query at a kind of room. Matched against tokenized query terms.
+const ROOM_WORDS: Partial<Record<Room, string[]>> = {
+  kitchen: ['kitchen', 'island', 'pantry', 'countertop', 'counter', 'cabinet', 'cabinetry', 'backsplash', 'appliance', 'stove', 'range', 'oven', 'fridge'],
+  bathroom: ['bathroom', 'bath', 'ensuite', 'tub', 'soaker', 'shower', 'vanity', 'powder', 'toilet', 'sink'],
+  bedroom: ['bedroom', 'bed', 'closet', 'walk', 'primary', 'master', 'nursery'],
+  living: ['living', 'fireplace', 'family', 'lounge', 'ceiling', 'ceilings'],
+  dining: ['dining', 'table'],
+  backyard: ['backyard', 'yard', 'garden', 'patio', 'deck', 'balcony', 'terrace', 'lawn', 'fenced', 'fence', 'tree', 'trees', 'hot', 'pool'],
+  view: ['view', 'views', 'mountain', 'ocean', 'water', 'city', 'skyline', 'harbour', 'harbor', 'lake', 'river'],
+  exterior: ['exterior', 'facade', 'curb', 'driveway', 'street', 'front', 'aerial'],
+  garage: ['garage', 'parking', 'car'],
+  basement: ['basement', 'rec', 'theatre', 'theater', 'bar', 'suite'],
+  office: ['office', 'den', 'desk', 'study', 'workspace'],
+  laundry: ['laundry', 'washer', 'dryer', 'mudroom'],
+  amenity: ['gym', 'fitness', 'amenity', 'amenities', 'rooftop', 'concierge', 'clubhouse'],
+  entry: ['entry', 'entrance', 'foyer', 'staircase', 'stairs', 'hallway'],
+};
+
+// Run through the same tokenizer as queries (lower-case, plurals stemmed).
+const roomTerms = Object.fromEntries(
+  Object.entries(ROOM_WORDS).map(([room, words]) => [room, tokenize(words.join(' '))]),
+) as Partial<Record<Room, string[]>>;
+
+/**
+ * The chapter inside a moment's window that best fits the query: a label word
+ * match ("Kitchen" for "kitchen island") beats a room-type match, which beats
+ * nothing. Returns null when no chapter fits, so the window's own still is kept.
+ */
+export function chapterFor(chapters: Chapter[] | undefined, start: number, end: number, terms: string[]): Chapter | null {
+  if (!chapters?.length || !terms.length) return null;
+  const wanted = new Set(terms);
+  let best: { c: Chapter; score: number; overlap: number } | null = null;
+  for (const c of chapters) {
+    const overlap = Math.min(end, c.end) - Math.max(start, c.start);
+    if (overlap < 2 || c.room === 'other' || !c.frame) continue;
+    const labelHit = tokenize(c.label).some(t => wanted.has(t)) ? 2 : 0;
+    const roomHit = (roomTerms[c.room] ?? []).some(w => wanted.has(w)) ? 1 : 0;
+    const score = labelHit + roomHit;
+    if (score > 0 && (!best || score > best.score || (score === best.score && overlap > best.overlap))) best = { c, score, overlap };
+  }
+  return best?.c ?? null;
+}
 
 export async function search(query: string): Promise<SearchResponse> {
   const t0 = performance.now();
@@ -101,42 +144,63 @@ export async function search(query: string): Promise<SearchResponse> {
   }
 
   const floor = hybrid ? RANKING.minBlended : 0.15;
-  const relevant = scored.filter(s => s.blended >= floor);
+  // A scene that contains every distinctive word of the query ("SkyTrain") is a
+  // match even when the embeddings score a short query below the floor.
+  const N = store.segments.length || 1;
+  const distinctive = [...new Set(qTerms)].filter(t => (store.docFreq.get(t) ?? 0) / N < RANKING.distinctiveDocShare);
+  const hasAllWords = (s: Scored) => distinctive.length > 0 && distinctive.every(t => s.doc.terms.has(t));
+  const relevant = scored.filter(s => s.blended >= floor || (hybrid && hasAllWords(s)));
 
   // 4. Group by property, keep the best few non-overlapping moments each.
-  const groups = new Map<string, Scored[]>();
-  for (const s of relevant) {
-    const list = groups.get(s.doc.property.id) ?? [];
-    list.push(s);
-    groups.set(s.doc.property.id, list);
-  }
-
-  const maxFused = Math.max(1e-9, ...relevant.map(s => s.fused));
-  let matches: PropertyMatch[] = [...groups.values()].map(list => {
-    list.sort((a, b) => b.fused - a.fused);
-    const moments: Moment[] = [];
-    for (const s of list) {
-      const seg = s.doc.segment;
-      const m: Moment = {
-        segmentId: seg.id,
-        start: seg.start,
-        end: seg.end,
-        room: seg.room,
-        caption: seg.caption,
-        transcript: seg.transcript,
-        frame: seg.frame,
-        score: +(s.fused / maxFused).toFixed(3),
-        signals: { visual: +s.visual.toFixed(3), speech: +s.speech.toFixed(3), keyword: +s.keyword.toFixed(3) },
-      };
-      if (moments.some(x => overlaps(x, m))) continue;
-      moments.push(m);
-      if (moments.length >= RANKING.maxMomentsPerProperty) break;
+  const toMatches = (pool: Scored[]): PropertyMatch[] => {
+    const groups = new Map<string, Scored[]>();
+    for (const s of pool) {
+      const list = groups.get(s.doc.property.id) ?? [];
+      list.push(s);
+      groups.set(s.doc.property.id, list);
     }
-    return { property: withoutSegments(list[0].doc.property), score: moments[0].score, moments };
-  });
+    const maxFused = Math.max(1e-9, ...pool.map(s => s.fused));
+    return [...groups.values()].map(list => {
+      list.sort((a, b) => b.fused - a.fused);
+      const moments: Moment[] = [];
+      const windows: { start: number; end: number }[] = [];
+      for (const s of list) {
+        const seg = s.doc.segment;
+        if (windows.some(w => overlaps(w, seg))) continue;
+        windows.push(seg);
+        // Show, label and start at the room in this window that fits the query.
+        const chapter = chapterFor(s.doc.property.chapters, seg.start, seg.end, qTerms);
+        moments.push({
+          segmentId: seg.id,
+          start: chapter ? Math.max(seg.start, chapter.start) : seg.start,
+          end: seg.end,
+          room: chapter?.room ?? seg.room,
+          label: chapter?.label,
+          caption: seg.caption,
+          transcript: seg.transcript,
+          frame: chapter?.frame ?? seg.frame,
+          score: +(s.fused / maxFused).toFixed(3),
+          signals: { visual: +s.visual.toFixed(3), speech: +s.speech.toFixed(3), keyword: +s.keyword.toFixed(3) },
+        });
+        if (moments.length >= RANKING.maxMomentsPerProperty) break;
+      }
+      return { property: withoutSegments(list[0].doc.property), score: moments[0].score, moments };
+    });
+  };
 
-  // A filters-only query ("3 bed in Burnaby") has nothing descriptive to rank by.
-  if (!matches.length && Object.keys(parsed.filters).length) {
+  let matches = toMatches(relevant);
+  let closest = false;
+  const hasFilters = Object.keys(parsed.filters).length > 0;
+  // The parser returns this neutral phrase when nothing descriptive is left.
+  const descriptive = parsed.semantic.trim().toLowerCase() !== 'house tour';
+
+  if (!matches.length && hasFilters && descriptive && hybrid && scored.length) {
+    // Homes pass the filters but none clearly shows what was asked for. Show the
+    // nearest real moments, flagged, rather than nothing or unrelated scenes.
+    matches = toMatches(scored).sort((a, b) => b.score - a.score).slice(0, RANKING.closestProperties);
+    closest = true;
+  } else if (!matches.length && hasFilters) {
+    // A filters-only query ("3 bed in Burnaby") has nothing descriptive to rank by.
     const seen = new Set<string>();
     for (const c of candidates) {
       if (seen.has(c.property.id)) continue;
@@ -154,7 +218,7 @@ export async function search(query: string): Promise<SearchResponse> {
 
   matches.sort((a, b) => b.score - a.score);
   const top = matches[0]?.score ?? 0;
-  matches = matches.filter(m => m.score >= top * RANKING.relativeCutoff).slice(0, RANKING.maxProperties);
+  if (!closest) matches = matches.filter(m => m.score >= top * RANKING.relativeCutoff).slice(0, RANKING.maxProperties);
   timings.rank = Math.round(performance.now() - t2);
   timings.total = Math.round(performance.now() - t0);
 
@@ -163,6 +227,7 @@ export async function search(query: string): Promise<SearchResponse> {
     interpreted: parsed,
     mode: hybrid ? 'hybrid' : 'keyword',
     matches,
+    ...(closest ? { closest: true } : {}),
     stats: {
       segmentsSearched: candidates.length,
       propertiesConsidered: new Set(candidates.map(c => c.property.id)).size,

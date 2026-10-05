@@ -11,10 +11,10 @@ interface SearchBarProps {
 }
 
 const SAMPLE_QUERIES = [
-  "3 bed in Burnaby with a big kitchen island",
-  "backyard with mature trees",
-  "under $1.5M with mountain views",
-  "agent mentions a new roof",
+  "3 bed in Surrey with a fenced backyard",
+  "soaker tub in the ensuite",
+  "under $1M condo with city views",
+  "close to SkyTrain",
   "bright open living room with high ceilings",
   "walk-in closet in the primary bedroom"
 ];

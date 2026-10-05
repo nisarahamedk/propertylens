@@ -36,6 +36,7 @@ export interface Chapter {
   end: number;           // seconds
   room: Room;
   label: string;         // e.g. "Ensuite", "Walk-in closet"
+  frame?: string;        // public path of a still from the middle of the chapter
 }
 
 export interface Property {
@@ -85,6 +86,7 @@ export interface Moment {
   start: number;
   end: number;
   room: Room;
+  label?: string;   // the chapter shown for this moment, e.g. "Kitchen"
   caption: string;
   transcript: string;
   frame?: string;
@@ -103,6 +105,7 @@ export interface SearchResponse {
   interpreted: { semantic: string; filters: SearchFilters };
   mode: 'hybrid' | 'keyword';
   matches: PropertyMatch[];
+  closest?: boolean;     // no home passing the filters clearly matched; these are the nearest moments
   stats: {
     segmentsSearched: number;
     propertiesConsidered: number;

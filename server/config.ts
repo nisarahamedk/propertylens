@@ -32,8 +32,13 @@ export const RANKING = {
   // 65-tour index, the best tour for queries naming something no tour has
   // scored 0.585-0.638, and for common features 0.646-0.713.
   minBlended: Number(env.SEARCH_MIN_SCORE ?? 0.64),
+  // A query word counts as distinctive if it appears in fewer than this share of
+  // scenes. Scenes containing every distinctive query word pass the floor.
+  distinctiveDocShare: 0.25,
   // Drop properties whose best moment is far below the top result.
   relativeCutoff: 0.6,
   maxProperties: 8,
+  // Homes shown when the filters match but nothing clears the floor.
+  closestProperties: 3,
   maxMomentsPerProperty: 3,
 };
