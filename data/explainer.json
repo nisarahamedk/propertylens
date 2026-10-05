@@ -1,0 +1,4166 @@
+{
+ "generatedAt": "2026-10-05T02:19:45.748Z",
+ "models": {
+  "embedding": "gemini-embedding-2",
+  "flash": "gemini-3.5-flash-lite",
+  "dims": 768
+ },
+ "settings": {
+  "segment": {
+   "length": 30,
+   "step": 25,
+   "minTail": 8
+  },
+  "ranking": {
+   "visualWeight": 0.6,
+   "speechWeight": 0.4,
+   "rrf": {
+    "k": 60,
+    "visual": 1,
+    "speech": 0.8,
+    "keyword": 0.5
+   },
+   "minBlended": 0.64,
+   "distinctiveDocShare": 0.25,
+   "relativeCutoff": 0.6,
+   "maxProperties": 8,
+   "closestProperties": 3,
+   "maxMomentsPerProperty": 3
+  }
+ },
+ "stats": {
+  "tours": 63,
+  "scenes": 355,
+  "chapters": 1149,
+  "vectors": 710,
+  "minutes": 143,
+  "vectorsMB": 2.9
+ },
+ "traces": [
+  {
+   "query": "3 bed in Surrey with a fenced backyard",
+   "semantic": "fenced backyard",
+   "filters": {
+    "minBeds": 3,
+    "locations": [
+     "Surrey"
+    ]
+   },
+   "candidates": 41,
+   "candidateTours": 8,
+   "timings": {
+    "parse": 1573,
+    "embed": 172,
+    "rank": 3,
+    "total": 1748
+   },
+   "results": [
+    {
+     "tour": "DqXM07TYfdM",
+     "name": "Surrey",
+     "label": "Backyard",
+     "start": 100,
+     "frame": "/frames/DqXM07TYfdM_c0770.jpg"
+    },
+    {
+     "tour": "8iugptfOqDk",
+     "name": "Fraser Heights, Surrey",
+     "label": "Backyard",
+     "start": 135,
+     "frame": "/frames/8iugptfOqDk_c1350.jpg"
+    },
+    {
+     "tour": "I2qrsxKbzeA",
+     "name": "Surrey",
+     "label": "Backyard",
+     "start": 53,
+     "frame": "/frames/I2qrsxKbzeA_c0530.jpg"
+    },
+    {
+     "tour": "D_7Td8HdCCc",
+     "name": "Surrey",
+     "label": "Backyard",
+     "start": 113,
+     "frame": "/frames/D_7Td8HdCCc_c1130.jpg"
+    }
+   ],
+   "shortlist": [
+    {
+     "id": "DGOF6dJ0t9E:0000",
+     "tour": "DGOF6dJ0t9E",
+     "name": "Bear Creek, Surrey",
+     "start": 0,
+     "room": "exterior",
+     "rooms": [
+      "Neighborhood view",
+      "Townhouse exterior",
+      "Townhouse back",
+      "Balcony"
+     ],
+     "frame": "/frames/DGOF6dJ0t9E_0000.jpg",
+     "caption": "An exterior view of a multi-level grey and white townhouse complex in Surrey, surrounded by greenery and tree-lined walkways.",
+     "visual": 0.596,
+     "speech": 0.634,
+     "keyword": 0,
+     "allWords": false,
+     "ranks": [
+      22,
+      17,
+      null
+     ]
+    },
+    {
+     "id": "DGOF6dJ0t9E:0025",
+     "tour": "DGOF6dJ0t9E",
+     "name": "Bear Creek, Surrey",
+     "start": 25,
+     "room": "living",
+     "rooms": [
+      "Balcony",
+      "Townhouse front",
+      "Entryway",
+      "Living room",
+      "Kitchen"
+     ],
+     "frame": "/frames/DGOF6dJ0t9E_0025.jpg",
+     "caption": "The main living area features an open concept layout with dark wood flooring, an accent wall, and a large sectional sofa. Natural light ente",
+     "visual": 0.587,
+     "speech": 0.612,
+     "keyword": 0,
+     "allWords": false,
+     "ranks": [
+      27,
+      36,
+      null
+     ]
+    },
+    {
+     "id": "DGOF6dJ0t9E:0050",
+     "tour": "DGOF6dJ0t9E",
+     "name": "Bear Creek, Surrey",
+     "start": 50,
+     "room": "kitchen",
+     "rooms": [
+      "Kitchen",
+      "Dining room",
+      "Powder room",
+      "Primary bedroom",
+      "Ensuite"
+     ],
+     "frame": "/frames/DGOF6dJ0t9E_0050.jpg",
+     "caption": "The modern kitchen features white cabinetry, dark countertops, a double-basin sink, and stainless steel appliances.",
+     "visual": 0.601,
+     "speech": 0.623,
+     "keyword": 0,
+     "allWords": false,
+     "ranks": [
+      18,
+      23,
+      null
+     ]
+    },
+    {
+     "id": "DGOF6dJ0t9E:0075",
+     "tour": "DGOF6dJ0t9E",
+     "name": "Bear Creek, Surrey",
+     "start": 75,
+     "room": "office",
+     "rooms": [
+      "Ensuite",
+      "Home office",
+      "Workspace",
+      "Laundry",
+      "Bear Creek Park",
+      "Community pool"
+     ],
+     "frame": "/frames/DGOF6dJ0t9E_0075.jpg",
+     "caption": "A clean bathroom featuring a white sink with a brown countertop, large mirror, and warm lighting.",
+     "visual": 0.585,
+     "speech": 0.605,
+     "keyword": 0,
+     "allWords": false,
+     "ranks": [
+      29,
+      38,
+      null
+     ]
+    },
+    {
+     "id": "DGOF6dJ0t9E:0100",
+     "tour": "DGOF6dJ0t9E",
+     "name": "Bear Creek, Surrey",
+     "start": 100,
+     "room": "amenity",
+     "rooms": [
+      "King George Hub",
+      "King George Station",
+      "Surrey Arts Centre",
+      "Community Centre",
+      "Costco"
+     ],
+     "frame": "/frames/DGOF6dJ0t9E_0100.jpg",
+     "caption": "An aerial and exterior view showcasing neighborhood amenities, local businesses, parks, and nearby schools in the Surrey area.",
+     "visual": 0.557,
+     "speech": 0.625,
+     "keyword": 0,
+     "allWords": false,
+     "ranks": [
+      40,
+      22,
+      null
+     ]
+    },
+    {
+     "id": "DGOF6dJ0t9E:0125",
+     "tour": "DGOF6dJ0t9E",
+     "name": "Bear Creek, Surrey",
+     "start": 125,
+     "room": "amenity",
+     "rooms": [
+      "Bear Creek Elementary",
+      "SFU Surrey"
+     ],
+     "frame": "/frames/DGOF6dJ0t9E_0125.jpg",
+     "caption": "A bright modern kitchen with white cabinetry, stainless steel appliances, and a tiled backsplash, shown alongside the agent.",
+     "visual": 0.541,
+     "speech": 0.632,
+     "keyword": 0,
+     "allWords": false,
+     "ranks": [
+      41,
+      18,
+      null
+     ]
+    },
+    {
+     "id": "8iugptfOqDk:0000",
+     "tour": "8iugptfOqDk",
+     "name": "Fraser Heights, Surrey",
+     "start": 0,
+     "room": "exterior",
+     "rooms": [
+      "Exterior"
+     ],
+     "frame": "/frames/8iugptfOqDk_0000.jpg",
+     "caption": "A two-story house with a white and grey exterior, a green lawn, and a paved driveway is shown in front. A man in a suit is standing on the l",
+     "visual": 0.586,
+     "speech": 0.635,
+     "keyword": 0,
+     "allWords": false,
+     "ranks": [
+      28,
+      16,
+      null
+     ]
+    },
+    {
+     "id": "8iugptfOqDk:0025",
+     "tour": "8iugptfOqDk",
+     "name": "Fraser Heights, Surrey",
+     "start": 25,
+     "room": "living",
+     "rooms": [
+      "Living room",
+      "Kitchen",
+      "Living room",
+      "Dining room"
+     ],
+     "frame": "/frames/8iugptfOqDk_0025.jpg",
+     "caption": "A spacious living room featuring carpet flooring, a gas fireplace with a light-colored mantle, high vaulted ceilings, and large windows with",
+     "visual": 0.597,
+     "speech": 0.617,
+     "keyword": 0,
+     "allWords": false,
+     "ranks": [
+      21,
+      28,
+      null
+     ]
+    },
+    {
+     "id": "8iugptfOqDk:0050",
+     "tour": "8iugptfOqDk",
+     "name": "Fraser Heights, Surrey",
+     "start": 50,
+     "room": "kitchen",
+     "rooms": [
+      "Dining room",
+      "Kitchen",
+      "Living room",
+      "Kitchen"
+     ],
+     "frame": "/frames/8iugptfOqDk_0050.jpg",
+     "caption": "A spacious kitchen with white cabinetry, dark countertops, patterned tile backsplash, and a breakfast bar island with bar stools. It opens u",
+     "visual": 0.612,
+     "speech": 0.623,
+     "keyword": 0,
+     "allWords": false,
+     "ranks": [
+      11,
+      24,
+      null
+     ]
+    },
+    {
+     "id": "8iugptfOqDk:0075",
+     "tour": "8iugptfOqDk",
+     "name": "Fraser Heights, Surrey",
+     "start": 75,
+     "room": "bedroom",
+     "rooms": [
+      "Kitchen",
+      "Staircase",
+      "Primary bedroom"
+     ],
+     "frame": "/frames/8iugptfOqDk_0075.jpg",
+     "caption": "A spacious primary bedroom with a king-size bed, neutral carpeting, and warm taupe walls. It features a dual-sided fireplace connecting to a",
+     "visual": 0.607,
+     "speech": 0.616,
+     "keyword": 0,
+     "allWords": false,
+     "ranks": [
+      14,
+      29,
+      null
+     ]
+    },
+    {
+     "id": "8iugptfOqDk:0100",
+     "tour": "8iugptfOqDk",
+     "name": "Fraser Heights, Surrey",
+     "start": 100,
+     "room": "bathroom",
+     "rooms": [
+      "Primary bedroom",
+      "Office",
+      "Ensuite",
+      "Bedroom",
+      "Bathroom"
+     ],
+     "frame": "/frames/8iugptfOqDk_0100.jpg",
+     "caption": "A bright primary bathroom with a large corner soaking tub, dual vanity with white countertops, glass-enclosed shower, and gold fixtures.",
+     "visual": 0.598,
+     "speech": 0.591,
+     "keyword": 0,
+     "allWords": false,
+     "ranks": [
+      20,
+      40,
+      null
+     ]
+    },
+    {
+     "id": "8iugptfOqDk:0125",
+     "tour": "8iugptfOqDk",
+     "name": "Fraser Heights, Surrey",
+     "start": 125,
+     "room": "backyard",
+     "rooms": [
+      "Bathroom",
+      "Balcony",
+      "Backyard"
+     ],
+     "frame": "/frames/8iugptfOqDk_0125.jpg",
+     "caption": "The video tours a bedroom and bathroom before moving to a sunny backyard with a patio, lawn, blooming trees, and white fencing.",
+     "visual": 0.646,
+     "speech": 0.73,
+     "keyword": 0.325,
+     "allWords": false,
+     "ranks": [
+      3,
+      4,
+      4
+     ]
+    },
+    {
+     "id": "8iugptfOqDk:0150",
+     "tour": "8iugptfOqDk",
+     "name": "Fraser Heights, Surrey",
+     "start": 150,
+     "room": "backyard",
+     "rooms": [
+      "Backyard"
+     ],
+     "frame": "/frames/8iugptfOqDk_0150.jpg",
+     "caption": "A well-maintained kitchen featuring white cabinetry, dark countertops, and a tiled backsplash, with a real estate agent speaking in the fore",
+     "visual": 0.636,
+     "speech": 0.629,
+     "keyword": 0.18,
+     "allWords": false,
+     "ranks": [
+      6,
+      19,
+      10
+     ]
+    },
+    {
+     "id": "DqXM07TYfdM:0000",
+     "tour": "DqXM07TYfdM",
+     "name": "Surrey",
+     "start": 0,
+     "room": "exterior",
+     "rooms": [
+      "Exterior",
+      "Entryway"
+     ],
+     "frame": "/frames/DqXM07TYfdM_0000.jpg",
+     "caption": "The exterior of a two-story blue and stone house featuring a covered front porch, double garage, and manicured front lawn.",
+     "visual": 0.585,
+     "speech": 0.652,
+     "keyword": 0,
+     "allWords": false,
+     "ranks": [
+      30,
+      8,
+      null
+     ]
+    },
+    {
+     "id": "DqXM07TYfdM:0050",
+     "tour": "DqXM07TYfdM",
+     "name": "Surrey",
+     "start": 50,
+     "room": "bathroom",
+     "rooms": [
+      "Bedroom",
+      "Office",
+      "Bathroom",
+      "Backyard"
+     ],
+     "frame": "/frames/DqXM07TYfdM_0050.jpg",
+     "caption": "A bright dining area features a modern spherical pendant light above a round table, flanked by sliding glass doors leading to the backyard a",
+     "visual": 0.608,
+     "speech": 0.638,
+     "keyword": 0.188,
+     "allWords": false,
+     "ranks": [
+      12,
+      11,
+      9
+     ]
+    },
+    {
+     "id": "DqXM07TYfdM:0075",
+     "tour": "DqXM07TYfdM",
+     "name": "Surrey",
+     "start": 75,
+     "room": "backyard",
+     "rooms": [
+      "Backyard"
+     ],
+     "frame": "/frames/DqXM07TYfdM_0075.jpg",
+     "caption": "A sunny backyard with a concrete patio, grassy lawn, and tall arborvitae hedge lining the wooden fence.",
+     "visual": 0.643,
+     "speech": 0.752,
+     "keyword": 0.578,
+     "allWords": true,
+     "ranks": [
+      4,
+      3,
+      3
+     ]
+    },
+    {
+     "id": "DqXM07TYfdM:0100",
+     "tour": "DqXM07TYfdM",
+     "name": "Surrey",
+     "start": 100,
+     "room": "backyard",
+     "rooms": [
+      "Backyard"
+     ],
+     "frame": "/frames/DqXM07TYfdM_0100.jpg",
+     "caption": "A realtor stands on a paved patio in a fenced backyard with green grass and tall privacy hedges, highlighting the outdoor space.",
+     "visual": 0.651,
+     "speech": 0.756,
+     "keyword": 0.881,
+     "allWords": true,
+     "ranks": [
+      2,
+      2,
+      2
+     ]
+    },
+    {
+     "id": "P7Fj7Qs6ro8:0050",
+     "tour": "P7Fj7Qs6ro8",
+     "name": "Surrey",
+     "start": 50,
+     "room": "backyard",
+     "rooms": [
+      "Dining room",
+      "Backyard",
+      "Bedroom"
+     ],
+     "frame": "/frames/P7Fj7Qs6ro8_0050.jpg",
+     "caption": "A spacious living room featuring hardwood floors, a large fireplace with a mantle, and glass French doors leading to an outdoor balcony.",
+     "visual": 0.599,
+     "speech": 0.669,
+     "keyword": 0.251,
+     "allWords": false,
+     "ranks": [
+      19,
+      7,
+      6
+     ]
+    },
+    {
+     "id": "P7Fj7Qs6ro8:0075",
+     "tour": "P7Fj7Qs6ro8",
+     "name": "Surrey",
+     "start": 75,
+     "room": "entry",
+     "rooms": [
+      "Bedroom",
+      "Bathroom",
+      "Hallway",
+      "Entryway"
+     ],
+     "frame": "/frames/P7Fj7Qs6ro8_0075.jpg",
+     "caption": "The foyer features a light neutral wall color with white trim and a white front door with sidelights. A woman in a black coat stands in the ",
+     "visual": 0.567,
+     "speech": 0.637,
+     "keyword": 0,
+     "allWords": false,
+     "ranks": [
+      35,
+      13,
+      null
+     ]
+    },
+    {
+     "id": "P7Fj7Qs6ro8:0100",
+     "tour": "P7Fj7Qs6ro8",
+     "name": "Surrey",
+     "start": 100,
+     "room": "entry",
+     "rooms": [
+      "Entryway"
+     ],
+     "frame": "/frames/P7Fj7Qs6ro8_0100.jpg",
+     "caption": "The bright entry foyer features a white front door with frosted glass side panels, crisp white molding, and neutral walls.",
+     "visual": 0.561,
+     "speech": 0.64,
+     "keyword": 0,
+     "allWords": false,
+     "ranks": [
+      38,
+      10,
+      null
+     ]
+    },
+    {
+     "id": "LG7VIk8kSWU:0025",
+     "tour": "LG7VIk8kSWU",
+     "name": "Surrey",
+     "start": 25,
+     "room": "kitchen",
+     "rooms": [
+      "Kitchen",
+      "Bathroom",
+      "Primary bedroom",
+      "Bedroom",
+      "Backyard"
+     ],
+     "frame": "/frames/LG7VIk8kSWU_0025.jpg",
+     "caption": "The open-concept kitchen features oak cabinets, laminate countertops, and white appliances, flowing seamlessly into the adjacent dining and ",
+     "visual": 0.615,
+     "speech": 0.613,
+     "keyword": 0,
+     "allWords": false,
+     "ranks": [
+      10,
+      34,
+      null
+     ]
+    },
+    {
+     "id": "LG7VIk8kSWU:0050",
+     "tour": "LG7VIk8kSWU",
+     "name": "Surrey",
+     "start": 50,
+     "room": "backyard",
+     "rooms": [
+      "Backyard"
+     ],
+     "frame": "/frames/LG7VIk8kSWU_0050.jpg",
+     "caption": "A cozy bedroom with light pink walls, a white ceiling, a white window with sheer curtains, a wooden dresser, and a bed with a white comforte",
+     "visual": 0.643,
+     "speech": 0.587,
+     "keyword": 0.223,
+     "allWords": false,
+     "ranks": [
+      5,
+      41,
+      8
+     ]
+    },
+    {
+     "id": "OKWSDc86FHk:0025",
+     "tour": "OKWSDc86FHk",
+     "name": "Clayton Heights, Surrey",
+     "start": 25,
+     "room": "kitchen",
+     "rooms": [
+      "Kitchen",
+      "Dining area",
+      "Primary bedroom",
+      "Bathroom",
+      "Nursery",
+      "Bathroom",
+      "Balcony"
+     ],
+     "frame": "/frames/OKWSDc86FHk_0025.jpg",
+     "caption": "A quick walkthrough showcasing a modern townhouse featuring an open concept kitchen with white cabinetry, a cozy living area with a dining t",
+     "visual": 0.607,
+     "speech": 0.62,
+     "keyword": 0,
+     "allWords": false,
+     "ranks": [
+      15,
+      27,
+      null
+     ]
+    },
+    {
+     "id": "OKWSDc86FHk:0050",
+     "tour": "OKWSDc86FHk",
+     "name": "Clayton Heights, Surrey",
+     "start": 50,
+     "room": "backyard",
+     "rooms": [
+      "Balcony"
+     ],
+     "frame": "/frames/OKWSDc86FHk_0050.jpg",
+     "caption": "An aerial tour of the neighborhood and community surrounding the property in Clayton Heights.",
+     "visual": 0.619,
+     "speech": 0.628,
+     "keyword": 0.249,
+     "allWords": false,
+     "ranks": [
+      8,
+      21,
+      7
+     ]
+    },
+    {
+     "id": "D_7Td8HdCCc:0000",
+     "tour": "D_7Td8HdCCc",
+     "name": "Surrey",
+     "start": 0,
+     "room": "view",
+     "rooms": [
+      "Front exterior",
+      "Aerial view"
+     ],
+     "frame": "/frames/D_7Td8HdCCc_0000.jpg",
+     "caption": "An agent introduces a two-story house with a brick and siding exterior, showcasing the surrounding neighborhood, views of a nearby bridge an",
+     "visual": 0.608,
+     "speech": 0.636,
+     "keyword": 0,
+     "allWords": false,
+     "ranks": [
+      13,
+      15,
+      null
+     ]
+    },
+    {
+     "id": "D_7Td8HdCCc:0025",
+     "tour": "D_7Td8HdCCc",
+     "name": "Surrey",
+     "start": 25,
+     "room": "entry",
+     "rooms": [
+      "Aerial view",
+      "Entryway",
+      "Living room",
+      "Bathroom",
+      "Front exterior",
+      "Sunroom",
+      "View"
+     ],
+     "frame": "/frames/D_7Td8HdCCc_0025.jpg",
+     "caption": "The bathroom features neutral beige ceramic tiled walls surrounding a bathtub and shower combination, with a white toilet and a window provi",
+     "visual": 0.602,
+     "speech": 0.613,
+     "keyword": 0,
+     "allWords": false,
+     "ranks": [
+      17,
+      35,
+      null
+     ]
+    },
+    {
+     "id": "D_7Td8HdCCc:0050",
+     "tour": "D_7Td8HdCCc",
+     "name": "Surrey",
+     "start": 50,
+     "room": "living",
+     "rooms": [
+      "View",
+      "Side gate",
+      "Entryway",
+      "Stairs",
+      "Living room",
+      "Sunroom",
+      "Living room",
+      "Fireplace"
+     ],
+     "frame": "/frames/D_7Td8HdCCc_0050.jpg",
+     "caption": "A bright living room with neutral walls, wide-plank light flooring, a white mantel fireplace with gas logs, and a bay window overlooking tre",
+     "visual": 0.607,
+     "speech": 0.637,
+     "keyword": 0,
+     "allWords": false,
+     "ranks": [
+      16,
+      14,
+      null
+     ]
+    },
+    {
+     "id": "D_7Td8HdCCc:0100",
+     "tour": "D_7Td8HdCCc",
+     "name": "Surrey",
+     "start": 100,
+     "room": "kitchen",
+     "rooms": [
+      "Kitchen",
+      "Side gate",
+      "Backyard",
+      "Garden",
+      "BBQ area"
+     ],
+     "frame": "/frames/D_7Td8HdCCc_0100.jpg",
+     "caption": "A spacious, beautifully landscaped backyard with a manicured lawn, brick patio, and garden areas, functioning as an outdoor oasis.",
+     "visual": 0.657,
+     "speech": 0.726,
+     "keyword": 0.167,
+     "allWords": false,
+     "ranks": [
+      1,
+      5,
+      11
+     ]
+    },
+    {
+     "id": "D_7Td8HdCCc:0125",
+     "tour": "D_7Td8HdCCc",
+     "name": "Surrey",
+     "start": 125,
+     "room": "backyard",
+     "rooms": [
+      "BBQ area",
+      "Pond",
+      "Backyard"
+     ],
+     "frame": "/frames/D_7Td8HdCCc_0125.jpg",
+     "caption": "A charming backyard featuring a patio space with a grill, fire pit, and a pond with a waterfall. The area is landscaped with lush greenery a",
+     "visual": 0.628,
+     "speech": 0.721,
+     "keyword": 0.264,
+     "allWords": false,
+     "ranks": [
+      7,
+      6,
+      5
+     ]
+    },
+    {
+     "id": "D_7Td8HdCCc:0150",
+     "tour": "D_7Td8HdCCc",
+     "name": "Surrey",
+     "start": 150,
+     "room": "backyard",
+     "rooms": [
+      "Backyard",
+      "Aerial view"
+     ],
+     "frame": "/frames/D_7Td8HdCCc_0150.jpg",
+     "caption": "A lush, green park with walking and mountain biking trails is located just seconds away from the home.",
+     "visual": 0.583,
+     "speech": 0.638,
+     "keyword": 0.147,
+     "allWords": false,
+     "ranks": [
+      31,
+      12,
+      12
+     ]
+    },
+    {
+     "id": "D_7Td8HdCCc:0175",
+     "tour": "D_7Td8HdCCc",
+     "name": "Surrey",
+     "start": 175,
+     "room": "other",
+     "frame": "/frames/D_7Td8HdCCc_0175.jpg",
+     "caption": "The exterior views showcase a scenic wooded area with dirt trails and surrounding shops, amenities, and restaurants nearby.",
+     "visual": 0.577,
+     "speech": 0.629,
+     "keyword": 0,
+     "allWords": false,
+     "ranks": [
+      33,
+      20,
+      null
+     ]
+    },
+    {
+     "id": "D_7Td8HdCCc:0200",
+     "tour": "D_7Td8HdCCc",
+     "name": "Surrey",
+     "start": 200,
+     "room": "other",
+     "frame": "/frames/D_7Td8HdCCc_0200.jpg",
+     "caption": "An exterior view of a two-story home with a light grey facade, white garage door, and a manicured front garden.",
+     "visual": 0.563,
+     "speech": 0.647,
+     "keyword": 0,
+     "allWords": false,
+     "ranks": [
+      37,
+      9,
+      null
+     ]
+    },
+    {
+     "id": "I2qrsxKbzeA:0050",
+     "tour": "I2qrsxKbzeA",
+     "name": "Surrey",
+     "start": 50,
+     "room": "backyard",
+     "rooms": [
+      "Mortgage helper",
+      "Backyard"
+     ],
+     "frame": "/frames/I2qrsxKbzeA_0050.jpg",
+     "caption": "A fully fenced backyard with a patio area and lawn.",
+     "visual": 0.616,
+     "speech": 0.783,
+     "keyword": 1,
+     "allWords": true,
+     "ranks": [
+      9,
+      1,
+      1
+     ]
+    }
+   ]
+  },
+  {
+   "query": "Soaker tub in the ensuite",
+   "semantic": "Soaker tub in the ensuite",
+   "filters": {},
+   "candidates": 355,
+   "candidateTours": 63,
+   "timings": {
+    "parse": 0,
+    "embed": 160,
+    "rank": 4,
+    "total": 164
+   },
+   "results": [
+    {
+     "tour": "Gueg_zB5kAk",
+     "name": "Abbotsford",
+     "label": "Ensuite",
+     "start": 102,
+     "frame": "/frames/Gueg_zB5kAk_c1020.jpg"
+    },
+    {
+     "tour": "Ivv1UQoG-Ik",
+     "name": "Arbutus Ridge, Vancouver",
+     "label": "Ensuite",
+     "start": 125,
+     "frame": "/frames/Ivv1UQoG-Ik_c1130.jpg"
+    },
+    {
+     "tour": "aLhcDVGvd_8",
+     "name": "Vancouver",
+     "label": "Ensuite",
+     "start": 112,
+     "frame": "/frames/aLhcDVGvd_8_c1120.jpg"
+    },
+    {
+     "tour": "8iugptfOqDk",
+     "name": "Fraser Heights, Surrey",
+     "label": "Ensuite",
+     "start": 107,
+     "frame": "/frames/8iugptfOqDk_c1070.jpg"
+    },
+    {
+     "tour": "EGkcUdFDLfk",
+     "name": "Knight, Vancouver",
+     "label": "Ensuite",
+     "start": 157,
+     "frame": "/frames/EGkcUdFDLfk_c1570.jpg"
+    }
+   ],
+   "shortlist": [
+    {
+     "id": "aLhcDVGvd_8:0100",
+     "tour": "aLhcDVGvd_8",
+     "name": "Vancouver",
+     "start": 100,
+     "room": "bathroom",
+     "rooms": [
+      "Primary bedroom",
+      "Ensuite"
+     ],
+     "frame": "/frames/aLhcDVGvd_8_0100.jpg",
+     "caption": "The primary bedroom has wide-plank wood flooring, white walls, and a glass door leading to a balcony. It connects to a luxury bathroom featu",
+     "visual": 0.619,
+     "speech": 0.718,
+     "keyword": 0.534,
+     "allWords": false,
+     "ranks": [
+      11,
+      5,
+      2
+     ]
+    },
+    {
+     "id": "aLhcDVGvd_8:0125",
+     "tour": "aLhcDVGvd_8",
+     "name": "Vancouver",
+     "start": 125,
+     "room": "bedroom",
+     "rooms": [
+      "Ensuite",
+      "Bedroom"
+     ],
+     "frame": "/frames/aLhcDVGvd_8_0125.jpg",
+     "caption": "A bright, modern primary bathroom with dual vanities, marble tile, a large soaking tub, and a glass-enclosed shower.",
+     "visual": 0.624,
+     "speech": 0.724,
+     "keyword": 0.272,
+     "allWords": false,
+     "ranks": [
+      6,
+      2,
+      27
+     ]
+    },
+    {
+     "id": "26Ia4ow-fq0:0075",
+     "tour": "26Ia4ow-fq0",
+     "name": "New Westminster",
+     "start": 75,
+     "room": "bathroom",
+     "rooms": [
+      "Bedroom",
+      "Primary Bedroom",
+      "Ensuite",
+      "Exterior",
+      "Indoor Pool"
+     ],
+     "frame": "/frames/26Ia4ow-fq0_0075.jpg",
+     "caption": "The primary bathroom features neutral tile walls and floors, a dark wood vanity with a glass vessel sink, a large mirror, a corner glass sho",
+     "visual": 0.612,
+     "speech": 0.69,
+     "keyword": 0.478,
+     "allWords": false,
+     "ranks": [
+      16,
+      15,
+      3
+     ]
+    },
+    {
+     "id": "EGkcUdFDLfk:0150",
+     "tour": "EGkcUdFDLfk",
+     "name": "Knight, Vancouver",
+     "start": 150,
+     "room": "bathroom",
+     "rooms": [
+      "Staircase",
+      "Ensuite",
+      "Bedroom"
+     ],
+     "frame": "/frames/EGkcUdFDLfk_0150.jpg",
+     "caption": "This video shows a spacious bedroom with neutral carpet flooring, large windows with white trim, and white walls. An attached en-suite bathr",
+     "visual": 0.624,
+     "speech": 0.709,
+     "keyword": 0.297,
+     "allWords": false,
+     "ranks": [
+      7,
+      6,
+      18
+     ]
+    },
+    {
+     "id": "Ivv1UQoG-Ik:0100",
+     "tour": "Ivv1UQoG-Ik",
+     "name": "Arbutus Ridge, Vancouver",
+     "start": 100,
+     "room": "bathroom",
+     "rooms": [
+      "Bathroom",
+      "Bedroom",
+      "Ensuite"
+     ],
+     "frame": "/frames/Ivv1UQoG-Ik_0100.jpg",
+     "caption": "A bright bedroom with neutral walls, wide-plank wood flooring, and a large window looking out to greenery. It features a walk-in closet and ",
+     "visual": 0.649,
+     "speech": 0.653,
+     "keyword": 0,
+     "allWords": false,
+     "ranks": [
+      1,
+      29,
+      null
+     ]
+    },
+    {
+     "id": "Ivv1UQoG-Ik:0125",
+     "tour": "Ivv1UQoG-Ik",
+     "name": "Arbutus Ridge, Vancouver",
+     "start": 125,
+     "room": "backyard",
+     "rooms": [
+      "Ensuite",
+      "Bedroom",
+      "Backyard",
+      "Basement entrance",
+      "Basement bathroom"
+     ],
+     "frame": "/frames/Ivv1UQoG-Ik_0125.jpg",
+     "caption": "A modern bathroom featuring a white soaking tub and a sleek marble-look tile wall.",
+     "visual": 0.632,
+     "speech": 0.72,
+     "keyword": 0.323,
+     "allWords": false,
+     "ranks": [
+      3,
+      3,
+      10
+     ]
+    },
+    {
+     "id": "642yZATcCiA:0100",
+     "tour": "642yZATcCiA",
+     "name": "Vancouver",
+     "start": 100,
+     "room": "bathroom",
+     "rooms": [
+      "Bedroom",
+      "Primary Bedroom",
+      "Bathroom",
+      "Balcony"
+     ],
+     "frame": "/frames/642yZATcCiA_0100.jpg",
+     "caption": "The video shows a spacious bedroom with light wood flooring, white walls, and a large window and door leading to a balcony. The bedroom incl",
+     "visual": 0.613,
+     "speech": 0.667,
+     "keyword": 0.398,
+     "allWords": false,
+     "ranks": [
+      14,
+      24,
+      6
+     ]
+    },
+    {
+     "id": "rEy3q-DO2Yw:0075",
+     "tour": "rEy3q-DO2Yw",
+     "name": "West Vancouver",
+     "start": 75,
+     "room": "living",
+     "rooms": [
+      "Primary Bedroom",
+      "Ensuite",
+      "Hallway",
+      "Staircase",
+      "Rec Room"
+     ],
+     "frame": "/frames/rEy3q-DO2Yw_0075.jpg",
+     "caption": "A quick tour of a luxury modern mansion featuring a rooftop deck with water views, a sleek bathroom with a freestanding tub, glass staircase",
+     "visual": 0.582,
+     "speech": 0.645,
+     "keyword": 0.291,
+     "allWords": false,
+     "ranks": [
+      65,
+      41,
+      20
+     ]
+    },
+    {
+     "id": "rEy3q-DO2Yw:0100",
+     "tour": "rEy3q-DO2Yw",
+     "name": "West Vancouver",
+     "start": 100,
+     "room": "backyard",
+     "rooms": [
+      "Patio"
+     ],
+     "frame": "/frames/rEy3q-DO2Yw_0100.jpg",
+     "caption": "The exterior of a luxury modern mansion features a large illuminated swimming pool, a hot tub, lounge areas, fire pits, and lush landscaping",
+     "visual": 0.574,
+     "speech": 0.635,
+     "keyword": 0.295,
+     "allWords": false,
+     "ranks": [
+      87,
+      61,
+      19
+     ]
+    },
+    {
+     "id": "TlMUknHQYLU:0125",
+     "tour": "TlMUknHQYLU",
+     "name": "4438 Canterbury Crescent",
+     "start": 125,
+     "room": "bedroom",
+     "rooms": [
+      "Powder Room",
+      "Primary Bedroom",
+      "Ensuite Bathroom"
+     ],
+     "frame": "/frames/TlMUknHQYLU_0125.jpg",
+     "caption": "A luxury modern bathroom with a spacious walk-in shower featuring a rainfall showerhead, a freestanding soaking tub, and double sinks with a",
+     "visual": 0.607,
+     "speech": 0.703,
+     "keyword": 0.304,
+     "allWords": false,
+     "ranks": [
+      18,
+      10,
+      16
+     ]
+    },
+    {
+     "id": "TlMUknHQYLU:0150",
+     "tour": "TlMUknHQYLU",
+     "name": "4438 Canterbury Crescent",
+     "start": 150,
+     "room": "bathroom",
+     "rooms": [
+      "Ensuite Bathroom",
+      "Basement Bar",
+      "Home Theater"
+     ],
+     "frame": "/frames/TlMUknHQYLU_0150.jpg",
+     "caption": "A modern luxury home featuring a large marble shower, a white-themed hallway, a sophisticated home bar with orange stools, a glass-walled wi",
+     "visual": 0.59,
+     "speech": 0.674,
+     "keyword": 0,
+     "allWords": false,
+     "ranks": [
+      43,
+      20,
+      null
+     ]
+    },
+    {
+     "id": "nml0jgA_QZ0:0100",
+     "tour": "nml0jgA_QZ0",
+     "name": "Richmond",
+     "start": 100,
+     "room": "basement",
+     "rooms": [
+      "Media room",
+      "Powder room",
+      "Office",
+      "Bathroom",
+      "Laundry room"
+     ],
+     "frame": "/frames/nml0jgA_QZ0_0100.jpg",
+     "caption": "A modern kitchen with white cabinetry, stainless steel appliances, and stone countertops.",
+     "visual": 0.614,
+     "speech": 0.594,
+     "keyword": 0,
+     "allWords": false,
+     "ranks": [
+      13,
+      259,
+      null
+     ]
+    },
+    {
+     "id": "nml0jgA_QZ0:0125",
+     "tour": "nml0jgA_QZ0",
+     "name": "Richmond",
+     "start": 125,
+     "room": "bedroom",
+     "rooms": [
+      "Laundry room",
+      "Primary bedroom",
+      "Primary ensuite",
+      "Bedroom"
+     ],
+     "frame": "/frames/nml0jgA_QZ0_0125.jpg",
+     "caption": "A spacious and luxurious primary bathroom featuring marble-look porcelain tile flooring and walls, double vanities with white quartz counter",
+     "visual": 0.632,
+     "speech": 0.7,
+     "keyword": 0.287,
+     "allWords": false,
+     "ranks": [
+      4,
+      11,
+      23
+     ]
+    },
+    {
+     "id": "8iugptfOqDk:0100",
+     "tour": "8iugptfOqDk",
+     "name": "Fraser Heights, Surrey",
+     "start": 100,
+     "room": "bathroom",
+     "rooms": [
+      "Primary bedroom",
+      "Office",
+      "Ensuite",
+      "Bedroom",
+      "Bathroom"
+     ],
+     "frame": "/frames/8iugptfOqDk_0100.jpg",
+     "caption": "A bright primary bathroom with a large corner soaking tub, dual vanity with white countertops, glass-enclosed shower, and gold fixtures.",
+     "visual": 0.624,
+     "speech": 0.72,
+     "keyword": 0.306,
+     "allWords": false,
+     "ranks": [
+      8,
+      4,
+      15
+     ]
+    },
+    {
+     "id": "u8dIDj_aQU4:0100",
+     "tour": "u8dIDj_aQU4",
+     "name": "Surrey",
+     "start": 100,
+     "room": "bathroom",
+     "rooms": [
+      "Entryway",
+      "Primary bedroom",
+      "Primary ensuite"
+     ],
+     "frame": "/frames/u8dIDj_aQU4_0100.jpg",
+     "caption": "A spacious primary bedroom featuring hardwood floors, a cozy fireplace with a white mantel, and large windows offering scenic outdoor views.",
+     "visual": 0.611,
+     "speech": 0.704,
+     "keyword": 0.279,
+     "allWords": false,
+     "ranks": [
+      17,
+      9,
+      25
+     ]
+    },
+    {
+     "id": "D_7Td8HdCCc:0025",
+     "tour": "D_7Td8HdCCc",
+     "name": "Surrey",
+     "start": 25,
+     "room": "entry",
+     "rooms": [
+      "Aerial view",
+      "Entryway",
+      "Living room",
+      "Bathroom",
+      "Front exterior",
+      "Sunroom",
+      "View"
+     ],
+     "frame": "/frames/D_7Td8HdCCc_0025.jpg",
+     "caption": "The bathroom features neutral beige ceramic tiled walls surrounding a bathtub and shower combination, with a white toilet and a window provi",
+     "visual": 0.584,
+     "speech": 0.682,
+     "keyword": 0,
+     "allWords": false,
+     "ranks": [
+      61,
+      17,
+      null
+     ]
+    },
+    {
+     "id": "3bbHcGjiCD8:0050",
+     "tour": "3bbHcGjiCD8",
+     "name": "Surrey",
+     "start": 50,
+     "room": "backyard",
+     "rooms": [
+      "Primary bedroom",
+      "Ensuite",
+      "Second bedroom",
+      "Bathroom",
+      "Backyard"
+     ],
+     "frame": "/frames/3bbHcGjiCD8_0050.jpg",
+     "caption": "The backyard features a no-maintenance artificial turf yard, privacy hedges, a hot tub, covered deck, and trampoline.",
+     "visual": 0.604,
+     "speech": 0.62,
+     "keyword": 0.327,
+     "allWords": false,
+     "ranks": [
+      20,
+      109,
+      9
+     ]
+    },
+    {
+     "id": "3bbHcGjiCD8:0075",
+     "tour": "3bbHcGjiCD8",
+     "name": "Surrey",
+     "start": 75,
+     "room": "backyard",
+     "rooms": [
+      "Backyard"
+     ],
+     "frame": "/frames/3bbHcGjiCD8_0075.jpg",
+     "caption": "The sunny backyard features a covered wooden deck with dining space, a hot tub on concrete pad, turf lawn, and storage shed, enclosed by pri",
+     "visual": 0.591,
+     "speech": 0.63,
+     "keyword": 0.302,
+     "allWords": false,
+     "ranks": [
+      39,
+      77,
+      17
+     ]
+    },
+    {
+     "id": "73qj_6Qhae0:0075",
+     "tour": "73qj_6Qhae0",
+     "name": "Burnaby",
+     "start": 75,
+     "room": "bathroom",
+     "rooms": [
+      "Bedroom",
+      "Primary bedroom",
+      "Walk-in closet",
+      "Ensuite"
+     ],
+     "frame": "/frames/73qj_6Qhae0_0075.jpg",
+     "caption": "The video shows a well-lit bedroom featuring a large bed, a walk-in closet, and an ensuite bathroom with a double vanity and a glass-enclose",
+     "visual": 0.613,
+     "speech": 0.681,
+     "keyword": 0.443,
+     "allWords": false,
+     "ranks": [
+      15,
+      18,
+      4
+     ]
+    },
+    {
+     "id": "73qj_6Qhae0:0100",
+     "tour": "73qj_6Qhae0",
+     "name": "Burnaby",
+     "start": 100,
+     "room": "backyard",
+     "rooms": [
+      "Ensuite",
+      "Balcony"
+     ],
+     "frame": "/frames/73qj_6Qhae0_0100.jpg",
+     "caption": "A modern bathroom with a glass shower enclosure and dark brown countertops opens up to a view of the bedroom.",
+     "visual": 0.585,
+     "speech": 0.69,
+     "keyword": 0,
+     "allWords": false,
+     "ranks": [
+      57,
+      16,
+      null
+     ]
+    },
+    {
+     "id": "_zHBPkJ3tno:0100",
+     "tour": "_zHBPkJ3tno",
+     "name": "Burnaby",
+     "start": 100,
+     "room": "bathroom",
+     "rooms": [
+      "Primary bedroom",
+      "Primary ensuite",
+      "Second bedroom"
+     ],
+     "frame": "/frames/_zHBPkJ3tno_0100.jpg",
+     "caption": "The master ensuite bathroom features a large dual vanity with lit mirrors, a glass-enclosed shower with marble-look tile, and a toilet. Adja",
+     "visual": 0.593,
+     "speech": 0.696,
+     "keyword": 0.223,
+     "allWords": false,
+     "ranks": [
+      35,
+      13,
+      30
+     ]
+    },
+    {
+     "id": "cc1PFZuphn0:0050",
+     "tour": "cc1PFZuphn0",
+     "name": "Burnaby",
+     "start": 50,
+     "room": "bedroom",
+     "rooms": [
+      "Primary bedroom",
+      "Ensuite bathroom",
+      "Second bedroom"
+     ],
+     "frame": "/frames/cc1PFZuphn0_0050.jpg",
+     "caption": "A bright bedroom features large sliding glass doors leading to a balcony with city views, dark wood flooring, and white walls.",
+     "visual": 0.596,
+     "speech": 0.635,
+     "keyword": 0.35,
+     "allWords": false,
+     "ranks": [
+      29,
+      64,
+      8
+     ]
+    },
+    {
+     "id": "3YsFoLaS3ys:0075",
+     "tour": "3YsFoLaS3ys",
+     "name": "Burnaby",
+     "start": 75,
+     "room": "bedroom",
+     "rooms": [
+      "Primary bedroom",
+      "Ensuite",
+      "Guest bathroom"
+     ],
+     "frame": "/frames/3YsFoLaS3ys_0075.jpg",
+     "caption": "The clip tours a bedroom and two bathrooms inside a home. The bedroom has carpet floors and a double window. The guest bathroom features a b",
+     "visual": 0.621,
+     "speech": 0.673,
+     "keyword": 0.228,
+     "allWords": false,
+     "ranks": [
+      10,
+      21,
+      29
+     ]
+    },
+    {
+     "id": "3YsFoLaS3ys:0100",
+     "tour": "3YsFoLaS3ys",
+     "name": "Burnaby",
+     "start": 100,
+     "room": "bedroom",
+     "rooms": [
+      "Guest bathroom",
+      "Bedroom",
+      "Balcony",
+      "Basement bathroom"
+     ],
+     "frame": "/frames/3YsFoLaS3ys_0100.jpg",
+     "caption": "A bathroom with a large jacuzzi tub set against a wood-paneled wall, alongside a vanity with a white countertop and dark blue accent walls.",
+     "visual": 0.616,
+     "speech": 0.698,
+     "keyword": 0.31,
+     "allWords": false,
+     "ranks": [
+      12,
+      12,
+      14
+     ]
+    },
+    {
+     "id": "3YsFoLaS3ys:0125",
+     "tour": "3YsFoLaS3ys",
+     "name": "Burnaby",
+     "start": 125,
+     "room": "basement",
+     "rooms": [
+      "Basement bathroom",
+      "Entertainment lounge"
+     ],
+     "frame": "/frames/3YsFoLaS3ys_0125.jpg",
+     "caption": "A basement living room with carpeted floors, cream walls, and a curved sectional sofa.",
+     "visual": 0.624,
+     "speech": 0.677,
+     "keyword": 0.177,
+     "allWords": false,
+     "ranks": [
+      9,
+      19,
+      34
+     ]
+    },
+    {
+     "id": "htkHR2rdoc4:0075",
+     "tour": "htkHR2rdoc4",
+     "name": "Vancouver",
+     "start": 75,
+     "room": "backyard",
+     "rooms": [
+      "Balcony",
+      "Primary bedroom",
+      "Ensuite"
+     ],
+     "frame": "/frames/htkHR2rdoc4_0075.jpg",
+     "caption": "The tour pans from a bright living area overlooking the city and water to a primary bedroom with large windows, neutral walls, and an ensuit",
+     "visual": 0.572,
+     "speech": 0.707,
+     "keyword": 0.435,
+     "allWords": false,
+     "ranks": [
+      101,
+      7,
+      5
+     ]
+    },
+    {
+     "id": "htkHR2rdoc4:0100",
+     "tour": "htkHR2rdoc4",
+     "name": "Vancouver",
+     "start": 100,
+     "room": "bathroom",
+     "rooms": [
+      "Ensuite",
+      "Primary balcony"
+     ],
+     "frame": "/frames/htkHR2rdoc4_0100.jpg",
+     "caption": "The video starts in a modern bathroom with tile floors, a dual vanity, and a shower-tub combination. It then transitions to a bright bedroom",
+     "visual": 0.606,
+     "speech": 0.673,
+     "keyword": 0.28,
+     "allWords": false,
+     "ranks": [
+      19,
+      22,
+      24
+     ]
+    },
+    {
+     "id": "NyFR97bnCtA:0200",
+     "tour": "NyFR97bnCtA",
+     "name": "Vancouver",
+     "start": 200,
+     "room": "view",
+     "rooms": [
+      "Primary bedroom",
+      "City view"
+     ],
+     "frame": "/frames/NyFR97bnCtA_0200.jpg",
+     "caption": "A luxurious bathroom featuring a deep soaking tub with modern chrome hardware and marble-style countertops, complemented by neatly rolled wh",
+     "visual": 0.583,
+     "speech": 0.705,
+     "keyword": 0.313,
+     "allWords": false,
+     "ranks": [
+      63,
+      8,
+      13
+     ]
+    },
+    {
+     "id": "1mS1CDw51Xg:0050",
+     "tour": "1mS1CDw51Xg",
+     "name": "Yaletown, Vancouver",
+     "start": 50,
+     "room": "amenity",
+     "rooms": [
+      "Ensuite",
+      "Second bedroom",
+      "View",
+      "Gym"
+     ],
+     "frame": "/frames/1mS1CDw51Xg_0050.jpg",
+     "caption": "A bright bedroom features light walls, carpeted floors, a window with natural light, and a connected bathroom with vanity mirrors and a tile",
+     "visual": 0.569,
+     "speech": 0.649,
+     "keyword": 0.315,
+     "allWords": false,
+     "ranks": [
+      121,
+      35,
+      11
+     ]
+    },
+    {
+     "id": "P8ZO-XzBjDk:0100",
+     "tour": "P8ZO-XzBjDk",
+     "name": "Vancouver",
+     "start": 100,
+     "room": "amenity",
+     "rooms": [
+      "Gym",
+      "Pool and hot tub"
+     ],
+     "frame": "/frames/P8ZO-XzBjDk_0100.jpg",
+     "caption": "The building features a range of amenities, including a spacious lounge with a kitchenette, a fully equipped fitness center, an indoor swimm",
+     "visual": 0.593,
+     "speech": 0.612,
+     "keyword": 0.315,
+     "allWords": false,
+     "ranks": [
+      36,
+      144,
+      12
+     ]
+    },
+    {
+     "id": "PExhZ7iwiHQ:0050",
+     "tour": "PExhZ7iwiHQ",
+     "name": "Vancouver",
+     "start": 50,
+     "room": "bathroom",
+     "rooms": [
+      "Primary ensuite",
+      "Primary bedroom",
+      "Second bedroom",
+      "Second bathroom"
+     ],
+     "frame": "/frames/PExhZ7iwiHQ_0050.jpg",
+     "caption": "A modern bathroom featuring dark grey marble-look wall tiles, a double vanity with vessel sinks, and a freestanding soaking tub. A glass-enc",
+     "visual": 0.628,
+     "speech": 0.692,
+     "keyword": 0.291,
+     "allWords": false,
+     "ranks": [
+      5,
+      14,
+      22
+     ]
+    },
+    {
+     "id": "Gueg_zB5kAk:0075",
+     "tour": "Gueg_zB5kAk",
+     "name": "Abbotsford",
+     "start": 75,
+     "room": "bedroom",
+     "rooms": [
+      "Bathroom",
+      "Primary bedroom",
+      "Balcony",
+      "Ensuite"
+     ],
+     "frame": "/frames/Gueg_zB5kAk_0075.jpg",
+     "caption": "This spacious master bedroom features a dark wood shiplap accent wall, a private balcony, and a walk-in closet. Large windows and sliding gl",
+     "visual": 0.571,
+     "speech": 0.672,
+     "keyword": 0.357,
+     "allWords": false,
+     "ranks": [
+      108,
+      23,
+      7
+     ]
+    },
+    {
+     "id": "Gueg_zB5kAk:0100",
+     "tour": "Gueg_zB5kAk",
+     "name": "Abbotsford",
+     "start": 100,
+     "room": "bathroom",
+     "rooms": [
+      "Ensuite",
+      "Office",
+      "Bedroom"
+     ],
+     "frame": "/frames/Gueg_zB5kAk_0100.jpg",
+     "caption": "This spa-like ensuite bathroom features a double vanity with white quartz countertops, black fixtures, a freestanding deep soaking tub, and ",
+     "visual": 0.636,
+     "speech": 0.754,
+     "keyword": 1,
+     "allWords": true,
+     "ranks": [
+      2,
+      1,
+      1
+     ]
+    }
+   ]
+  },
+  {
+   "query": "Under $1M condo with city views",
+   "semantic": "condo with city views",
+   "filters": {
+    "maxPrice": 1000000
+   },
+   "candidates": 41,
+   "candidateTours": 8,
+   "timings": {
+    "parse": 729,
+    "embed": 143,
+    "rank": 1,
+    "total": 873
+   },
+   "results": [
+    {
+     "tour": "UV5cshFl8yw",
+     "name": "Vancouver",
+     "label": "backyard",
+     "start": 50,
+     "frame": "/frames/UV5cshFl8yw_0050.jpg"
+    },
+    {
+     "tour": "-Sha8jEG9hI",
+     "name": "Vancouver",
+     "label": "office",
+     "start": 125,
+     "frame": "/frames/-Sha8jEG9hI_0125.jpg"
+    },
+    {
+     "tour": "bb_k5aj-Z_w",
+     "name": "Vancouver",
+     "label": "backyard",
+     "start": 100,
+     "frame": "/frames/bb_k5aj-Z_w_0100.jpg"
+    },
+    {
+     "tour": "e6qCpshmtmQ",
+     "name": "Burnaby",
+     "label": "kitchen",
+     "start": 0,
+     "frame": "/frames/e6qCpshmtmQ_0000.jpg"
+    }
+   ],
+   "shortlist": [
+    {
+     "id": "DGOF6dJ0t9E:0125",
+     "tour": "DGOF6dJ0t9E",
+     "name": "Bear Creek, Surrey",
+     "start": 125,
+     "room": "amenity",
+     "rooms": [
+      "Bear Creek Elementary",
+      "SFU Surrey"
+     ],
+     "frame": "/frames/DGOF6dJ0t9E_0125.jpg",
+     "caption": "A bright modern kitchen with white cabinetry, stainless steel appliances, and a tiled backsplash, shown alongside the agent.",
+     "visual": 0.558,
+     "speech": 0.602,
+     "keyword": 0.45,
+     "allWords": false,
+     "ranks": [
+      41,
+      35,
+      13
+     ]
+    },
+    {
+     "id": "UV5cshFl8yw:0000",
+     "tour": "UV5cshFl8yw",
+     "name": "Vancouver",
+     "start": 0,
+     "room": "backyard",
+     "rooms": [
+      "Balcony",
+      "Building entrance",
+      "Living area",
+      "Kitchen"
+     ],
+     "frame": "/frames/UV5cshFl8yw_0000.jpg",
+     "caption": "An exterior and balcony view of Vancouver House, showing modern architecture and urban surroundings.",
+     "visual": 0.643,
+     "speech": 0.655,
+     "keyword": 0.217,
+     "allWords": false,
+     "ranks": [
+      5,
+      21,
+      21
+     ]
+    },
+    {
+     "id": "UV5cshFl8yw:0025",
+     "tour": "UV5cshFl8yw",
+     "name": "Vancouver",
+     "start": 25,
+     "room": "kitchen",
+     "rooms": [
+      "Kitchen",
+      "Bedroom",
+      "Balcony"
+     ],
+     "frame": "/frames/UV5cshFl8yw_0025.jpg",
+     "caption": "A modern open-concept living, dining, and kitchen area featuring white cabinetry, a metallic copper backsplash, wood-look flooring, and floo",
+     "visual": 0.661,
+     "speech": 0.677,
+     "keyword": 0.528,
+     "allWords": false,
+     "ranks": [
+      2,
+      14,
+      10
+     ]
+    },
+    {
+     "id": "UV5cshFl8yw:0050",
+     "tour": "UV5cshFl8yw",
+     "name": "Vancouver",
+     "start": 50,
+     "room": "backyard",
+     "rooms": [
+      "Balcony",
+      "Bathroom",
+      "Office nook",
+      "Balcony"
+     ],
+     "frame": "/frames/UV5cshFl8yw_0050.jpg",
+     "caption": "The bright bedroom and adjacent office area open up to a spacious balcony with sweeping city views of downtown Vancouver. The bathroom featu",
+     "visual": 0.675,
+     "speech": 0.699,
+     "keyword": 0.691,
+     "allWords": false,
+     "ranks": [
+      1,
+      7,
+      5
+     ]
+    },
+    {
+     "id": "UV5cshFl8yw:0075",
+     "tour": "UV5cshFl8yw",
+     "name": "Vancouver",
+     "start": 75,
+     "room": "backyard",
+     "rooms": [
+      "Balcony"
+     ],
+     "frame": "/frames/UV5cshFl8yw_0075.jpg",
+     "caption": "A spacious balcony with a glass railing and metal paneling overlooks a city street with modern high-rise buildings.",
+     "visual": 0.632,
+     "speech": 0.671,
+     "keyword": 0.704,
+     "allWords": false,
+     "ranks": [
+      11,
+      17,
+      3
+     ]
+    },
+    {
+     "id": "-Sha8jEG9hI:0000",
+     "tour": "-Sha8jEG9hI",
+     "name": "Vancouver",
+     "start": 0,
+     "room": "view",
+     "rooms": [
+      "Aerial view"
+     ],
+     "frame": "/frames/-Sha8jEG9hI_0000.jpg",
+     "caption": "An aerial and street-level view of downtown Vancouver, showcasing Emery Barnes Park, high-rise buildings, and the nearby waterfront.",
+     "visual": 0.59,
+     "speech": 0.693,
+     "keyword": 0.223,
+     "allWords": false,
+     "ranks": [
+      33,
+      9,
+      19
+     ]
+    },
+    {
+     "id": "-Sha8jEG9hI:0025",
+     "tour": "-Sha8jEG9hI",
+     "name": "Vancouver",
+     "start": 25,
+     "room": "view",
+     "rooms": [
+      "Aerial view",
+      "Dog park"
+     ],
+     "frame": "/frames/-Sha8jEG9hI_0025.jpg",
+     "caption": "An aerial and street-level tour of a vibrant urban neighborhood featuring high-rise condominiums, local parks, and waterfront views.",
+     "visual": 0.62,
+     "speech": 0.712,
+     "keyword": 0.447,
+     "allWords": false,
+     "ranks": [
+      18,
+      3,
+      14
+     ]
+    },
+    {
+     "id": "-Sha8jEG9hI:0050",
+     "tour": "-Sha8jEG9hI",
+     "name": "Vancouver",
+     "start": 50,
+     "room": "view",
+     "rooms": [
+      "Aerial view",
+      "Lobby"
+     ],
+     "frame": "/frames/-Sha8jEG9hI_0050.jpg",
+     "caption": "The clip features exterior aerial and street-level views of downtown Vancouver, showcasing urban cityscapes, parks, and nearby amenities.",
+     "visual": 0.624,
+     "speech": 0.688,
+     "keyword": 0.609,
+     "allWords": false,
+     "ranks": [
+      15,
+      10,
+      8
+     ]
+    },
+    {
+     "id": "-Sha8jEG9hI:0075",
+     "tour": "-Sha8jEG9hI",
+     "name": "Vancouver",
+     "start": 75,
+     "room": "kitchen",
+     "rooms": [
+      "Lobby",
+      "Kitchen"
+     ],
+     "frame": "/frames/-Sha8jEG9hI_0075.jpg",
+     "caption": "The open-concept kitchen features dark wood cabinetry, granite countertops, and stainless steel appliances. An island includes a built-in el",
+     "visual": 0.628,
+     "speech": 0.648,
+     "keyword": 0,
+     "allWords": false,
+     "ranks": [
+      13,
+      24,
+      null
+     ]
+    },
+    {
+     "id": "-Sha8jEG9hI:0100",
+     "tour": "-Sha8jEG9hI",
+     "name": "Vancouver",
+     "start": 100,
+     "room": "office",
+     "rooms": [
+      "Kitchen",
+      "Living room",
+      "Den",
+      "Solarium"
+     ],
+     "frame": "/frames/-Sha8jEG9hI_0100.jpg",
+     "caption": "A living room with dark wood floors, white walls, and an electric fireplace built into a kitchen island. The space connects to a kitchen wit",
+     "visual": 0.637,
+     "speech": 0.674,
+     "keyword": 0.26,
+     "allWords": false,
+     "ranks": [
+      9,
+      15,
+      15
+     ]
+    },
+    {
+     "id": "-Sha8jEG9hI:0125",
+     "tour": "-Sha8jEG9hI",
+     "name": "Vancouver",
+     "start": 125,
+     "room": "office",
+     "rooms": [
+      "Solarium",
+      "Bedroom"
+     ],
+     "frame": "/frames/-Sha8jEG9hI_0125.jpg",
+     "caption": "A bright office area featuring large windows with city views, wood-style floors, and a modern desk setup.",
+     "visual": 0.651,
+     "speech": 0.709,
+     "keyword": 0.705,
+     "allWords": false,
+     "ranks": [
+      4,
+      5,
+      2
+     ]
+    },
+    {
+     "id": "-Sha8jEG9hI:0150",
+     "tour": "-Sha8jEG9hI",
+     "name": "Vancouver",
+     "start": 150,
+     "room": "backyard",
+     "rooms": [
+      "Bedroom",
+      "Balcony",
+      "Rooftop pool",
+      "Playroom",
+      "Lobby"
+     ],
+     "frame": "/frames/-Sha8jEG9hI_0150.jpg",
+     "caption": "A modern balcony overlooking a vibrant downtown park and surrounding high-rise buildings.",
+     "visual": 0.642,
+     "speech": 0.718,
+     "keyword": 0.472,
+     "allWords": false,
+     "ranks": [
+      6,
+      2,
+      11
+     ]
+    },
+    {
+     "id": "-Sha8jEG9hI:0175",
+     "tour": "-Sha8jEG9hI",
+     "name": "Vancouver",
+     "start": 175,
+     "room": "entry",
+     "rooms": [
+      "Lobby"
+     ],
+     "frame": "/frames/-Sha8jEG9hI_0175.jpg",
+     "caption": "The grand lobby features white tile flooring, a sleek white marble reception desk, and minimalist white walls with contemporary artwork.",
+     "visual": 0.625,
+     "speech": 0.708,
+     "keyword": 1,
+     "allWords": true,
+     "ranks": [
+      14,
+      6,
+      1
+     ]
+    },
+    {
+     "id": "-Sha8jEG9hI:0200",
+     "tour": "-Sha8jEG9hI",
+     "name": "Vancouver",
+     "start": 200,
+     "room": "other",
+     "frame": "/frames/-Sha8jEG9hI_0200.jpg",
+     "caption": "A real estate agent sits in a black leather armchair in a modern living space featuring white tiled flooring and a large abstract green pain",
+     "visual": 0.602,
+     "speech": 0.671,
+     "keyword": 0,
+     "allWords": false,
+     "ranks": [
+      27,
+      18,
+      null
+     ]
+    },
+    {
+     "id": "OKWSDc86FHk:0050",
+     "tour": "OKWSDc86FHk",
+     "name": "Clayton Heights, Surrey",
+     "start": 50,
+     "room": "backyard",
+     "rooms": [
+      "Balcony"
+     ],
+     "frame": "/frames/OKWSDc86FHk_0050.jpg",
+     "caption": "An aerial tour of the neighborhood and community surrounding the property in Clayton Heights.",
+     "visual": 0.62,
+     "speech": 0.625,
+     "keyword": 0.24,
+     "allWords": false,
+     "ranks": [
+      19,
+      30,
+      18
+     ]
+    },
+    {
+     "id": "cOin8XMcmcU:0025",
+     "tour": "cOin8XMcmcU",
+     "name": "North Surrey, Surrey",
+     "start": 25,
+     "room": "other",
+     "rooms": [
+      "Playground"
+     ],
+     "frame": "/frames/cOin8XMcmcU_0025.jpg",
+     "caption": "The exterior of a townhome complex features a modern design with siding, dark trim, and a small playground area in the courtyard. The proper",
+     "visual": 0.565,
+     "speech": 0.68,
+     "keyword": 0.129,
+     "allWords": false,
+     "ranks": [
+      38,
+      12,
+      26
+     ]
+    },
+    {
+     "id": "cOin8XMcmcU:0050",
+     "tour": "cOin8XMcmcU",
+     "name": "North Surrey, Surrey",
+     "start": 50,
+     "room": "living",
+     "rooms": [
+      "Front door",
+      "Living room",
+      "Kitchen"
+     ],
+     "frame": "/frames/cOin8XMcmcU_0050.jpg",
+     "caption": "The clip features the exterior of townhouse number 102 and an open-concept living area with dark laminate wood flooring, white walls, and a ",
+     "visual": 0.596,
+     "speech": 0.666,
+     "keyword": 0,
+     "allWords": false,
+     "ranks": [
+      31,
+      20,
+      null
+     ]
+    },
+    {
+     "id": "cOin8XMcmcU:0100",
+     "tour": "cOin8XMcmcU",
+     "name": "North Surrey, Surrey",
+     "start": 100,
+     "room": "backyard",
+     "rooms": [
+      "Bedroom",
+      "Patio"
+     ],
+     "frame": "/frames/cOin8XMcmcU_0100.jpg",
+     "caption": "A bedroom features dark hardwood floors, white walls, and a window with a view of greenery. The room connects to a private patio space outdo",
+     "visual": 0.566,
+     "speech": 0.607,
+     "keyword": 0.222,
+     "allWords": false,
+     "ranks": [
+      37,
+      34,
+      20
+     ]
+    },
+    {
+     "id": "e6qCpshmtmQ:0000",
+     "tour": "e6qCpshmtmQ",
+     "name": "Burnaby",
+     "start": 0,
+     "room": "kitchen",
+     "rooms": [
+      "Kitchen",
+      "Bathroom",
+      "Balcony",
+      "Bedroom"
+     ],
+     "frame": "/frames/e6qCpshmtmQ_0000.jpg",
+     "caption": "A bright living space with hardwood flooring, large floor-to-ceiling windows, and access to a private balcony overlooking the city.",
+     "visual": 0.623,
+     "speech": 0.694,
+     "keyword": 0.693,
+     "allWords": false,
+     "ranks": [
+      16,
+      8,
+      4
+     ]
+    },
+    {
+     "id": "e6qCpshmtmQ:0025",
+     "tour": "e6qCpshmtmQ",
+     "name": "Burnaby",
+     "start": 25,
+     "room": "view",
+     "rooms": [
+      "Bedroom",
+      "View",
+      "Lounge",
+      "Outdoor seating"
+     ],
+     "frame": "/frames/e6qCpshmtmQ_0025.jpg",
+     "caption": "A bright bedroom with light wood-plank flooring, large windows leading to a balcony, and a walk-in closet.",
+     "visual": 0.632,
+     "speech": 0.621,
+     "keyword": 0.177,
+     "allWords": false,
+     "ranks": [
+      12,
+      31,
+      24
+     ]
+    },
+    {
+     "id": "ndfIB2HMREE:0000",
+     "tour": "ndfIB2HMREE",
+     "name": "Burnaby",
+     "start": 0,
+     "room": "view",
+     "rooms": [
+      "Aerial view",
+      "Exterior",
+      "Aerial view",
+      "Exterior",
+      "Kitchen"
+     ],
+     "frame": "/frames/ndfIB2HMREE_0000.jpg",
+     "caption": "An aerial and exterior view showing the neighborhood, townhouse entrance, patio area, and surrounding greenery, accompanied by upbeat backgr",
+     "visual": 0.604,
+     "speech": 0.633,
+     "keyword": 0.248,
+     "allWords": false,
+     "ranks": [
+      26,
+      28,
+      17
+     ]
+    },
+    {
+     "id": "ndfIB2HMREE:0050",
+     "tour": "ndfIB2HMREE",
+     "name": "Burnaby",
+     "start": 50,
+     "room": "view",
+     "rooms": [
+      "Office",
+      "Patio",
+      "Aerial view"
+     ],
+     "frame": "/frames/ndfIB2HMREE_0050.jpg",
+     "caption": "An aerial and exterior view showcasing the neighborhood, balcony, and backyard of the townhouse complex surrounded by greenery.",
+     "visual": 0.582,
+     "speech": 0.626,
+     "keyword": 0.256,
+     "allWords": false,
+     "ranks": [
+      35,
+      29,
+      16
+     ]
+    },
+    {
+     "id": "bb_k5aj-Z_w:0000",
+     "tour": "bb_k5aj-Z_w",
+     "name": "Vancouver",
+     "start": 0,
+     "room": "exterior",
+     "rooms": [
+      "Building exterior"
+     ],
+     "frame": "/frames/bb_k5aj-Z_w_0000.jpg",
+     "caption": "A real estate agent stands outside the modern high-rise building on Seymour Street in downtown Vancouver, showcasing the contemporary exteri",
+     "visual": 0.61,
+     "speech": 0.687,
+     "keyword": 0,
+     "allWords": false,
+     "ranks": [
+      25,
+      11,
+      null
+     ]
+    },
+    {
+     "id": "bb_k5aj-Z_w:0025",
+     "tour": "bb_k5aj-Z_w",
+     "name": "Vancouver",
+     "start": 25,
+     "room": "amenity",
+     "rooms": [
+      "Building exterior",
+      "Lobby",
+      "Rooftop pool"
+     ],
+     "frame": "/frames/bb_k5aj-Z_w_0025.jpg",
+     "caption": "A rooftop terrace featuring a pool, loungers, and panoramic views of surrounding high-rise buildings in an urban setting.",
+     "visual": 0.62,
+     "speech": 0.678,
+     "keyword": 0.467,
+     "allWords": false,
+     "ranks": [
+      20,
+      13,
+      12
+     ]
+    },
+    {
+     "id": "bb_k5aj-Z_w:0075",
+     "tour": "bb_k5aj-Z_w",
+     "name": "Vancouver",
+     "start": 75,
+     "room": "living",
+     "rooms": [
+      "Kitchen",
+      "Pantry and office",
+      "Living room"
+     ],
+     "frame": "/frames/bb_k5aj-Z_w_0075.jpg",
+     "caption": "A modern kitchen featuring rich wood cabinetry, white tile backsplash, and a stainless steel gas range and refrigerator.",
+     "visual": 0.633,
+     "speech": 0.669,
+     "keyword": 0.111,
+     "allWords": false,
+     "ranks": [
+      10,
+      19,
+      27
+     ]
+    },
+    {
+     "id": "bb_k5aj-Z_w:0100",
+     "tour": "bb_k5aj-Z_w",
+     "name": "Vancouver",
+     "start": 100,
+     "room": "backyard",
+     "rooms": [
+      "Living room",
+      "Balcony"
+     ],
+     "frame": "/frames/bb_k5aj-Z_w_0100.jpg",
+     "caption": "A bright living room with dark wood flooring, white walls, and a large white sectional sofa. Sliding glass doors lead out to a balcony overl",
+     "visual": 0.654,
+     "speech": 0.71,
+     "keyword": 0.566,
+     "allWords": false,
+     "ranks": [
+      3,
+      4,
+      9
+     ]
+    },
+    {
+     "id": "bb_k5aj-Z_w:0125",
+     "tour": "bb_k5aj-Z_w",
+     "name": "Vancouver",
+     "start": 125,
+     "room": "bedroom",
+     "rooms": [
+      "Balcony",
+      "Bathroom",
+      "Primary bedroom"
+     ],
+     "frame": "/frames/bb_k5aj-Z_w_0125.jpg",
+     "caption": "A bright master bedroom with a white upholstered bed, white dresser, and a large closet. Floor-to-ceiling windows offer plenty of natural li",
+     "visual": 0.642,
+     "speech": 0.673,
+     "keyword": 0.611,
+     "allWords": false,
+     "ranks": [
+      7,
+      16,
+      7
+     ]
+    },
+    {
+     "id": "bb_k5aj-Z_w:0150",
+     "tour": "bb_k5aj-Z_w",
+     "name": "Vancouver",
+     "start": 150,
+     "room": "bedroom",
+     "rooms": [
+      "Primary bedroom",
+      "Balcony",
+      "View"
+     ],
+     "frame": "/frames/bb_k5aj-Z_w_0150.jpg",
+     "caption": "The bedroom features white walls, a white tufted headboard, and an open concept built-in closet with ample storage.",
+     "visual": 0.642,
+     "speech": 0.618,
+     "keyword": 0,
+     "allWords": false,
+     "ranks": [
+      8,
+      32,
+      null
+     ]
+    },
+    {
+     "id": "bb_k5aj-Z_w:0175",
+     "tour": "bb_k5aj-Z_w",
+     "name": "Vancouver",
+     "start": 175,
+     "room": "backyard",
+     "rooms": [
+      "View",
+      "Balcony"
+     ],
+     "frame": "/frames/bb_k5aj-Z_w_0175.jpg",
+     "caption": "A realtor on a balcony overlooking the city with a view of the water and park.",
+     "visual": 0.623,
+     "speech": 0.723,
+     "keyword": 0.636,
+     "allWords": false,
+     "ranks": [
+      17,
+      1,
+      6
+     ]
+    }
+   ]
+  },
+  {
+   "query": "Close to SkyTrain",
+   "semantic": "Close to SkyTrain",
+   "filters": {},
+   "candidates": 355,
+   "candidateTours": 63,
+   "timings": {
+    "parse": 0,
+    "embed": 144,
+    "rank": 3,
+    "total": 147
+   },
+   "results": [
+    {
+     "tour": "26Ia4ow-fq0",
+     "name": "New Westminster",
+     "label": "amenity",
+     "start": 0,
+     "frame": "/frames/26Ia4ow-fq0_0000.jpg"
+    },
+    {
+     "tour": "9LNkVG1YMk8",
+     "name": "Burnaby",
+     "label": "exterior",
+     "start": 25,
+     "frame": "/frames/9LNkVG1YMk8_0025.jpg"
+    },
+    {
+     "tour": "S3u8hvVV9ao",
+     "name": "Vancouver",
+     "label": "living",
+     "start": 75,
+     "frame": "/frames/S3u8hvVV9ao_0075.jpg"
+    },
+    {
+     "tour": "OKWSDc86FHk",
+     "name": "Clayton Heights, Surrey",
+     "label": "kitchen",
+     "start": 0,
+     "frame": "/frames/OKWSDc86FHk_0000.jpg"
+    },
+    {
+     "tour": "_zHBPkJ3tno",
+     "name": "Burnaby",
+     "label": "office",
+     "start": 150,
+     "frame": "/frames/_zHBPkJ3tno_0150.jpg"
+    }
+   ],
+   "shortlist": [
+    {
+     "id": "D81OJRTOkLA:0000",
+     "tour": "D81OJRTOkLA",
+     "name": "Deer Lake, Burnaby",
+     "start": 0,
+     "room": "exterior",
+     "rooms": [
+      "Exterior",
+      "Exterior"
+     ],
+     "frame": "/frames/D81OJRTOkLA_0000.jpg",
+     "caption": "An aerial and street-level view of a luxury half-acre estate featuring a large house with a shingle roof, landscaped grounds, and a spacious",
+     "visual": 0.594,
+     "speech": 0.653,
+     "keyword": 0,
+     "allWords": false,
+     "ranks": [
+      225,
+      112,
+      null
+     ]
+    },
+    {
+     "id": "D81OJRTOkLA:0025",
+     "tour": "D81OJRTOkLA",
+     "name": "Deer Lake, Burnaby",
+     "start": 25,
+     "room": "exterior",
+     "rooms": [
+      "Exterior"
+     ],
+     "frame": "/frames/D81OJRTOkLA_0025.jpg",
+     "caption": "An aerial and ground-level view of the exterior of a luxury home featuring a large stamped concrete driveway, a three-car garage, and lush g",
+     "visual": 0.617,
+     "speech": 0.638,
+     "keyword": 0,
+     "allWords": false,
+     "ranks": [
+      97,
+      202,
+      null
+     ]
+    },
+    {
+     "id": "D81OJRTOkLA:0050",
+     "tour": "D81OJRTOkLA",
+     "name": "Deer Lake, Burnaby",
+     "start": 50,
+     "room": "exterior",
+     "rooms": [
+      "Exterior",
+      "Exterior",
+      "Dining area",
+      "Kitchen"
+     ],
+     "frame": "/frames/D81OJRTOkLA_0050.jpg",
+     "caption": "A bright, modern kitchen featuring white cabinetry, a center island with white countertops, stainless steel built-in double ovens, and a lar",
+     "visual": 0.607,
+     "speech": 0.634,
+     "keyword": 0,
+     "allWords": false,
+     "ranks": [
+      155,
+      218,
+      null
+     ]
+    },
+    {
+     "id": "D81OJRTOkLA:0075",
+     "tour": "D81OJRTOkLA",
+     "name": "Deer Lake, Burnaby",
+     "start": 75,
+     "room": "dining",
+     "rooms": [
+      "Kitchen",
+      "Dining nook"
+     ],
+     "frame": "/frames/D81OJRTOkLA_0075.jpg",
+     "caption": "A bright, modernized kitchen features white cabinets, a white quartz island, grey tile backsplash, and a spacious dining nook surrounded by ",
+     "visual": 0.612,
+     "speech": 0.683,
+     "keyword": 0.342,
+     "allWords": false,
+     "ranks": [
+      124,
+      19,
+      15
+     ]
+    },
+    {
+     "id": "DGOF6dJ0t9E:0100",
+     "tour": "DGOF6dJ0t9E",
+     "name": "Bear Creek, Surrey",
+     "start": 100,
+     "room": "amenity",
+     "rooms": [
+      "King George Hub",
+      "King George Station",
+      "Surrey Arts Centre",
+      "Community Centre",
+      "Costco"
+     ],
+     "frame": "/frames/DGOF6dJ0t9E_0100.jpg",
+     "caption": "An aerial and exterior view showcasing neighborhood amenities, local businesses, parks, and nearby schools in the Surrey area.",
+     "visual": 0.641,
+     "speech": 0.667,
+     "keyword": 0,
+     "allWords": false,
+     "ranks": [
+      12,
+      51,
+      null
+     ]
+    },
+    {
+     "id": "26Ia4ow-fq0:0000",
+     "tour": "26Ia4ow-fq0",
+     "name": "New Westminster",
+     "start": 0,
+     "room": "amenity",
+     "rooms": [
+      "Riverfront"
+     ],
+     "frame": "/frames/26Ia4ow-fq0_0000.jpg",
+     "caption": "The clip provides an aerial tour of New Westminster's waterfront, highlighting the exterior of a high-rise residential building, nearby park",
+     "visual": 0.636,
+     "speech": 0.705,
+     "keyword": 0.413,
+     "allWords": false,
+     "ranks": [
+      18,
+      5,
+      7
+     ]
+    },
+    {
+     "id": "26Ia4ow-fq0:0025",
+     "tour": "26Ia4ow-fq0",
+     "name": "New Westminster",
+     "start": 25,
+     "room": "living",
+     "rooms": [
+      "Riverfront",
+      "Living Room",
+      "Kitchen"
+     ],
+     "frame": "/frames/26Ia4ow-fq0_0025.jpg",
+     "caption": "A well-lit kitchen featuring dark wood cabinets, black granite countertops, tiled backsplash, and stainless steel appliances.",
+     "visual": 0.657,
+     "speech": 0.642,
+     "keyword": 0,
+     "allWords": false,
+     "ranks": [
+      1,
+      174,
+      null
+     ]
+    },
+    {
+     "id": "26Ia4ow-fq0:0050",
+     "tour": "26Ia4ow-fq0",
+     "name": "New Westminster",
+     "start": 50,
+     "room": "kitchen",
+     "rooms": [
+      "Kitchen",
+      "Laundry",
+      "Bathroom",
+      "Bedroom"
+     ],
+     "frame": "/frames/26Ia4ow-fq0_0050.jpg",
+     "caption": "The kitchen features dark wood cabinets, black countertops, and modern stainless-steel appliances. Adjacent areas show tiled floors, a balco",
+     "visual": 0.629,
+     "speech": 0.633,
+     "keyword": 0.383,
+     "allWords": false,
+     "ranks": [
+      38,
+      225,
+      11
+     ]
+    },
+    {
+     "id": "26Ia4ow-fq0:0075",
+     "tour": "26Ia4ow-fq0",
+     "name": "New Westminster",
+     "start": 75,
+     "room": "bathroom",
+     "rooms": [
+      "Bedroom",
+      "Primary Bedroom",
+      "Ensuite",
+      "Exterior",
+      "Indoor Pool"
+     ],
+     "frame": "/frames/26Ia4ow-fq0_0075.jpg",
+     "caption": "The primary bathroom features neutral tile walls and floors, a dark wood vanity with a glass vessel sink, a large mirror, a corner glass sho",
+     "visual": 0.648,
+     "speech": 0.632,
+     "keyword": 0.349,
+     "allWords": false,
+     "ranks": [
+      5,
+      230,
+      14
+     ]
+    },
+    {
+     "id": "26Ia4ow-fq0:0100",
+     "tour": "26Ia4ow-fq0",
+     "name": "New Westminster",
+     "start": 100,
+     "room": "living",
+     "rooms": [
+      "Indoor Pool",
+      "Library",
+      "Living Room",
+      "Balcony",
+      "Neighborhood"
+     ],
+     "frame": "/frames/26Ia4ow-fq0_0100.jpg",
+     "caption": "A spacious living room featuring wide-plank hardwood floors, white walls, and a stone-faced fireplace with a mantel. Large floor-to-ceiling ",
+     "visual": 0.651,
+     "speech": 0.644,
+     "keyword": 0,
+     "allWords": false,
+     "ranks": [
+      3,
+      164,
+      null
+     ]
+    },
+    {
+     "id": "26Ia4ow-fq0:0150",
+     "tour": "26Ia4ow-fq0",
+     "name": "New Westminster",
+     "start": 150,
+     "room": "exterior",
+     "rooms": [
+      "Exterior"
+     ],
+     "frame": "/frames/26Ia4ow-fq0_0150.jpg",
+     "caption": "An outdoor waterfront area featuring a paved walkway and a white metal railing surrounded by lush greenery, with high-rise buildings visible",
+     "visual": 0.648,
+     "speech": 0.685,
+     "keyword": 0,
+     "allWords": false,
+     "ranks": [
+      6,
+      18,
+      null
+     ]
+    },
+    {
+     "id": "y5e0sukb39Y:0075",
+     "tour": "y5e0sukb39Y",
+     "name": "West Vancouver",
+     "start": 75,
+     "room": "exterior",
+     "rooms": [
+      "Dining Room",
+      "City View",
+      "Park View",
+      "Beach View",
+      "School Area"
+     ],
+     "frame": "/frames/y5e0sukb39Y_0075.jpg",
+     "caption": "An aerial view of the beach, coastline, and nearby neighborhood of West Vancouver.",
+     "visual": 0.618,
+     "speech": 0.68,
+     "keyword": 0.405,
+     "allWords": false,
+     "ranks": [
+      91,
+      24,
+      8
+     ]
+    },
+    {
+     "id": "LHUZG8hrQs0:0025",
+     "tour": "LHUZG8hrQs0",
+     "name": "Vancouver",
+     "start": 25,
+     "room": "exterior",
+     "rooms": [
+      "Neighborhood"
+     ],
+     "frame": "/frames/LHUZG8hrQs0_0025.jpg",
+     "caption": "An aerial and street-level view of a neighborhood in Vancouver, showcasing nearby shops, trees, and city skyline views.",
+     "visual": 0.619,
+     "speech": 0.69,
+     "keyword": 0,
+     "allWords": false,
+     "ranks": [
+      84,
+      15,
+      null
+     ]
+    },
+    {
+     "id": "LHUZG8hrQs0:0050",
+     "tour": "LHUZG8hrQs0",
+     "name": "Vancouver",
+     "start": 50,
+     "room": "exterior",
+     "rooms": [
+      "Neighborhood"
+     ],
+     "frame": "/frames/LHUZG8hrQs0_0050.jpg",
+     "caption": "The exterior of the modern building showcases dark brick finishes, a prominent storefront entrance, and outdoor seating on a vibrant urban s",
+     "visual": 0.61,
+     "speech": 0.699,
+     "keyword": 0.338,
+     "allWords": false,
+     "ranks": [
+      140,
+      8,
+      16
+     ]
+    },
+    {
+     "id": "LHUZG8hrQs0:0075",
+     "tour": "LHUZG8hrQs0",
+     "name": "Vancouver",
+     "start": 75,
+     "room": "exterior",
+     "rooms": [
+      "Neighborhood",
+      "Kitchen"
+     ],
+     "frame": "/frames/LHUZG8hrQs0_0075.jpg",
+     "caption": "A bright, open living room with light hardwood flooring, track lighting, and sliding doors leading to a private balcony.",
+     "visual": 0.623,
+     "speech": 0.696,
+     "keyword": 0,
+     "allWords": false,
+     "ranks": [
+      58,
+      10,
+      null
+     ]
+    },
+    {
+     "id": "fon-H-R4lbI:0050",
+     "tour": "fon-H-R4lbI",
+     "name": "Vancouver",
+     "start": 50,
+     "room": "backyard",
+     "rooms": [
+      "Basement living room",
+      "Deck and yard",
+      "Bathroom",
+      "Dining area"
+     ],
+     "frame": "/frames/fon-H-R4lbI_0050.jpg",
+     "caption": "A spacious living room featuring light wide-plank wood flooring, neutral walls, and recessed ceiling lighting. A modern grey sectional sofa ",
+     "visual": 0.641,
+     "speech": 0.654,
+     "keyword": 0,
+     "allWords": false,
+     "ranks": [
+      13,
+      104,
+      null
+     ]
+    },
+    {
+     "id": "S3u8hvVV9ao:0050",
+     "tour": "S3u8hvVV9ao",
+     "name": "Vancouver",
+     "start": 50,
+     "room": "exterior",
+     "rooms": [
+      "Sidewalk",
+      "Building aerial view",
+      "Street crossing",
+      "Cartems",
+      "The Wohlsein",
+      "Formation Studio"
+     ],
+     "frame": "/frames/S3u8hvVV9ao_0050.jpg",
+     "caption": "The exterior of the building shows a modern urban facade with a mix of brick and metal siding, located in a vibrant neighborhood close to lo",
+     "visual": 0.612,
+     "speech": 0.704,
+     "keyword": 0.693,
+     "allWords": true,
+     "ranks": [
+      125,
+      6,
+      4
+     ]
+    },
+    {
+     "id": "S3u8hvVV9ao:0075",
+     "tour": "S3u8hvVV9ao",
+     "name": "Vancouver",
+     "start": 75,
+     "room": "living",
+     "rooms": [
+      "Formation Studio",
+      "Living area",
+      "Primary bedroom",
+      "Kitchen",
+      "Bathroom",
+      "Sliding glass partition"
+     ],
+     "frame": "/frames/S3u8hvVV9ao_0075.jpg",
+     "caption": "The main living space featuring wide-plank floors and 9-foot ceilings, with an adjacent kitchen and a sliding glass partition leading to the",
+     "visual": 0.621,
+     "speech": 0.714,
+     "keyword": 0.37,
+     "allWords": false,
+     "ranks": [
+      69,
+      2,
+      12
+     ]
+    },
+    {
+     "id": "UV5cshFl8yw:0025",
+     "tour": "UV5cshFl8yw",
+     "name": "Vancouver",
+     "start": 25,
+     "room": "kitchen",
+     "rooms": [
+      "Kitchen",
+      "Bedroom",
+      "Balcony"
+     ],
+     "frame": "/frames/UV5cshFl8yw_0025.jpg",
+     "caption": "A modern open-concept living, dining, and kitchen area featuring white cabinetry, a metallic copper backsplash, wood-look flooring, and floo",
+     "visual": 0.634,
+     "speech": 0.654,
+     "keyword": 0,
+     "allWords": false,
+     "ranks": [
+      20,
+      106,
+      null
+     ]
+    },
+    {
+     "id": "UV5cshFl8yw:0050",
+     "tour": "UV5cshFl8yw",
+     "name": "Vancouver",
+     "start": 50,
+     "room": "backyard",
+     "rooms": [
+      "Balcony",
+      "Bathroom",
+      "Office nook",
+      "Balcony"
+     ],
+     "frame": "/frames/UV5cshFl8yw_0050.jpg",
+     "caption": "The bright bedroom and adjacent office area open up to a spacious balcony with sweeping city views of downtown Vancouver. The bathroom featu",
+     "visual": 0.636,
+     "speech": 0.649,
+     "keyword": 0,
+     "allWords": false,
+     "ranks": [
+      19,
+      136,
+      null
+     ]
+    },
+    {
+     "id": "-Sha8jEG9hI:0000",
+     "tour": "-Sha8jEG9hI",
+     "name": "Vancouver",
+     "start": 0,
+     "room": "view",
+     "rooms": [
+      "Aerial view"
+     ],
+     "frame": "/frames/-Sha8jEG9hI_0000.jpg",
+     "caption": "An aerial and street-level view of downtown Vancouver, showcasing Emery Barnes Park, high-rise buildings, and the nearby waterfront.",
+     "visual": 0.601,
+     "speech": 0.693,
+     "keyword": 0,
+     "allWords": false,
+     "ranks": [
+      191,
+      11,
+      null
+     ]
+    },
+    {
+     "id": "-Sha8jEG9hI:0025",
+     "tour": "-Sha8jEG9hI",
+     "name": "Vancouver",
+     "start": 25,
+     "room": "view",
+     "rooms": [
+      "Aerial view",
+      "Dog park"
+     ],
+     "frame": "/frames/-Sha8jEG9hI_0025.jpg",
+     "caption": "An aerial and street-level tour of a vibrant urban neighborhood featuring high-rise condominiums, local parks, and waterfront views.",
+     "visual": 0.611,
+     "speech": 0.692,
+     "keyword": 0,
+     "allWords": false,
+     "ranks": [
+      132,
+      12,
+      null
+     ]
+    },
+    {
+     "id": "-Sha8jEG9hI:0200",
+     "tour": "-Sha8jEG9hI",
+     "name": "Vancouver",
+     "start": 200,
+     "room": "other",
+     "frame": "/frames/-Sha8jEG9hI_0200.jpg",
+     "caption": "A real estate agent sits in a black leather armchair in a modern living space featuring white tiled flooring and a large abstract green pain",
+     "visual": 0.644,
+     "speech": 0.653,
+     "keyword": 0,
+     "allWords": false,
+     "ranks": [
+      9,
+      115,
+      null
+     ]
+    },
+    {
+     "id": "f7Ji5F_Qxl4:0000",
+     "tour": "f7Ji5F_Qxl4",
+     "name": "Surrey",
+     "start": 0,
+     "room": "exterior",
+     "rooms": [
+      "Exterior",
+      "Balcony",
+      "Living room",
+      "City view"
+     ],
+     "frame": "/frames/f7Ji5F_Qxl4_0000.jpg",
+     "caption": "An exterior view of a high-rise condominium building in a city setting, featuring modern architectural lines with glass balconies and large ",
+     "visual": 0.615,
+     "speech": 0.701,
+     "keyword": 0.715,
+     "allWords": true,
+     "ranks": [
+      107,
+      7,
+      3
+     ]
+    },
+    {
+     "id": "f7Ji5F_Qxl4:0025",
+     "tour": "f7Ji5F_Qxl4",
+     "name": "Surrey",
+     "start": 25,
+     "room": "backyard",
+     "rooms": [
+      "City view",
+      "Balcony",
+      "City view"
+     ],
+     "frame": "/frames/f7Ji5F_Qxl4_0025.jpg",
+     "caption": "An exterior rooftop patio with outdoor furniture and a city and mountain view.",
+     "visual": 0.616,
+     "speech": 0.692,
+     "keyword": 0,
+     "allWords": false,
+     "ranks": [
+      103,
+      13,
+      null
+     ]
+    },
+    {
+     "id": "P7Fj7Qs6ro8:0100",
+     "tour": "P7Fj7Qs6ro8",
+     "name": "Surrey",
+     "start": 100,
+     "room": "entry",
+     "rooms": [
+      "Entryway"
+     ],
+     "frame": "/frames/P7Fj7Qs6ro8_0100.jpg",
+     "caption": "The bright entry foyer features a white front door with frosted glass side panels, crisp white molding, and neutral walls.",
+     "visual": 0.606,
+     "speech": 0.682,
+     "keyword": 0,
+     "allWords": false,
+     "ranks": [
+      161,
+      20,
+      null
+     ]
+    },
+    {
+     "id": "OKWSDc86FHk:0000",
+     "tour": "OKWSDc86FHk",
+     "name": "Clayton Heights, Surrey",
+     "start": 0,
+     "room": "kitchen",
+     "rooms": [
+      "Exterior",
+      "Aerial view",
+      "Living room",
+      "Living room",
+      "Kitchen"
+     ],
+     "frame": "/frames/OKWSDc86FHk_0000.jpg",
+     "caption": "A bright, open-concept living area featuring dark wood floors, a modern electric fireplace, and large windows that fill the space with natur",
+     "visual": 0.619,
+     "speech": 0.697,
+     "keyword": 1,
+     "allWords": true,
+     "ranks": [
+      85,
+      9,
+      1
+     ]
+    },
+    {
+     "id": "cOin8XMcmcU:0000",
+     "tour": "cOin8XMcmcU",
+     "name": "North Surrey, Surrey",
+     "start": 0,
+     "room": "other",
+     "frame": "/frames/cOin8XMcmcU_0000.jpg",
+     "caption": "An outdoor area with a playground and townhomes in the background under a cloudy sky.",
+     "visual": 0.616,
+     "speech": 0.686,
+     "keyword": 0.859,
+     "allWords": true,
+     "ranks": [
+      104,
+      17,
+      2
+     ]
+    },
+    {
+     "id": "cOin8XMcmcU:0025",
+     "tour": "cOin8XMcmcU",
+     "name": "North Surrey, Surrey",
+     "start": 25,
+     "room": "other",
+     "rooms": [
+      "Playground"
+     ],
+     "frame": "/frames/cOin8XMcmcU_0025.jpg",
+     "caption": "The exterior of a townhome complex features a modern design with siding, dark trim, and a small playground area in the courtyard. The proper",
+     "visual": 0.602,
+     "speech": 0.691,
+     "keyword": 0,
+     "allWords": false,
+     "ranks": [
+      188,
+      14,
+      null
+     ]
+    },
+    {
+     "id": "9LNkVG1YMk8:0025",
+     "tour": "9LNkVG1YMk8",
+     "name": "Burnaby",
+     "start": 25,
+     "room": "exterior",
+     "rooms": [
+      "Exterior"
+     ],
+     "frame": "/frames/9LNkVG1YMk8_0025.jpg",
+     "caption": "An aerial and street-level exterior view of a residential neighborhood near commercial towers and a transit station.",
+     "visual": 0.619,
+     "speech": 0.752,
+     "keyword": 0.472,
+     "allWords": false,
+     "ranks": [
+      86,
+      1,
+      5
+     ]
+    },
+    {
+     "id": "9LNkVG1YMk8:0075",
+     "tour": "9LNkVG1YMk8",
+     "name": "Burnaby",
+     "start": 75,
+     "room": "other",
+     "frame": "/frames/9LNkVG1YMk8_0075.jpg",
+     "caption": "An outdoor presentation featuring a real estate agent talking about a property with amazing views, a rental suite, and nearby amenities.",
+     "visual": 0.61,
+     "speech": 0.687,
+     "keyword": 0,
+     "allWords": false,
+     "ranks": [
+      142,
+      16,
+      null
+     ]
+    },
+    {
+     "id": "73qj_6Qhae0:0100",
+     "tour": "73qj_6Qhae0",
+     "name": "Burnaby",
+     "start": 100,
+     "room": "backyard",
+     "rooms": [
+      "Ensuite",
+      "Balcony"
+     ],
+     "frame": "/frames/73qj_6Qhae0_0100.jpg",
+     "caption": "A modern bathroom with a glass shower enclosure and dark brown countertops opens up to a view of the bedroom.",
+     "visual": 0.646,
+     "speech": 0.635,
+     "keyword": 0,
+     "allWords": false,
+     "ranks": [
+      7,
+      216,
+      null
+     ]
+    },
+    {
+     "id": "e6qCpshmtmQ:0025",
+     "tour": "e6qCpshmtmQ",
+     "name": "Burnaby",
+     "start": 25,
+     "room": "view",
+     "rooms": [
+      "Bedroom",
+      "View",
+      "Lounge",
+      "Outdoor seating"
+     ],
+     "frame": "/frames/e6qCpshmtmQ_0025.jpg",
+     "caption": "A bright bedroom with light wood-plank flooring, large windows leading to a balcony, and a walk-in closet.",
+     "visual": 0.656,
+     "speech": 0.666,
+     "keyword": 0,
+     "allWords": false,
+     "ranks": [
+      2,
+      58,
+      null
+     ]
+    },
+    {
+     "id": "EkU5olml9M8:0000",
+     "tour": "EkU5olml9M8",
+     "name": "Burnaby",
+     "start": 0,
+     "room": "kitchen",
+     "rooms": [
+      "Exterior view",
+      "Rooftop terrace",
+      "Kitchen",
+      "Bedroom"
+     ],
+     "frame": "/frames/EkU5olml9M8_0000.jpg",
+     "caption": "An aerial and exterior view showcasing the Valeo building in Burnaby, BC, with mountain views, surrounding greenery, and modern architecture",
+     "visual": 0.638,
+     "speech": 0.641,
+     "keyword": 0,
+     "allWords": false,
+     "ranks": [
+      17,
+      187,
+      null
+     ]
+    },
+    {
+     "id": "EkU5olml9M8:0025",
+     "tour": "EkU5olml9M8",
+     "name": "Burnaby",
+     "start": 25,
+     "room": "bathroom",
+     "rooms": [
+      "Bedroom",
+      "Bathroom",
+      "Bedroom",
+      "Bathroom",
+      "Laundry",
+      "Living room"
+     ],
+     "frame": "/frames/EkU5olml9M8_0025.jpg",
+     "caption": "A modern kitchen with white cabinetry, light wood lower cabinets, and a kitchen island with a double sink under recessed lighting.",
+     "visual": 0.64,
+     "speech": 0.612,
+     "keyword": 0,
+     "allWords": false,
+     "ranks": [
+      15,
+      312,
+      null
+     ]
+    },
+    {
+     "id": "EkU5olml9M8:0050",
+     "tour": "EkU5olml9M8",
+     "name": "Burnaby",
+     "start": 50,
+     "room": "backyard",
+     "rooms": [
+      "Living room",
+      "Balcony",
+      "Aerial view"
+     ],
+     "frame": "/frames/EkU5olml9M8_0050.jpg",
+     "caption": "The video provides a tour of a building exterior, showcasing the rooftop patio area, outdoor seating under a pergola, barbecue area, and sur",
+     "visual": 0.643,
+     "speech": 0.648,
+     "keyword": 0,
+     "allWords": false,
+     "ranks": [
+      11,
+      144,
+      null
+     ]
+    },
+    {
+     "id": "_zHBPkJ3tno:0125",
+     "tour": "_zHBPkJ3tno",
+     "name": "Burnaby",
+     "start": 125,
+     "room": "office",
+     "rooms": [
+      "Second bedroom",
+      "Den"
+     ],
+     "frame": "/frames/_zHBPkJ3tno_0125.jpg",
+     "caption": "The clip features a small den area with patterned wallpaper that is set up as a home office and can be enclosed by sliding doors.",
+     "visual": 0.632,
+     "speech": 0.659,
+     "keyword": 0.396,
+     "allWords": false,
+     "ranks": [
+      29,
+      78,
+      9
+     ]
+    },
+    {
+     "id": "_zHBPkJ3tno:0150",
+     "tour": "_zHBPkJ3tno",
+     "name": "Burnaby",
+     "start": 150,
+     "room": "office",
+     "rooms": [
+      "Den",
+      "Second bathroom",
+      "Living area",
+      "Kitchen"
+     ],
+     "frame": "/frames/_zHBPkJ3tno_0150.jpg",
+     "caption": "The video shows a modern, open-concept living space with dark cabinetry, white countertops, and expansive windows offering scenic views. The",
+     "visual": 0.644,
+     "speech": 0.654,
+     "keyword": 0.355,
+     "allWords": false,
+     "ranks": [
+      10,
+      108,
+      13
+     ]
+    },
+    {
+     "id": "_zHBPkJ3tno:0175",
+     "tour": "_zHBPkJ3tno",
+     "name": "Burnaby",
+     "start": 175,
+     "room": "kitchen",
+     "rooms": [
+      "Kitchen"
+     ],
+     "frame": "/frames/_zHBPkJ3tno_0175.jpg",
+     "caption": "A modern kitchen with dark cabinetry, white quartz countertops, a large center island, and high-end Bosch appliances. The space features lar",
+     "visual": 0.614,
+     "speech": 0.657,
+     "keyword": 0.332,
+     "allWords": false,
+     "ranks": [
+      117,
+      89,
+      17
+     ]
+    },
+    {
+     "id": "s3dixKo9vRc:0025",
+     "tour": "s3dixKo9vRc",
+     "name": "Burnaby",
+     "start": 25,
+     "room": "bathroom",
+     "rooms": [
+      "Living room",
+      "Balcony",
+      "Bathroom",
+      "Bedroom",
+      "View"
+     ],
+     "frame": "/frames/s3dixKo9vRc_0025.jpg",
+     "caption": "A bright living room with gray wood-plank floors and a sliding glass door leading to a balcony. It opens up to a modern kitchen with white c",
+     "visual": 0.65,
+     "speech": 0.649,
+     "keyword": 0,
+     "allWords": false,
+     "ranks": [
+      4,
+      138,
+      null
+     ]
+    },
+    {
+     "id": "s3dixKo9vRc:0050",
+     "tour": "s3dixKo9vRc",
+     "name": "Burnaby",
+     "start": 50,
+     "room": "view",
+     "rooms": [
+      "View",
+      "Gym",
+      "Outdoor lounge",
+      "Outdoor patio",
+      "Building exterior"
+     ],
+     "frame": "/frames/s3dixKo9vRc_0050.jpg",
+     "caption": "The video showcases the neighborhood view, apartment gym, outdoor patio with fireplace, and common area lounge.",
+     "visual": 0.645,
+     "speech": 0.646,
+     "keyword": 0,
+     "allWords": false,
+     "ranks": [
+      8,
+      155,
+      null
+     ]
+    },
+    {
+     "id": "ndfIB2HMREE:0000",
+     "tour": "ndfIB2HMREE",
+     "name": "Burnaby",
+     "start": 0,
+     "room": "view",
+     "rooms": [
+      "Aerial view",
+      "Exterior",
+      "Aerial view",
+      "Exterior",
+      "Kitchen"
+     ],
+     "frame": "/frames/ndfIB2HMREE_0000.jpg",
+     "caption": "An aerial and exterior view showing the neighborhood, townhouse entrance, patio area, and surrounding greenery, accompanied by upbeat backgr",
+     "visual": 0.641,
+     "speech": 0.652,
+     "keyword": 0,
+     "allWords": false,
+     "ranks": [
+      14,
+      124,
+      null
+     ]
+    },
+    {
+     "id": "cc1PFZuphn0:0075",
+     "tour": "cc1PFZuphn0",
+     "name": "Burnaby",
+     "start": 75,
+     "room": "bedroom",
+     "rooms": [
+      "Second bedroom",
+      "Second bathroom"
+     ],
+     "frame": "/frames/cc1PFZuphn0_0075.jpg",
+     "caption": "The video shows a modern bedroom with a large window and a sleek bathroom featuring a glass shower and wood vanity.",
+     "visual": 0.639,
+     "speech": 0.646,
+     "keyword": 0,
+     "allWords": false,
+     "ranks": [
+      16,
+      156,
+      null
+     ]
+    },
+    {
+     "id": "3YsFoLaS3ys:0150",
+     "tour": "3YsFoLaS3ys",
+     "name": "Burnaby",
+     "start": 150,
+     "room": "bedroom",
+     "rooms": [
+      "Entertainment lounge",
+      "Bedroom",
+      "Exterior"
+     ],
+     "frame": "/frames/3YsFoLaS3ys_0150.jpg",
+     "caption": "A spacious living area with hardwood flooring, large windows, and access to an outdoor balcony. Natural light fills the room, showcasing neu",
+     "visual": 0.614,
+     "speech": 0.708,
+     "keyword": 0,
+     "allWords": false,
+     "ranks": [
+      118,
+      3,
+      null
+     ]
+    },
+    {
+     "id": "bb_k5aj-Z_w:0025",
+     "tour": "bb_k5aj-Z_w",
+     "name": "Vancouver",
+     "start": 25,
+     "room": "amenity",
+     "rooms": [
+      "Building exterior",
+      "Lobby",
+      "Rooftop pool"
+     ],
+     "frame": "/frames/bb_k5aj-Z_w_0025.jpg",
+     "caption": "A rooftop terrace featuring a pool, loungers, and panoramic views of surrounding high-rise buildings in an urban setting.",
+     "visual": 0.612,
+     "speech": 0.653,
+     "keyword": 0.396,
+     "allWords": false,
+     "ranks": [
+      130,
+      119,
+      10
+     ]
+    },
+    {
+     "id": "bb_k5aj-Z_w:0175",
+     "tour": "bb_k5aj-Z_w",
+     "name": "Vancouver",
+     "start": 175,
+     "room": "backyard",
+     "rooms": [
+      "View",
+      "Balcony"
+     ],
+     "frame": "/frames/bb_k5aj-Z_w_0175.jpg",
+     "caption": "A realtor on a balcony overlooking the city with a view of the water and park.",
+     "visual": 0.6,
+     "speech": 0.708,
+     "keyword": 0.442,
+     "allWords": false,
+     "ranks": [
+      200,
+      4,
+      6
+     ]
+    }
+   ]
+  }
+ ],
+ "calibration": {
+  "absent": [
+   {
+    "query": "zzqx blorf",
+    "top": 0.588
+   },
+   {
+    "query": "horse stable and riding arena",
+    "top": 0.628
+   },
+   {
+    "query": "snowy ski chalet with a sauna",
+    "top": 0.631
+   },
+   {
+    "query": "chicken coop in the garden",
+    "top": 0.618
+   },
+   {
+    "query": "spaceship cockpit",
+    "top": 0.594
+   },
+   {
+    "query": "underwater aquarium tunnel",
+    "top": 0.585
+   },
+   {
+    "query": "indoor basketball court",
+    "top": 0.638
+   },
+   {
+    "query": "helicopter pad",
+    "top": 0.612
+   },
+   {
+    "query": "vineyard with grape vines",
+    "top": 0.608
+   },
+   {
+    "query": "lighthouse",
+    "top": 0.617
+   },
+   {
+    "query": "bowling alley",
+    "top": 0.606
+   },
+   {
+    "query": "treehouse",
+    "top": 0.636
+   }
+  ],
+  "present": [
+   {
+    "query": "kitchen island with bar seating",
+    "top": 0.667
+   },
+   {
+    "query": "fireplace",
+    "top": 0.666
+   },
+   {
+    "query": "walk-in closet",
+    "top": 0.673
+   },
+   {
+    "query": "soaker tub",
+    "top": 0.671
+   },
+   {
+    "query": "fenced backyard",
+    "top": 0.713
+   },
+   {
+    "query": "double vanity",
+    "top": 0.684
+   },
+   {
+    "query": "stainless steel appliances",
+    "top": 0.687
+   },
+   {
+    "query": "hardwood floors",
+    "top": 0.654
+   },
+   {
+    "query": "mountain views",
+    "top": 0.659
+   },
+   {
+    "query": "two car garage",
+    "top": 0.676
+   },
+   {
+    "query": "swimming pool",
+    "top": 0.654
+   },
+   {
+    "query": "gym",
+    "top": 0.646
+   }
+  ]
+ },
+ "sample": {
+  "tour": {
+   "id": "Gueg_zB5kAk",
+   "name": "Abbotsford",
+   "duration": 213,
+   "chapters": [
+    {
+     "start": 0,
+     "room": "exterior",
+     "label": "Exterior",
+     "end": 12,
+     "frame": "/frames/Gueg_zB5kAk_c0000.jpg"
+    },
+    {
+     "start": 12,
+     "room": "other",
+     "label": "Agent",
+     "end": 27
+    },
+    {
+     "start": 27,
+     "room": "exterior",
+     "label": "Exterior",
+     "end": 30,
+     "frame": "/frames/Gueg_zB5kAk_c0270.jpg"
+    },
+    {
+     "start": 30,
+     "room": "entry",
+     "label": "Entry",
+     "end": 32,
+     "frame": "/frames/Gueg_zB5kAk_c0300.jpg"
+    },
+    {
+     "start": 32,
+     "room": "living",
+     "label": "Living room",
+     "end": 34,
+     "frame": "/frames/Gueg_zB5kAk_c0320.jpg"
+    },
+    {
+     "start": 34,
+     "room": "kitchen",
+     "label": "Kitchen",
+     "end": 41,
+     "frame": "/frames/Gueg_zB5kAk_c0340.jpg"
+    },
+    {
+     "start": 41,
+     "room": "dining",
+     "label": "Dining area",
+     "end": 46,
+     "frame": "/frames/Gueg_zB5kAk_c0410.jpg"
+    },
+    {
+     "start": 46,
+     "room": "living",
+     "label": "Living room",
+     "end": 50,
+     "frame": "/frames/Gueg_zB5kAk_c0460.jpg"
+    },
+    {
+     "start": 50,
+     "room": "backyard",
+     "label": "Backyard",
+     "end": 55,
+     "frame": "/frames/Gueg_zB5kAk_c0500.jpg"
+    },
+    {
+     "start": 55,
+     "room": "living",
+     "label": "Living room",
+     "end": 58,
+     "frame": "/frames/Gueg_zB5kAk_c0550.jpg"
+    },
+    {
+     "start": 58,
+     "room": "dining",
+     "label": "Dining area",
+     "end": 63,
+     "frame": "/frames/Gueg_zB5kAk_c0580.jpg"
+    },
+    {
+     "start": 63,
+     "room": "kitchen",
+     "label": "Kitchen",
+     "end": 71,
+     "frame": "/frames/Gueg_zB5kAk_c0630.jpg"
+    },
+    {
+     "start": 71,
+     "room": "living",
+     "label": "Living room",
+     "end": 74,
+     "frame": "/frames/Gueg_zB5kAk_c0710.jpg"
+    },
+    {
+     "start": 74,
+     "room": "bathroom",
+     "label": "Bathroom",
+     "end": 78,
+     "frame": "/frames/Gueg_zB5kAk_c0740.jpg"
+    },
+    {
+     "start": 78,
+     "room": "backyard",
+     "label": "Backyard",
+     "end": 80,
+     "frame": "/frames/Gueg_zB5kAk_c0780.jpg"
+    },
+    {
+     "start": 80,
+     "room": "entry",
+     "label": "Stairs",
+     "end": 82,
+     "frame": "/frames/Gueg_zB5kAk_c0800.jpg"
+    },
+    {
+     "start": 82,
+     "room": "other",
+     "label": "Hallway",
+     "end": 88
+    },
+    {
+     "start": 88,
+     "room": "bedroom",
+     "label": "Bedroom",
+     "end": 90,
+     "frame": "/frames/Gueg_zB5kAk_c0880.jpg"
+    },
+    {
+     "start": 90,
+     "room": "bedroom",
+     "label": "Primary bedroom",
+     "end": 98,
+     "frame": "/frames/Gueg_zB5kAk_c0900.jpg"
+    },
+    {
+     "start": 98,
+     "room": "backyard",
+     "label": "Balcony",
+     "end": 102,
+     "frame": "/frames/Gueg_zB5kAk_c0980.jpg"
+    },
+    {
+     "start": 102,
+     "room": "bathroom",
+     "label": "Ensuite",
+     "end": 120,
+     "frame": "/frames/Gueg_zB5kAk_c1020.jpg"
+    },
+    {
+     "start": 120,
+     "room": "other",
+     "label": "Walk-in closet",
+     "end": 122
+    },
+    {
+     "start": 122,
+     "room": "office",
+     "label": "Office",
+     "end": 125,
+     "frame": "/frames/Gueg_zB5kAk_c1220.jpg"
+    },
+    {
+     "start": 125,
+     "room": "bedroom",
+     "label": "Bedroom",
+     "end": 129,
+     "frame": "/frames/Gueg_zB5kAk_c1250.jpg"
+    },
+    {
+     "start": 129,
+     "room": "entry",
+     "label": "Stairs",
+     "end": 131,
+     "frame": "/frames/Gueg_zB5kAk_c1290.jpg"
+    },
+    {
+     "start": 131,
+     "room": "basement",
+     "label": "Basement",
+     "end": 140,
+     "frame": "/frames/Gueg_zB5kAk_c1310.jpg"
+    },
+    {
+     "start": 140,
+     "room": "bathroom",
+     "label": "Bathroom",
+     "end": 153,
+     "frame": "/frames/Gueg_zB5kAk_c1400.jpg"
+    },
+    {
+     "start": 153,
+     "room": "laundry",
+     "label": "Laundry",
+     "end": 156,
+     "frame": "/frames/Gueg_zB5kAk_c1530.jpg"
+    },
+    {
+     "start": 156,
+     "room": "backyard",
+     "label": "Backyard",
+     "end": 170,
+     "frame": "/frames/Gueg_zB5kAk_c1560.jpg"
+    },
+    {
+     "start": 170,
+     "room": "other",
+     "label": "Agent",
+     "end": 182
+    },
+    {
+     "start": 182,
+     "room": "amenity",
+     "label": "Community",
+     "end": 213.3,
+     "frame": "/frames/Gueg_zB5kAk_c1820.jpg"
+    }
+   ],
+   "windows": [
+    {
+     "start": 0,
+     "end": 30
+    },
+    {
+     "start": 25,
+     "end": 55
+    },
+    {
+     "start": 50,
+     "end": 80
+    },
+    {
+     "start": 75,
+     "end": 105
+    },
+    {
+     "start": 100,
+     "end": 130
+    },
+    {
+     "start": 125,
+     "end": 155
+    },
+    {
+     "start": 150,
+     "end": 180
+    },
+    {
+     "start": 175,
+     "end": 205
+    },
+    {
+     "start": 200,
+     "end": 213
+    }
+   ]
+  },
+  "scene": {
+   "id": "Gueg_zB5kAk:0100",
+   "start": 100,
+   "end": 130,
+   "room": "bathroom",
+   "rooms": [
+    "Ensuite",
+    "Office",
+    "Bedroom"
+   ],
+   "caption": "This spa-like ensuite bathroom features a double vanity with white quartz countertops, black fixtures, a freestanding deep soaking tub, and a glass-enclosed shower with marble-patterned tile.",
+   "features": [
+    "double vanity",
+    "freestanding tub",
+    "glass shower",
+    "black fixtures",
+    "quartz countertops",
+    "walk-in closet"
+   ],
+   "transcript": "Guys, you got to have a look at this spa-like ensuite. Not only do you have a dual sink vanity, you get this wicked deep soaker tub and this really, really elegant shower over here with amazing decor. You're going to really appreciate this space.",
+   "frame": "/frames/Gueg_zB5kAk_0100.jpg"
+  },
+  "vectors": {
+   "query": "soaker tub in the ensuite",
+   "queryHead": [
+    0.046,
+    -0.001,
+    0.003,
+    0.028,
+    0.011,
+    -0.032,
+    -0.046,
+    -0.016,
+    0.005,
+    -0.056,
+    -0.018,
+    0.001,
+    0.018,
+    -0.023,
+    -0.003,
+    -0.016,
+    0.037,
+    0.013,
+    -0.028,
+    -0.016,
+    -0.012,
+    0.016,
+    0.044,
+    0.046,
+    -0.007,
+    0.008,
+    -0.008,
+    0.013,
+    -0.003,
+    0.17,
+    0.013,
+    0.046,
+    -0.026,
+    -0.014,
+    0.003,
+    0.022,
+    -0.006,
+    0.027,
+    0.018,
+    0.001,
+    -0.021,
+    0.007,
+    0.016,
+    0.015,
+    0.026,
+    -0.014,
+    0.025,
+    -0.039,
+    -0.008,
+    0.037,
+    0.007,
+    -0.009,
+    -0.031,
+    -0.047,
+    0.04,
+    0.033,
+    -0.019,
+    0.018,
+    0.013,
+    0.053,
+    -0.007,
+    -0.002,
+    0.025,
+    0.009,
+    -0.01,
+    -0.026,
+    -0.002,
+    0.05,
+    0.054,
+    0.013,
+    0.039,
+    -0.001,
+    -0.047,
+    0.061,
+    0.025,
+    -0.056,
+    -0.057,
+    0.01,
+    0.027,
+    -0.019,
+    0.022,
+    -0.047,
+    -0.008,
+    -0.008,
+    0.011,
+    0.017,
+    -0.013,
+    0.003,
+    -0.005,
+    -0.012,
+    0.004,
+    0.026,
+    -0.037,
+    -0.021,
+    0.004,
+    0.02
+   ],
+   "visualHead": [
+    -0.031,
+    -0.005,
+    0.007,
+    0.008,
+    0.004,
+    -0.018,
+    -0.029,
+    -0.008,
+    0.006,
+    -0.081,
+    0.033,
+    -0.006,
+    -0.028,
+    -0.01,
+    -0.008,
+    0.023,
+    -0.015,
+    -0.013,
+    -0.049,
+    -0.015,
+    -0.021,
+    -0.03,
+    -0.018,
+    0.004,
+    0.003,
+    -0.002,
+    0.02,
+    -0.003,
+    0.028,
+    0.129,
+    0.009,
+    0.006,
+    -0.011,
+    0.022,
+    -0.008,
+    0.045,
+    -0.026,
+    0.021,
+    0.012,
+    0.01,
+    -0.021,
+    0.038,
+    0.008,
+    0.045,
+    0.053,
+    -0.017,
+    -0.01,
+    -0.044,
+    -0.008,
+    0.003,
+    -0.015,
+    -0.022,
+    -0.044,
+    -0.068,
+    0.013,
+    0.032,
+    -0.015,
+    0.018,
+    -0.002,
+    -0.012,
+    0.005,
+    0.011,
+    0.005,
+    0.012,
+    -0.036,
+    0.008,
+    -0.008,
+    -0.005,
+    -0.004,
+    -0.007,
+    0.031,
+    0,
+    -0.06,
+    -0.021,
+    0.019,
+    -0.081,
+    -0.049,
+    0.043,
+    -0.026,
+    -0.026,
+    0,
+    -0.004,
+    0.003,
+    -0.007,
+    -0.002,
+    0.04,
+    0.042,
+    0,
+    -0.001,
+    -0.005,
+    0.033,
+    0.015,
+    -0.006,
+    0.007,
+    0.026,
+    -0.001
+   ],
+   "speechHead": [
+    0.027,
+    0.035,
+    0.033,
+    0.005,
+    -0.016,
+    -0.021,
+    -0.036,
+    -0.029,
+    0.031,
+    -0.073,
+    -0.022,
+    -0.011,
+    0.035,
+    -0.041,
+    -0.004,
+    -0.014,
+    -0.03,
+    0.009,
+    -0.03,
+    0.026,
+    -0.033,
+    -0.01,
+    0.004,
+    0.046,
+    -0.007,
+    0.005,
+    -0.019,
+    0.004,
+    -0.01,
+    0.168,
+    -0.008,
+    0,
+    -0.01,
+    0.031,
+    -0.003,
+    -0.004,
+    -0.016,
+    0.001,
+    0.009,
+    0.003,
+    -0.034,
+    0.013,
+    0.016,
+    0.042,
+    0.068,
+    -0.001,
+    0.021,
+    -0.006,
+    -0.023,
+    0.01,
+    0.047,
+    -0.037,
+    -0.055,
+    -0.037,
+    -0.013,
+    0.056,
+    0.023,
+    0.026,
+    -0.02,
+    0.02,
+    -0.006,
+    -0.002,
+    0.041,
+    0.044,
+    -0.001,
+    -0.036,
+    -0.006,
+    0.032,
+    0.003,
+    0.036,
+    0.008,
+    0.009,
+    -0.065,
+    -0.017,
+    -0.003,
+    -0.052,
+    -0.053,
+    -0.003,
+    -0.02,
+    -0.038,
+    0.004,
+    0.011,
+    -0.014,
+    0.005,
+    0.011,
+    0.048,
+    0.032,
+    -0.026,
+    0.004,
+    -0.004,
+    -0.014,
+    0.022,
+    0.017,
+    -0.007,
+    0.008,
+    0.015
+   ],
+   "cos": {
+    "visual": 0.65,
+    "speech": 0.773
+   },
+   "contrast": {
+    "id": "Gueg_zB5kAk:0000",
+    "room": "Exterior → Exterior",
+    "visual": 0.513,
+    "speech": 0.615
+   }
+  }
+ }
+}
