@@ -3,6 +3,15 @@
 
 const env = (typeof process !== 'undefined' ? process.env : {}) as Record<string, string | undefined>;
 
+const DEFAULT_FLASH_CHAIN = ['gemini-3.5-flash-lite', 'gemini-3.1-flash-lite', 'gemini-2.5-flash-lite'];
+
+/** GEMINI_FLASH_MODELS sets the whole list; GEMINI_FLASH_MODEL only moves one model to the front. */
+function flashChain(): string[] {
+  if (env.GEMINI_FLASH_MODELS) return env.GEMINI_FLASH_MODELS.split(',').map(m => m.trim()).filter(Boolean);
+  const first = env.GEMINI_FLASH_MODEL?.trim();
+  return first ? [first, ...DEFAULT_FLASH_CHAIN.filter(m => m !== first)] : DEFAULT_FLASH_CHAIN;
+}
+
 export const MODELS = {
   // Multimodal: embeds text, images, audio and video into one space.
   embedding: env.GEMINI_EMBEDDING_MODEL || 'gemini-embedding-2',
@@ -10,7 +19,11 @@ export const MODELS = {
   // than an alias so the model cannot change between indexing and serving.
   // Flash-Lite matched full Flash on scene notes in testing, and its free tier
   // (500 requests/day) fits a full index; full Flash allows only 20/day.
-  flash: env.GEMINI_FLASH_MODEL || 'gemini-3.5-flash-lite',
+  flash: flashChain()[0],
+  // Tried in order when a model is out of quota or overloaded. Each model has
+  // its own quota. The embedding model cannot rotate: vectors from different
+  // models live in different spaces.
+  flashChain: flashChain(),
 };
 
 /** Matryoshka-truncated output size. Vectors are re-normalised after truncation. */
