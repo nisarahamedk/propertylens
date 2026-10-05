@@ -1,3 +1,29 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* ---- How it works page: diagram motion ---- */
+
+/* A connector between pipeline stages, with dashes flowing in the data direction. */
+.flow-h,
+.flow-v {
+  background-repeat: repeat;
+  animation: flow-x 0.9s linear infinite;
+}
+.flow-h {
+  background-image: linear-gradient(90deg, #1A261B 50%, transparent 50%);
+  background-size: 10px 2px;
+}
+.flow-v {
+  background-image: linear-gradient(180deg, #1A261B 50%, transparent 50%);
+  background-size: 2px 10px;
+  animation-name: flow-y;
+}
+.flow-accent.flow-h { background-image: linear-gradient(90deg, #C67B5C 50%, transparent 50%); }
+.flow-accent.flow-v { background-image: linear-gradient(180deg, #C67B5C 50%, transparent 50%); }
+@keyframes flow-x { to { background-position: 10px 0; } }
+@keyframes flow-y { to { background-position: 0 10px; } }
+
+@media (prefers-reduced-motion: reduce) {
+  .flow-h, .flow-v { animation: none; }
+}

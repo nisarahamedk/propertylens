@@ -6,7 +6,7 @@ import { EMBEDDING_DIMS, MODELS } from './config.js';
 const BASE = 'https://generativelanguage.googleapis.com/v1beta';
 
 export class GeminiError extends Error {
-  constructor(message: string, public status: number) {
+  constructor(message: string, public status: number, public retryAfterMs?: number) {
     super(message);
   }
 }
@@ -47,7 +47,43 @@ async function post(path: string, body: unknown, apiKey: string, attempt = 0): P
     await new Promise(r => setTimeout(r, wait + Math.random() * 500));
     return post(path, body, apiKey, attempt + 1);
   }
-  throw new GeminiError(`Gemini ${path} failed: ${res.status} ${text.slice(0, 300)}`, res.status);
+  throw new GeminiError(`Gemini ${path} failed: ${res.status} ${text.slice(0, 300)}`, res.status, asked);
+}
+
+// ---- Flash model fallback ----
+
+// Models that recently refused a request, and when to try them again. Per
+// instance, so each serverless instance learns after at most one failed call.
+const cooling = new Map<string, number>();
+
+/** How long to skip a model after this error, or 0 if trying another model would not help. */
+function cooldownFor(e: GeminiError): number {
+  if (e.status === 429) return e.retryAfterMs ?? 60_000; // per-minute or per-day quota
+  if (e.status === 404 || e.status === 403) return 6 * 3600_000; // model not available to this key
+  if (e.status >= 500) return 30_000; // overloaded
+  return 0;
+}
+
+/** Runs a Flash request on the first model in the chain that is not cooling down. */
+async function withFlashFallback<T>(run: (model: string) => Promise<T>): Promise<T> {
+  const now = Date.now();
+  const chain = MODELS.flashChain;
+  const ready = chain.filter(m => (cooling.get(m) ?? 0) <= now);
+  // If every model is cooling, try the one that recovers first rather than fail outright.
+  const order = ready.length ? ready : [...chain].sort((a, b) => (cooling.get(a) ?? 0) - (cooling.get(b) ?? 0));
+  let last: unknown;
+  for (const model of order) {
+    try {
+      return await run(model);
+    } catch (e) {
+      const wait = e instanceof GeminiError ? cooldownFor(e) : 0;
+      if (!wait) throw e;
+      cooling.set(model, Date.now() + wait);
+      console.warn(`[gemini] ${model} unavailable (${(e as GeminiError).status}); skipping it for ${Math.round(wait / 1000)}s`);
+      last = e;
+    }
+  }
+  throw last;
 }
 
 const call = async (path: string, body: unknown, apiKey: string): Promise<any> => (await post(path, body, apiKey)).json();
@@ -97,7 +133,7 @@ export async function generate(
   apiKey: string,
   opts: GenerateOptions = {},
 ): Promise<string> {
-  const data = await call(`models/${MODELS.flash}:generateContent`, generateBody(contents, opts), apiKey);
+  const data = await withFlashFallback(model => call(`models/${model}:generateContent`, generateBody(contents, opts), apiKey));
   const parts = data?.candidates?.[0]?.content?.parts ?? [];
   return parts.map((p: any) => p.text ?? '').join('');
 }
@@ -118,7 +154,7 @@ export async function* generateStream(
   opts: GenerateOptions = {},
 ): AsyncGenerator<string> {
   // Retrying is safe here: nothing has been streamed to the caller yet.
-  const res = await post(`models/${MODELS.flash}:streamGenerateContent?alt=sse`, generateBody(contents, opts), apiKey);
+  const res = await withFlashFallback(model => post(`models/${model}:streamGenerateContent?alt=sse`, generateBody(contents, opts), apiKey));
   if (!res.body) throw new GeminiError('Gemini stream returned no body', 502);
   const reader = res.body.getReader();
   const decoder = new TextDecoder();
