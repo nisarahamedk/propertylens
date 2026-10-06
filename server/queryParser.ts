@@ -98,5 +98,16 @@ export async function parseWithModel(q: string, locations: string[], apiKey: str
   }
   const locs = (out.locations ?? []).filter((l: string) => known.has(String(l).toLowerCase()));
   if (locs.length) filters.locations = locs;
-  return { semantic: String(out.semantic || q).trim(), filters };
+  return { semantic: withoutFiller(String(out.semantic || q)), filters };
+}
+
+/**
+ * The model sometimes appends the neutral "house tour" to a real description
+ * ("fenced backyard house tour"), which pulls in generic scenes. Keep it only
+ * when nothing else is left.
+ */
+export function withoutFiller(semantic: string): string {
+  const trimmed = semantic.trim();
+  const rest = trimmed.replace(/\b(?:house|home)\s+tours?\b/gi, ' ').replace(/\s+/g, ' ').trim();
+  return rest || trimmed;
 }
