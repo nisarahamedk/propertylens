@@ -1,4 +1,4 @@
-import type { Chapter, Moment, Property, PropertyMatch, Room, SearchFilters, SearchResponse } from '../types.js';
+import type { Chapter, Moment, Property, PropertyMatch, Room, SearchFilters, SearchResponse, Segment } from '../types.js';
 import { RANKING } from './config.js';
 import { embed, getApiKey, queryText } from './gemini.js';
 import { looksFiltered, parseWithModel, parseWithRules, type ParsedQuery } from './queryParser.js';
@@ -88,6 +88,51 @@ export function chapterFor(chapters: Chapter[] | undefined, start: number, end: 
   return best?.c ?? null;
 }
 
+// Plain room names, for reading which room a caption is about.
+const CAPTION_ROOMS: [Room, string[]][] = [
+  ['kitchen', ['kitchen', 'kitchenette']],
+  ['bathroom', ['bathroom', 'ensuite', 'powder']],
+  ['bedroom', ['bedroom', 'nursery']],
+  ['living', ['living']],
+  ['dining', ['dining']],
+  ['office', ['office', 'den', 'study']],
+  ['basement', ['basement']],
+  ['laundry', ['laundry', 'mudroom']],
+  ['garage', ['garage']],
+  ['entry', ['entry', 'entryway', 'foyer']],
+  ['backyard', ['backyard', 'yard', 'garden', 'patio', 'deck', 'balcony', 'terrace', 'pool']],
+];
+const captionRoomOf = new Map(CAPTION_ROOMS.flatMap(([room, words]) => tokenize(words.join(' ')).map(w => [w, room] as const)));
+
+/**
+ * The room a caption is about: the first room it names ("The basement features
+ * a brick fireplace…" is the basement). The window's own room comes from the
+ * whole-video chapter pass, which can drift a few seconds off the still and
+ * caption, so this wins when they disagree. Null when no room is named.
+ */
+export function captionRoom(caption: string): Room | null {
+  for (const w of tokenize(caption)) {
+    const room = captionRoomOf.get(w);
+    if (room) return room;
+  }
+  return null;
+}
+
+// Building amenities and views are their own kind of scene; their captions
+// mention a pool or a deck without being about a home's rooms.
+const roomOf = (seg: Segment): Room =>
+  seg.room === 'amenity' || seg.room === 'view' ? seg.room : captionRoom(seg.caption) ?? seg.room;
+
+// The model can split the same query differently from one call to the next,
+// so the same search would return different homes. Keep the first answer
+// (per instance, which covers a person re-running or sharing a search).
+const parseCache = new Map<string, ParsedQuery>();
+const PARSE_CACHE_SIZE = 500;
+function rememberParse(key: string, parsed: ParsedQuery) {
+  if (parseCache.size >= PARSE_CACHE_SIZE) parseCache.delete(parseCache.keys().next().value!);
+  parseCache.set(key, parsed);
+}
+
 export async function search(query: string): Promise<SearchResponse> {
   const t0 = performance.now();
   const timings: Record<string, number> = {};
@@ -98,9 +143,14 @@ export async function search(query: string): Promise<SearchResponse> {
 
   // 1. Understand the query.
   let parsed: ParsedQuery;
-  if (apiKey && looksFiltered(query, locations)) {
+  const parseKey = query.trim().toLowerCase().replace(/\s+/g, ' ');
+  const remembered = parseCache.get(parseKey);
+  if (remembered) {
+    parsed = remembered;
+  } else if (apiKey && looksFiltered(query, locations)) {
     try {
       parsed = await parseWithModel(query, locations, apiKey);
+      rememberParse(parseKey, parsed);
     } catch {
       parsed = parseWithRules(query, locations);
     }
@@ -164,21 +214,26 @@ export async function search(query: string): Promise<SearchResponse> {
       list.sort((a, b) => b.fused - a.fused);
       const moments: Moment[] = [];
       const windows: { start: number; end: number }[] = [];
+      const frames = new Set<string>();
       for (const s of list) {
         const seg = s.doc.segment;
         if (windows.some(w => overlaps(w, seg))) continue;
-        windows.push(seg);
         // Show, label and start at the room in this window that fits the query.
         const chapter = chapterFor(s.doc.property.chapters, seg.start, seg.end, qTerms);
+        // Two windows can land on the same room chapter; show it once.
+        const frame = chapter?.frame ?? seg.frame;
+        if (frame && frames.has(frame)) continue;
+        if (frame) frames.add(frame);
+        windows.push(seg);
         moments.push({
           segmentId: seg.id,
           start: chapter ? Math.max(seg.start, chapter.start) : seg.start,
           end: seg.end,
-          room: chapter?.room ?? seg.room,
+          room: chapter?.room ?? roomOf(seg),
           label: chapter?.label,
           caption: seg.caption,
           transcript: seg.transcript,
-          frame: chapter?.frame ?? seg.frame,
+          frame,
           score: +(s.fused / maxFused).toFixed(3),
           signals: { visual: +s.visual.toFixed(3), speech: +s.speech.toFixed(3), keyword: +s.keyword.toFixed(3) },
         });

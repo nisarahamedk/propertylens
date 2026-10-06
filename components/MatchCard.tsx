@@ -5,8 +5,8 @@ import Highlight from './Highlight';
 import { IconPlay } from './ui/Icons';
 
 export interface SignalScale {
-  visual: number; // highest visual cosine in this response
-  speech: number;
+  visual: [number, number]; // lowest and highest visual cosine in this response
+  speech: [number, number];
 }
 
 interface MatchCardProps {
@@ -18,10 +18,11 @@ interface MatchCardProps {
   onOpen: (moment?: Moment) => void;
 }
 
-const Bar: React.FC<{ label: string; value: number; max: number }> = ({ label, value, max }) => {
-  // Cosine scores for text-to-video sit in a narrow band, so scale relative to the best in the response.
-  const floor = 0.1;
-  const pct = max > floor ? Math.max(0, Math.min(1, (value - floor) / (max - floor))) : 0;
+const Bar: React.FC<{ label: string; value: number; range: [number, number] }> = ({ label, value, range: [min, max] }) => {
+  // Cosine scores all sit in a narrow band (about 0.58 to 0.78), so a bar from
+  // zero would read full on every result. Spread this response's range over
+  // the bar instead, keeping a stub so the weakest match is still visible.
+  const pct = max - min > 1e-6 ? 0.15 + 0.85 * Math.max(0, Math.min(1, (value - min) / (max - min))) : 1;
   return (
     <div className="flex items-center gap-2" title={`${label}: ${value.toFixed(2)}`}>
       <span className="w-11 text-[10px] font-mono uppercase tracking-wider text-olive">{label}</span>
@@ -71,11 +72,11 @@ const MomentTile: React.FC<{
       <div className="mt-auto pt-1 flex flex-col gap-1">
         {hybrid ? (
           <>
-            <Bar label="Seen" value={moment.signals.visual} max={scale.visual} />
-            <Bar label="Heard" value={moment.signals.speech} max={scale.speech} />
+            <Bar label="Seen" value={moment.signals.visual} range={scale.visual} />
+            <Bar label="Heard" value={moment.signals.speech} range={scale.speech} />
           </>
         ) : (
-          <Bar label="Words" value={moment.signals.keyword} max={1} />
+          <Bar label="Words" value={moment.signals.keyword} range={[0, 1]} />
         )}
       </div>
     </div>

@@ -1,14 +1,16 @@
 [
-  { "q": "kitchen island with bar seating" },
+  { "q": "kitchen island with bar seating", "expect": ["8iugptfOqDk", "vndhQP-5-H0", "-Sha8jEG9hI", "TlMUknHQYLU"] },
   { "q": "backyard with mature trees" },
-  { "q": "mountain view from the living room" },
+  { "q": "mountain view from the living room", "expect": ["NMB7EBYl0kQ", "vndhQP-5-H0"] },
   { "q": "walk-in closet" },
-  { "q": "soaker tub in the ensuite" },
-  { "q": "fireplace" },
+  { "q": "soaker tub in the ensuite", "expect": ["Gueg_zB5kAk", "8iugptfOqDk", "Ivv1UQoG-Ik"] },
+  { "q": "fireplace", "expect": ["u8dIDj_aQU4", "D_7Td8HdCCc"] },
   { "q": "rooftop deck" },
   { "q": "agent mentions a new roof" },
   { "q": "home gym in the basement" },
+  { "q": "3 bed in Surrey with a fenced backyard", "expect": ["DqXM07TYfdM", "I2qrsxKbzeA", "8iugptfOqDk"] },
   { "q": "3 bed in Burnaby with a big kitchen island" },
   { "q": "under $1M condo with city views" },
+  { "q": "pool", "expect": ["P8ZO-XzBjDk", "rEy3q-DO2Yw", "NMB7EBYl0kQ"] },
   { "q": "dark granite countertops" }
 ]

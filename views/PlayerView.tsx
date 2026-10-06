@@ -138,8 +138,8 @@ const PlayerView: React.FC = () => {
               </button>
             ))}
           </div>
-          <div className={`flex-1 min-h-0 ${tab === 'scenes' ? 'overflow-y-auto' : 'flex flex-col'}`}>
-            {tab === 'scenes' ? (
+          {tab === 'scenes' && (
+            <div className="flex-1 min-h-0 overflow-y-auto">
               <ScenePanel
                 segments={property.segments}
                 currentTime={currentTime}
@@ -148,14 +148,17 @@ const PlayerView: React.FC = () => {
                 fallbackImage={property.thumbnailUrl}
                 onSeek={seek}
               />
-            ) : (
-              <ChatPanel
-                youtubeId={property.youtubeId}
-                currentTime={currentTime}
-                onSeek={seek}
-                disabled={!property.segments.length}
-              />
-            )}
+            </div>
+          )}
+          {/* Hidden rather than unmounted, so the conversation survives a look at the scenes. */}
+          <div className={tab === 'ask' ? 'flex-1 min-h-0 flex flex-col' : 'hidden'}>
+            <ChatPanel
+              key={property.id}
+              youtubeId={property.youtubeId}
+              currentTime={currentTime}
+              onSeek={seek}
+              disabled={!property.segments.length}
+            />
           </div>
         </aside>
       </main>

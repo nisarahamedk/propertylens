@@ -45,9 +45,10 @@ const ResultsView: React.FC = () => {
 
   const scale: SignalScale = useMemo(() => {
     const all = data?.matches.flatMap(m => m.moments) ?? [];
+    const range = (values: number[]): [number, number] => (values.length ? [Math.min(...values), Math.max(...values)] : [0, 0]);
     return {
-      visual: Math.max(0, ...all.map(m => m.signals.visual)),
-      speech: Math.max(0, ...all.map(m => m.signals.speech)),
+      visual: range(all.map(m => m.signals.visual)),
+      speech: range(all.map(m => m.signals.speech)),
     };
   }, [data]);
 
