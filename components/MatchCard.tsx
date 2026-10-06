@@ -18,16 +18,29 @@ interface MatchCardProps {
   onOpen: (moment?: Moment) => void;
 }
 
+const HINTS: Record<string, string> = {
+  Seen: 'How closely the video itself matches your search. A full bar is the strongest match in these results, not a perfect score.',
+  Heard: 'How closely what is said and described in this scene matches your search. A full bar is the strongest match in these results, not a perfect score.',
+  Words: 'How many of your search words appear in this scene, compared with the best result.',
+};
+
 const Bar: React.FC<{ label: string; value: number; range: [number, number] }> = ({ label, value, range: [min, max] }) => {
   // Cosine scores all sit in a narrow band (about 0.58 to 0.78), so a bar from
   // zero would read full on every result. Spread this response's range over
   // the bar instead, keeping a stub so the weakest match is still visible.
   const pct = max - min > 1e-6 ? 0.15 + 0.85 * Math.max(0, Math.min(1, (value - min) / (max - min))) : 1;
   return (
-    <div className="flex items-center gap-2" title={`${label}: ${value.toFixed(2)}`}>
+    <div className="relative group/bar flex items-center gap-2" aria-label={`${label}: ${HINTS[label]}`}>
       <span className="w-11 text-[10px] font-mono uppercase tracking-wider text-olive">{label}</span>
       <span className="flex-1 h-1.5 bg-sand border border-charcoal/20">
         <span className="block h-full bg-charcoal" style={{ width: `${Math.round(pct * 100)}%` }} />
+      </span>
+      {/* Hover-only: the tile is a button, so the tooltip cannot hold anything focusable. */}
+      <span
+        role="tooltip"
+        className="pointer-events-none absolute left-0 bottom-full mb-1.5 z-20 w-60 hidden group-hover/bar:block bg-charcoal text-warmWhite text-[11px] leading-snug normal-case tracking-normal font-sans px-2.5 py-2"
+      >
+        {HINTS[label]}
       </span>
     </div>
   );
