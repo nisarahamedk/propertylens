@@ -1,24 +1,15 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import AppHeader from '../components/AppHeader';
-import MatchCard, { type SignalScale } from '../components/MatchCard';
+import MatchCard from '../components/MatchCard';
 import SearchBar from '../components/SearchBar';
+import SearchParts from '../components/SearchParts';
 import { ResultCardSkeleton } from '../components/ui/Skeletons';
-import { formatPrice, queryTerms } from '../lib/format';
+import { evidenceFor, searchParts } from '../lib/match';
 import { searchTours, totalScenes } from '../services/api';
-import type { Moment, PropertyMatch, SearchFilters, SearchResponse } from '../types';
+import type { Moment, PropertyMatch, SearchResponse } from '../types';
 
-function filterChips(f: SearchFilters): string[] {
-  const chips: string[] = [];
-  if (f.minBeds) chips.push(`${f.minBeds}+ beds`);
-  if (f.minBaths) chips.push(`${f.minBaths}+ baths`);
-  if (f.minSqft) chips.push(`${f.minSqft.toLocaleString()}+ sq ft`);
-  if (f.minPrice && f.maxPrice) chips.push(`${formatPrice(f.minPrice)}–${formatPrice(f.maxPrice)}`);
-  else if (f.maxPrice) chips.push(`Under ${formatPrice(f.maxPrice)}`);
-  else if (f.minPrice) chips.push(`Over ${formatPrice(f.minPrice)}`);
-  for (const l of f.locations ?? []) chips.push(l);
-  return chips;
-}
+const EXAMPLES = ['Soaker tub in the ensuite', 'Kitchen island with bar seating', 'Fenced backyard'];
 
 const ResultsView: React.FC = () => {
   const navigate = useNavigate();
@@ -41,16 +32,11 @@ const ResultsView: React.FC = () => {
     return () => ctrl.abort();
   }, [query]);
 
-  const terms = useMemo(() => queryTerms(data?.interpreted.semantic || query), [data, query]);
-
-  const scale: SignalScale = useMemo(() => {
-    const all = data?.matches.flatMap(m => m.moments) ?? [];
-    const range = (values: number[]): [number, number] => (values.length ? [Math.min(...values), Math.max(...values)] : [0, 0]);
-    return {
-      visual: range(all.map(m => m.signals.visual)),
-      speech: range(all.map(m => m.signals.speech)),
-    };
-  }, [data]);
+  const parts = useMemo(() => (data ? searchParts(data.interpreted.filters, data.interpreted.semantic) : []), [data]);
+  const complete = useMemo(
+    () => (data ? data.matches.filter(m => evidenceFor(m.moments, data.interpreted.semantic)?.status === 'yes').length : 0),
+    [data],
+  );
 
   const open = (match: PropertyMatch, moment?: Moment) => {
     const t = moment ? Math.floor(moment.start) : 0;
@@ -59,9 +45,7 @@ const ResultsView: React.FC = () => {
     });
   };
 
-  const chips = data ? filterChips(data.interpreted.filters) : [];
-  const showInterpretation =
-    data && (chips.length > 0 || data.interpreted.semantic.toLowerCase() !== query.trim().toLowerCase());
+  const filters = parts.filter(p => p.source === 'listing').map(p => p.label);
 
   return (
     <div className="min-h-screen bg-cream">
@@ -71,7 +55,7 @@ const ResultsView: React.FC = () => {
         </div>
       </AppHeader>
 
-      <main className="max-w-7xl mx-auto px-4 md:px-6 py-8">
+      <main className="max-w-7xl mx-auto px-4 md:px-6 py-4 md:py-8">
         {loading && (
           <div className="space-y-6" aria-busy="true">
             <p className="font-mono text-xs uppercase tracking-widest text-olive">
@@ -97,35 +81,33 @@ const ResultsView: React.FC = () => {
 
         {data && !loading && !error && (
           <div className="animate-fade-in">
-            <div className="mb-8 border-b-2 border-charcoal pb-5 flex flex-col gap-3">
-              <h1 className="font-display text-3xl md:text-4xl text-charcoal font-bold leading-tight">
-                {data.closest ? 'No exact match for' : `${data.matches.length} ${data.matches.length === 1 ? 'home' : 'homes'} for`}{' '}
-                <span className="text-terracotta">“{query}”</span>
-              </h1>
-
-              {showInterpretation && (
-                <div className="flex flex-wrap items-center gap-2 text-sm">
-                  <span className="font-mono text-[11px] uppercase tracking-widest text-olive">Understood as</span>
-                  <span className="px-2 py-0.5 bg-charcoal text-warmWhite font-mono text-xs">{data.interpreted.semantic}</span>
-                  {chips.map(c => (
-                    <span key={c} className="px-2 py-0.5 bg-warmWhite border-2 border-charcoal font-mono text-xs font-bold">
-                      {c}
-                    </span>
-                  ))}
-                </div>
+            <div className="mb-6 border-b-2 border-charcoal pb-4 md:pb-5 flex flex-col md:flex-row md:items-end md:justify-between gap-3">
+              <div className="flex flex-col gap-3 min-w-0">
+                <h1 className="hidden md:block font-display text-3xl text-charcoal font-bold leading-tight">
+                  {data.closest
+                    ? 'No exact match. These are the closest homes.'
+                    : `${data.matches.length} ${data.matches.length === 1 ? 'home matches' : 'homes match'} your search`}
+                </h1>
+                <SearchParts parts={parts} intro={parts.length > 1 ? 'Your search' : undefined} />
+              </div>
+              {data.matches.length > 0 && (
+                <p className="text-sm text-olive md:text-right shrink-0">
+                  <b className="md:hidden text-charcoal">
+                    {data.matches.length} {data.matches.length === 1 ? 'home' : 'homes'}.{' '}
+                  </b>
+                  {complete === data.matches.length
+                    ? 'Each one matches every part.'
+                    : complete
+                      ? `${complete} match every part, ${data.matches.length - complete} match some.`
+                      : 'None matches every part. These come closest.'}
+                </p>
               )}
-
-              <p className="font-mono text-[11px] uppercase tracking-widest text-olive">
-                {data.stats.segmentsSearched} scenes across {data.stats.propertiesConsidered} tours ·{' '}
-                {data.stats.timings.total} ms ·{' '}
-                {data.mode === 'hybrid' ? 'visual + speech + keyword' : 'keyword only'}
-              </p>
             </div>
 
             {data.closest && (
               <div className="mb-6 bg-warmWhite border-2 border-charcoal p-4 md:p-5 flex flex-col md:flex-row md:items-center gap-3 md:gap-6">
                 <p className="text-charcoal leading-snug flex-1">
-                  No home that fits your filters ({chips.join(' · ')}) clearly shows{' '}
+                  No home that fits your filters ({filters.join(' · ')}) clearly shows{' '}
                   <strong>{data.interpreted.semantic}</strong>. These are the closest moments.
                 </p>
                 <button
@@ -137,17 +119,10 @@ const ResultsView: React.FC = () => {
               </div>
             )}
 
-            <div className="space-y-6">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-5">
               {data.matches.map((m, i) => (
                 <div key={m.property.id} className="animate-slide-up" style={{ animationDelay: `${i * 60}ms` }}>
-                  <MatchCard
-                    match={m}
-                    rank={i + 1}
-                    terms={terms}
-                    scale={scale}
-                    hybrid={data.mode === 'hybrid'}
-                    onOpen={moment => open(m, moment)}
-                  />
+                  <MatchCard match={m} parts={parts} semantic={data.interpreted.semantic} onOpen={moment => open(m, moment)} />
                 </div>
               ))}
             </div>
@@ -155,13 +130,26 @@ const ResultsView: React.FC = () => {
             {data.matches.length === 0 && (
               <div className="text-center py-16 px-6 bg-warmWhite border-2 border-dashed border-charcoal/30">
                 <p className="text-charcoal font-display text-2xl mb-2 font-bold">Nothing in these tours matches that yet.</p>
-                <p className="text-olive font-mono text-sm">
-                  {totalScenes === 0
-                    ? 'The index has no scenes. Run ingestion/build-index.ts to build it.'
-                    : chips.length
-                      ? 'Try removing a filter, such as the price or the neighbourhood.'
-                      : 'Try describing a room, a finish or a view, like “soaker tub in the ensuite” or “kitchen island with bar seating”.'}
-                </p>
+                {totalScenes === 0 ? (
+                  <p className="text-olive font-mono text-sm">The index has no scenes. Run ingestion/build-index.ts to build it.</p>
+                ) : filters.length ? (
+                  <p className="text-olive font-mono text-sm">Try removing a filter, such as the price or the neighbourhood.</p>
+                ) : (
+                  <>
+                    <p className="text-olive text-sm mb-4">Try describing a room, a finish or a view.</p>
+                    <div className="flex flex-wrap justify-center gap-2">
+                      {EXAMPLES.map(e => (
+                        <button
+                          key={e}
+                          onClick={() => setParams({ q: e })}
+                          className="px-3 py-1.5 bg-warmWhite border-2 border-charcoal font-mono text-xs font-bold uppercase hover:bg-terracotta hover:text-white"
+                        >
+                          {e}
+                        </button>
+                      ))}
+                    </div>
+                  </>
+                )}
               </div>
             )}
           </div>

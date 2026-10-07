@@ -1,52 +1,41 @@
 import React from 'react';
 import type { Property } from '../types';
-import { formatPrice } from '../lib/format';
+import { formatPrice, formatTime } from '../lib/format';
+import { coverImage, homeTitle, roomCount } from '../lib/match';
 
 interface PropertyThumbnailProps {
   property: Property;
   onClick: () => void;
 }
 
+/** A tour card: a clean room still from the tour, then where, how much and how big. */
 const PropertyThumbnail: React.FC<PropertyThumbnailProps> = ({ property, onClick }) => {
+  const rooms = roomCount(property.chapters);
+  const price = formatPrice(property.priceValue);
+  const facts = [
+    property.beds ? `${property.beds} bed` : null,
+    property.baths ? `${property.baths} bath` : null,
+    property.address !== property.location ? property.location : null,
+  ].filter(Boolean);
+
   return (
-    <div 
-      className="group relative cursor-pointer flex flex-col"
-      onClick={onClick}
-    >
-      {/* Image Container */}
-      <div className="relative aspect-[4/3] overflow-hidden rounded-none border-2 border-charcoal bg-sand shadow-neobrutal transition-all duration-300 group-hover:-translate-y-1 group-hover:shadow-neobrutal-hover">
-        <img 
-          src={property.thumbnailUrl} 
-          alt={property.name}
-          loading="lazy" 
-          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 filter grayscale-[20%] group-hover:grayscale-0"
-        />
-        
-        {/* Overlay Button */}
-        <div className="absolute inset-0 bg-charcoal/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-center items-center">
-           <button className="px-5 py-2 bg-warmWhite text-charcoal border-2 border-charcoal text-xs font-mono font-bold tracking-widest uppercase shadow-neobrutal-sm hover:scale-105 transition-all">
-             View Tour
-           </button>
-        </div>
+    <button onClick={onClick} className="group min-w-0 text-left flex flex-col focus:outline-none focus-visible:ring-2 focus-visible:ring-terracotta">
+      <div className="relative w-full aspect-[4/3] overflow-hidden border-2 border-charcoal bg-sand transition-all duration-200 group-hover:-translate-y-0.5 group-hover:shadow-neobrutal-hover">
+        <img src={coverImage(property)} alt="" loading="lazy" className="w-full h-full object-cover" />
+        <span className="absolute right-1.5 bottom-1.5 bg-charcoal text-warmWhite font-mono text-[10px] font-bold px-1.5 py-0.5">
+          {formatTime(property.duration)}{rooms ? ` · ${rooms} rooms` : ''}
+        </span>
       </div>
-      
-      {/* Text Content */}
-      <div className="mt-3 px-0.5">
-        <div className="flex justify-between items-start mb-2">
-            <h3 className="font-display text-lg font-bold text-charcoal leading-tight group-hover:text-terracotta transition-colors uppercase tracking-tight">{property.name}</h3>
-        </div>
-        <div className="flex justify-between items-center border-t-2 border-charcoal pt-2">
-          <p className="text-[11px] text-olive font-mono font-medium uppercase tracking-tight truncate pr-2">
-            {property.address}
-          </p>
-          <p className="text-[10px] text-charcoal font-mono font-bold bg-sand px-1.5 py-0.5 border border-charcoal shrink-0">
-            {[property.beds ? `${property.beds}bd` : null, property.baths ? `${property.baths}ba` : null, formatPrice(property.priceValue) || null]
-              .filter(Boolean)
-              .join(' · ') || 'Tour'}
-          </p>
-        </div>
+      <div className="mt-2 flex items-baseline justify-between gap-2 min-w-0 w-full">
+        <h3 className="truncate font-semibold text-[13px] md:text-[15px] text-charcoal group-hover:text-terracotta transition-colors">
+          {homeTitle(property)}
+        </h3>
+        {price && <span className="shrink-0 font-mono font-bold text-xs md:text-sm text-charcoal">{price}</span>}
       </div>
-    </div>
+      {facts.length > 0 && (
+        <p className="mt-0.5 truncate w-full font-mono text-[10px] font-bold uppercase tracking-widest text-olive">{facts.join(' · ')}</p>
+      )}
+    </button>
   );
 };
 

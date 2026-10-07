@@ -59,7 +59,7 @@ const IndexView: React.FC = () => {
           </label>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-12">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-x-3 md:gap-x-6 gap-y-6 md:gap-y-10">
           {shown.map(p => (
             <PropertyThumbnail key={p.id} property={p} onClick={() => navigate(`/property/${p.id}`)} />
           ))}

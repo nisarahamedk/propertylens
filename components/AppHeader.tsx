@@ -2,10 +2,14 @@ import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { IconArrowLeft } from './ui/Icons';
 
-const AppHeader: React.FC<{ back?: string | number; children?: React.ReactNode }> = ({ back, children }) => {
+const AppHeader: React.FC<{ back?: string | number; children?: React.ReactNode; stickOnPhones?: boolean }> = ({
+  back,
+  children,
+  stickOnPhones = true,
+}) => {
   const navigate = useNavigate();
   return (
-    <header className="bg-cream border-b-2 border-charcoal sticky top-0 z-40">
+    <header className={`bg-cream border-b-2 border-charcoal z-40 ${stickOnPhones ? 'sticky top-0' : 'lg:sticky lg:top-0'}`}>
       <div className="max-w-7xl mx-auto px-4 md:px-6 py-3 flex items-center gap-4">
         {back !== undefined && (
           <button

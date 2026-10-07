@@ -68,10 +68,10 @@ const ChatPanel: React.FC<Props> = ({ youtubeId, currentTime, onSeek, disabled }
 
   return (
     <div className="flex flex-col h-full min-h-0">
-      <div ref={scrollRef} className="flex-1 overflow-y-auto p-4 space-y-4">
+      <div ref={scrollRef} className="flex-1 lg:overflow-y-auto p-4 space-y-4">
         {turns.length === 0 && (
           <div>
-            <p className="text-warmWhite/70 text-sm mb-3">
+            <p className="text-olive text-sm mb-3">
               Ask anything about this home. Answers come only from what is seen and said in the tour, with timestamps you can click.
             </p>
             <div className="flex flex-col gap-2">
@@ -80,7 +80,7 @@ const ChatPanel: React.FC<Props> = ({ youtubeId, currentTime, onSeek, disabled }
                   key={s}
                   onClick={() => ask(s)}
                   disabled={disabled}
-                  className="text-left text-sm px-3 py-2 border-2 border-warmWhite/30 text-warmWhite hover:border-terracotta hover:text-terracotta transition-colors disabled:opacity-40"
+                  className="text-left text-sm px-3 py-2 bg-warmWhite border-2 border-charcoal/20 text-charcoal hover:border-terracotta hover:text-terracotta transition-colors disabled:opacity-40"
                 >
                   {s}
                 </button>
@@ -126,7 +126,7 @@ const ChatPanel: React.FC<Props> = ({ youtubeId, currentTime, onSeek, disabled }
           e.preventDefault();
           ask(input);
         }}
-        className="p-3 border-t border-warmWhite/10 flex gap-2"
+        className="sticky bottom-0 lg:static bg-cream lg:bg-warmWhite p-3 border-t-2 border-charcoal flex gap-2"
       >
         <input
           id="tour-question"
