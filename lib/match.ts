@@ -3,6 +3,7 @@
 
 import type { Chapter, Moment, Property, SearchFilters } from '../types';
 import { formatPrice, formatTime, queryTerms } from './format';
+import { matchThing, thingQuery } from './phrase';
 
 type Home = Omit<Property, 'segments'>;
 
@@ -26,6 +27,9 @@ export interface Evidence {
   seen: string[];              // query words in what the video shows: the caption or the room's name
   said: string[];              // query words in the quote below
   quote?: string;              // the transcript sentence that says the most of the search
+  looks: string[];             // colour or material words of the search ("black"), which only count on the thing itself
+  seenPhrase?: string;         // the caption's words for the whole search, e.g. "dark countertops"
+  saidPhrase?: string;         // the quote's words for it
 }
 
 export const stem = (word: string) => (word.length > 4 ? word.replace(/(ing|ed|es|s|er)$/, '') : word);
@@ -53,13 +57,29 @@ export function searchParts(filters: SearchFilters, semantic: string): SearchPar
 export function evidenceFor(moments: Moment[], semantic: string): Evidence | null {
   if (!moments.length) return null;
   const terms = queryTerms(semantic);
+  // "black countertops": "black" counts only where it describes the countertops,
+  // and "dark countertops" counts for both words.
+  const thing = thingQuery(semantic);
+  const looks = thing?.looks.map(l => l.word) ?? [];
+  const read = (text: string, extra = '') => {
+    const m = thing ? matchThing(text, thing) : null;
+    const words = new Set(terms.filter(t => mentions(`${extra} ${text}`, t)));
+    if (m) {
+      for (const l of looks) if (m.status !== 'confirmed') words.delete(l);
+      if (m.status === 'confirmed') looks.forEach(l => words.add(l));
+      if (m.status !== 'none') words.add(thing!.thing); // named another way: "sofa" for "couch"
+    }
+    return { words: terms.filter(t => words.has(t)), phrase: m?.status === 'confirmed' ? m.phrase : undefined };
+  };
   const scored = moments.map(moment => {
     // The room the tour itself names ("Ensuite") counts as seen.
+    const caption = read(moment.caption, moment.label);
     // A room still the server matched to the search shows every word of it.
-    const seen = moment.pictured ? terms : terms.filter(t => mentions(`${moment.label ?? ''} ${moment.caption}`, t));
-    const said = terms.filter(t => mentions(moment.transcript, t));
+    const seen = moment.pictured ? terms : caption.words;
+    const spoken = read(moment.transcript);
+    const said = spoken.words;
     const found = terms.filter(t => seen.includes(t) || said.includes(t));
-    return { moment, seen, said, found };
+    return { moment, seen, said, found, seenPhrase: caption.phrase, saidPhrase: spoken.phrase };
   });
   // Most query words confirmed wins; the server's order breaks ties.
   const best = scored.reduce((a, b) => (b.found.length > a.found.length ? b : a));
@@ -72,7 +92,9 @@ export function evidenceFor(moments: Moment[], semantic: string): Evidence | nul
   // The sentence that says the most of the search. Earlier query words weigh more,
   // since they tend to be the specific ones ("fenced" in "fenced backyard").
   const sentences = best.moment.transcript.split(/(?<=[.!?])\s+/);
-  const said = (s: string) => best.said.reduce((n, t) => n + (mentions(s, t) ? terms.length - terms.indexOf(t) : 0), 0);
+  const said = (s: string) =>
+    (best.saidPhrase && s.includes(best.saidPhrase) ? 100 : 0) +
+    best.said.reduce((n, t) => n + (mentions(s, t) && !looks.includes(t) ? terms.length - terms.indexOf(t) : 0), 0);
   const quote = best.said.length ? sentences.reduce((a, b) => (said(b) > said(a) ? b : a)).trim() : undefined;
   return {
     moment: best.moment,
@@ -83,6 +105,9 @@ export function evidenceFor(moments: Moment[], semantic: string): Evidence | nul
     seen: best.seen,
     said: quote ? best.said.filter(t => mentions(quote, t)) : [],
     quote,
+    looks,
+    seenPhrase: best.seenPhrase,
+    saidPhrase: best.saidPhrase && quote?.includes(best.saidPhrase) ? best.saidPhrase : undefined,
   };
 }
 

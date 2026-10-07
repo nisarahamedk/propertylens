@@ -35,35 +35,56 @@ const Line: React.FC<{ icon: React.ReactNode; source: string; words: Word[]; chi
  * The proof for a match, split by where it came from: what the video shows
  * (the scene description and room name) and what is said in the tour (the transcript).
  */
+/**
+ * The words a line matched. A phrase that confirms several query words at once
+ * reads as one match, in the tour's own words: “black countertops” as “dark countertops”.
+ */
+function matchedWords(words: string[], phrase: string | undefined, looks: string[], note: (w: string) => string | undefined): Word[] {
+  if (!phrase) return words.map(word => ({ word, note: note(word) }));
+  const inPhrase = (w: string) => looks.includes(w) || phrase.toLowerCase().includes(stem(w));
+  const together = words.filter(inPhrase).join(' ');
+  const rest = words.filter(w => !inPhrase(w)).map(word => ({ word, note: note(word) }));
+  return [{ word: together, note: phrase.toLowerCase() === together ? undefined : `as “${phrase}”` }, ...rest];
+}
+
+/**
+ * The proof for a match, split by where it came from: what the video shows
+ * (the scene description and room name) and what is said in the tour (the transcript).
+ */
 const Proof: React.FC<{ evidence: Evidence; clamp?: boolean }> = ({ evidence, clamp }) => {
-  const { moment, seen, said, quote, status } = evidence;
+  const { moment, seen, said, quote, status, looks, seenPhrase, saidPhrase } = evidence;
   // A caption that matched nothing is still worth showing when nothing was said either.
   const showSeen = seen.length > 0 || !quote;
   // Words found only in the room's name ("Ensuite") or the room's still, not in the description.
   const caption = (moment.caption || '').toLowerCase();
+  // Colour and material words are marked only as part of the phrase they confirm,
+  // not wherever they appear ("black fixtures" next to white countertops).
+  const marks = (words: string[]) => words.filter(w => !looks.includes(w)).map(stem);
   // The sentence of the description that shows the most of the search, so a clamped card still shows the match.
-  const hits = (t: string) => seen.filter(w => t.toLowerCase().includes(stem(w))).length;
+  const hits = (t: string) => (seenPhrase && t.includes(seenPhrase) ? 100 : 0) + marks(seen).filter(w => t.toLowerCase().includes(w)).length;
   const scene = (moment.caption || 'Scene from the tour')
     .split(/(?<=[.!?])\s+/)
     .reduce((a, b) => (hits(b) > hits(a) ? b : a));
   const label = (moment.label || '').toLowerCase();
-  const seenWords = seen.map(word => ({
-    word,
-    note: caption.includes(stem(word)) ? undefined : moment.pictured && !label.includes(stem(word)) ? 'in the picture' : 'room name',
-  }));
+  const note = (word: string) =>
+    caption.includes(stem(word)) ? undefined : moment.pictured && !label.includes(stem(word)) ? 'in the picture' : 'room name';
   return (
     <div className="border-l-[3px] border-terracotta pl-2.5 grid gap-2">
       {showSeen && (
-        <Line icon={<Eye />} source={status === 'similar' ? 'Closest scene in the video' : 'Seen in the video'} words={seenWords}>
+        <Line
+          icon={<Eye />}
+          source={status === 'similar' ? 'Closest scene in the video' : 'Seen in the video'}
+          words={matchedWords(seen, seenPhrase, looks, note)}
+        >
           <p className={clamp ? 'line-clamp-3' : ''}>
-            <Highlight text={scene} terms={seen.map(stem)} />
+            <Highlight text={scene} terms={marks(seen)} phrases={seenPhrase ? [seenPhrase] : []} />
           </p>
         </Line>
       )}
       {quote && (
-        <Line icon={<Speech />} source="Said in the tour" words={said.map(word => ({ word }))}>
+        <Line icon={<Speech />} source="Said in the tour" words={matchedWords(said, saidPhrase, looks, () => undefined)}>
           <p className={`italic text-olive ${clamp ? 'line-clamp-2' : ''}`}>
-            “<Highlight text={quote} terms={said.map(stem)} />”
+            “<Highlight text={quote} terms={marks(said)} phrases={saidPhrase ? [saidPhrase] : []} />”
           </p>
         </Line>
       )}

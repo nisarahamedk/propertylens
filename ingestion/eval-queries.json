@@ -15,6 +15,7 @@
   { "q": "dark granite countertops" },
   { "q": "green couch", "expect": ["DGOF6dJ0t9E"] },
   { "q": "teal sofa", "expect": ["DGOF6dJ0t9E"] },
+  { "q": "black countertops", "expect": ["u8dIDj_aQU4", "vndhQP-5-H0", "26Ia4ow-fq0"] },
   { "q": "red bar stools" },
   { "q": "piano" },
   { "q": "pink flamingo wallpaper" },

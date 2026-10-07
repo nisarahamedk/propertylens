@@ -1,6 +1,7 @@
 import type { Chapter, Moment, Property, PropertyMatch, Room, SearchFilters, SearchResponse, Segment } from '../types.js';
 import { RANKING } from './config.js';
 import { embed, getApiKey, queryText } from './gemini.js';
+import { matchThing, thingQuery } from '../lib/phrase.js';
 import { looksFiltered, parseWithModel, parseWithRules, type ParsedQuery } from './queryParser.js';
 import { bm25, dot, loadStore, tokenize, withoutSegments, type IndexedSegment, type Store } from './store.js';
 
@@ -224,6 +225,13 @@ export async function search(query: string): Promise<SearchResponse> {
   const pictured = (s: Scored) => s.still >= RANKING.minStill;
   const relevant = scored.filter(s => s.blended >= floor || (hybrid && (hasAllWords(s) || pictured(s))));
 
+  // A scene whose caption describes the searched thing another way ("white quartz
+  // countertops" for "black countertops") is not a match, whatever the vectors
+  // say, unless the agent says otherwise.
+  const thing = thingQuery(parsed.semantic);
+  const contradicted = (seg: Segment) =>
+    thing !== null && matchThing(seg.caption, thing).status === 'contradicted' && matchThing(seg.transcript, thing).status !== 'confirmed';
+
   // 4. Group by property, keep the best few non-overlapping moments each.
   const toMatches = (pool: Scored[]): PropertyMatch[] => {
     const groups = new Map<string, Scored[]>();
@@ -240,7 +248,7 @@ export async function search(query: string): Promise<SearchResponse> {
       const frames = new Set<string>();
       for (const s of list) {
         const seg = s.doc.segment;
-        if (windows.some(w => overlaps(w, seg))) continue;
+        if (windows.some(w => overlaps(w, seg)) || contradicted(seg)) continue;
         // Show, label and start at the room in this window that fits the query:
         // the one whose still shows it, else the one whose name says it.
         const chapter = (pictured(s) ? s.stillChapter : null) ?? chapterFor(s.doc.property.chapters, seg.start, seg.end, qTerms);
@@ -264,8 +272,8 @@ export async function search(query: string): Promise<SearchResponse> {
         });
         if (moments.length >= RANKING.maxMomentsPerProperty) break;
       }
-      return { property: withoutSegments(list[0].doc.property), score: moments[0].score, moments };
-    });
+      return { property: withoutSegments(list[0].doc.property), score: moments[0]?.score ?? 0, moments };
+    }).filter(m => m.moments.length);
   };
 
   let matches = toMatches(relevant);
