@@ -23,7 +23,9 @@ export interface Evidence {
   found: string[];             // query words the tour confirms
   missing: string[];           // query words it does not
   how: 'Seen' | 'Said' | 'Seen and said' | 'Closest match';
-  quote?: string;              // the transcript sentence that mentions the search
+  seen: string[];              // query words in what the video shows: the caption or the room's name
+  said: string[];              // query words in the quote below
+  quote?: string;              // the transcript sentence that says the most of the search
 }
 
 export const stem = (word: string) => (word.length > 4 ? word.replace(/(ing|ed|es|s|er)$/, '') : word);
@@ -71,7 +73,16 @@ export function evidenceFor(moments: Moment[], semantic: string): Evidence | nul
   const sentences = best.moment.transcript.split(/(?<=[.!?])\s+/);
   const said = (s: string) => best.said.reduce((n, t) => n + (mentions(s, t) ? terms.length - terms.indexOf(t) : 0), 0);
   const quote = best.said.length ? sentences.reduce((a, b) => (said(b) > said(a) ? b : a)).trim() : undefined;
-  return { moment: best.moment, status, found: best.found, missing, how, quote };
+  return {
+    moment: best.moment,
+    status,
+    found: best.found,
+    missing,
+    how,
+    seen: best.seen,
+    said: quote ? best.said.filter(t => mentions(quote, t)) : [],
+    quote,
+  };
 }
 
 /** One check per search part, for a home in the results. */

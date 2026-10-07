@@ -1,8 +1,8 @@
 import React from 'react';
 import type { Moment, PropertyMatch } from '../types';
-import { formatPrice, formatTime, queryTerms, ROOM_LABELS } from '../lib/format';
-import { capitalize, checkHome, evidenceFor, homeTitle, shortCheck, stem, type SearchPart } from '../lib/match';
-import Highlight from './Highlight';
+import { formatPrice, formatTime, ROOM_LABELS } from '../lib/format';
+import { capitalize, checkHome, evidenceFor, homeTitle, shortCheck, type SearchPart } from '../lib/match';
+import Proof from './Proof';
 import CheckMark from './CheckMark';
 
 interface MatchCardProps {
@@ -19,7 +19,6 @@ const MatchCard: React.FC<MatchCardProps> = ({ match, parts, semantic, onOpen })
   const checks = checkHome(p, parts, evidence);
   const complete = checks.every(c => c.status === 'yes');
   const moment = evidence?.moment;
-  const terms = (evidence ? evidence.found : queryTerms(semantic)).map(stem);
   const price = formatPrice(p.priceValue);
 
   return (
@@ -73,20 +72,8 @@ const MatchCard: React.FC<MatchCardProps> = ({ match, parts, semantic, onOpen })
           ))}
         </ul>
 
-        {moment ? (
-          <div className="border-l-[3px] border-terracotta pl-2.5 text-[13.5px] leading-snug text-charcoal">
-            <p className="line-clamp-3">
-              <Highlight text={moment.caption || 'Scene from the tour'} terms={terms} />
-            </p>
-            {evidence?.quote && (
-              <p className="hidden md:block mt-1 italic text-olive line-clamp-2">
-                “<Highlight text={evidence.quote} terms={terms} />”
-              </p>
-            )}
-            <p className="mt-1 font-mono text-[9px] font-bold uppercase tracking-widest text-olive">
-              {evidence?.how === 'Closest match' ? 'Closest moment in the tour' : `${evidence?.how} in the tour`}
-            </p>
-          </div>
+        {evidence ? (
+          <Proof evidence={evidence} clamp />
         ) : (
           <p className="text-sm text-olive line-clamp-3">{p.description}</p>
         )}

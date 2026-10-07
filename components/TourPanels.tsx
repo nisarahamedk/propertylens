@@ -1,9 +1,9 @@
 import React from 'react';
 import type { Chapter, Moment, Property } from '../types';
 import { formatTime } from '../lib/format';
-import { capitalize, checkHome, evidenceFor, stem, tourPlaces, type SearchPart } from '../lib/match';
+import { capitalize, checkHome, evidenceFor, tourPlaces, type SearchPart } from '../lib/match';
 import CheckMark from './CheckMark';
-import Highlight from './Highlight';
+import Proof from './Proof';
 
 /** The chapter a search moment points at: the one with its label nearest in time, else the one it starts in. */
 function chapterFor(m: Moment, chapters: Chapter[]): Chapter | undefined {
@@ -29,7 +29,6 @@ export const SearchPanel: React.FC<SearchPanelProps> = ({ property, parts, seman
   const m = evidence?.moment;
   const playing = m && currentTime >= m.start && currentTime < m.end;
   const others = moments.filter(o => o !== m);
-  const terms = evidence ? evidence.found.map(stem) : [];
 
   return (
     <div className="grid gap-2">
@@ -60,12 +59,9 @@ export const SearchPanel: React.FC<SearchPanelProps> = ({ property, parts, seman
                 </button>
               )}
             </div>
-            {m && (
-              <div className="mt-2 pt-2 border-t-[1.5px] border-sand text-[13px] leading-snug">
-                <p><Highlight text={m.caption} terms={terms} /></p>
-                {evidence!.quote && (
-                  <p className="mt-1 italic text-olive">“<Highlight text={evidence!.quote} terms={terms} />”</p>
-                )}
+            {evidence && (
+              <div className="mt-2 pt-2 border-t-[1.5px] border-sand">
+                <Proof evidence={evidence} />
               </div>
             )}
             {others.length > 0 && (
