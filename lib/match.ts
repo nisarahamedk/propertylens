@@ -30,6 +30,8 @@ export interface Evidence {
   looks: string[];             // colour or material words of the search ("black"), which only count on the thing itself
   seenPhrase?: string;         // the caption's words for the whole search, e.g. "dark countertops"
   saidPhrase?: string;         // the quote's words for it
+  pictured: boolean;           // the room's photo shows the search
+  verified: boolean;           // judged by the model, not by matching words
 }
 
 export const stem = (word: string) => (word.length > 4 ? word.replace(/(ing|ed|es|s|er)$/, '') : word);
@@ -53,10 +55,37 @@ export function searchParts(filters: SearchFilters, semantic: string): SearchPar
   return parts;
 }
 
+/** The model's verdict on a moment, in the shape the cards show. */
+function verifiedEvidence(moment: Moment, terms: string[]): Evidence {
+  const v = moment.verified!;
+  const missingWords = queryTerms(v.missing ?? '');
+  const missing = v.verdict === 'yes' ? [] : missingWords.length ? missingWords : [v.missing ?? 'some of it'];
+  const found = terms.filter(t => !missing.includes(t));
+  const seen = Boolean(v.seen || v.pictured);
+  const sentences = moment.transcript.split(/(?<=[.!?])\s+/);
+  const quote = v.said ? (sentences.find(s => s.includes(v.said!)) ?? v.said).trim() : undefined;
+  return {
+    moment,
+    status: v.verdict,
+    found,
+    missing,
+    how: seen && quote ? 'Seen and said' : quote ? 'Said' : 'Seen',
+    seen: seen ? found : [],
+    said: quote ? found : [],
+    quote,
+    looks: [],
+    seenPhrase: v.seen,
+    saidPhrase: v.said,
+    pictured: v.pictured,
+    verified: true,
+  };
+}
+
 /** Picks the moment that best proves the search and says how much of it the tour confirms. */
 export function evidenceFor(moments: Moment[], semantic: string): Evidence | null {
   if (!moments.length) return null;
   const terms = queryTerms(semantic);
+  if (moments[0].verified) return verifiedEvidence(moments[0], terms);
   // "black countertops": "black" counts only where it describes the countertops,
   // and "dark countertops" counts for both words.
   const thing = thingQuery(semantic);
@@ -108,6 +137,8 @@ export function evidenceFor(moments: Moment[], semantic: string): Evidence | nul
     looks,
     seenPhrase: best.seenPhrase,
     saidPhrase: best.saidPhrase && quote?.includes(best.saidPhrase) ? best.saidPhrase : undefined,
+    pictured: Boolean(best.moment.pictured),
+    verified: false,
   };
 }
 

@@ -94,6 +94,16 @@ export interface Moment {
   score: number;    // 0..1, comparable within one response
   signals: MomentSignals;
   pictured?: boolean; // the room's still clearly shows the search, so `frame` is the proof
+  verified?: Verification; // the model's check of this moment against the search (best moment only)
+}
+
+/** A multimodal model's read of a result: does it really show the search, and what proves it. */
+export interface Verification {
+  verdict: 'yes' | 'partly';
+  seen?: string;     // exact words from the caption that show it
+  said?: string;     // exact words from the transcript that say it
+  pictured: boolean; // the room's photo shows it
+  missing?: string;  // for partly: the part of the search not confirmed
 }
 
 export interface PropertyMatch {
