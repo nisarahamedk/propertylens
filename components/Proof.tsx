@@ -15,11 +15,17 @@ const Speech = () => (
 
 type Word = { word: string; note?: string };
 
+/** “green”, “couch” (in the picture): words sharing a note get it once, after the last of them. */
+const matched = (words: Word[]) =>
+  words
+    .map((w, i) => `“${w.word}”${w.note && w.note !== words[i + 1]?.note ? ` (${w.note})` : ''}`)
+    .join(', ');
+
 const Line: React.FC<{ icon: React.ReactNode; source: string; words: Word[]; children: React.ReactNode }> = ({ icon, source, words, children }) => (
   <div className="grid gap-0.5">
     <p className="flex flex-wrap items-center gap-x-1.5 font-mono text-[9.5px] font-bold uppercase tracking-widest text-olive">
       <span className="flex items-center gap-1 text-charcoal">{icon}{source}</span>
-      {words.length > 0 && <span>· matched {words.map(w => `“${w.word}”${w.note ? ` (${w.note})` : ''}`).join(', ')}</span>}
+      {words.length > 0 && <span>· matched {matched(words)}</span>}
     </p>
     <div className="text-[13.5px] leading-snug text-charcoal">{children}</div>
   </div>
@@ -33,14 +39,18 @@ const Proof: React.FC<{ evidence: Evidence; clamp?: boolean }> = ({ evidence, cl
   const { moment, seen, said, quote, status } = evidence;
   // A caption that matched nothing is still worth showing when nothing was said either.
   const showSeen = seen.length > 0 || !quote;
-  // Words found only in the room's name ("Ensuite"), not in the description.
+  // Words found only in the room's name ("Ensuite") or the room's still, not in the description.
   const caption = (moment.caption || '').toLowerCase();
   // The sentence of the description that shows the most of the search, so a clamped card still shows the match.
   const hits = (t: string) => seen.filter(w => t.toLowerCase().includes(stem(w))).length;
   const scene = (moment.caption || 'Scene from the tour')
     .split(/(?<=[.!?])\s+/)
     .reduce((a, b) => (hits(b) > hits(a) ? b : a));
-  const seenWords = seen.map(word => ({ word, note: caption.includes(stem(word)) ? undefined : 'room name' }));
+  const label = (moment.label || '').toLowerCase();
+  const seenWords = seen.map(word => ({
+    word,
+    note: caption.includes(stem(word)) ? undefined : moment.pictured && !label.includes(stem(word)) ? 'in the picture' : 'room name',
+  }));
   return (
     <div className="border-l-[3px] border-terracotta pl-2.5 grid gap-2">
       {showSeen && (

@@ -55,7 +55,8 @@ export function evidenceFor(moments: Moment[], semantic: string): Evidence | nul
   const terms = queryTerms(semantic);
   const scored = moments.map(moment => {
     // The room the tour itself names ("Ensuite") counts as seen.
-    const seen = terms.filter(t => mentions(`${moment.label ?? ''} ${moment.caption}`, t));
+    // A room still the server matched to the search shows every word of it.
+    const seen = moment.pictured ? terms : terms.filter(t => mentions(`${moment.label ?? ''} ${moment.caption}`, t));
     const said = terms.filter(t => mentions(moment.transcript, t));
     const found = terms.filter(t => seen.includes(t) || said.includes(t));
     return { moment, seen, said, found };

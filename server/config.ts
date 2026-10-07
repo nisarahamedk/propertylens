@@ -45,6 +45,9 @@ export const RANKING = {
   // 65-tour index, the best tour for queries naming something no tour has
   // scored 0.585-0.638, and for common features 0.646-0.713.
   minBlended: Number(env.SEARCH_MIN_SCORE ?? 0.64),
+  // Floor on the cosine between the query and one room's still. Higher than a
+  // clip's floor because a single frame of a matching room stands out further.
+  minStill: Number(env.SEARCH_MIN_STILL ?? 0.64),
   // A query word counts as distinctive if it appears in fewer than this share of
   // scenes. Scenes containing every distinctive query word pass the floor.
   distinctiveDocShare: 0.25,

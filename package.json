@@ -8,6 +8,7 @@
     "build": "vite build",
     "preview": "vite preview",
     "index": "tsx ingestion/build-index.ts",
+    "stills": "tsx ingestion/embed-stills.ts",
     "eval": "tsx ingestion/eval.ts",
     "typecheck": "tsc --noEmit"
   },

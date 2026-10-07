@@ -7,7 +7,8 @@
  *   3. describe each window with Gemini Flash (room, caption, features, transcript)
  *   4. embed the clip itself and its description with Gemini Embedding 2
  * then writes data/properties.json (catalog + scenes, shipped to the browser)
- * and data/vectors.json (server only).
+ * and data/vectors.json (server only), and embeds each room chapter's still
+ * into data/stills.json (server only; see embed-stills.ts).
  *
  * Results are cached per window in ingestion/.cache, so an interrupted run
  * resumes where it stopped and re-runs only pay for new videos.
@@ -24,6 +25,7 @@ import { execFileSync } from 'child_process';
 import { CONFIG, type VideoManifest, type VideoManifestEntry } from './config';
 import { EMBEDDING_DIMS, MODELS, SEGMENT } from '../server/config';
 import { documentText, embed, generateJson } from '../server/gemini';
+import { embedStills } from './embed-stills';
 import type { Catalog, Chapter, Property, Room, Segment } from '../types';
 
 const ROOMS: Room[] = [
@@ -514,6 +516,7 @@ async function main() {
 
   const segCount = allProperties.reduce((n, p) => n + p.segments.length, 0);
   console.log(`\nWrote ${allProperties.length} properties and ${segCount} scenes to ${CONFIG.DATA_DIR}`);
+  if (!CATALOG_ONLY) await embedStills(apiKey, CONCURRENCY);
   if (failed.length) {
     // Finished windows are cached, so re-running the same command resumes these.
     console.error(`${failed.length} video(s) failed: ${failed.join(', ')}. Re-run to resume them.`);

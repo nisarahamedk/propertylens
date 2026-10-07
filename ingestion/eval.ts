@@ -45,11 +45,11 @@ for (const { q, expect } of queries) {
   console.log(`\n${q}${verdict}  (${r.mode}, ${r.stats.timings.total} ms)`);
   for (const m of r.matches.slice(0, 3)) {
     const top = m.moments[0];
-    console.log(`  ${m.property.id}  ${m.property.name.padEnd(28).slice(0, 28)}  ${top?.room ?? '-'}@${top?.start ?? '-'}  visual=${top?.signals.visual ?? 0} speech=${top?.signals.speech ?? 0}`);
+    console.log(`  ${m.property.id}  ${m.property.name.padEnd(28).slice(0, 28)}  ${top?.room ?? '-'}@${top?.start ?? '-'}  visual=${top?.signals.visual ?? 0} speech=${top?.signals.speech ?? 0} still=${top?.signals.still ?? 0}${top?.pictured ? ' pictured' : ''}`);
   }
 }
 
 topScores.sort((a, b) => a - b);
 console.log(`\nTop-result blended score: min ${topScores[0]?.toFixed(3)}, median ${topScores[Math.floor(topScores.length / 2)]?.toFixed(3)}, max ${topScores.at(-1)?.toFixed(3)}`);
-console.log(`Queries with no results: ${empty}/${queries.length} (floor ${RANKING.minBlended})`);
+console.log(`Queries with no results: ${empty}/${queries.length} (floor ${RANKING.minBlended}, still floor ${RANKING.minStill})`);
 if (checked) console.log(`hit@3: ${hits}/${checked}`);

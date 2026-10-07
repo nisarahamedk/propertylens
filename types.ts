@@ -79,6 +79,7 @@ export interface MomentSignals {
   visual: number;   // cosine(query, clip embedding)
   speech: number;   // cosine(query, caption + transcript embedding)
   keyword: number;  // normalised BM25 over caption + transcript, 0..1
+  still?: number;   // cosine(query, the best room still in the window)
 }
 
 export interface Moment {
@@ -92,6 +93,7 @@ export interface Moment {
   frame?: string;
   score: number;    // 0..1, comparable within one response
   signals: MomentSignals;
+  pictured?: boolean; // the room's still clearly shows the search, so `frame` is the proof
 }
 
 export interface PropertyMatch {

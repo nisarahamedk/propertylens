@@ -19,8 +19,16 @@ export interface Store {
   segments: IndexedSegment[];
   byProperty: Map<string, Property>;
   hasVectors: boolean;
+  /** Image embedding of each room chapter's still, keyed by its frame path. */
+  stills: Map<string, Float32Array>;
   docFreq: Map<string, number>;
   avgLength: number;
+}
+
+interface StillFile {
+  model: string;
+  dims: number;
+  stills: Record<string, string>;
 }
 
 interface VectorFile {
@@ -62,6 +70,11 @@ export function loadStore(): Store {
     ? JSON.parse(fs.readFileSync(vectorPath, 'utf-8'))
     : null;
 
+  // Written by ingestion/embed-stills.ts; search works without it.
+  const stillPath = path.join(dir, 'stills.json');
+  const stillFile: StillFile | null = fs.existsSync(stillPath) ? JSON.parse(fs.readFileSync(stillPath, 'utf-8')) : null;
+  const stills = new Map(Object.entries(stillFile?.stills ?? {}).map(([frame, b64]) => [frame, decode(b64)]));
+
   const segments: IndexedSegment[] = [];
   const docFreq = new Map<string, number>();
   const byProperty = new Map<string, Property>();
@@ -95,6 +108,7 @@ export function loadStore(): Store {
     segments,
     byProperty,
     hasVectors: segments.some(s => s.visual || s.speech),
+    stills,
     docFreq,
     avgLength: segments.length ? totalLength / segments.length : 1,
   };

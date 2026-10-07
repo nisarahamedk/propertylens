@@ -12,5 +12,11 @@
   { "q": "3 bed in Burnaby with a big kitchen island" },
   { "q": "under $1M condo with city views" },
   { "q": "pool", "expect": ["P8ZO-XzBjDk", "rEy3q-DO2Yw", "NMB7EBYl0kQ"] },
-  { "q": "dark granite countertops" }
+  { "q": "dark granite countertops" },
+  { "q": "green couch", "expect": ["DGOF6dJ0t9E"] },
+  { "q": "teal sofa", "expect": ["DGOF6dJ0t9E"] },
+  { "q": "red bar stools" },
+  { "q": "piano" },
+  { "q": "pink flamingo wallpaper" },
+  { "q": "bunk beds" }
 ]
