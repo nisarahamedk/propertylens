@@ -180,7 +180,6 @@ const Player: React.FC<{ id: string }> = ({ id }) => {
                 } ${active === t ? 'border-terracotta text-charcoal' : 'border-transparent text-charcoal/50 hover:text-charcoal'}`}
               >
                 {TAB_LABELS[t]}
-                {t === 'rooms' && <span className="hidden lg:inline"> · {chapters.length}</span>}
               </button>
             ))}
           </div>

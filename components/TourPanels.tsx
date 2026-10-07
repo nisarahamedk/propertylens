@@ -1,7 +1,7 @@
 import React from 'react';
 import type { Chapter, Moment, Property } from '../types';
 import { formatTime } from '../lib/format';
-import { capitalize, checkHome, evidenceFor, stem, type SearchPart } from '../lib/match';
+import { capitalize, checkHome, evidenceFor, stem, tourPlaces, type SearchPart } from '../lib/match';
 import CheckMark from './CheckMark';
 import Highlight from './Highlight';
 
@@ -105,17 +105,19 @@ interface RoomsPanelProps {
   onSeek: (t: number) => void;
 }
 
-/** Every room in the tour as a photo with its time; the one playing is outlined. */
+/** Each place in the tour once, as a photo with when it is first shown; the one playing is outlined. */
 export const RoomsPanel: React.FC<RoomsPanelProps> = ({ chapters, currentTime, matches, fallbackImage, onSeek }) => {
-  const shown = chapters.filter(c => c.frame || c.room !== 'other');
-  const matched = new Set(matches.map(m => chapterFor(m, chapters)).filter(Boolean));
+  const shown = tourPlaces(chapters);
+  const label = (c?: Chapter) => c?.label.toLowerCase();
+  const matched = new Set(matches.map(m => label(chapterFor(m, chapters))).filter(Boolean));
+  const playing = label(chapters.find(c => currentTime >= c.start && currentTime < c.end));
   if (!shown.length) {
     return <p className="text-sm text-olive font-mono">Rooms appear here once this tour has been indexed.</p>;
   }
   return (
     <ol className="grid grid-cols-2 gap-x-2.5 gap-y-3">
       {shown.map((c, i) => {
-        const on = currentTime >= c.start && currentTime < c.end;
+        const on = label(c) === playing;
         return (
           <li key={i}>
             <button onClick={() => onSeek(c.start)} className="group w-full text-left" aria-current={on ? 'true' : undefined}>
@@ -128,7 +130,7 @@ export const RoomsPanel: React.FC<RoomsPanelProps> = ({ chapters, currentTime, m
                     on ? 'outline outline-[3px] -outline-offset-1 outline-terracotta' : ''
                   }`}
                 />
-                {matched.has(c) && (
+                {matched.has(label(c)) && (
                   <span className="absolute left-1.5 top-1.5 bg-terracotta text-white font-mono text-[9px] font-bold uppercase px-1.5 py-0.5">
                     Match
                   </span>

@@ -1,7 +1,7 @@
 import React from 'react';
 import type { Property } from '../types';
 import { formatPrice, formatTime } from '../lib/format';
-import { coverImage, homeTitle } from '../lib/match';
+import { coverImage, homeTitle, roomCount } from '../lib/match';
 
 interface PropertyThumbnailProps {
   property: Property;
@@ -10,7 +10,7 @@ interface PropertyThumbnailProps {
 
 /** A tour card: a clean room still from the tour, then where, how much and how big. */
 const PropertyThumbnail: React.FC<PropertyThumbnailProps> = ({ property, onClick }) => {
-  const rooms = property.chapters?.length ?? 0;
+  const rooms = roomCount(property.chapters);
   const price = formatPrice(property.priceValue);
   const facts = [
     property.beds ? `${property.beds} bed` : null,

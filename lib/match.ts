@@ -1,7 +1,7 @@
 // Explains a search result in terms of the search itself: which parts of the
 // query the listing confirms, and where in the tour the rest was seen or said.
 
-import type { Moment, Property, SearchFilters } from '../types';
+import type { Chapter, Moment, Property, SearchFilters } from '../types';
 import { formatPrice, formatTime, queryTerms } from './format';
 
 type Home = Omit<Property, 'segments'>;
@@ -124,10 +124,29 @@ export function homeFacts(home: Home, opts: { location?: boolean; rooms?: boolea
     home.baths ? `${home.baths} bath` : null,
     home.sqft ? `${home.sqft.toLocaleString()} sq ft` : null,
     home.duration ? `${formatTime(home.duration)} tour` : null,
-    opts.rooms && home.chapters?.length ? `${home.chapters.length} rooms` : null,
+    opts.rooms && roomCount(home.chapters) ? `${roomCount(home.chapters)} rooms` : null,
   ]
     .filter(Boolean)
     .join(' · ');
+}
+
+// Chapters that are not a place in the home: the agent on camera, title cards, logos.
+const NOT_A_PLACE = /\b(logo|agent|title card|contact|intro|outro|talking head|interview|aerial)\b/i;
+
+/** The places a buyer can jump to, once each, in the order the tour first visits them. */
+export function tourPlaces(chapters: Chapter[]): Chapter[] {
+  const seen = new Set<string>();
+  return chapters.filter(c => {
+    const key = c.label.toLowerCase();
+    if (NOT_A_PLACE.test(c.label) || seen.has(key)) return false;
+    seen.add(key);
+    return true;
+  });
+}
+
+/** Distinct rooms inside the home, for "10 rooms": no exteriors, yards, views, nearby places or agent shots. */
+export function roomCount(chapters: Chapter[] = []): number {
+  return tourPlaces(chapters).filter(c => !['exterior', 'backyard', 'view', 'amenity', 'other'].includes(c.room)).length;
 }
 
 const COVER_ROOMS = ['Living room', 'Kitchen', 'Family room', 'Dining area', 'Great room'];
