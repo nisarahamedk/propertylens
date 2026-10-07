@@ -1,52 +1,79 @@
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import { Link, useLocation, useParams, useSearchParams } from 'react-router-dom';
+import { Link, useLocation, useNavigate, useParams, useSearchParams } from 'react-router-dom';
 import AppHeader from '../components/AppHeader';
-import ChapterTimeline from '../components/ChapterTimeline';
+import ChapterTimeline, { toChapters } from '../components/ChapterTimeline';
 import ChatPanel from '../components/ChatPanel';
-import ScenePanel from '../components/ScenePanel';
+import { RoomsPanel, SearchPanel } from '../components/TourPanels';
 import VideoPlayer, { type VideoPlayerHandle } from '../components/VideoPlayer';
-import { formatPrice, queryTerms } from '../lib/format';
+import { evidenceFor, homeFacts, homeTitle, searchParts } from '../lib/match';
 import { getProperty, searchTours } from '../services/api';
-import type { Moment } from '../types';
+import type { Moment, Property, SearchResponse } from '../types';
 
-type Tab = 'scenes' | 'ask';
+type Tab = 'search' | 'rooms' | 'ask' | 'about';
 
+const TAB_LABELS: Record<Tab, string> = { search: 'Your search', rooms: 'Rooms', ask: 'Ask', about: 'About' };
+
+/** A fresh player per home, so stepping to the next result starts clean. */
 const PlayerView: React.FC = () => {
   const { id = '' } = useParams<{ id: string }>();
+  return <Player key={id} id={id} />;
+};
+
+const About: React.FC<{ property: Property }> = ({ property }) => (
+  <div>
+    <p className="text-charcoal text-base lg:text-lg leading-relaxed max-w-3xl">{property.summary || property.description}</p>
+    {property.highlights && property.highlights.length > 0 && (
+      <ul className="mt-4 flex flex-wrap gap-1.5">
+        {property.highlights.map(h => (
+          <li key={h} className="px-2.5 py-1 bg-warmWhite border-[1.5px] border-charcoal/25 text-[13px]">{h}</li>
+        ))}
+      </ul>
+    )}
+    <p className="mt-5 text-xs font-mono text-olive">
+      Tour video by {property.channelName} on{' '}
+      <a href={`https://www.youtube.com/watch?v=${property.youtubeId}`} target="_blank" rel="noreferrer" className="underline">
+        YouTube
+      </a>
+      .
+    </p>
+  </div>
+);
+
+const Player: React.FC<{ id: string }> = ({ id }) => {
   const [params] = useSearchParams();
   const location = useLocation();
+  const navigate = useNavigate();
   const property = getProperty(id);
   const query = params.get('q') || '';
   const startAt = Number(params.get('t') || 0);
 
   const playerRef = useRef<VideoPlayerHandle>(null);
   const [currentTime, setCurrentTime] = useState(startAt);
-  const [tab, setTab] = useState<Tab>('scenes');
-  const [matches, setMatches] = useState<Moment[]>(
-    () => (location.state as { moments?: Moment[] } | null)?.moments ?? [],
-  );
+  const [tab, setTab] = useState<Tab>(query ? 'search' : 'rooms');
+  const [results, setResults] = useState<SearchResponse | null>(null);
+  const passed = (location.state as { moments?: Moment[] } | null)?.moments;
 
-  // Opened from a shared link: recover this tour's matches by re-running the search.
+  // The search is cached from the results page; a shared link runs it again.
   useEffect(() => {
-    if (!query || matches.length || !property) return;
-    searchTours(query)
-      .then(r => setMatches(r.matches.find(m => m.property.id === property.id)?.moments ?? []))
-      .catch(() => {});
-  }, [query, property, matches.length]);
+    if (!query) return;
+    searchTours(query).then(setResults).catch(() => {});
+  }, [query]);
+
+  const rank = results?.matches.findIndex(m => m.property.id === id) ?? -1;
+  const matches = passed ?? (rank >= 0 ? results!.matches[rank].moments : []);
+  const parts = useMemo(() => (results ? searchParts(results.interpreted.filters, results.interpreted.semantic) : []), [results]);
+  const showSearch = Boolean(query && results && rank >= 0);
 
   const playerBoxRef = useRef<HTMLDivElement>(null);
   const seek = useCallback((t: number) => {
     playerRef.current?.seekTo(t);
     setCurrentTime(t);
-    // On a phone the scene list and chat sit below the video; bring it back into view.
+    // On a wide screen the side panel stays put while the page scrolls; bring the video back into view.
     const box = playerBoxRef.current?.getBoundingClientRect();
     if (box && (box.top < 0 || box.bottom > window.innerHeight)) {
       playerBoxRef.current!.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   }, []);
-
-  const matchedIds = useMemo(() => new Set(matches.map(m => m.segmentId)), [matches]);
-  const terms = useMemo(() => queryTerms(query), [query]);
 
   if (!property) {
     return (
@@ -63,95 +90,131 @@ const PlayerView: React.FC = () => {
     );
   }
 
-  const facts = [
-    property.beds ? `${property.beds} bed` : null,
-    property.baths ? `${property.baths} bath` : null,
-    property.sqft ? `${property.sqft.toLocaleString()} sq ft` : null,
-  ].filter(Boolean);
+  const chapters = property.chapters?.length ? property.chapters : toChapters(property.segments, property.duration);
+
+  // Step through the other homes from the same search without going back to the list.
+  const goTo = (offset: number) => {
+    if (!results) return undefined;
+    const target = results.matches[rank + offset];
+    if (!target) return undefined;
+    return () => {
+      const m = evidenceFor(target.moments, results.interpreted.semantic)?.moment;
+      navigate(`/property/${target.property.id}?t=${m ? Math.floor(m.start) : 0}&q=${encodeURIComponent(query)}`, {
+        state: { moments: target.moments },
+      });
+    };
+  };
+  const prev = showSearch ? goTo(-1) : undefined;
+  const next = showSearch ? goTo(1) : undefined;
+  const nextHome = showSearch && results!.matches[rank + 1];
+
+  const tabs: Tab[] = [...(showSearch ? (['search'] as Tab[]) : []), 'rooms', 'ask', 'about'];
+  const active: Tab = tabs.includes(tab) ? tab : 'rooms';
+
+  const stepButton = (label: string, onClick?: () => void) => (
+    <button
+      onClick={onClick}
+      disabled={!onClick}
+      aria-label={label === '‹' ? 'Previous home' : 'Next home'}
+      className="w-9 h-9 border-2 border-charcoal font-mono font-bold text-charcoal bg-warmWhite hover:bg-terracotta hover:text-white disabled:opacity-30 disabled:hover:bg-warmWhite disabled:hover:text-charcoal"
+    >
+      {label}
+    </button>
+  );
 
   return (
     <div className="min-h-screen bg-cream flex flex-col">
-      <AppHeader back={-1}>
-        <p className="truncate font-display font-bold text-charcoal uppercase tracking-tight">{property.name}</p>
+      <AppHeader back={query ? `/search?q=${encodeURIComponent(query)}` : -1} stickOnPhones={false}>
+        {showSearch ? (
+          <div className="flex items-center gap-3">
+            <div className="flex-1 min-w-0">
+              <p className="font-mono text-[9px] font-bold uppercase tracking-widest text-olive">
+                Home {rank + 1} of {results!.matches.length} for
+              </p>
+              <p className="truncate text-sm md:text-[15px] font-semibold text-charcoal">{query}</p>
+            </div>
+            <div className="flex gap-1">
+              {stepButton('‹', prev)}
+              {stepButton('›', next)}
+            </div>
+          </div>
+        ) : (
+          <p className="truncate font-display font-bold text-charcoal uppercase tracking-tight">{homeTitle(property)}</p>
+        )}
       </AppHeader>
 
-      <main className="flex-1 max-w-7xl mx-auto px-4 md:px-6 py-6 lg:py-8 flex flex-col lg:flex-row gap-8 w-full">
-        <div className="flex-1 min-w-0">
-          <div ref={playerBoxRef} className="border-2 border-charcoal bg-charcoal scroll-mt-20">
-            <VideoPlayer ref={playerRef} youtubeId={property.youtubeId} startTime={startAt} onTimeUpdate={setCurrentTime} />
+      <main className="flex-1 w-full max-w-7xl mx-auto lg:px-6 lg:py-8 lg:grid lg:grid-cols-[minmax(0,1fr)_400px] lg:gap-8 lg:items-start">
+        <div className="min-w-0">
+          {/* On a phone the video and room bar stay pinned while the tabs scroll beneath them. */}
+          <div ref={playerBoxRef} className="sticky top-0 z-30 lg:static bg-cream scroll-mt-20">
+            <div className="lg:border-2 lg:border-charcoal bg-charcoal">
+              <VideoPlayer ref={playerRef} youtubeId={property.youtubeId} startTime={startAt} onTimeUpdate={setCurrentTime} />
+            </div>
+            <div className="lg:mt-2">
+              <ChapterTimeline chapters={chapters} duration={property.duration} currentTime={currentTime} matches={matches} onSeek={seek} />
+            </div>
           </div>
-          <ChapterTimeline
-            chapters={property.chapters}
-            segments={property.segments}
-            duration={property.duration}
-            currentTime={currentTime}
-            matches={matches}
-            onSeek={seek}
-          />
 
-          <section className="mt-8">
-            <div className="flex flex-wrap items-baseline justify-between gap-3 mb-3">
-              <h1 className="font-display text-3xl md:text-4xl text-charcoal font-bold uppercase tracking-tight leading-none">
-                {property.name}
-              </h1>
-              {property.priceValue && (
-                <span className="font-mono font-bold text-xl text-terracotta">{formatPrice(property.priceValue)}</span>
-              )}
-            </div>
-            <div className="flex flex-wrap items-center gap-3 mb-6 pb-6 border-b-2 border-charcoal">
-              <span className="bg-clay/40 border-2 border-charcoal px-3 py-1 font-mono text-xs font-bold uppercase">{property.address}</span>
-              {facts.length > 0 && (
-                <span className="font-mono text-xs font-bold uppercase tracking-widest text-olive">{facts.join(' / ')}</span>
-              )}
-            </div>
-            <p className="text-charcoal text-lg leading-relaxed max-w-3xl">{property.summary || property.description}</p>
-            {property.highlights && property.highlights.length > 0 && (
-              <ul className="mt-5 flex flex-wrap gap-2">
-                {property.highlights.map(h => (
-                  <li key={h} className="px-3 py-1 bg-warmWhite border-2 border-charcoal text-sm">{h}</li>
-                ))}
-              </ul>
-            )}
-            <p className="mt-6 text-xs font-mono text-olive">
-              Tour video by {property.channelName} on{' '}
-              <a href={`https://www.youtube.com/watch?v=${property.youtubeId}`} target="_blank" rel="noreferrer" className="underline">
-                YouTube
-              </a>
-              .
+          <section className="px-4 lg:px-0 pt-1 pb-3 lg:pt-5">
+            <h1 className="font-display text-xl lg:text-3xl text-charcoal font-bold tracking-tight leading-tight">{homeTitle(property)}</h1>
+            <p className="mt-1 font-mono text-[10px] lg:text-[11px] font-bold uppercase tracking-widest text-olive">
+              {homeFacts(property, { location: true, rooms: true })}
             </p>
           </section>
+
+          <div className="hidden lg:block mt-3">
+            <About property={property} />
+          </div>
         </div>
 
-        <aside className="w-full lg:w-[400px] shrink-0 flex flex-col h-[640px] lg:h-[calc(100vh-120px)] lg:sticky lg:top-20 border-2 border-charcoal shadow-neobrutal bg-charcoal">
+        <aside className="flex flex-col lg:sticky lg:top-24 lg:h-[calc(100vh-128px)] lg:border-2 lg:border-charcoal lg:bg-warmWhite lg:shadow-neobrutal">
           <div role="tablist" className="flex border-b-2 border-charcoal">
-            {(['scenes', 'ask'] as Tab[]).map(t => (
+            {tabs.map(t => (
               <button
                 key={t}
                 role="tab"
-                aria-selected={tab === t}
+                aria-selected={active === t}
                 onClick={() => setTab(t)}
-                className={`flex-1 py-3 font-display font-bold uppercase tracking-tight text-lg transition-colors ${
-                  tab === t ? 'bg-terracotta text-white' : 'text-warmWhite/70 hover:text-warmWhite'
-                }`}
+                className={`flex-1 pt-3 pb-2 border-b-[3px] -mb-[2px] font-display font-bold uppercase tracking-tight text-[13px] whitespace-nowrap transition-colors ${
+                  t === 'about' ? 'lg:hidden' : ''
+                } ${active === t ? 'border-terracotta text-charcoal' : 'border-transparent text-charcoal/50 hover:text-charcoal'}`}
               >
-                {t === 'scenes' ? `Scenes${property.segments.length ? ` · ${property.segments.length}` : ''}` : 'Ask the tour'}
+                {TAB_LABELS[t]}
+                {t === 'rooms' && <span className="hidden lg:inline"> · {chapters.length}</span>}
               </button>
             ))}
           </div>
-          {tab === 'scenes' && (
-            <div className="flex-1 min-h-0 overflow-y-auto">
-              <ScenePanel
-                segments={property.segments}
+
+          <div className={active === 'ask' ? 'hidden' : 'lg:flex-1 lg:min-h-0 lg:overflow-y-auto p-4'}>
+            {active === 'search' && showSearch && (
+              <SearchPanel
+                property={property}
+                parts={parts}
+                semantic={results!.interpreted.semantic}
+                moments={matches}
                 currentTime={currentTime}
-                matchedIds={matchedIds}
-                terms={terms}
+                onSeek={seek}
+                next={next && nextHome ? { title: homeTitle(nextHome.property), onClick: next } : undefined}
+              />
+            )}
+            {active === 'rooms' && (
+              <RoomsPanel
+                chapters={chapters}
+                currentTime={currentTime}
+                matches={matches}
                 fallbackImage={property.thumbnailUrl}
                 onSeek={seek}
               />
-            </div>
-          )}
-          {/* Hidden rather than unmounted, so the conversation survives a look at the scenes. */}
-          <div className={tab === 'ask' ? 'flex-1 min-h-0 flex flex-col' : 'hidden'}>
+            )}
+            {/* About sits under the video on a wide screen, so its tab only exists on a phone. */}
+            {active === 'about' && (
+              <div className="lg:hidden">
+                <About property={property} />
+              </div>
+            )}
+          </div>
+          {/* Hidden rather than unmounted, so the conversation survives a look at another tab. */}
+          <div className={active === 'ask' ? 'lg:flex-1 lg:min-h-0 flex flex-col' : 'hidden'}>
             <ChatPanel
               key={property.id}
               youtubeId={property.youtubeId}
