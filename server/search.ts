@@ -1,6 +1,8 @@
 import type { Chapter, Moment, Property, PropertyMatch, Room, SearchFilters, SearchResponse, Segment } from '../types.js';
 import { RANKING } from './config.js';
-import { embed, getApiKey, queryText } from './gemini.js';
+import { embed, GeminiError, getApiKey, queryText } from './gemini.js';
+import { matchThing, thingQuery } from '../lib/phrase.js';
+import { verifyMatches } from './verify.js';
 import { looksFiltered, parseWithModel, parseWithRules, type ParsedQuery } from './queryParser.js';
 import { bm25, dot, loadStore, tokenize, withoutSegments, type IndexedSegment, type Store } from './store.js';
 
@@ -34,6 +36,8 @@ interface Scored {
   visual: number;
   speech: number;
   keyword: number;
+  still: number;
+  stillChapter: Chapter | null; // the room whose still scored `still`
   blended: number;
   fused: number;
 }
@@ -88,6 +92,18 @@ export function chapterFor(chapters: Chapter[] | undefined, start: number, end: 
   return best?.c ?? null;
 }
 
+/** The room still in a window that best fits the query, from the per-frame scores. */
+function bestStill(doc: IndexedSegment, stillScore: Map<string, number>): { chapter: Chapter | null; score: number } {
+  let best: { chapter: Chapter | null; score: number } = { chapter: null, score: 0 };
+  const seg = doc.segment;
+  for (const c of doc.property.chapters ?? []) {
+    if (!c.frame || c.room === 'other' || Math.min(seg.end, c.end) - Math.max(seg.start, c.start) < 2) continue;
+    const score = stillScore.get(c.frame) ?? 0;
+    if (score > best.score) best = { chapter: c, score };
+  }
+  return best;
+}
+
 // Plain room names, for reading which room a caption is about.
 const CAPTION_ROOMS: [Room, string[]][] = [
   ['kitchen', ['kitchen', 'kitchenette']],
@@ -138,7 +154,7 @@ export async function search(query: string): Promise<SearchResponse> {
   const timings: Record<string, number> = {};
   const store = loadStore();
   const apiKey = getApiKey();
-  const hybrid = Boolean(apiKey && store.hasVectors);
+  let hybrid = Boolean(apiKey && store.hasVectors);
   const locations = knownLocations(store);
 
   // 1. Understand the query.
@@ -165,7 +181,13 @@ export async function search(query: string): Promise<SearchResponse> {
   let qVec: Float32Array | undefined;
   if (hybrid) {
     const t = performance.now();
-    qVec = await embed([{ text: queryText(parsed.semantic) }], apiKey!);
+    try {
+      qVec = await embed([{ text: queryText(parsed.semantic) }], apiKey!);
+    } catch (e) {
+      // Out of embedding quota: keyword search over the scene notes beats an error page.
+      if (!(e instanceof GeminiError && e.status === 429)) throw e;
+      hybrid = false;
+    }
     timings.embed = Math.round(performance.now() - t);
   }
 
@@ -176,15 +198,21 @@ export async function search(query: string): Promise<SearchResponse> {
   const rawKeyword = candidates.map(doc => bm25(store, qTerms, doc));
   const maxKeyword = Math.max(0, ...rawKeyword);
 
+  const stillScore = new Map<string, number>();
+  if (qVec) for (const [frame, v] of store.stills) stillScore.set(frame, dot(qVec, v));
+
   const scored: Scored[] = candidates.map((doc, i) => {
     const visual = qVec && doc.visual ? dot(qVec, doc.visual) : 0;
     const speech = qVec && doc.speech ? dot(qVec, doc.speech) : 0;
     const keyword = maxKeyword > 0 ? rawKeyword[i] / maxKeyword : 0;
     const blended = hybrid ? RANKING.visualWeight * visual + RANKING.speechWeight * speech : keyword;
-    return { doc, visual, speech, keyword, blended, fused: 0 };
+    const { chapter: stillChapter, score: still } = bestStill(doc, stillScore);
+    return { doc, visual, speech, keyword, still, stillChapter, blended, fused: 0 };
   });
 
   // Reciprocal rank fusion orders results without needing the three signals on one scale.
+  // Stills only admit and point at a room (below); they stay out of the order
+  // so queries that already worked rank exactly as before.
   const { k, visual: wv, speech: ws, keyword: wk } = RANKING.rrf;
   const rv = rankOf(scored, s => s.visual);
   const rs = rankOf(scored, s => s.speech);
@@ -199,7 +227,10 @@ export async function search(query: string): Promise<SearchResponse> {
   const N = store.segments.length || 1;
   const distinctive = [...new Set(qTerms)].filter(t => (store.docFreq.get(t) ?? 0) / N < RANKING.distinctiveDocShare);
   const hasAllWords = (s: Scored) => distinctive.length > 0 && distinctive.every(t => s.doc.terms.has(t));
-  const relevant = scored.filter(s => s.blended >= floor || (hybrid && hasAllWords(s)));
+  // A room still that clearly shows the query ("green couch") is a match even
+  // when the 30s clip around it is mostly other rooms.
+  const pictured = (s: Scored) => s.still >= RANKING.minStill;
+  const relevant = scored.filter(s => s.blended >= floor || (hybrid && (hasAllWords(s) || pictured(s))));
 
   // 4. Group by property, keep the best few non-overlapping moments each.
   const toMatches = (pool: Scored[]): PropertyMatch[] => {
@@ -218,8 +249,9 @@ export async function search(query: string): Promise<SearchResponse> {
       for (const s of list) {
         const seg = s.doc.segment;
         if (windows.some(w => overlaps(w, seg))) continue;
-        // Show, label and start at the room in this window that fits the query.
-        const chapter = chapterFor(s.doc.property.chapters, seg.start, seg.end, qTerms);
+        // Show, label and start at the room in this window that fits the query:
+        // the one whose still shows it, else the one whose name says it.
+        const chapter = (pictured(s) ? s.stillChapter : null) ?? chapterFor(s.doc.property.chapters, seg.start, seg.end, qTerms);
         // Two windows can land on the same room chapter; show it once.
         const frame = chapter?.frame ?? seg.frame;
         if (frame && frames.has(frame)) continue;
@@ -235,7 +267,8 @@ export async function search(query: string): Promise<SearchResponse> {
           transcript: seg.transcript,
           frame,
           score: +(s.fused / maxFused).toFixed(3),
-          signals: { visual: +s.visual.toFixed(3), speech: +s.speech.toFixed(3), keyword: +s.keyword.toFixed(3) },
+          signals: { visual: +s.visual.toFixed(3), speech: +s.speech.toFixed(3), keyword: +s.keyword.toFixed(3), still: +s.still.toFixed(3) },
+          ...(pictured(s) && s.stillChapter ? { pictured: true } : {}),
         });
         if (moments.length >= RANKING.maxMomentsPerProperty) break;
       }
@@ -275,6 +308,38 @@ export async function search(query: string): Promise<SearchResponse> {
   const top = matches[0]?.score ?? 0;
   if (!closest) matches = matches.filter(m => m.score >= top * RANKING.relativeCutoff).slice(0, RANKING.maxProperties);
   timings.rank = Math.round(performance.now() - t2);
+
+  // 5. Check the top results with a multimodal model: embeddings put "white quartz
+  // countertops, black fixtures" close to "black countertops"; reading the scene
+  // tells them apart and says which words or picture prove each match.
+  let verified = false;
+  if (apiKey && descriptive && matches.length) {
+    const t = performance.now();
+    try {
+      const verdicts = await verifyMatches(parseKey, parsed.semantic, matches, apiKey!);
+      matches = matches.flatMap(m => {
+        const v = verdicts.get(m.property.id);
+        if (v === undefined) return [m];
+        if (v === null) return closest ? [m] : [];
+        return [{ ...m, moments: [{ ...m.moments[0], verified: v }, ...m.moments.slice(1)] }];
+      });
+      // Confirmed homes first, then partial ones, each in score order.
+      const tier = (m: PropertyMatch) => (m.moments[0]?.verified?.verdict === 'yes' ? 0 : m.moments[0]?.verified ? 1 : 2);
+      matches.sort((a, b) => tier(a) - tier(b));
+      verified = true;
+    } catch {
+      // The model is busy or out of quota: keep the retrieval results and fall back to rules below.
+    }
+    timings.verify = Math.round(performance.now() - t);
+  }
+  if (!verified) {
+    // Without the model, drop scenes whose caption plainly describes the thing
+    // another way ("white quartz countertops" for "black countertops").
+    const thing = thingQuery(parsed.semantic);
+    const contradicted = (m: Moment) =>
+      thing !== null && matchThing(m.caption, thing).status === 'contradicted' && matchThing(m.transcript, thing).status !== 'confirmed';
+    matches = matches.map(m => ({ ...m, moments: m.moments.filter(x => !contradicted(x)) })).filter(m => m.moments.length);
+  }
   timings.total = Math.round(performance.now() - t0);
 
   return {

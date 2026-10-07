@@ -33,12 +33,14 @@ For each video in the manifest:
 5. Embeds the clip and the written notes with Gemini Embedding 2.
 6. Sends the whole tour (240p, 2 fps, with a clock burned in) to Gemini Flash once for timed room chapters: when each room or area first appears. These drive the player's timeline; each window takes its room label and its still (saved to `public/frames/`) from the chapter it mostly shows.
 7. Writes a short summary and highlights per property from the captions.
+8. Embeds each room chapter's still as an image, so a search for one object ("green couch") can find the room that shows it even when the 30-second clip and its caption don't stand out. Only new stills are embedded; run `npm run stills` to do just this step.
 
 Outputs:
 
 - `data/properties.json`: catalog and scene notes. Imported by the frontend.
 - `data/vectors.json`: base64 float32 vectors keyed by scene id. Read by the API only.
-- `public/frames/*.jpg`: one still per scene.
+- `data/stills.json`: base64 float32 image vectors keyed by frame path. Read by the API only.
+- `public/frames/*.jpg`: one still per scene and per room chapter.
 
 Every finished window is cached in `ingestion/.cache/<youtubeId>.json`. Re-running only processes what is missing. Delete a video's cache file to re-index it.
 
@@ -56,7 +58,7 @@ Runs the queries in `eval-queries.json` and prints the top three tours for each,
 
 ## Cost and free-tier limits
 
-About 150 minutes of video gives roughly 400 windows. A full build makes about 530 Flash-Lite calls (one per window, plus a chapters call and a summary per tour) and about 800 embedding calls (clip and notes per window).
+About 150 minutes of video gives roughly 400 windows. A full build makes about 530 Flash-Lite calls (one per window, plus a chapters call and a summary per tour) and about 800 embedding calls (clip and notes per window), plus one small image embedding per room still (about 15 per tour).
 
 That fits the free tier in a day. Check your own limits at https://aistudio.google.com/rate-limit; the free tier for this project allowed:
 
