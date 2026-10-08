@@ -4,7 +4,7 @@ import AppHeader from '../components/AppHeader';
 import MatchCard from '../components/MatchCard';
 import SearchBar from '../components/SearchBar';
 import SearchParts from '../components/SearchParts';
-import { ResultCardSkeleton } from '../components/ui/Skeletons';
+import SearchProgress from '../components/SearchProgress';
 import { evidenceFor, searchParts } from '../lib/match';
 import { searchTours, totalScenes } from '../services/api';
 import type { Moment, PropertyMatch, SearchResponse } from '../types';
@@ -56,15 +56,7 @@ const ResultsView: React.FC = () => {
       </AppHeader>
 
       <main className="max-w-7xl mx-auto px-4 md:px-6 py-4 md:py-8">
-        {loading && (
-          <div className="space-y-6" aria-busy="true">
-            <p className="font-mono text-xs uppercase tracking-widest text-olive">
-              Searching {totalScenes || 'every'} scenes for “{query}”…
-            </p>
-            <ResultCardSkeleton />
-            <ResultCardSkeleton />
-          </div>
-        )}
+        {loading && <SearchProgress key={query} query={query} />}
 
         {error && !loading && (
           <div className="bg-terracotta/5 border-2 border-charcoal p-8 text-center">
