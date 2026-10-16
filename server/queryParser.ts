@@ -76,13 +76,14 @@ const SCHEMA = {
   required: ['semantic', 'locations'],
 };
 
-export async function parseWithModel(q: string, locations: string[], apiKey: string): Promise<ParsedQuery> {
+export async function parseWithModel(q: string, locations: string[], apiKey: string, signal?: AbortSignal): Promise<ParsedQuery> {
   const out = await generateJson<any>(
     [{ role: 'user', parts: [{ text: q }] }],
     apiKey,
     {
       schema: SCHEMA,
       temperature: 0,
+      signal,
       system:
         'You turn a home buyer\'s search into structured filters for a video search engine. ' +
         'Extract numeric constraints (bedrooms, bathrooms, square feet, price in CAD as a plain number) only when stated. ' +

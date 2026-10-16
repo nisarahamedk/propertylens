@@ -63,10 +63,16 @@ const CACHE_SIZE = 500;
 
 /**
  * Verdicts for the best moment of each of the top results, keyed by property id
- * (null means "no"). Throws when the model is unavailable; callers keep the
- * unverified results then.
+ * (null means "no"). Throws when the model is unavailable or the signal aborts;
+ * callers keep the unverified results then.
  */
-export async function verifyMatches(key: string, semantic: string, matches: PropertyMatch[], apiKey: string): Promise<Map<string, Verification | null>> {
+export async function verifyMatches(
+  key: string,
+  semantic: string,
+  matches: PropertyMatch[],
+  apiKey: string,
+  signal?: AbortSignal,
+): Promise<Map<string, Verification | null>> {
   const top = matches.slice(0, MAX_CHECKED).filter(m => m.moments[0]);
   const cacheKey = `${key}|${top.map(m => m.moments[0].segmentId).join(',')}`;
   const hit = cache.get(cacheKey);
@@ -86,7 +92,7 @@ export async function verifyMatches(key: string, semantic: string, matches: Prop
   const out = await generateJson<{ results: { id: string; verdict: string; seen: string; said: string; inPhoto: boolean; missing: string }[] }>(
     [{ role: 'user', parts }],
     apiKey,
-    { schema: SCHEMA, system: SYSTEM, temperature: 0 },
+    { schema: SCHEMA, system: SYSTEM, temperature: 0, signal },
   );
 
   const verdicts = new Map<string, Verification | null>();

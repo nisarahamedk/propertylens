@@ -1,5 +1,5 @@
 import type { Chapter, Moment, Property, PropertyMatch, Room, SearchFilters, SearchResponse, Segment } from '../types.js';
-import { RANKING } from './config.js';
+import { RANKING, SEARCH_BUDGET } from './config.js';
 import { embed, GeminiError, getApiKey, queryText } from './gemini.js';
 import { matchThing, thingQuery } from '../lib/phrase.js';
 import { verifyMatches } from './verify.js';
@@ -165,9 +165,10 @@ export async function search(query: string): Promise<SearchResponse> {
     parsed = remembered;
   } else if (apiKey && looksFiltered(query, locations)) {
     try {
-      parsed = await parseWithModel(query, locations, apiKey);
+      parsed = await parseWithModel(query, locations, apiKey, AbortSignal.timeout(SEARCH_BUDGET.parse));
       rememberParse(parseKey, parsed);
     } catch {
+      // Busy, out of quota or too slow: read the filters by rules.
       parsed = parseWithRules(query, locations);
     }
   } else if (looksFiltered(query, locations)) {
@@ -182,10 +183,11 @@ export async function search(query: string): Promise<SearchResponse> {
   if (hybrid) {
     const t = performance.now();
     try {
-      qVec = await embed([{ text: queryText(parsed.semantic) }], apiKey!);
+      qVec = await embed([{ text: queryText(parsed.semantic) }], apiKey!, AbortSignal.timeout(SEARCH_BUDGET.embed));
     } catch (e) {
-      // Out of embedding quota: keyword search over the scene notes beats an error page.
-      if (!(e instanceof GeminiError && e.status === 429)) throw e;
+      // Out of embedding quota or too slow: keyword search over the scene notes beats an error page.
+      const timedOut = e instanceof DOMException && e.name === 'TimeoutError';
+      if (!timedOut && !(e instanceof GeminiError && e.status === 429)) throw e;
       hybrid = false;
     }
     timings.embed = Math.round(performance.now() - t);
@@ -313,10 +315,11 @@ export async function search(query: string): Promise<SearchResponse> {
   // countertops, black fixtures" close to "black countertops"; reading the scene
   // tells them apart and says which words or picture prove each match.
   let verified = false;
-  if (apiKey && descriptive && matches.length) {
+  const verifyMs = Math.round(SEARCH_BUDGET.total - (performance.now() - t0));
+  if (apiKey && descriptive && matches.length && verifyMs >= SEARCH_BUDGET.minVerify) {
     const t = performance.now();
     try {
-      const verdicts = await verifyMatches(parseKey, parsed.semantic, matches, apiKey!);
+      const verdicts = await verifyMatches(parseKey, parsed.semantic, matches, apiKey!, AbortSignal.timeout(verifyMs));
       matches = matches.flatMap(m => {
         const v = verdicts.get(m.property.id);
         if (v === undefined) return [m];
@@ -328,7 +331,7 @@ export async function search(query: string): Promise<SearchResponse> {
       matches.sort((a, b) => tier(a) - tier(b));
       verified = true;
     } catch {
-      // The model is busy or out of quota: keep the retrieval results and fall back to rules below.
+      // The model is busy, out of quota or too slow: keep the retrieval results and fall back to rules below.
     }
     timings.verify = Math.round(performance.now() - t);
   }
