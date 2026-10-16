@@ -58,3 +58,14 @@ export const RANKING = {
   closestProperties: 3,
   maxMomentsPerProperty: 3,
 };
+
+// Time limits for one search, in ms. The Vercel function stops at 30s
+// (vercel.json), and Flash-Lite answers have taken 2 to 16s each, so every
+// model call gets a deadline and the search returns what it has rather than
+// timing out. Each step falls back as it does when out of quota.
+export const SEARCH_BUDGET = {
+  parse: Number(env.SEARCH_PARSE_MS ?? 6000),   // then filters are read by rules
+  embed: Number(env.SEARCH_EMBED_MS ?? 5000),   // then keyword search
+  total: Number(env.SEARCH_TOTAL_MS ?? 24000),  // verification stops here; results stay unverified
+  minVerify: 3000,                              // skip verification with less time left than this
+};

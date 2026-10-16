@@ -30,12 +30,28 @@ export function retryDelayMs(body: string): number | undefined {
   return m ? Math.ceil(parseFloat(m[1]) * 1000) : undefined;
 }
 
-/** POSTs to the API and returns the ok response, retrying rate limits and transient server errors. */
-async function post(path: string, body: unknown, apiKey: string, attempt = 0): Promise<Response> {
+/** Resolves after ms, or rejects as soon as the signal aborts. */
+function sleep(ms: number, signal?: AbortSignal): Promise<void> {
+  return new Promise((resolve, reject) => {
+    if (signal?.aborted) return reject(signal.reason);
+    const timer = setTimeout(resolve, ms);
+    signal?.addEventListener('abort', () => {
+      clearTimeout(timer);
+      reject(signal.reason);
+    }, { once: true });
+  });
+}
+
+/**
+ * POSTs to the API and returns the ok response, retrying rate limits and
+ * transient server errors. The signal bounds the whole call, retries included.
+ */
+async function post(path: string, body: unknown, apiKey: string, signal?: AbortSignal, attempt = 0): Promise<Response> {
   const res = await fetch(`${BASE}/${path}`, {
     method: 'POST',
     headers: { 'content-type': 'application/json', 'x-goog-api-key': apiKey },
     body: JSON.stringify(body),
+    signal,
   });
   if (res.ok) return res;
   const text = await res.text();
@@ -44,8 +60,8 @@ async function post(path: string, body: unknown, apiKey: string, attempt = 0): P
   const asked = res.status === 429 ? retryDelayMs(text) : undefined;
   const wait = asked ?? 1000 * 2 ** attempt;
   if ((res.status === 429 || res.status >= 500) && attempt < maxAttempts() - 1 && wait <= maxWaitMs()) {
-    await new Promise(r => setTimeout(r, wait + Math.random() * 500));
-    return post(path, body, apiKey, attempt + 1);
+    await sleep(wait + Math.random() * 500, signal);
+    return post(path, body, apiKey, signal, attempt + 1);
   }
   throw new GeminiError(`Gemini ${path} failed: ${res.status} ${text.slice(0, 300)}`, res.status, asked);
 }
@@ -65,7 +81,7 @@ function cooldownFor(e: GeminiError): number {
 }
 
 /** Runs a Flash request on the first model in the chain that is not cooling down. */
-async function withFlashFallback<T>(run: (model: string) => Promise<T>): Promise<T> {
+async function withFlashFallback<T>(run: (model: string) => Promise<T>, signal?: AbortSignal): Promise<T> {
   const now = Date.now();
   const chain = MODELS.flashChain;
   const ready = chain.filter(m => (cooling.get(m) ?? 0) <= now);
@@ -73,6 +89,7 @@ async function withFlashFallback<T>(run: (model: string) => Promise<T>): Promise
   const order = ready.length ? ready : [...chain].sort((a, b) => (cooling.get(a) ?? 0) - (cooling.get(b) ?? 0));
   let last: unknown;
   for (const model of order) {
+    if (signal?.aborted) throw signal.reason;
     try {
       return await run(model);
     } catch (e) {
@@ -86,7 +103,8 @@ async function withFlashFallback<T>(run: (model: string) => Promise<T>): Promise
   throw last;
 }
 
-const call = async (path: string, body: unknown, apiKey: string): Promise<any> => (await post(path, body, apiKey)).json();
+const call = async (path: string, body: unknown, apiKey: string, signal?: AbortSignal): Promise<any> =>
+  (await post(path, body, apiKey, signal)).json();
 
 export function normalize(v: number[] | Float32Array): Float32Array {
   const out = Float32Array.from(v);
@@ -97,11 +115,11 @@ export function normalize(v: number[] | Float32Array): Float32Array {
   return out;
 }
 
-export async function embed(parts: Part[], apiKey: string): Promise<Float32Array> {
+export async function embed(parts: Part[], apiKey: string, signal?: AbortSignal): Promise<Float32Array> {
   const data = await call(`models/${MODELS.embedding}:embedContent`, {
     content: { parts },
     outputDimensionality: EMBEDDING_DIMS,
-  }, apiKey);
+  }, apiKey, signal);
   const values: number[] | undefined = data?.embedding?.values;
   if (!values?.length) throw new GeminiError('Empty embedding in response', 502);
   return normalize(values);
@@ -115,6 +133,7 @@ interface GenerateOptions {
   system?: string;
   schema?: object;      // JSON schema for structured output
   temperature?: number;
+  signal?: AbortSignal; // abandons the request, retries and model fallback included
 }
 
 function generateBody(contents: { role: string; parts: Part[] }[], opts: GenerateOptions) {
@@ -133,7 +152,7 @@ export async function generate(
   apiKey: string,
   opts: GenerateOptions = {},
 ): Promise<string> {
-  const data = await withFlashFallback(model => call(`models/${model}:generateContent`, generateBody(contents, opts), apiKey));
+  const data = await withFlashFallback(model => call(`models/${model}:generateContent`, generateBody(contents, opts), apiKey, opts.signal), opts.signal);
   const parts = data?.candidates?.[0]?.content?.parts ?? [];
   return parts.map((p: any) => p.text ?? '').join('');
 }
@@ -154,7 +173,7 @@ export async function* generateStream(
   opts: GenerateOptions = {},
 ): AsyncGenerator<string> {
   // Retrying is safe here: nothing has been streamed to the caller yet.
-  const res = await withFlashFallback(model => post(`models/${model}:streamGenerateContent?alt=sse`, generateBody(contents, opts), apiKey));
+  const res = await withFlashFallback(model => post(`models/${model}:streamGenerateContent?alt=sse`, generateBody(contents, opts), apiKey, opts.signal), opts.signal);
   if (!res.body) throw new GeminiError('Gemini stream returned no body', 502);
   const reader = res.body.getReader();
   const decoder = new TextDecoder();
